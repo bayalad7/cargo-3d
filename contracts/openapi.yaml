@@ -1,0 +1,33 @@
+# Contrato de la API de Cargo 3D (API-first): se edita ESTE archivo primero y
+# después se implementa en backend/internal/httpapi.
+# Ver docs/src/adr/0008-api-first-openapi.md
+openapi: 3.1.0
+info:
+  title: Cargo 3D API
+  version: 0.1.0
+  description: API de planeación de carga 3D.
+paths:
+  /health:
+    get:
+      summary: Estado del servidor
+      operationId: getHealth
+      responses:
+        "200":
+          description: El servidor está vivo.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthResponse"
+components:
+  schemas:
+    HealthResponse:
+      type: object
+      required: [status, engineVersion]
+      properties:
+        status:
+          type: string
+          example: ok
+        engineVersion:
+          type: string
+          description: Versión del contrato del motor.
+          example: 0.1.0

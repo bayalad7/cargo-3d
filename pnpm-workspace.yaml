@@ -1,0 +1,4 @@
+# Paquetes de TypeScript del monorepo (ver docs/src/adr/0001-monorepo.md)
+packages:
+  - "apps/*"
+  - "packages/*"

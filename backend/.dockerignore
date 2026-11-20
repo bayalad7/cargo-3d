@@ -1,0 +1,6 @@
+# Archivos que NO se mandan a Docker al construir la imagen (más rápido y más seguro).
+.env
+.env.*
+*.test
+*.out
+tmp/

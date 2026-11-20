@@ -1,0 +1,19 @@
+{
+  "name": "cargo-3d",
+  "private": true,
+  "description": "Cargo 3D — planeación de carga 3D para contenedores y camiones",
+  "packageManager": "pnpm@10.0.0",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "docs": "mdbook serve docs --open",
+    "api": "go run ./backend/cmd/api",
+    "test:go": "go test ./backend/...",
+    "db:up": "docker compose up -d db"
+  },
+  "devDependencies": {
+    "turbo": "^2.0.0"
+  }
+}

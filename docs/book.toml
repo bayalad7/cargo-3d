@@ -1,0 +1,9 @@
+[book]
+title = "Cargo 3D — Documentación"
+authors = ["Benjamín", "Claude"]
+language = "es"
+src = "src"
+
+[output.html]
+default-theme = "light"
+git-repository-url = "https://github.com/bayalad7/cargo-3d"

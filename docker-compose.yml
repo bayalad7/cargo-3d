@@ -1,0 +1,50 @@
+# Entorno de desarrollo con Docker Compose.
+# Ver docs/src/adr/0010-docker.md
+#
+# Uso:
+#   docker compose up -d db          → solo PostgreSQL (lo normal mientras programas el backend con `go run`)
+#   docker compose --profile api up  → PostgreSQL + la API construida desde backend/Dockerfile
+#   docker compose down              → apagar (los datos se conservan en el volumen)
+#
+# Las credenciales vienen de .env (copia .env.example a .env). Nunca subas .env al repo.
+
+services:
+  # Base de datos del proyecto.
+  db:
+    # Versión fija para que todos usen la misma.
+    image: postgres:17
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-cargo3d}
+      POSTGRES_USER: ${POSTGRES_USER:-cargo3d}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Define POSTGRES_PASSWORD en .env}
+    ports:
+      # Solo accesible desde tu computadora (127.0.0.1), no desde la red.
+      - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      # Los datos sobreviven aunque se borre el contenedor.
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      # La API espera a que la base de datos acepte conexiones.
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # API + motor en Go. Solo arranca con --profile api.
+  api:
+    profiles: ["api"]
+    build:
+      context: ./backend
+    restart: unless-stopped
+    environment:
+      PORT: "8080"
+      DATABASE_URL: postgres://${POSTGRES_USER:-cargo3d}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-cargo3d}?sslmode=disable
+    ports:
+      - "127.0.0.1:${API_PORT:-8080}:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  db-data:

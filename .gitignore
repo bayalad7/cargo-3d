@@ -1,0 +1,28 @@
+# Go
+/backend/api
+/backend/bin/
+*.test
+*.out
+coverage.*
+
+# Node / TypeScript
+node_modules/
+dist/
+build/
+.turbo/
+*.tsbuildinfo
+
+# Documentación generada
+docs/book/
+
+# Entornos y secretos
+.env
+.env.*
+!.env.example
+
+# Sistema / editores
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
