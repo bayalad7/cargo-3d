@@ -18,5 +18,7 @@ Cada versión liberada en `main` lleva su etiqueta de git (ADR-0012).
 - ADR-0007: dónde vive el código de PostgreSQL (`backend/internal/store`).
 - ADR-0011: versiones de todas las tecnologías (Node.js 26 LTS, pnpm 12, Turborepo 2.11, …).
 - ADR-0012: ramas `develop` (trabajo diario) y `main` (versiones liberadas).
+- Soporte de desarrollo en Windows, macOS y Linux: `.gitattributes` (LF para todos), guía de instalación por
+  sistema en el plan e imagen Docker para `linux/amd64` y `linux/arm64` (compilación cruzada de Go).
 - ADR-0013 y GitHub Actions: `ci.yml` (flujo de ramas, `gofmt`, `go vet`, `go test -race`, build de la imagen)
   y `release.yml` (imagen en ghcr.io y GitHub Release con notas del CHANGELOG al subir `vX.Y.Z`).

@@ -15,8 +15,8 @@ Dos workflows de GitHub Actions en `.github/workflows/`:
 
 | Archivo | Cuándo corre | Qué hace |
 |---|---|---|
-| `ci.yml` | Pull requests y pushes a `develop` y `main` | Revisa que a `main` solo lleguen `release/vX.Y.Z` o `hotfix/*`; `gofmt`, `go vet`, `go test -race`; construye la imagen Docker sin publicarla |
-| `release.yml` | Al subir una etiqueta `vX.Y.Z` | Comprueba que la etiqueta esté en `main` y que el CHANGELOG tenga `## [X.Y.Z]`; repite las pruebas; publica la imagen en `ghcr.io/<dueño>/<repo>/api` (`X.Y.Z`, `X.Y`, `latest`); crea el GitHub Release con las notas del CHANGELOG |
+| `ci.yml` | Pull requests y pushes a `develop` y `main` | Revisa que a `main` solo lleguen `release/vX.Y.Z` o `hotfix/*`; `gofmt`, `go vet`, `go test -race`; construye la imagen Docker (amd64 y arm64) sin publicarla |
+| `release.yml` | Al subir una etiqueta `vX.Y.Z` | Comprueba que la etiqueta esté en `main` y que el CHANGELOG tenga `## [X.Y.Z]`; repite las pruebas; publica la imagen multiplataforma (`linux/amd64` y `linux/arm64`) en `ghcr.io/<dueño>/<repo>/api` (`X.Y.Z`, `X.Y`, `latest`); crea el GitHub Release con las notas del CHANGELOG |
 
 - `main` sigue siendo la **rama por defecto** de GitHub; el trabajo diario se hace en `develop`.
 - La versión de Go en CI sale de `backend/go.mod` (una sola fuente de verdad, ADR-0011).

@@ -1,0 +1,22 @@
+# Fin de línea: LF en el repositorio y en la copia de trabajo, en Windows, macOS y Linux.
+# Evita diffs falsos al cambiar de computadora y scripts con CRLF que fallan dentro de Docker.
+# Va junto con .editorconfig (end_of_line = lf).
+* text=auto eol=lf
+
+# Scripts de Windows: estos sí necesitan CRLF.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Archivos binarios: Git no los toca.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+*.glb binary
+*.zip binary

@@ -2,7 +2,8 @@
 
 ## Instalar Go
 
-Descarga el instalador de go.dev/dl (versión 1.27 o superior). Instala una sola herramienta: `go`.
+Descarga el instalador de go.dev/dl (versión 1.27 o superior), o usa `winget install GoLang.Go` en Windows
+y `brew install go` en macOS. Instala una sola herramienta: `go`.
 Con ella compilas, pruebas, formateas y administras dependencias. No hay equivalente a Composer aparte.
 
 ## Comandos que usarás a diario

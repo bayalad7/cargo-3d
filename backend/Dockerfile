@@ -7,7 +7,15 @@
 
 # ---------- Etapa 1: compilar ----------
 # Fijamos la versión de Go para que la compilación sea reproducible.
-FROM golang:1.27 AS build
+# --platform=$BUILDPLATFORM: el compilador corre en la arquitectura de la máquina que construye
+# (amd64 en GitHub, arm64 en una Mac con Apple Silicon) y Go compila de forma cruzada hacia la
+# arquitectura destino (TARGETARCH). Así una imagen arm64 se construye rápido, sin emulación.
+FROM --platform=$BUILDPLATFORM golang:1.27 AS build
+
+# Docker llena estas variables solo: sistema operativo y arquitectura de la imagen final
+# (por ejemplo linux/amd64 o linux/arm64).
+ARG TARGETOS
+ARG TARGETARCH
 
 # Carpeta de trabajo dentro del contenedor.
 WORKDIR /src
@@ -25,7 +33,9 @@ COPY . .
 #   GOWORK=off     → dentro del contenedor solo existe este módulo, no el workspace.
 #   -trimpath      → quita rutas locales del binario.
 #   -ldflags="-s -w" → quita información de depuración (binario más chico).
-RUN CGO_ENABLED=0 GOWORK=off go build -trimpath -ldflags="-s -w" -o /out/api ./cmd/api
+#   GOOS/GOARCH    → compila para la plataforma destino (compilación cruzada, una ventaja de Go).
+RUN CGO_ENABLED=0 GOWORK=off GOOS=$TARGETOS GOARCH=$TARGETARCH \
+    go build -trimpath -ldflags="-s -w" -o /out/api ./cmd/api
 
 # ---------- Etapa 2: ejecutar ----------
 # distroless/static: imagen mínima de Google, sin shell ni gestor de paquetes.

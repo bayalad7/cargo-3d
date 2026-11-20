@@ -85,6 +85,8 @@ jobs:
       - uses: docker/build-push-action@v7
         with:
           context: ./backend
+          # Las mismas plataformas que publica release.yml.
+          platforms: linux/amd64,linux/arm64
           push: false
           # Caché en GitHub Actions para que las siguientes construcciones sean rápidas.
           cache-from: type=gha

@@ -20,7 +20,25 @@ Las duraciones suponen **10 a 15 horas por semana**. Si dedicas más o menos, aj
 
 ## Preparación del entorno
 
-**Si usas Windows:** instala **WSL2 con Ubuntu** y haz todo dentro de WSL.
+El proyecto se desarrolla igual en **Windows, macOS y Linux** (también en Mac con Apple Silicon).
+Elige la columna de tu sistema; los comandos del proyecto (`go`, `pnpm`, `docker compose`) son los mismos en los tres.
+
+| Herramienta | Windows (nativo) | macOS | Linux |
+| --- | --- | --- | --- |
+| Gestor de paquetes | `winget` (viene con Windows) | [Homebrew](https://brew.sh) | el de tu distribución |
+| Git | `winget install Git.Git` (incluye Git Bash) | `xcode-select --install` o `brew install git` | `apt install git` |
+| Go | `winget install GoLang.Go` | `brew install go` | binario de go.dev/dl |
+| Docker | Docker Desktop (motor WSL2) | Docker Desktop u OrbStack (más ligero) | Docker Engine + plugin Compose |
+| Node.js | `winget install Schniz.fnm`, luego `fnm install 26` | `brew install fnm`, luego `fnm install 26` | fnm o nvm |
+| mdBook | binario de sus releases en GitHub | `brew install mdbook` | binario de sus releases |
+
+Notas:
+
+- **Windows:** se trabaja nativo con PowerShell o Git Bash; WSL2 es opcional (Docker Desktop lo usa por dentro).
+  Si la ruta de tu usuario tiene espacios o acentos, clona el repo en una ruta corta como `C:\cargo-3d`.
+- **Fin de línea:** `.gitattributes` y `.editorconfig` fijan LF para todos. Si clonaste antes de que existiera
+  `.gitattributes`, corre una vez `git rm -r --cached . -q && git reset --hard` (con todo ya en commit).
+- **Mac con Apple Silicon:** las imágenes de Docker del proyecto existen para ARM (`arm64`) y corren nativas.
 
 ### 1. Git y GitHub
 
@@ -38,7 +56,8 @@ Las duraciones suponen **10 a 15 horas por semana**. Si dedicas más o menos, aj
 
 ### 3. Docker
 
-Docker Desktop (o Docker Engine en Linux) con Docker Compose. Copia `.env.example` a `.env` y cambia la contraseña.
+Docker Desktop (Windows o macOS), OrbStack (macOS) o Docker Engine (Linux), con Docker Compose.
+Copia `.env.example` a `.env` y cambia la contraseña.
 
 ### 4. Node.js y pnpm (desde el sprint 1.4: validador en TypeScript)
 
@@ -48,7 +67,7 @@ exactamente la versión del proyecto.
 
 ### 5. mdBook (sitio de documentación)
 
-Descarga el binario de mdBook desde su página de releases, o instálalo con `cargo install mdbook` si tienes Rust.
+En macOS `brew install mdbook`; en Windows y Linux descarga el binario desde su página de releases en GitHub.
 
 ### 6. Editor
 

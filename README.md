@@ -48,9 +48,12 @@ y el [ADR-0013](docs/src/adr/0013-ci-y-release.md).
 
 Toda la documentación vive en [`docs/`](docs/src/SUMMARY.md): decisiones (ADR), conceptos,
 guía de Go para quien viene de PHP, plan de trabajo y bitácora.
-Para verla como sitio web: `mdbook serve docs --open` (requiere `cargo install mdbook` o el binario de mdBook).
+Para verla como sitio web: `mdbook serve docs --open` (requiere mdBook: `brew install mdbook` en macOS o su binario en Windows y Linux).
 
 ## Requisitos
+
+Funciona en Windows, macOS (incluida Apple Silicon) y Linux. Guía de instalación por sistema en el
+[plan de trabajo](docs/src/plan.md#preparación-del-entorno).
 
 - Go 1.27 o superior
 - Docker con Docker Compose
