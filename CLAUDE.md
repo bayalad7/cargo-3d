@@ -6,12 +6,25 @@ Léelo completo antes de escribir código. Mantenlo actualizado al final de cada
 ## Qué es el proyecto
 
 Cargo 3D es un software de **planeación de carga 3D** para contenedores marítimos,
-cajas secas y plataformas, similar a EasyCargo pero enfocado en el mercado mexicano
-(puerto de Manzanillo, Colima): equipos y reglas de carga mexicanas (NOM-012),
-precio en pesos, soporte en español.
+cajas secas y plataformas, similar a EasyCargo, 3D Load Calculator, CargoWizz,
+Cargo Optimizer Enterprise, Cube-IQ, CubeMaster, Goodloading, Load!, PackApp,
+PackVol y SeaRates pero enfocado en el mercado mexicano (puerto de Manzanillo, Colima):
+equipos y reglas de carga mexicanas (NOM-012), precio en pesos, soporte en español.
 
-- **Dueño y mantenedor:** Benjamín (desarrollador; viene de PHP, está aprendiendo Go con este proyecto).
-- **Primer cliente / laboratorio de pruebas:** Transportes Villa.
+Eliges (o creas) tu espacio de carga, metes tus datos (peso, medidas, restricciones)
+y el motor acomoda todo, los resultados se muestran en una visualización 3D en tiempo real
+y las piezas se pueden mover o girar a mano si hace falta.
+
+El corazón es 3D bin packing (empaquetado en contenedores), que es NP-hard.
+Nadie lo resuelve de forma exacta; se usan heurísticas:
+
+- Extreme Points o Skyline/Layer building: colocan cajas en “esquinas” disponibles,
+  ordenadas por volumen o por base. Son rápidas y dan buenos resultados.
+- Metaheurísticas encima de eso (algoritmos genéticos, búsqueda tabú, simulated annealing)
+  para mejorar el orden y la rotación de las piezas.
+- Restricciones reales, que es donde está el valor: estabilidad (que nada quede “flotando”),
+  apilabilidad, carga máxima por eje, centro de gravedad, orden de descarga (LIFO por destino),
+  piezas que no se pueden voltear y peso máximo del contenedor (VGM).
 
 ## Stack (decidido; ver `docs/src/adr/`)
 
@@ -30,7 +43,7 @@ precio en pesos, soporte en español.
 
 Principio rector: **Go para todo el backend, TypeScript para todas las pantallas.**
 
-## Reglas de documentación (acuerdo con Benjamín — OBLIGATORIAS)
+## Reglas de documentación (Acuerdos OBLIGATORIOS)
 
 1. **Idioma:** identificadores de código (variables, funciones, tipos, paquetes, archivos de código) en **inglés**.
    Comentarios, documentación, ADRs, bitácora y mensajes al usuario en **español**.
@@ -64,11 +77,36 @@ Principio rector: **Go para todo el backend, TypeScript para todas las pantallas
 - Configuración solo por variables de entorno; nada fijo en el código.
 - Antes de dar algo por terminado: `gofmt`, `go vet ./backend/...` y `go test ./backend/...` sin errores.
 
+## Reglas de Docker (OBLIGATORIAS — el disco duro puede llenarse rápido)
+
+Todo lo que se cree en Docker para correr o probar una implementación (contenedores, imágenes
+construidas o descargadas, volúmenes, redes y caché de build) **se elimina al terminar la prueba**,
+pase o falle. Nada se queda "por si acaso": imágenes, volúmenes y caché de build se acumulan
+y pueden llenar el disco duro rápidamente si no se limpian.
+
+1. **Antes de probar**, anotar lo que ya existe para no borrar recursos ajenos a la prueba:
+   `docker system df` y `docker image ls`.
+2. **Probar en un proyecto de Compose aparte** (`-p cargo3d-test`), para no tocar el volumen
+   `db-data` con la base de datos de desarrollo:
+   ```bash
+   docker compose -p cargo3d-test up -d db # o: --profile api up -d --build
+   ```
+3. **Al terminar, limpiar todo lo creado:**
+   ```bash
+   docker compose -p cargo3d-test --profile api down -v --rmi all --remove-orphans
+   docker image rm golang:1.27 gcr.io/distroless/static-debian13:nonroot # solo si no existían antes
+   docker builder prune -f # caché de build (se regenera sola)
+   docker system df # confirmar que quedó como al inicio
+   ```
+4. **Reportar** en el mensaje final qué se creó, qué se eliminó y cuánto espacio se liberó.
+5. Nunca usar `docker system prune -a --volumes` ni borrar recursos que no se crearon en la sesión
+   sin preguntar antes.
+
 ## Plan de trabajo
 
 El plan completo vive en `docs/src/plan.md`: fases, sprints, criterios de terminado
 y el modelo sugerido para cada paso. Antes de empezar un sprint, léelo y confirma
-con Benjamín en qué sprint estamos. No se pasa de fase sin cumplir su criterio de terminado.
+con el usuario en qué sprint estamos. No se pasa de fase sin cumplir su criterio de terminado.
 
 ## Estructura
 
@@ -113,5 +151,4 @@ mdbook serve docs --open              # sitio de documentación
 - **Fase actual:** 0 — cimientos (estructura, Docker y documentación). Servidor con `/health`; motor vacío.
 - **Nivel de comentarios Go:** máximo (casi cada línea).
 - **Siguiente paso:** fase 1, sprint 1.1 (ver `docs/src/plan.md`) — modelos del motor y `contracts/engine.schema.json`.
-- **Pendiente de Benjamín:** cargas reales de ejemplo, catálogo de equipos usados,
-  reglas del patio.
+- **Pendiente:** cargas reales de ejemplo, catálogo de equipos usados, reglas del patio.
