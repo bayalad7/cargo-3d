@@ -10,8 +10,7 @@
 # --platform=$BUILDPLATFORM: el compilador corre en la arquitectura de la máquina que construye
 # (amd64 en GitHub, arm64 en una Mac con Apple Silicon) y Go compila de forma cruzada hacia la
 # arquitectura destino (TARGETARCH). Así una imagen arm64 se construye rápido, sin emulación.
-# Variante alpine: ~250 MB en lugar de ~800 MB; basta porque compilamos sin C (CGO_ENABLED=0).
-FROM --platform=$BUILDPLATFORM golang:1.27-alpine AS build
+FROM --platform=$BUILDPLATFORM golang:1.27 AS build
 
 # Docker llena estas variables solo: sistema operativo y arquitectura de la imagen final
 # (por ejemplo linux/amd64 o linux/arm64).

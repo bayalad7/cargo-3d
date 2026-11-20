@@ -1,6 +1,9 @@
 # Entorno de desarrollo con Docker Compose.
 # Ver docs/src/adr/0010-docker.md
 #
+# Todo queda agrupado en un solo proyecto, "cargo-3d", con dos contenedores: db (PostgreSQL) y api.
+# Se levantan y se apagan juntos con un comando.
+#
 # Uso (los dos modos usan el MISMO contenedor de PostgreSQL y el mismo volumen):
 #   docker compose up -d db                        → día a día: solo PostgreSQL; la API se corre con `go run`
 #   docker compose --profile api up --build        → opcional: además construye y corre la imagen de la API
@@ -15,15 +18,14 @@
 # Las credenciales vienen de .env (copia .env.example a .env). Nunca subas .env al repo.
 
 # Nombre fijo del proyecto: los contenedores y el volumen se llaman igual aunque la carpeta
-# del repo tenga otro nombre (por ejemplo en otra computadora). Evita duplicados.
+# del repo tenga otro nombre (por ejemplo en otra computadora). Así siempre es un solo grupo, sin duplicados.
 name: cargo-3d
 
 services:
   # Base de datos del proyecto.
   db:
     # Versión mayor fija para que todos usen la misma (ver docs/src/adr/0011-versiones.md).
-    # Variante alpine: ~400 MB en disco en lugar de ~680 MB de la variante Debian.
-    image: postgres:19-alpine
+    image: postgres:19
     # Sin "restart": el contenedor no se enciende solo al arrancar Docker; corre solo cuando lo pides.
     environment:
       POSTGRES_DB: ${POSTGRES_DB:-cargo3d}

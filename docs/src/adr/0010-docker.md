@@ -38,8 +38,9 @@ puertos publicados solo en `127.0.0.1` en desarrollo; datos de PostgreSQL en un 
 
 - **Positivas:** con Go, la imagen de producción es muy pequeña (un binario estático, sin sistema operativo
   completo), arranca rápido y tiene poca superficie de ataque.
-- **Espacio en disco:** se usan las variantes alpine (`postgres:19-alpine`, `golang:1.27-alpine`), los contenedores
-  no se reinician solos y el proyecto tiene nombre fijo (`name: cargo-3d`) para no duplicar contenedores ni volúmenes.
-  La imagen de la API normalmente no se construye en local: la construye el CI.
+- **Un solo grupo:** el proyecto de Compose tiene nombre fijo (`name: cargo-3d`), así que `db` y `api` siempre
+  aparecen juntos en un grupo y nunca se duplican contenedores ni volúmenes. Los contenedores no se reinician solos.
+  Se mantienen separados (y no en un solo contenedor) para poder reiniciar, actualizar y respaldar cada uno
+  por su cuenta; en producción PostgreSQL puede ser un servicio administrado.
 - **Negativas:** la imagen distroless no tiene shell: para depurar en producción se usan logs, no `docker exec`.
 - **Revertir:** el binario de Go corre sin Docker en cualquier Linux; Docker es comodidad, no dependencia.

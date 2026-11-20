@@ -94,7 +94,7 @@ y pueden llenar el disco duro rápidamente si no se limpian.
 3. **Al terminar, limpiar todo lo creado:**
    ```bash
    docker compose -p cargo3d-test --profile api down -v --rmi all --remove-orphans
-   docker image rm postgres:19-alpine gcr.io/distroless/static-debian13:nonroot # solo si no existían antes
+   docker image rm postgres:19 golang:1.27 gcr.io/distroless/static-debian13:nonroot # solo si no existían antes
    docker builder prune -f # caché de build (se regenera sola)
    docker system df # confirmar que quedó como al inicio
    ```
