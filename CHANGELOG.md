@@ -21,6 +21,8 @@ Cada versión liberada en `main` lleva su etiqueta de git (ADR-0012).
 - Docker Compose con nombre de proyecto fijo (`cargo-3d`: un solo grupo con `db` y `api`), sin reinicio automático,
   `.dockerignore` más estricto y scripts `db:down`, `docker:api`, `docker:clean`.
 - PostgreSQL con ICU `es-MX` para ordenar texto en español.
+- PostgreSQL de Docker en el puerto 5433 de la computadora, para no chocar con un PostgreSQL instalado en el sistema.
+- Plan: instrucciones de Docker con un solo comando y un solo grupo `cargo-3d`.
 - Soporte de desarrollo en Windows, macOS y Linux: `.gitattributes` (LF para todos), guía de instalación por
   sistema en el plan e imagen Docker para `linux/amd64` y `linux/arm64` (compilación cruzada de Go).
 - ADR-0013 y GitHub Actions: `ci.yml` (flujo de ramas, `gofmt`, `go vet`, `go test -race`, build de la imagen)

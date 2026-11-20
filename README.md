@@ -29,9 +29,9 @@ y **pantallas en TypeScript** para web, escritorio y móvil, conectadas por un
 ## Arranque rápido
 
 ```bash
-cp .env.example .env          # cambia la contraseña
-docker compose up -d db       # PostgreSQL
-go run ./backend/cmd/api      # http://localhost:8080/health
+cp .env.example .env                          # cambia la contraseña
+docker compose --profile api up -d --build    # grupo cargo-3d: PostgreSQL (5433) + API (8080/health)
+docker compose --profile api down             # apagar todo
 go test ./backend/...
 ```
 

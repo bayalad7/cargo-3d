@@ -145,7 +145,9 @@ docker-compose.yml       PostgreSQL (y la API con --profile api)
 
 ```bash
 cp .env.example .env                  # una vez; cambia la contraseña
-docker compose up -d db               # PostgreSQL de desarrollo
+docker compose --profile api up -d --build   # grupo cargo-3d: PostgreSQL (127.0.0.1:5433) + API
+docker compose --profile api down     # apagar el grupo (el volumen se conserva)
+docker compose up -d db               # solo PostgreSQL, para trabajar con go run
 go run ./backend/cmd/api              # API en http://localhost:8080/health
 go test ./backend/...                 # pruebas
 go vet ./backend/...                  # revisión estática

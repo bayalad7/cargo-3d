@@ -36,7 +36,8 @@ services:
       POSTGRES_INITDB_ARGS: "--locale-provider=icu --icu-locale=es-MX"
     ports:
       # Solo accesible desde tu computadora (127.0.0.1), no desde la red.
-      - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
+      # Puerto 5433 por defecto: el 5432 suele estar ocupado si PostgreSQL está instalado en el sistema.
+      - "127.0.0.1:${POSTGRES_PORT:-5433}:5432"
     volumes:
       # Los datos sobreviven aunque se borre el contenedor.
       # Desde PostgreSQL 18 la imagen guarda los datos en /var/lib/postgresql/<versión>/docker,

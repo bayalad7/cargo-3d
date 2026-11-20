@@ -57,7 +57,35 @@ Notas:
 ### 3. Docker
 
 Docker Desktop (Windows o macOS), OrbStack (macOS) o Docker Engine (Linux), con Docker Compose.
-Copia `.env.example` a `.env` y cambia la contraseña.
+
+1. En la raíz del repo, copia `.env.example` a `.env` y cambia la contraseña
+   (PowerShell: `Copy-Item .env.example .env`; macOS/Linux: `cp .env.example .env`).
+2. Levanta todo con **un solo comando**, siempre desde la raíz del repo:
+
+   ```bash
+   docker compose --profile api up -d --build
+   ```
+
+   En Docker Desktop aparece **un solo grupo** con dos contenedores:
+
+   ```
+   ▾ cargo-3d
+       ├─ cargo-3d-db-1    postgres:19    (127.0.0.1:5433)
+       └─ cargo-3d-api-1   cargo-3d-api   (127.0.0.1:8080)
+   ```
+
+3. Apaga todo con `docker compose --profile api down` (los datos se conservan en el volumen `cargo-3d_db-data`).
+
+Reglas para no crear contenedores, imágenes ni volúmenes de más:
+
+- **Usa siempre `docker compose` desde la raíz del repo**, nunca `docker run` ni `docker build` sueltos:
+  esos crean contenedores e imágenes fuera del grupo `cargo-3d`.
+- El nombre del grupo está fijo en `docker-compose.yml` (`name: cargo-3d`), así que es el mismo aunque
+  la carpeta se llame distinto o estés en otra computadora; volver a correr el comando reutiliza lo que ya existe.
+- Incluye siempre `--profile api` al levantar **y** al apagar; sin él, el contenedor de la API queda fuera del comando.
+- Los contenedores no arrancan solos al abrir Docker: solo corren cuando los levantas.
+- **Puerto 5433:** PostgreSQL de Docker usa el 5433 de tu computadora para no chocar con un PostgreSQL
+  instalado en el sistema (que ocupa el 5432). Si el 5433 también está ocupado, cambia `POSTGRES_PORT` en `.env`.
 
 ### 4. Node.js y pnpm (desde el sprint 1.4: validador en TypeScript)
 
@@ -91,22 +119,20 @@ del repo y ejecuta `claude`. Lee `CLAUDE.md` en automático.
 | --- | --- |
 | `go test ./backend/...` | `ok` en `engine` y en `httpapi` |
 | `go vet ./backend/...` | Nada (sin errores) |
-| `docker compose up -d db` y `docker compose ps` | El servicio `db` como `healthy` |
-| `go run ./backend/cmd/api` y abrir `localhost:8080/health` | `{"status":"ok","engineVersion":"0.1.0"}` |
-| Opcional: `docker compose --profile api up --build` | La API respondiendo en `localhost:8080/health` desde Docker (el CI ya construye esta imagen en cada cambio) |
+| `docker compose --profile api up -d --build` y `docker compose --profile api ps` | `cargo-3d-db-1` como `healthy` y `cargo-3d-api-1` como `running` |
+| Abrir `localhost:8080/health` | `{"status":"ok","engineVersion":"0.1.0"}` (la API desde Docker) |
+| `docker compose --profile api down` | Los dos contenedores se detienen y se eliminan; el volumen se conserva |
 | `mdbook serve docs --open` | El sitio de documentación |
 
-Las dos formas de levantar el proyecto con Docker:
+Mientras programas el backend conviene otra forma, dentro del **mismo grupo** `cargo-3d`:
 
-- **Día a día:** `docker compose up -d db` levanta solo PostgreSQL y la API se corre con `go run`
-  (recompila en segundos y se depura desde el editor).
-- **Probar la imagen de producción:** `docker compose --profile api up --build` levanta PostgreSQL **y** la API
-  dentro de Docker; no hace falta el comando anterior. Detén antes el `go run` (usan el mismo puerto 8080)
-  y apaga con `docker compose --profile api down` (sin `--profile api` el contenedor de la API sigue encendido).
-  Al terminar, `docker compose --profile api down --rmi local` y `docker builder prune -f` liberan la imagen
-  y la caché de construcción (unos cientos de MB). No hace falta construirla seguido: el CI lo hace en GitHub.
-
-Ambas usan el mismo volumen `db-data`, así que la base de datos es la misma.
+- `docker compose up -d db` levanta solo PostgreSQL (el mismo contenedor `cargo-3d-db-1`, no uno nuevo)
+  y la API se corre con `go run ./backend/cmd/api`, que recompila en segundos y se depura desde el editor.
+- No mezcles las dos al mismo tiempo: `go run` y el contenedor de la API usan el puerto 8080.
+  Antes de `go run`, apaga el grupo con `docker compose --profile api down`.
+- Las dos formas usan el mismo volumen `cargo-3d_db-data`: la base de datos es la misma.
+- Si quieres liberar la imagen de la API y la caché de construcción: `docker compose --profile api down --rmi local`
+  y `docker builder prune -f`.
 
 ## Cómo trabajar con Claude Code
 
