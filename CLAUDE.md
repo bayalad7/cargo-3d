@@ -138,6 +138,8 @@ packages/validator       TS — validador independiente de planes
 apps/web | desktop | mobile
 docs/                    mdBook: ADRs, conceptos, aprendizaje, bitácora
 docker-compose.yml       PostgreSQL (y la API con --profile api)
+scripts/servicios/        levantar y detener el entorno de desarrollo (.ps1/.cmd Windows, .sh/.command macOS/Linux)
+.vscode/tasks.json       tareas "Levantar servicios" (Ctrl+Shift+B) y "Detener servicios"
 .github/workflows/       ci.yml (revisión de cada cambio) y release.yml (publicación con etiqueta vX.Y.Z)
 ```
 
@@ -148,6 +150,7 @@ cp .env.example .env                  # una vez; cambia la contraseña
 docker compose --profile api up -d --build   # grupo cargo-3d: PostgreSQL (127.0.0.1:5433) + API
 docker compose --profile api down     # apagar el grupo (el volumen se conserva)
 docker compose up -d db               # solo PostgreSQL, para trabajar con go run
+scripts/servicios/levantar.ps1 | .sh  # PostgreSQL + go run en un paso (Ctrl+Shift+B en VS Code); detener.ps1 | .sh apaga
 go run ./backend/cmd/api              # API en http://localhost:8080/health
 go test ./backend/...                 # pruebas
 go vet ./backend/...                  # revisión estática

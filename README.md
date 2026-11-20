@@ -35,6 +35,9 @@ docker compose --profile api down             # apagar todo
 go test ./backend/...
 ```
 
+Para programar el backend: `Ctrl+Shift+B` en VS Code o `scripts/servicios/levantar` (`.ps1`/`.cmd` en Windows,
+`.sh`/`.command` en macOS y Linux). Levanta PostgreSQL en Docker y la API con `go run`.
+
 ## Ramas
 
 - `develop`: rama de trabajo diario. Cada cambio sale de aquí en su propia rama y vuelve por pull request.

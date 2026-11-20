@@ -124,7 +124,20 @@ del repo y ejecuta `claude`. Lee `CLAUDE.md` en automático.
 | `docker compose --profile api down` | Los dos contenedores se detienen y se eliminan; el volumen se conserva |
 | `mdbook serve docs --open` | El sitio de documentación |
 
-Mientras programas el backend conviene otra forma, dentro del **mismo grupo** `cargo-3d`:
+Mientras programas el backend conviene otra forma, dentro del **mismo grupo** `cargo-3d`.
+**Un script lo hace todo** (abre Docker si está cerrado, crea `.env` si falta, apaga el contenedor de la API,
+levanta PostgreSQL, espera a que esté listo y corre la API con `go run`; al detenerla con `Ctrl+C`, apaga PostgreSQL):
+
+| Cómo | Windows | macOS / Linux |
+| --- | --- | --- |
+| VS Code | `Ctrl+Shift+B` (tarea "Levantar servicios") | `Cmd+Shift+B` / `Ctrl+Shift+B` |
+| Doble clic | `scripts\servicios\levantar.cmd` | `scripts/servicios/levantar.command` (Finder) |
+| Terminal | `.\scripts\servicios\levantar.ps1` | `./scripts/servicios/levantar.sh` |
+| Dejar PostgreSQL encendido al salir | `levantar.ps1 -DejarDb` | `levantar.sh --dejar-db` |
+| Apagar todo | `detener.ps1` / `detener.cmd` o la tarea "Detener servicios" | `detener.sh` / `detener.command` |
+
+En macOS, la primera vez que hagas doble clic en un `.command`, macOS puede pedir permiso:
+clic derecho → **Abrir**. Lo que hace el script por dentro, paso a paso:
 
 - `docker compose up -d db` levanta solo PostgreSQL (el mismo contenedor `cargo-3d-db-1`, no uno nuevo)
   y la API se corre con `go run ./backend/cmd/api`, que recompila en segundos y se depura desde el editor.

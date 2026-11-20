@@ -1,0 +1,32 @@
+{
+  // Tareas de VS Code para el entorno de desarrollo (ver scripts/servicios/).
+  // Ctrl+Shift+B (Cmd+Shift+B en Mac) corre "Levantar servicios";
+  // las demás están en Ctrl+Shift+P → "Tasks: Run Task".
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Levantar servicios",
+      "detail": "PostgreSQL en Docker + API con go run (Ctrl+C en la terminal para detener)",
+      "type": "shell",
+      "windows": {
+        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/servicios/levantar.ps1"
+      },
+      "osx": { "command": "./scripts/servicios/levantar.sh" },
+      "linux": { "command": "./scripts/servicios/levantar.sh" },
+      "group": { "kind": "build", "isDefault": true },
+      "isBackground": false,
+      "problemMatcher": []
+    },
+    {
+      "label": "Detener servicios",
+      "detail": "Apaga el grupo cargo-3d (los datos se conservan)",
+      "type": "shell",
+      "windows": {
+        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/servicios/detener.ps1"
+      },
+      "osx": { "command": "./scripts/servicios/detener.sh" },
+      "linux": { "command": "./scripts/servicios/detener.sh" },
+      "problemMatcher": []
+    }
+  ]
+}

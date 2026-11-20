@@ -20,6 +20,8 @@ Cada versión liberada en `main` lleva su etiqueta de git (ADR-0012).
 - ADR-0012: ramas `develop` (trabajo diario) y `main` (versiones liberadas).
 - Docker Compose con nombre de proyecto fijo (`cargo-3d`: un solo grupo con `db` y `api`), sin reinicio automático,
   `.dockerignore` más estricto y scripts `db:down`, `docker:api`, `docker:clean`.
+- `scripts/servicios/levantar` y `detener` (Windows y macOS/Linux) y tareas de VS Code: PostgreSQL en Docker
+  y la API con `go run` en un solo paso.
 - PostgreSQL con ICU `es-MX` para ordenar texto en español.
 - PostgreSQL de Docker en el puerto 5433 de la computadora, para no chocar con un PostgreSQL instalado en el sistema.
 - Plan: instrucciones de Docker con un solo comando y un solo grupo `cargo-3d`.
