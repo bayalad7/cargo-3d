@@ -96,6 +96,16 @@ del repo y ejecuta `claude`. Lee `CLAUDE.md` en automático.
 | `docker compose --profile api up --build` | La API respondiendo en `localhost:8080/health` desde Docker |
 | `mdbook serve docs --open` | El sitio de documentación |
 
+Las dos formas de levantar el proyecto con Docker:
+
+- **Día a día:** `docker compose up -d db` levanta solo PostgreSQL y la API se corre con `go run`
+  (recompila en segundos y se depura desde el editor).
+- **Probar la imagen de producción:** `docker compose --profile api up --build` levanta PostgreSQL **y** la API
+  dentro de Docker; no hace falta el comando anterior. Detén antes el `go run` (usan el mismo puerto 8080)
+  y apaga con `docker compose --profile api down` (sin `--profile api` el contenedor de la API sigue encendido).
+
+Ambas usan el mismo volumen `db-data`, así que la base de datos es la misma.
+
 ## Cómo trabajar con Claude Code
 
 Tú diriges y revisas; Claude Code escribe, documenta y prueba. Cada sesión tiene una meta pequeña,
