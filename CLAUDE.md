@@ -26,6 +26,7 @@ precio en pesos, soporte en español.
 | Contrato | API-first con OpenAPI (`contracts/openapi.yaml`) | 0008 |
 | Contenedores | Docker: PostgreSQL en desarrollo, imagen del backend en producción | 0010 |
 | Organización | Monorepo: Go workspace + pnpm + Turborepo | 0001 |
+| Versiones | Última estable de cada tecnología (Go 1.27, PostgreSQL 19, Node 26 LTS…) | 0011 |
 
 Principio rector: **Go para todo el backend, TypeScript para todas las pantallas.**
 

@@ -11,8 +11,8 @@
 services:
   # Base de datos del proyecto.
   db:
-    # Versión fija para que todos usen la misma.
-    image: postgres:17
+    # Versión mayor fija para que todos usen la misma (ver docs/src/adr/0011-versiones.md).
+    image: postgres:19
     restart: unless-stopped
     environment:
       POSTGRES_DB: ${POSTGRES_DB:-cargo3d}
@@ -23,7 +23,9 @@ services:
       - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
     volumes:
       # Los datos sobreviven aunque se borre el contenedor.
-      - db-data:/var/lib/postgresql/data
+      # Desde PostgreSQL 18 la imagen guarda los datos en /var/lib/postgresql/<versión>/docker,
+      # así que el volumen se monta en /var/lib/postgresql (ya no en .../data).
+      - db-data:/var/lib/postgresql
     healthcheck:
       # La API espera a que la base de datos acepte conexiones.
       test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]

@@ -30,7 +30,7 @@ RUN CGO_ENABLED=0 GOWORK=off go build -trimpath -ldflags="-s -w" -o /out/api ./c
 # ---------- Etapa 2: ejecutar ----------
 # distroless/static: imagen mínima de Google, sin shell ni gestor de paquetes.
 # La variante "nonroot" corre con un usuario sin privilegios.
-FROM gcr.io/distroless/static-debian12:nonroot AS runtime
+FROM gcr.io/distroless/static-debian13:nonroot AS runtime
 
 # Copiamos solo el binario desde la etapa de compilación.
 COPY --from=build /out/api /api

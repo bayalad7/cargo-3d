@@ -22,6 +22,7 @@
 - [0008 — API-first con OpenAPI](adr/0008-api-first-openapi.md)
 - [0009 — Idioma y documentación](adr/0009-idioma-y-documentacion.md)
 - [0010 — Docker](adr/0010-docker.md)
+- [0011 — Versiones de las tecnologías](adr/0011-versiones.md)
 
 # Aprendizaje
 

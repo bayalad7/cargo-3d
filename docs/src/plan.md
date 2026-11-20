@@ -38,9 +38,11 @@ Las duraciones suponen **10 a 15 horas por semana**. Si dedicas más o menos, aj
 
 Docker Desktop (o Docker Engine en Linux) con Docker Compose. Copia `.env.example` a `.env` y cambia la contraseña.
 
-### 4. Node.js y pnpm (para las pantallas, desde el sprint 1.5)
+### 4. Node.js y pnpm (desde el sprint 1.4: validador en TypeScript)
 
-Node 22 LTS con fnm o nvm, y `corepack enable` para pnpm.
+Node 26 LTS con fnm o nvm. Desde Node 25, Corepack ya no viene incluido: instala pnpm con
+`npm install -g pnpm@12`. pnpm lee el campo `packageManager` de `package.json` y usa
+exactamente la versión del proyecto.
 
 ### 5. mdBook (sitio de documentación)
 
@@ -136,7 +138,7 @@ Del arranque de la fase 1 al lanzamiento: aproximadamente de 8 a 11 meses con 10
 
 ```
 Fase 0 · Cimientos ............................................ Terminada
-   │  Backend Go con /health, Docker, contratos, 10 ADR y guía de Go.
+   │  Backend Go con /health, Docker, contratos, 11 ADR y guía de Go.
    ◇  Puerta: entorno verificado y cargas reales de Transportes Villa reunidas
    ▼
 Fase 1 · Prueba de concepto ........................ SIGUIENTE · 6 a 8 semanas

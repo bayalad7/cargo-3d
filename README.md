@@ -44,7 +44,9 @@ Para verla como sitio web: `mdbook serve docs --open` (requiere `cargo install m
 
 - Go 1.27 o superior
 - Docker con Docker Compose
-- Node.js 22+ y pnpm 10+ (para las pantallas, desde la fase 1)
+- Node.js 26 LTS y pnpm 12 (para las pantallas, desde la fase 1)
+
+Versiones de todas las tecnologías: [ADR-0011](docs/src/adr/0011-versiones.md).
 
 ## Convenciones
 

@@ -2,7 +2,10 @@
   "name": "cargo-3d",
   "private": true,
   "description": "Cargo 3D — planeación de carga 3D para contenedores y camiones",
-  "packageManager": "pnpm@10.0.0",
+  "packageManager": "pnpm@12.21.0",
+  "engines": {
+    "node": ">=26"
+  },
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
@@ -14,6 +17,6 @@
     "db:up": "docker compose up -d db"
   },
   "devDependencies": {
-    "turbo": "^2.0.0"
+    "turbo": "^2.11.13"
   }
 }
