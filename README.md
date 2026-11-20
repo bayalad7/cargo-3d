@@ -48,7 +48,7 @@ y el [ADR-0013](docs/src/adr/0013-ci-y-release.md).
 
 Toda la documentación vive en [`docs/`](docs/src/SUMMARY.md): decisiones (ADR), conceptos,
 guía de Go para quien viene de PHP, plan de trabajo y bitácora.
-Para verla como sitio web: `mdbook serve docs --open` (requiere mdBook: `brew install mdbook` en macOS o su binario en Windows y Linux).
+Para verla como sitio web: `mdbook serve docs --open` (requiere mdBook: `winget install Rustlang.mdBook` en Windows, `brew install mdbook` en macOS).
 
 ## Requisitos
 

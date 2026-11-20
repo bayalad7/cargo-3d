@@ -30,7 +30,7 @@ Elige la columna de tu sistema; los comandos del proyecto (`go`, `pnpm`, `docker
 | Go | `winget install GoLang.Go` | `brew install go` | binario de go.dev/dl |
 | Docker | Docker Desktop (motor WSL2) | Docker Desktop u OrbStack (más ligero) | Docker Engine + plugin Compose |
 | Node.js | `winget install Schniz.fnm`, luego `fnm install 26` | `brew install fnm`, luego `fnm install 26` | fnm o nvm |
-| mdBook | binario de sus releases en GitHub | `brew install mdbook` | binario de sus releases |
+| mdBook | `winget install Rustlang.mdBook` | `brew install mdbook` | binario de sus releases en GitHub |
 
 Notas:
 
@@ -67,7 +67,8 @@ exactamente la versión del proyecto.
 
 ### 5. mdBook (sitio de documentación)
 
-En macOS `brew install mdbook`; en Windows y Linux descarga el binario desde su página de releases en GitHub.
+`winget install Rustlang.mdBook` en Windows, `brew install mdbook` en macOS o el binario de sus releases en GitHub en Linux.
+Después de instalarlo, **abre una terminal nueva** para que reconozca el comando `mdbook`.
 
 ### 6. Editor
 
