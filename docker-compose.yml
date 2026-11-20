@@ -1,10 +1,12 @@
 # Entorno de desarrollo con Docker Compose.
 # Ver docs/src/adr/0010-docker.md
 #
-# Uso:
-#   docker compose up -d db          → solo PostgreSQL (lo normal mientras programas el backend con `go run`)
-#   docker compose --profile api up  → PostgreSQL + la API construida desde backend/Dockerfile
-#   docker compose down              → apagar (los datos se conservan en el volumen)
+# Uso (los dos modos usan el MISMO contenedor de PostgreSQL y el mismo volumen):
+#   docker compose up -d db                        → día a día: solo PostgreSQL; la API se corre con `go run`
+#   docker compose --profile api up --build        → opcional: además construye y corre la imagen de la API
+#   docker compose --profile api down              → apagar todo (los datos se conservan en el volumen)
+#   docker compose --profile api down --rmi local  → además borra la imagen construida de la API
+#   docker builder prune -f                        → borra la caché de construcción (se regenera sola)
 #
 # Para PRUEBAS usa un proyecto aparte y bórralo al terminar (ver "Reglas de Docker" en CLAUDE.md):
 #   docker compose -p cargo3d-test up -d db
@@ -12,16 +14,24 @@
 #
 # Las credenciales vienen de .env (copia .env.example a .env). Nunca subas .env al repo.
 
+# Nombre fijo del proyecto: los contenedores y el volumen se llaman igual aunque la carpeta
+# del repo tenga otro nombre (por ejemplo en otra computadora). Evita duplicados.
+name: cargo-3d
+
 services:
   # Base de datos del proyecto.
   db:
     # Versión mayor fija para que todos usen la misma (ver docs/src/adr/0011-versiones.md).
-    image: postgres:19
-    restart: unless-stopped
+    # Variante alpine: ~400 MB en disco en lugar de ~680 MB de la variante Debian.
+    image: postgres:19-alpine
+    # Sin "restart": el contenedor no se enciende solo al arrancar Docker; corre solo cuando lo pides.
     environment:
       POSTGRES_DB: ${POSTGRES_DB:-cargo3d}
       POSTGRES_USER: ${POSTGRES_USER:-cargo3d}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Define POSTGRES_PASSWORD en .env}
+      # Orden y comparación de texto en español de México con ICU (ñ, acentos), igual en cualquier
+      # sistema y sin depender de los locales del sistema operativo. Solo aplica al crear el volumen.
+      POSTGRES_INITDB_ARGS: "--locale-provider=icu --icu-locale=es-MX"
     ports:
       # Solo accesible desde tu computadora (127.0.0.1), no desde la red.
       - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
@@ -42,7 +52,6 @@ services:
     profiles: ["api"]
     build:
       context: ./backend
-    restart: unless-stopped
     environment:
       PORT: "8080"
       DATABASE_URL: postgres://${POSTGRES_USER:-cargo3d}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-cargo3d}?sslmode=disable

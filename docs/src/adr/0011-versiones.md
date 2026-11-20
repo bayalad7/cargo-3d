@@ -17,8 +17,8 @@ Usar la **última versión estable** de cada tecnología al momento de instalarl
 
 | Tecnología | Versión | Dónde se fija | Se instala en |
 |---|---|---|---|
-| Go | 1.27 (1.27.4) | `backend/go.mod`, `go.work`, `backend/Dockerfile` (`golang:1.27`) | Fase 0 |
-| PostgreSQL | 19 | `docker-compose.yml` (`postgres:19`) | Fase 0 |
+| Go | 1.27 (1.27.4) | `backend/go.mod`, `go.work`, `backend/Dockerfile` (`golang:1.27-alpine`) | Fase 0 |
+| PostgreSQL | 19 (imagen alpine, ICU `es-MX`) | `docker-compose.yml` (`postgres:19-alpine`) | Fase 0 |
 | Imagen final del backend | `distroless/static-debian13:nonroot` | `backend/Dockerfile` | Fase 0 |
 | Node.js | 26 LTS | `package.json` (`engines`) | Sprint 1.4 |
 | pnpm | 12.21 | `package.json` (`packageManager`) | Sprint 1.4 |

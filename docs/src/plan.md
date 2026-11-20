@@ -93,7 +93,7 @@ del repo y ejecuta `claude`. Lee `CLAUDE.md` en automático.
 | `go vet ./backend/...` | Nada (sin errores) |
 | `docker compose up -d db` y `docker compose ps` | El servicio `db` como `healthy` |
 | `go run ./backend/cmd/api` y abrir `localhost:8080/health` | `{"status":"ok","engineVersion":"0.1.0"}` |
-| `docker compose --profile api up --build` | La API respondiendo en `localhost:8080/health` desde Docker |
+| Opcional: `docker compose --profile api up --build` | La API respondiendo en `localhost:8080/health` desde Docker (el CI ya construye esta imagen en cada cambio) |
 | `mdbook serve docs --open` | El sitio de documentación |
 
 Las dos formas de levantar el proyecto con Docker:
@@ -103,6 +103,8 @@ Las dos formas de levantar el proyecto con Docker:
 - **Probar la imagen de producción:** `docker compose --profile api up --build` levanta PostgreSQL **y** la API
   dentro de Docker; no hace falta el comando anterior. Detén antes el `go run` (usan el mismo puerto 8080)
   y apaga con `docker compose --profile api down` (sin `--profile api` el contenedor de la API sigue encendido).
+  Al terminar, `docker compose --profile api down --rmi local` y `docker builder prune -f` liberan la imagen
+  y la caché de construcción (unos cientos de MB). No hace falta construirla seguido: el CI lo hace en GitHub.
 
 Ambas usan el mismo volumen `db-data`, así que la base de datos es la misma.
 

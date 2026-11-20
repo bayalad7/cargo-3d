@@ -4,3 +4,8 @@
 *.test
 *.out
 tmp/
+
+# Solo hace falta el código Go: la documentación y el propio Dockerfile no entran a la imagen.
+*.md
+Dockerfile
+.dockerignore

@@ -14,7 +14,10 @@
     "docs": "mdbook serve docs --open",
     "api": "go run ./backend/cmd/api",
     "test:go": "go test ./backend/...",
-    "db:up": "docker compose up -d db"
+    "db:up": "docker compose up -d db",
+    "db:down": "docker compose down",
+    "docker:api": "docker compose --profile api up --build",
+    "docker:clean": "docker compose --profile api down --rmi local && docker builder prune -f"
   },
   "devDependencies": {
     "turbo": "^2.11.13"
