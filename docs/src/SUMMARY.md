@@ -23,6 +23,7 @@
 - [0009 — Idioma y documentación](adr/0009-idioma-y-documentacion.md)
 - [0010 — Docker](adr/0010-docker.md)
 - [0011 — Versiones de las tecnologías](adr/0011-versiones.md)
+- [0012 — Ramas y versiones](adr/0012-ramas-y-versiones.md)
 
 # Aprendizaje
 

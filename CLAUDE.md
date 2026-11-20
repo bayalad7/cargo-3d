@@ -102,6 +102,12 @@ y pueden llenar el disco duro rápidamente si no se limpian.
 5. Nunca usar `docker system prune -a --volumes` ni borrar recursos que no se crearon en la sesión
    sin preguntar antes.
 
+## Ramas (ver ADR-0012)
+
+- Se trabaja en **`develop`**, nunca directo en `main`.
+- Cada cambio va en una rama `area/descripcion` creada desde `develop` y regresa por pull request a `develop`.
+- `main` solo recibe versiones oficiales (desde `release/vX.Y.Z` o `hotfix/...`) y cada una lleva etiqueta `vX.Y.Z`.
+
 ## Plan de trabajo
 
 El plan completo vive en `docs/src/plan.md`: fases, sprints, criterios de terminado

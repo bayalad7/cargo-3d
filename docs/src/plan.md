@@ -26,8 +26,9 @@ Las duraciones suponen **10 a 15 horas por semana**. Si dedicas más o menos, aj
 
 1. Crea en GitHub el repositorio vacío `cargo-3d` (privado).
 2. Entra a la carpeta `cargo-3d` y súbelo: `git remote add origin https://github.com/bayalad7/cargo-3d.git` y `git push -u origin main`.
-3. Protege `main` en GitHub (Settings → Branches): nada entra sin pull request.
-4. Si usas otro usuario u otro nombre de repo, cambia la ruta del módulo en `backend/go.mod` y en los imports (búscala con `grep -r bayalad7`).
+3. Crea la rama `develop` desde `main` y hazla la rama por defecto en GitHub (Settings → General).
+4. Protege `main` y `develop` (Settings → Branches): nada entra sin pull request (ADR-0012).
+5. Si usas otro usuario u otro nombre de repo, cambia la ruta del módulo en `backend/go.mod` y en los imports (búscala con `grep -r bayalad7`).
 
 ### 2. Go
 
@@ -77,18 +78,18 @@ del repo y ejecuta `claude`. Lee `CLAUDE.md` en automático.
 ## Cómo trabajar con Claude Code
 
 Tú diriges y revisas; Claude Code escribe, documenta y prueba. Cada sesión tiene una meta pequeña,
-vive en su propia rama (creada desde `main`) y termina con la bitácora actualizada.
+vive en su propia rama (creada desde `develop`) y termina con la bitácora actualizada.
 
 ### Ciclo de una sesión
 
-1. **Arranque.** `git checkout -b motor/modelos-basicos` y `claude`. Pide: *"Lee CLAUDE.md y la última bitácora y dime dónde vamos."*
+1. **Arranque.** `git switch develop`, `git pull` y `git switch -c motor/modelos-basicos`; después `claude`. Pide: *"Lee CLAUDE.md y la última bitácora y dime dónde vamos."*
 2. **Plan.** Modo de planeación (`Shift+Tab`) para todo lo que no sea trivial.
 3. **Contrato primero.** Si cambia la API o el motor, se edita `contracts/` antes que el código.
 4. **Implementación en pasos chicos**, cada uno con pruebas de tabla y documentación.
 5. **Verificación:** `gofmt -l backend` vacío, `go vet ./backend/...` y `go test ./backend/...` sin errores.
 6. **Revisión tuya:** lee el diff completo; pregunta lo que no entiendas: *"Explícame esta línea como si viniera de PHP."*
 7. **Punto de control:** si se terminó un módulo, explícalo con tus palabras.
-8. **Cierre:** *"Actualiza la bitácora, el CHANGELOG y la sección Estado de CLAUDE.md."* Commit, push y pull request.
+8. **Cierre:** *"Actualiza la bitácora, el CHANGELOG y la sección Estado de CLAUDE.md."* Commit, push y pull request hacia `develop`.
 
 ### Reglas que no se negocian
 
@@ -138,7 +139,7 @@ Del arranque de la fase 1 al lanzamiento: aproximadamente de 8 a 11 meses con 10
 
 ```
 Fase 0 · Cimientos ............................................ Terminada
-   │  Backend Go con /health, Docker, contratos, 11 ADR y guía de Go.
+   │  Backend Go con /health, Docker, contratos, 12 ADR y guía de Go.
    ◇  Puerta: entorno verificado y cargas reales de Transportes Villa reunidas
    ▼
 Fase 1 · Prueba de concepto ........................ SIGUIENTE · 6 a 8 semanas
@@ -331,10 +332,10 @@ Al terminar, empresas además de Transportes Villa pagan cada mes.
 
 ## Checklist para la primera sesión
 
-- [ ] Repo `cargo-3d` en GitHub y `main` protegida.
+- [ ] Repo `cargo-3d` en GitHub, `develop` como rama por defecto, `main` y `develop` protegidas.
 - [ ] Las verificaciones del entorno pasan.
 - [ ] Ejercicio del capítulo 01 de la guía de Go hecho.
-- [ ] Leíste `CLAUDE.md` y los ADR 0002, 0006 y 0010.
+- [ ] Leíste `CLAUDE.md` y los ADR 0002, 0006, 0010 y 0012.
 - [ ] Al menos 3 cargas reales de Transportes Villa, el catálogo de equipos y las reglas del patio.
 
 Primer mensaje sugerido para Claude Code (con `/model opus`):

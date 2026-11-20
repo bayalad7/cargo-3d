@@ -6,6 +6,10 @@
 #   docker compose --profile api up  → PostgreSQL + la API construida desde backend/Dockerfile
 #   docker compose down              → apagar (los datos se conservan en el volumen)
 #
+# Para PRUEBAS usa un proyecto aparte y bórralo al terminar (ver "Reglas de Docker" en CLAUDE.md):
+#   docker compose -p cargo3d-test up -d db
+#   docker compose -p cargo3d-test --profile api down -v --rmi all --remove-orphans
+#
 # Las credenciales vienen de .env (copia .env.example a .env). Nunca subas .env al repo.
 
 services:
