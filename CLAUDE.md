@@ -60,6 +60,7 @@ Principio rector: **Go para todo el backend, TypeScript para todas las pantallas
 - Solo librería estándar salvo que un ADR justifique la dependencia.
 - Los errores siempre se revisan (`if err != nil`); nunca se ignoran con `_` sin comentario.
 - El motor (`internal/engine`) no importa nada de HTTP ni de base de datos.
+- Solo `internal/store` habla con PostgreSQL; `httpapi` lo usa, `engine` nunca.
 - Configuración solo por variables de entorno; nada fijo en el código.
 - Antes de dar algo por terminado: `gofmt`, `go vet ./backend/...` y `go test ./backend/...` sin errores.
 
@@ -76,6 +77,11 @@ backend/                 Go — módulo github.com/bayalad7/cargo-3d/backend
   cmd/api/               punto de entrada del servidor (binario "api")
   internal/engine/       motor: modelos, algoritmo, restricciones (sin HTTP ni BD)
   internal/httpapi/      rutas y respuestas HTTP
+  internal/store/        acceso a PostgreSQL (sprint 2.3; ver ADR-0007): único paquete que importa pgx
+    migrations/          cambios al esquema en SQL, versionados
+    queries/             consultas SQL escritas a mano (entrada de sqlc)
+    sqlcgen/             Go generado por sqlc — no editar a mano
+  sqlc.yaml              configuración de sqlc (sprint 2.3)
   Dockerfile             imagen de producción
 contracts/               openapi.yaml y engine.schema.json (independientes del lenguaje)
 engine/fixtures/         casos de prueba del motor en JSON

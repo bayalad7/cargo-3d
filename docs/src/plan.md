@@ -236,6 +236,7 @@ Al terminar, Transportes Villa planea sus cargas reales con Cargo 3D cada semana
 
 ### Sprint 2.3 — PostgreSQL y autenticación
 
+- [ ] Paquete `backend/internal/store` con `migrations/`, `queries/` y `sqlcgen/` (estructura en ADR-0007).
 - [ ] Migraciones SQL (herramienta elegida en un ADR) y consultas con sqlc + pgx.
 - [ ] Empresas, usuarios, catálogos y planes (JSONB).
 - [ ] Autenticación y separación de datos por empresa, con pruebas.

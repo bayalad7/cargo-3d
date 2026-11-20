@@ -12,6 +12,7 @@ Todos los cambios relevantes del proyecto. Formato basado en
 - Node.js 26 LTS, pnpm 12.21 y Turborepo 2.11 (ADR-0011).
 
 ### Agregado
+- ADR-0007: dónde vive el código de PostgreSQL (`backend/internal/store`: migraciones, consultas y código de sqlc).
 - Estructura del monorepo (Go workspace, pnpm workspaces, Turborepo).
 - Backend en Go (motor y API en un binario, ADR-0002): servidor con `GET /health`, apagado ordenado y pruebas.
 - Docker: `docker-compose.yml` (PostgreSQL 19, API con perfil), `backend/Dockerfile` multi-etapa, `.env.example`.

@@ -16,14 +16,15 @@ función normal y devuelve el plan. Las pantallas (web, escritorio, móvil) solo
               ┌──────────── backend/ (Go) ─────────────┐
               │  cmd/api          arranque y apagado   │
               │  internal/httpapi rutas y validación   │
-              │        │ llama como función            │
-              │        ▼                               │
-              │  internal/engine  motor de acomodo     │
-              │  (sin HTTP ni base de datos)           │
-              └─────────────────┬──────────────────────┘
-                                │ pgx + sqlc
-                                ▼
-                           PostgreSQL (Docker)
+              │        │                  │            │
+              │        ▼                  ▼            │
+              │  internal/engine    internal/store     │
+              │  motor de acomodo   acceso a datos     │
+              │  (sin HTTP ni BD)   (pgx + sqlc)       │
+              └───────────────────────────┬────────────┘
+                                          │
+                                          ▼
+                                   PostgreSQL (Docker)
 ```
 
 Wails es el caso especial: la app de escritorio puede llamar al motor en Go directamente,
