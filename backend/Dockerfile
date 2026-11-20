@@ -7,7 +7,7 @@
 
 # ---------- Etapa 1: compilar ----------
 # Fijamos la versión de Go para que la compilación sea reproducible.
-FROM golang:1.24 AS build
+FROM golang:1.27 AS build
 
 # Carpeta de trabajo dentro del contenedor.
 WORKDIR /src

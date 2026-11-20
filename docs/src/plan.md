@@ -31,7 +31,7 @@ Las duraciones suponen **10 a 15 horas por semana**. Si dedicas más o menos, aj
 
 ### 2. Go
 
-1. Instala Go 1.24 o superior desde go.dev/dl.
+1. Instala Go 1.27 o superior desde go.dev/dl.
 2. Verifica: `go version`.
 
 ### 3. Docker

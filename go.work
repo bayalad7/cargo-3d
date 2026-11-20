@@ -1,6 +1,6 @@
 // Go workspace: agrupa los módulos de Go del monorepo para compilarlos y
 // probarlos juntos desde la raíz (es el equivalente al workspace de pnpm).
 // Ver docs/src/adr/0001-monorepo.md
-go 1.24
+go 1.27
 
 use ./backend

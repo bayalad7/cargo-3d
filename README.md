@@ -42,7 +42,7 @@ Para verla como sitio web: `mdbook serve docs --open` (requiere `cargo install m
 
 ## Requisitos
 
-- Go 1.24 o superior
+- Go 1.27 o superior
 - Docker con Docker Compose
 - Node.js 22+ y pnpm 10+ (para las pantallas, desde la fase 1)
 

@@ -5,6 +5,9 @@ Todos los cambios relevantes del proyecto. Formato basado en
 
 ## [Sin publicar]
 
+### Cambiado
+- Versión mínima de Go: 1.27 (`go.mod`, `go.work`, imagen `golang:1.27` del Dockerfile y documentación).
+
 ### Agregado
 - Estructura del monorepo (Go workspace, pnpm workspaces, Turborepo).
 - Backend en Go (motor y API en un binario, ADR-0002): servidor con `GET /health`, apagado ordenado y pruebas.

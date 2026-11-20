@@ -3,4 +3,4 @@
 // Por ahora no hay dependencias externas: todo usa la librería estándar.
 module github.com/bayalad7/cargo-3d/backend
 
-go 1.24
+go 1.27
