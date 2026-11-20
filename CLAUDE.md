@@ -50,7 +50,7 @@ Principio rector: **Go para todo el backend, TypeScript para todas las pantallas
 2. **Go muy explicado al inicio:** comentar casi cada línea del backend, explicando
    conceptos de Go (paquetes, exportado con mayúscula, punteros, structs, interfaces,
    errores como valores, `defer`, goroutines, canales, `context`) la primera vez que aparecen.
-   Reducir el detalle de forma gradual conforme Benjamín avance; el nivel actual se registra en "Estado".
+   Reducir el detalle de forma gradual conforme el usuario avance; el nivel actual se registra en "Estado".
 3. **Nada se da por terminado sin documentar:** todo lo exportado lleva comentario de documentación
    (empieza con el nombre del elemento, como pide `go doc`) y TSDoc en TypeScript,
    con secciones "Cómo funciona" y "Por qué así" cuando aplique.
@@ -63,7 +63,7 @@ Principio rector: **Go para todo el backend, TypeScript para todas las pantallas
    (ej. `TestDoesNotStackFragileUnderHeavy`), con comentario en español. Preferir pruebas de tabla.
 8. **Bitácora:** al cerrar cada sesión, agregar `docs/src/bitacora/AAAA-MM-DD.md`
    (qué se hizo, decisiones, pendientes) y actualizar `CHANGELOG.md` y la sección "Estado".
-9. **Puntos de control:** al terminar cada módulo, pedir a Benjamín que lo explique
+9. **Puntos de control:** al terminar cada módulo, pedir al usuario que lo explique
    con sus palabras antes de continuar.
 10. **El contrato va primero:** cualquier cambio de la API empieza en `contracts/openapi.yaml`;
     cualquier cambio de entrada o salida del motor, en `contracts/engine.schema.json`.
