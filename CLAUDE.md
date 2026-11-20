@@ -102,19 +102,40 @@ y pueden llenar el disco duro rápidamente si no se limpian.
 5. Nunca usar `docker system prune -a --volumes` ni borrar recursos que no se crearon en la sesión
    sin preguntar antes.
 
-## Ramas (ver ADR-0012)
+## Datos de clientes (OBLIGATORIO)
 
-- Se trabaja en **`develop`**, nunca directo en `main`.
-- Cada cambio va en una rama `area/descripcion` creada desde `develop` y regresa por pull request a `develop`.
-- `main` solo recibe versiones oficiales (desde `release/vX.Y.Z` o `hotfix/...`) y cada una lleva etiqueta `vX.Y.Z`.
+- Los datos reales (cargas, catálogos, fotos, nombres de clientes) viven en `docs/datos/`, que **no se sube a git**.
+- Lo que sí se sube (`engine/fixtures/real/`, ejemplos, pruebas, documentación) va **anonimizado**: sin nombres
+  de clientes ni destinatarios, direcciones, placas ni números de pedido; solo medidas, pesos, cantidades y restricciones.
+- Nunca copiar un archivo de `docs/datos/` fuera de esa carpeta tal cual.
+
+## Ramas (ver ADR-0012) — OBLIGATORIO
+
+El proyecto lo trabaja **una sola persona**, así que el flujo es simple:
+
+- **Todo se trabaja directo en `develop`.** No se crean ramas de trabajo (`area/descripcion`, `release/*`,
+  `hotfix/*`) ni pull requests. Cada cambio es un commit en `develop` y se sube con `git push`.
+- **`main` solo recibe versiones oficiales:** cuando se libera una versión, se une `develop` a `main`
+  y se etiqueta `vX.Y.Z` (eso dispara `release.yml`). Nunca se hacen commits directos en `main`.
 - `main` es la rama por defecto de GitHub. Toda la configuración de CI y publicación vive en
   `.github/workflows/ci.yml` y `.github/workflows/release.yml` (ADR-0013); no en la configuración de GitHub.
+- Si un prompt, skill o documento menciona crear una rama o un pull request, esta sección manda.
 
 ## Plan de trabajo
 
 El plan completo vive en `docs/src/plan.md`: fases, sprints, criterios de terminado
 y el modelo sugerido para cada paso. Antes de empezar un sprint, léelo y confirma
 con el usuario en qué sprint estamos. No se pasa de fase sin cumplir su criterio de terminado.
+
+## Cómo se trabaja con Claude Code
+
+- Cada sesión de trabajo tiene su prompt en `docs/src/prompts.md`, identificado por número (`1.1.2`).
+- Comandos del proyecto (skills en `.claude/skills/`): `/iniciar-sesion`, `/sesion <número>`, `/revisar`,
+  `/cerrar-sesion`, `/punto-de-control <tema>`, `/cerrar-sprint <sprint>`, `/explicar <algo>`,
+  `/nuevo-adr <título>` y `/cambiar-contrato <cambio>`. Guía completa en `docs/src/flujo-claude-code.md`.
+- Siempre se propone un plan y se espera la aprobación del usuario antes de escribir código.
+- Claude nunca hace commit ni push: propone el mensaje y el usuario los ejecuta.
+- Si cambias una sesión de `prompts.md`, conserva el formato de encabezado `### <número> — <título>`.
 
 ## Estructura
 
@@ -136,7 +157,8 @@ packages/api-client      TS — cliente generado desde OpenAPI
 packages/viewer-3d       TS — visor 3D reutilizable
 packages/validator       TS — validador independiente de planes
 apps/web | desktop | mobile
-docs/                    mdBook: ADRs, conceptos, aprendizaje, bitácora
+docs/                    mdBook: plan, prompts, ADRs, conceptos, aprendizaje, bitácora
+.claude/skills/          comandos de Claude Code del proyecto
 docker-compose.yml       PostgreSQL (y la API con --profile api)
 scripts/servicios/        levantar y detener el entorno de desarrollo (.ps1/.cmd Windows, .sh/.command macOS/Linux)
 .vscode/tasks.json       tareas "Levantar servicios" (Ctrl+Shift+B) y "Detener servicios"

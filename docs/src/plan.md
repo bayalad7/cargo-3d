@@ -1,6 +1,6 @@
 # Plan de trabajo
 
-> Versión del 2026-11-20. Si cambias el plan, actualiza este archivo en el mismo pull request
+> Versión del 2026-11-20. Si cambias el plan, actualiza este archivo en el mismo commit
 > y regístralo en la bitácora.
 
 ## Cómo usar esta guía
@@ -150,18 +150,18 @@ clic derecho → **Abrir**. Lo que hace el script por dentro, paso a paso:
 ## Cómo trabajar con Claude Code
 
 Tú diriges y revisas; Claude Code escribe, documenta y prueba. Cada sesión tiene una meta pequeña,
-vive en su propia rama (creada desde `develop`) y termina con la bitácora actualizada.
+se trabaja directo en `develop` y termina con la bitácora actualizada.
 
 ### Ciclo de una sesión
 
-1. **Arranque.** `git switch develop`, `git pull` y `git switch -c motor/modelos-basicos`; después `claude`. Pide: *"Lee CLAUDE.md y la última bitácora y dime dónde vamos."*
+1. **Arranque.** `git switch develop` y `git pull`; después `claude`. Pide: *"Lee CLAUDE.md y la última bitácora y dime dónde vamos."*
 2. **Plan.** Modo de planeación (`Shift+Tab`) para todo lo que no sea trivial.
 3. **Contrato primero.** Si cambia la API o el motor, se edita `contracts/` antes que el código.
 4. **Implementación en pasos chicos**, cada uno con pruebas de tabla y documentación.
 5. **Verificación:** `gofmt -l backend` vacío, `go vet ./backend/...` y `go test ./backend/...` sin errores.
 6. **Revisión tuya:** lee el diff completo; pregunta lo que no entiendas: *"Explícame esta línea como si viniera de PHP."*
 7. **Punto de control:** si se terminó un módulo, explícalo con tus palabras.
-8. **Cierre:** *"Actualiza la bitácora, el CHANGELOG y la sección Estado de CLAUDE.md."* Commit, push y pull request hacia `develop`.
+8. **Cierre:** *"Actualiza la bitácora, el CHANGELOG y la sección Estado de CLAUDE.md."* Commit y push a `develop`.
 
 ### Reglas que no se negocian
 
@@ -201,7 +201,7 @@ Fable puede cobrarse aparte con créditos de uso según tu plan.
 | 3.5 Escritorio con Wails | `sonnet` / `medium` | Reutiliza la web y el motor |
 | 3.6 Salida al mercado | `opus` / `medium` | Textos y documentos legales (que revisa un abogado) |
 | Explicarte un error o concepto de Go | `opus` / `medium` | |
-| Revisar un diff antes del PR | `opus` / `high` | |
+| Revisar los cambios antes del commit | `opus` / `high` | |
 | Bitácora, CHANGELOG, Estado | `sonnet` / `low` | |
 | Commits, formato, renombres | `haiku` / `low` | |
 
@@ -405,11 +405,11 @@ Al terminar, empresas además de Transportes Villa pagan cada mes.
 
 ## Checklist para la primera sesión
 
-- [ ] Repo `cargo-3d` en GitHub con `main` y `develop`, y el CI en verde.
-- [ ] Las verificaciones del entorno pasan.
-- [ ] Ejercicio del capítulo 01 de la guía de Go hecho.
-- [ ] Leíste `CLAUDE.md` y los ADR 0002, 0006, 0010, 0012 y 0013.
-- [ ] Al menos 3 cargas reales de Transportes Villa, el catálogo de equipos y las reglas del patio.
+- [x] Repo `cargo-3d` en GitHub con `main` y `develop`, y el CI en verde.
+- [x] Las verificaciones del entorno pasan.
+- [x] Ejercicio del capítulo 01 de la guía de Go hecho.
+- [x] Leíste `CLAUDE.md` y los ADR 0002, 0006, 0010, 0012 y 0013.
+- [ ] Al menos 3 cargas reales, el catálogo de equipos y las reglas del patio.
 
 Primer mensaje sugerido para Claude Code (con `/model opus`):
 

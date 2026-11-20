@@ -15,10 +15,17 @@ build/
 # Documentación generada
 docs/book/
 
+# Datos reales de clientes (cargas, catálogos, fotos): nunca se suben al repo.
+# Los fixtures de engine/fixtures/real/ van anonimizados.
+docs/datos/
+
 # Entornos y secretos
 .env
 .env.*
 !.env.example
+
+# Claude Code: configuración personal (no se comparte)
+.claude/settings.local.json
 
 # Sistema / editores
 .DS_Store

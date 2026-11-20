@@ -1,22 +1,18 @@
-# Integración continua (CI): revisa cada cambio antes de que entre a develop o a main.
+# Integración continua (CI): revisa cada cambio que se sube a develop o a main.
 # Ver docs/src/adr/0012-ramas-y-versiones.md y docs/src/adr/0013-ci-y-release.md
 #
 # Cuándo corre:
-#   - En cada pull request hacia develop o main.
-#   - En cada push a develop o main (por si algo entró sin pull request).
+#   - En cada push a develop o main (todo se trabaja directo en develop, ADR-0012).
 #
 # Qué revisa:
-#   1. Que un pull request hacia main venga solo de release/* o hotfix/* (flujo de ramas).
-#   2. Backend Go: formato (gofmt), revisión estática (go vet) y pruebas con detector de carreras.
-#   3. Que la imagen Docker del backend se construya (no se publica; eso lo hace release.yml).
+#   1. Backend Go: formato (gofmt), revisión estática (go vet) y pruebas con detector de carreras.
+#   2. Que la imagen Docker del backend se construya (no se publica; eso lo hace release.yml).
 #
 # Todo corre en las máquinas de GitHub: no ocupa espacio en tu disco.
 
 name: CI
 
 on:
-  pull_request:
-    branches: [develop, main]
   push:
     branches: [develop, main]
 
@@ -30,23 +26,7 @@ permissions:
   contents: read
 
 jobs:
-  # 1. Flujo de ramas: a main solo entran versiones (release/*) y arreglos urgentes (hotfix/*).
-  branch-flow:
-    name: Flujo de ramas
-    if: github.event_name == 'pull_request' && github.base_ref == 'main'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Revisar la rama de origen
-        env:
-          HEAD_REF: ${{ github.head_ref }}
-        run: |
-          case "$HEAD_REF" in
-            release/v*|hotfix/*) echo "Rama permitida hacia main: $HEAD_REF" ;;
-            *) echo "::error::A main solo entran ramas release/vX.Y.Z o hotfix/*; '$HEAD_REF' debe ir a develop."
-               exit 1 ;;
-          esac
-
-  # 2. Backend Go.
+  # 1. Backend Go.
   go:
     name: Go (formato, vet y pruebas)
     runs-on: ubuntu-latest
@@ -75,7 +55,7 @@ jobs:
       - name: go test
         run: go test -race ./backend/...
 
-  # 3. Imagen Docker del backend: solo se construye para comprobar que el Dockerfile funciona.
+  # 2. Imagen Docker del backend: solo se construye para comprobar que el Dockerfile funciona.
   docker:
     name: Imagen Docker (construcción)
     runs-on: ubuntu-latest

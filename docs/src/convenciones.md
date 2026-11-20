@@ -64,13 +64,12 @@ El cambio de etapa lo decide Benjamín y se registra en `CLAUDE.md` y en la bit�
 
 Ver ADR-0012.
 
-| Rama | Para qué | Sale de | Vuelve a |
-|---|---|---|---|
-| `develop` | Trabajo diario; siempre compila y pasa las pruebas | — | — |
-| `area/descripcion` (ej. `motor/modelos-basicos`) | Un cambio o sesión de trabajo | `develop` | `develop`, por pull request |
-| `release/vX.Y.Z` | Preparar una versión (CHANGELOG, número de versión) | `develop` | `main` y `develop` |
-| `hotfix/descripcion` | Arreglo urgente de una versión liberada | `main` | `main` y `develop` |
-| `main` | Solo versiones liberadas, cada una con etiqueta `vX.Y.Z` | — | — |
+| Rama | Para qué |
+|---|---|
+| `develop` | Todo el trabajo diario, con commits directos y `git push`. Siempre compila y pasa las pruebas |
+| `main` | Solo versiones liberadas: se une `develop` y se etiqueta `vX.Y.Z` |
+
+No se crean ramas de trabajo ni pull requests: el proyecto lo trabaja una sola persona.
 
 ## Commits
 

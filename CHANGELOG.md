@@ -17,7 +17,7 @@ Cada versión liberada en `main` lleva su etiqueta de git (ADR-0012).
   guía de Go comparada con PHP, plan de trabajo y bitácora.
 - ADR-0007: dónde vive el código de PostgreSQL (`backend/internal/store`).
 - ADR-0011: versiones de todas las tecnologías (Node.js 26 LTS, pnpm 12, Turborepo 2.11, …).
-- ADR-0012: ramas `develop` (trabajo diario) y `main` (versiones liberadas).
+- ADR-0012: todo se trabaja directo en `develop` (sin ramas de trabajo ni pull requests); `main` solo recibe versiones.
 - Docker Compose con nombre de proyecto fijo (`cargo-3d`: un solo grupo con `db` y `api`), sin reinicio automático,
   `.dockerignore` más estricto y scripts `db:down`, `docker:api`, `docker:clean`.
 - `scripts/servicios/levantar` y `detener` (Windows y macOS/Linux) y tareas de VS Code: PostgreSQL en Docker
@@ -29,3 +29,8 @@ Cada versión liberada en `main` lleva su etiqueta de git (ADR-0012).
   sistema en el plan e imagen Docker para `linux/amd64` y `linux/arm64` (compilación cruzada de Go).
 - ADR-0013 y GitHub Actions: `ci.yml` (flujo de ramas, `gofmt`, `go vet`, `go test -race`, build de la imagen)
   y `release.yml` (imagen en ghcr.io y GitHub Release con notas del CHANGELOG al subir `vX.Y.Z`).
+- Biblioteca de prompts por sesión para las fases 1 a 3 (`docs/src/prompts.md`), con puntos de control y cierre
+  en cada sprint y bloque, publicación de versiones (v0.1.0, v0.2.0, v1.0.0) y prompts de apoyo.
+- `docs/datos/` fuera de git (datos de clientes) y fixtures reales anonimizados.
+- Skills de Claude Code del proyecto en `.claude/skills/` (iniciar-sesion, sesion, cerrar-sesion, punto-de-control, revisar, explicar, nuevo-adr, cambiar-contrato, cerrar-sprint).
+- Guía del flujo de trabajo con Claude Code (`docs/src/flujo-claude-code.md`).

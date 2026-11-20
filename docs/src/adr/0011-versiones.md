@@ -38,7 +38,7 @@ Reglas:
 1. Se fija la **versión mayor** (y la menor cuando la herramienta lo pide); los parches se aceptan solos.
 2. Cuando una tecnología de la tabla se instala por primera vez, se usa la estable más nueva de ese día
    y se actualiza esta tabla si cambió.
-3. Subir una **versión mayor** después de instalada se hace en su propio pull request, con pruebas
+3. Subir una **versión mayor** después de instalada se hace en su propio commit, con pruebas
    pasando y una línea en el `CHANGELOG.md`.
 
 ## Alternativas consideradas

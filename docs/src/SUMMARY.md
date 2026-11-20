@@ -2,6 +2,8 @@
 
 [Introducción](introduccion.md)
 [Plan de trabajo](plan.md)
+[Flujo de trabajo con Claude Code](flujo-claude-code.md)
+[Biblioteca de prompts por sesión](prompts.md)
 [Convenciones](convenciones.md)
 
 # Conceptos

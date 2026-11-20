@@ -18,7 +18,7 @@ Docker se usa donde aporta y no donde estorba:
 | Backend mientras programas | **No** (opcional) | `go run ./backend/cmd/api`: más rápido y más fácil de depurar |
 | Backend en producción | **Sí** | `backend/Dockerfile` multi-etapa: compila en `golang` y corre en `distroless/static` como usuario sin privilegios |
 | Probar todo junto | **Sí** | `docker compose --profile api up --build` |
-| Integración continua | **Sí** | La CI construye la imagen en cada pull request |
+| Integración continua | **Sí** | La CI construye la imagen en cada push |
 | Web en desarrollo (Vite) | **No** | Corre local; recarga en caliente más rápida |
 | Web en producción | **No necesario** | Son archivos estáticos: hosting estático o servidos por un contenedor ligero si se prefiere un solo servidor |
 | Móvil y escritorio | **No** | Se compilan con sus propias herramientas (Expo, Wails) |

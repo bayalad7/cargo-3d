@@ -28,6 +28,6 @@ Un solo repositorio con:
 
 ## Consecuencias
 
-- **Positivas:** un pull request puede cambiar contrato, backend y pantalla juntos.
+- **Positivas:** un solo commit puede cambiar contrato, backend y pantalla juntos.
 - **Negativas:** hay dos herramientas de construcción (go y pnpm); se mitiga con scripts en `package.json`.
 - **Revertir:** `backend/` es un módulo de Go autocontenido y puede salir a su propio repo.

@@ -6,7 +6,7 @@
 ## Contexto
 
 El flujo de ramas (ADR-0012) necesita que algo revise cada cambio y que publicar una versión sea
-siempre igual. Esa configuración debe vivir **en el repositorio**, versionada y revisable en pull requests,
+siempre igual. Esa configuración debe vivir **en el repositorio**, versionada y revisable en el historial,
 y no en pantallas de configuración de GitHub que nadie recuerda haber cambiado.
 
 ## Decisión
@@ -15,7 +15,7 @@ Dos workflows de GitHub Actions en `.github/workflows/`:
 
 | Archivo | Cuándo corre | Qué hace |
 |---|---|---|
-| `ci.yml` | Pull requests y pushes a `develop` y `main` | Revisa que a `main` solo lleguen `release/vX.Y.Z` o `hotfix/*`; `gofmt`, `go vet`, `go test -race`; construye la imagen Docker (amd64 y arm64) sin publicarla |
+| `ci.yml` | Cada push a `develop` y `main` | `gofmt`, `go vet`, `go test -race`; construye la imagen Docker (amd64 y arm64) sin publicarla |
 | `release.yml` | Al subir una etiqueta `vX.Y.Z` | Comprueba que la etiqueta esté en `main` y que el CHANGELOG tenga `## [X.Y.Z]`; repite las pruebas; publica la imagen multiplataforma (`linux/amd64` y `linux/arm64`) en `ghcr.io/<dueño>/<repo>/api` (`X.Y.Z`, `X.Y`, `latest`); crea el GitHub Release con las notas del CHANGELOG |
 
 - `main` sigue siendo la **rama por defecto** de GitHub; el trabajo diario se hace en `develop`.
@@ -28,12 +28,12 @@ Dos workflows de GitHub Actions en `.github/workflows/`:
 
 ```bash
 git switch develop && git pull
-git switch -c release/v0.1.0          # CHANGELOG: "## [Sin publicar]" → "## [0.1.0] - AAAA-MM-DD"
-git push -u origin release/v0.1.0     # pull request release/v0.1.0 → main (el CI lo revisa)
-# después del merge:
+# En develop: CHANGELOG "## [Sin publicar]" -> "## [0.1.0] - AAAA-MM-DD"; commit y push.
 git switch main && git pull
-git tag -a v0.1.0 -m "v0.1.0" && git push origin v0.1.0   # dispara release.yml
-# y unir main de regreso a develop (pull request main → develop)
+git merge --ff-only develop             # main queda igual que develop
+git tag -a v0.1.0 -m "v0.1.0"
+git push origin main v0.1.0             # el push de la etiqueta dispara release.yml
+git switch develop                      # y se sigue trabajando en develop
 ```
 
 ## Alternativas consideradas
@@ -46,7 +46,7 @@ git tag -a v0.1.0 -m "v0.1.0" && git push origin v0.1.0   # dispara release.yml
 
 ## Consecuencias
 
-- **Positivas:** cada pull request se revisa solo; publicar es subir una etiqueta; las notas del release
+- **Positivas:** cada push se revisa solo; publicar es subir una etiqueta; las notas del release
   salen del CHANGELOG, así que no hay que escribirlas dos veces.
 - **Negativas / costos:** un workflow **no puede** impedir un `git push` directo ni bloquear el botón de merge
   por sí solo. Para que un CI en rojo bloquee el merge hay que marcar sus checks como obligatorios
