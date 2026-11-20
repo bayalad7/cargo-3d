@@ -107,6 +107,8 @@ y pueden llenar el disco duro rápidamente si no se limpian.
 - Se trabaja en **`develop`**, nunca directo en `main`.
 - Cada cambio va en una rama `area/descripcion` creada desde `develop` y regresa por pull request a `develop`.
 - `main` solo recibe versiones oficiales (desde `release/vX.Y.Z` o `hotfix/...`) y cada una lleva etiqueta `vX.Y.Z`.
+- `main` es la rama por defecto de GitHub. Toda la configuración de CI y publicación vive en
+  `.github/workflows/ci.yml` y `.github/workflows/release.yml` (ADR-0013); no en la configuración de GitHub.
 
 ## Plan de trabajo
 
@@ -136,6 +138,7 @@ packages/validator       TS — validador independiente de planes
 apps/web | desktop | mobile
 docs/                    mdBook: ADRs, conceptos, aprendizaje, bitácora
 docker-compose.yml       PostgreSQL (y la API con --profile api)
+.github/workflows/       ci.yml (revisión de cada cambio) y release.yml (publicación con etiqueta vX.Y.Z)
 ```
 
 ## Comandos

@@ -1,0 +1,140 @@
+# Publicación de versiones oficiales.
+# Ver docs/src/adr/0012-ramas-y-versiones.md y docs/src/adr/0013-ci-y-release.md
+#
+# Cuándo corre: al subir una etiqueta vX.Y.Z (por ejemplo v0.1.0) que apunte a un commit de main:
+#   git switch main && git pull
+#   git tag -a v0.1.0 -m "v0.1.0"
+#   git push origin v0.1.0
+#
+# Qué hace:
+#   1. Comprueba que la etiqueta esté en main y que CHANGELOG.md tenga la sección "## [X.Y.Z]".
+#   2. Vuelve a correr formato, vet y pruebas de Go.
+#   3. Construye y publica la imagen del backend en GitHub Container Registry:
+#        ghcr.io/<dueño>/<repo>/api:X.Y.Z  y  :latest
+#   4. Crea el GitHub Release con las notas tomadas del CHANGELOG.
+
+name: Release
+
+on:
+  push:
+    tags: ["v*.*.*"]
+
+# Nunca dos publicaciones al mismo tiempo.
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  # 1. Validaciones previas.
+  verify:
+    name: Validar la versión
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      # fetch-depth: 0 trae todo el historial para poder revisar si el commit está en main.
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Número de versión (v1.2.3 → 1.2.3)
+        id: version
+        run: echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+
+      - name: La etiqueta debe estar en main
+        run: |
+          git fetch origin main
+          if ! git merge-base --is-ancestor "$GITHUB_SHA" origin/main; then
+            echo "::error::La etiqueta $GITHUB_REF_NAME no apunta a un commit de main. Une primero release/* a main."
+            exit 1
+          fi
+
+      - name: CHANGELOG.md debe tener la sección de esta versión
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          if ! grep -q "^## \[$VERSION\]" CHANGELOG.md; then
+            echo "::error::Falta '## [$VERSION] - AAAA-MM-DD' en CHANGELOG.md."
+            exit 1
+          fi
+
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: backend/go.mod
+          cache-dependency-path: backend/go.mod # cambiar a backend/go.sum cuando haya dependencias
+
+      - name: gofmt, go vet y go test
+        run: |
+          test -z "$(gofmt -l backend)" || { gofmt -l backend; exit 1; }
+          go vet ./backend/...
+          go test -race ./backend/...
+
+  # 2. Imagen Docker publicada en GitHub Container Registry (ghcr.io).
+  image:
+    name: Publicar imagen Docker
+    needs: verify
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write # para subir la imagen a ghcr.io
+    steps:
+      - uses: actions/checkout@v7
+      - uses: docker/setup-buildx-action@v4
+
+      - uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Calcula los nombres de la imagen: X.Y.Z, X.Y y latest.
+      - id: meta
+        uses: docker/metadata-action@v6
+        with:
+          images: ghcr.io/${{ github.repository }}/api
+          tags: |
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=raw,value=latest
+
+      - uses: docker/build-push-action@v7
+        with:
+          context: ./backend
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  # 3. GitHub Release con las notas del CHANGELOG.
+  github-release:
+    name: Crear GitHub Release
+    needs: [verify, image]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # para crear el release
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Extraer las notas de la versión del CHANGELOG
+        env:
+          VERSION: ${{ needs.verify.outputs.version }}
+        run: |
+          # Toma desde "## [X.Y.Z]" hasta antes del siguiente "## [".
+          awk -v v="$VERSION" '
+            $0 ~ "^## \\[" v "\\]" { on = 1; next }
+            on && /^## \[/ { exit }
+            on { print }
+          ' CHANGELOG.md > release-notes.md
+          cat release-notes.md
+
+      - name: Crear el release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          IMAGE: ghcr.io/${{ github.repository }}/api:${{ needs.verify.outputs.version }}
+        run: |
+          printf '\n---\nImagen Docker: `%s`\n' "$IMAGE" >> release-notes.md
+          gh release create "$GITHUB_REF_NAME" --title "$GITHUB_REF_NAME" --notes-file release-notes.md --verify-tag

@@ -40,7 +40,9 @@ go test ./backend/...
 - `develop`: rama de trabajo diario. Cada cambio sale de aquí en su propia rama y vuelve por pull request.
 - `main`: solo versiones oficiales liberadas, cada una con su etiqueta (`v0.1.0`, …).
 
-Detalles en el [ADR-0012](docs/src/adr/0012-ramas-y-versiones.md).
+El CI (`.github/workflows/ci.yml`) revisa cada pull request; subir una etiqueta `vX.Y.Z` en `main`
+publica la versión (`.github/workflows/release.yml`). Detalles en el [ADR-0012](docs/src/adr/0012-ramas-y-versiones.md)
+y el [ADR-0013](docs/src/adr/0013-ci-y-release.md).
 
 ## Documentación
 

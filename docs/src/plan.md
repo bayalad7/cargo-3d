@@ -26,8 +26,9 @@ Las duraciones suponen **10 a 15 horas por semana**. Si dedicas más o menos, aj
 
 1. Crea en GitHub el repositorio vacío `cargo-3d` (privado).
 2. Entra a la carpeta `cargo-3d` y súbelo: `git remote add origin https://github.com/bayalad7/cargo-3d.git` y `git push -u origin main`.
-3. Crea la rama `develop` desde `main` y hazla la rama por defecto en GitHub (Settings → General).
-4. Protege `main` y `develop` (Settings → Branches): nada entra sin pull request (ADR-0012).
+3. Crea la rama `develop` desde `main` (`main` sigue como rama por defecto). El CI y la publicación
+   ya están en `.github/workflows/` (ADR-0012 y ADR-0013).
+4. Opcional: en Settings → Rules marca los checks del CI como obligatorios para que un CI en rojo bloquee el merge.
 5. Si usas otro usuario u otro nombre de repo, cambia la ruta del módulo en `backend/go.mod` y en los imports (búscala con `grep -r bayalad7`).
 
 ### 2. Go
@@ -139,7 +140,7 @@ Del arranque de la fase 1 al lanzamiento: aproximadamente de 8 a 11 meses con 10
 
 ```
 Fase 0 · Cimientos ............................................ Terminada
-   │  Backend Go con /health, Docker, contratos, 12 ADR y guía de Go.
+   │  Backend Go con /health, Docker, contratos, 13 ADR, CI y guía de Go.
    ◇  Puerta: entorno verificado y cargas reales de Transportes Villa reunidas
    ▼
 Fase 1 · Prueba de concepto ........................ SIGUIENTE · 6 a 8 semanas
@@ -208,7 +209,8 @@ en segundos y la web la muestra en 3D.
 
 ### Sprint 1.7 — Integración continua, Docker y demo
 
-- [ ] GitHub Actions: `gofmt`, `go vet`, `go test`, build de la imagen Docker y build de la web.
+- [x] GitHub Actions para Go y Docker: `ci.yml` (`gofmt`, `go vet`, `go test -race`, build de la imagen) y `release.yml` (ADR-0013).
+- [ ] Job de la web en `ci.yml` (lint, pruebas y build con pnpm).
 - [ ] Demo publicada: backend en un contenedor y web en hosting estático.
 
 ### Criterio de terminado
@@ -332,10 +334,10 @@ Al terminar, empresas además de Transportes Villa pagan cada mes.
 
 ## Checklist para la primera sesión
 
-- [ ] Repo `cargo-3d` en GitHub, `develop` como rama por defecto, `main` y `develop` protegidas.
+- [ ] Repo `cargo-3d` en GitHub con `main` y `develop`, y el CI en verde.
 - [ ] Las verificaciones del entorno pasan.
 - [ ] Ejercicio del capítulo 01 de la guía de Go hecho.
-- [ ] Leíste `CLAUDE.md` y los ADR 0002, 0006, 0010 y 0012.
+- [ ] Leíste `CLAUDE.md` y los ADR 0002, 0006, 0010, 0012 y 0013.
 - [ ] Al menos 3 cargas reales de Transportes Villa, el catálogo de equipos y las reglas del patio.
 
 Primer mensaje sugerido para Claude Code (con `/model opus`):

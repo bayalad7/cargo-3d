@@ -13,7 +13,7 @@ Transportes Villa en la fase 2) se necesita distinguir entre "lo que se está co
 
 Un flujo tipo *Git Flow* simplificado:
 
-- **`develop`**: rama de trabajo diario y rama por defecto en GitHub. Siempre debe compilar y pasar las pruebas.
+- **`develop`**: rama de trabajo diario. Siempre debe compilar y pasar las pruebas.
 - **Ramas de trabajo** `area/descripcion` (ej. `motor/modelos-basicos`), con las mismas áreas que los commits.
   Salen de `develop` y regresan a `develop` por pull request.
 - **`main`**: solo versiones oficiales. Cada merge a `main` se etiqueta `vX.Y.Z` (SemVer) y su sección
@@ -22,7 +22,9 @@ Un flujo tipo *Git Flow* simplificado:
   se une a `main` (con etiqueta) y de regreso a `develop`.
 - **`hotfix/descripcion`**: sale de `main` para un arreglo urgente de una versión liberada;
   se une a `main` (nueva etiqueta de parche) y a `develop`.
-- `main` y `develop` se protegen en GitHub: nada entra sin pull request.
+- `main` sigue siendo la rama por defecto de GitHub.
+- Las revisiones del flujo (qué ramas pueden entrar a `main`, pruebas, publicación) viven en
+  `.github/workflows/ci.yml` y `.github/workflows/release.yml` (ADR-0013).
 
 Antes de la primera versión (`v0.1.0`, al cerrar la fase 1) `main` se queda en los cimientos.
 
@@ -38,4 +40,4 @@ Antes de la primera versión (`v0.1.0`, al cerrar la fase 1) `main` se queda en 
 
 - **Positivas:** se puede desplegar `main` con confianza y arreglar una versión liberada sin sacar trabajo a medias.
 - **Negativas / costos:** hay que acordarse de unir `release/` y `hotfix/` también a `develop`.
-- **Qué tendríamos que hacer para revertirla:** unir `develop` a `main`, borrar `develop` y volver a `main` como rama por defecto.
+- **Qué tendríamos que hacer para revertirla:** unir `develop` a `main`, borrar `develop` y quitar la revisión de ramas de `ci.yml`.

@@ -24,6 +24,7 @@
 - [0010 — Docker](adr/0010-docker.md)
 - [0011 — Versiones de las tecnologías](adr/0011-versiones.md)
 - [0012 — Ramas y versiones](adr/0012-ramas-y-versiones.md)
+- [0013 — CI y publicación de versiones](adr/0013-ci-y-release.md)
 
 # Aprendizaje
 

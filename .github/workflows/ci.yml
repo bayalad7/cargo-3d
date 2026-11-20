@@ -1,0 +1,91 @@
+# Integración continua (CI): revisa cada cambio antes de que entre a develop o a main.
+# Ver docs/src/adr/0012-ramas-y-versiones.md y docs/src/adr/0013-ci-y-release.md
+#
+# Cuándo corre:
+#   - En cada pull request hacia develop o main.
+#   - En cada push a develop o main (por si algo entró sin pull request).
+#
+# Qué revisa:
+#   1. Que un pull request hacia main venga solo de release/* o hotfix/* (flujo de ramas).
+#   2. Backend Go: formato (gofmt), revisión estática (go vet) y pruebas con detector de carreras.
+#   3. Que la imagen Docker del backend se construya (no se publica; eso lo hace release.yml).
+#
+# Todo corre en las máquinas de GitHub: no ocupa espacio en tu disco.
+
+name: CI
+
+on:
+  pull_request:
+    branches: [develop, main]
+  push:
+    branches: [develop, main]
+
+# Si llega un push nuevo a la misma rama, se cancela la ejecución anterior (ahorra minutos).
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+# Mínimo privilegio: el CI solo necesita leer el código.
+permissions:
+  contents: read
+
+jobs:
+  # 1. Flujo de ramas: a main solo entran versiones (release/*) y arreglos urgentes (hotfix/*).
+  branch-flow:
+    name: Flujo de ramas
+    if: github.event_name == 'pull_request' && github.base_ref == 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Revisar la rama de origen
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          case "$HEAD_REF" in
+            release/v*|hotfix/*) echo "Rama permitida hacia main: $HEAD_REF" ;;
+            *) echo "::error::A main solo entran ramas release/vX.Y.Z o hotfix/*; '$HEAD_REF' debe ir a develop."
+               exit 1 ;;
+          esac
+
+  # 2. Backend Go.
+  go:
+    name: Go (formato, vet y pruebas)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      # Instala la versión de Go que pide backend/go.mod (una sola fuente de verdad, ADR-0011).
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: backend/go.mod
+          cache-dependency-path: backend/go.mod # cambiar a backend/go.sum cuando haya dependencias
+
+      - name: gofmt (debe salir vacío)
+        run: |
+          unformatted="$(gofmt -l backend)"
+          if [ -n "$unformatted" ]; then
+            echo "::error::Archivos sin formato (corre 'gofmt -w backend'):"
+            echo "$unformatted"
+            exit 1
+          fi
+
+      - name: go vet
+        run: go vet ./backend/...
+
+      # -race detecta accesos simultáneos a memoria entre goroutines (importante desde el sprint 2.2).
+      - name: go test
+        run: go test -race ./backend/...
+
+  # 3. Imagen Docker del backend: solo se construye para comprobar que el Dockerfile funciona.
+  docker:
+    name: Imagen Docker (construcción)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: docker/setup-buildx-action@v4
+      - uses: docker/build-push-action@v7
+        with:
+          context: ./backend
+          push: false
+          # Caché en GitHub Actions para que las siguientes construcciones sean rápidas.
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

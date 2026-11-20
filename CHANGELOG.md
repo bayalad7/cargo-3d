@@ -13,8 +13,10 @@ Cada versión liberada en `main` lleva su etiqueta de git (ADR-0012).
   (`golang:1.27` → `distroless/static-debian13`), `.env.example`.
 - Contratos en `contracts/` (OpenAPI) y `engine/fixtures/`.
 - `CLAUDE.md` con el contexto y las reglas del proyecto, incluidas las reglas para limpiar Docker después de probar.
-- Documentación (mdBook): introducción, convenciones, conceptos, ADR 0001–0012,
+- Documentación (mdBook): introducción, convenciones, conceptos, ADR 0001–0013,
   guía de Go comparada con PHP, plan de trabajo y bitácora.
 - ADR-0007: dónde vive el código de PostgreSQL (`backend/internal/store`).
 - ADR-0011: versiones de todas las tecnologías (Node.js 26 LTS, pnpm 12, Turborepo 2.11, …).
 - ADR-0012: ramas `develop` (trabajo diario) y `main` (versiones liberadas).
+- ADR-0013 y GitHub Actions: `ci.yml` (flujo de ramas, `gofmt`, `go vet`, `go test -race`, build de la imagen)
+  y `release.yml` (imagen en ghcr.io y GitHub Release con notas del CHANGELOG al subir `vX.Y.Z`).
