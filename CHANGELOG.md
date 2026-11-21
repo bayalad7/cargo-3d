@@ -7,6 +7,12 @@ Cada versión liberada en `main` lleva su etiqueta de git (ADR-0012).
 ## [Sin publicar]
 
 ### Agregado
+- Sistema de diseño Voxa (ADR-0014) en `packages/ui` (`@cargo-3d/ui`): tokens en claro y oscuro con
+  `light-dark()` y Tailwind CSS v4 (`tokens.css`, fuente única de verdad), componentes `vx-` (`components.css`),
+  logo Vóxel en SVG (componente `Logo` y 6 archivos), íconos con Lucide (`Icon`, `appIcons`) y componentes
+  React de presentación: `Button`, `StatusBadge`, `FilterChip`, `ConfirmDialog`, `Toast`/`Toaster` y
+  `BulkActionBar`. Vista previa en `packages/ui/preview/`.
+- Documentación del sistema de diseño (`docs/src/ux/sistema-diseno.md`) y reglas de diseño en `CLAUDE.md`.
 - Estructura del monorepo (Go workspace, pnpm workspaces, Turborepo).
 - Backend en Go 1.27 (motor y API en un binario, ADR-0002): servidor con `GET /health`, apagado ordenado y pruebas.
 - Docker: `docker-compose.yml` (PostgreSQL 19, API con perfil), `backend/Dockerfile` multi-etapa

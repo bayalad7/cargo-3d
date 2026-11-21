@@ -27,6 +27,11 @@
 - [0011 — Versiones de las tecnologías](adr/0011-versiones.md)
 - [0012 — Ramas y versiones](adr/0012-ramas-y-versiones.md)
 - [0013 — CI y publicación de versiones](adr/0013-ci-y-release.md)
+- [0014 — Sistema de diseño Voxa](adr/0014-sistema-de-diseno.md)
+
+# Experiencia de usuario
+
+- [Sistema de diseño Voxa](ux/sistema-diseno.md)
 
 # Aprendizaje
 
@@ -36,3 +41,4 @@
 # Bitácora
 
 - [2026-11-20 — Cimientos](bitacora/2026-11-20.md)
+- [2026-11-21 — Sistema de diseño Voxa](bitacora/2026-11-21.md)

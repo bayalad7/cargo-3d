@@ -27,6 +27,8 @@ Usar la **última versión estable** de cada tecnología al momento de instalarl
 | Vite | 8 | `apps/web` | Sprint 1.6 |
 | React | 19.3 | `apps/web`, `apps/mobile` | Sprint 1.6 |
 | Three.js / React Three Fiber / drei | 0.187 / 9.8 / 10.7 | `packages/viewer-3d` | Sprint 1.6 |
+| Tailwind CSS | 4.3 | `packages/ui` (ADR-0014) | 2026-11-21 |
+| Lucide (`lucide-react`) | 1.77 | `packages/ui` (ADR-0014) | 2026-11-21 |
 | Expo (React Native 0.88) | SDK 58 | `apps/mobile` | Sprint 3.2 |
 | Wails | v3.1 (estable, no las *nightly*) | `apps/desktop` | Sprint 3.5 |
 | pgx | v5.11 | `backend/go.mod` | Sprint 2.3 |

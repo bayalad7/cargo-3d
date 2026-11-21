@@ -40,6 +40,7 @@ Nadie lo resuelve de forma exacta; se usan heurísticas:
 | Contenedores | Docker: PostgreSQL en desarrollo, imagen del backend en producción | 0010 |
 | Organización | Monorepo: Go workspace + pnpm + Turborepo | 0001 |
 | Versiones | Última estable de cada tecnología (Go 1.27, PostgreSQL 19, Node 26 LTS…) | 0011 |
+| Sistema de diseño | Voxa: Tailwind CSS v4 + Lucide en `packages/ui` (`@cargo-3d/ui`) | 0014 |
 
 Principio rector: **Go para todo el backend, TypeScript para todas las pantallas.**
 
@@ -102,6 +103,35 @@ y pueden llenar el disco duro rápidamente si no se limpian.
 5. Nunca usar `docker system prune -a --volumes` ni borrar recursos que no se crearon en la sesión
    sin preguntar antes.
 
+## Reglas de diseño (ver ADR-0014 y `docs/src/ux/sistema-diseno.md`) — OBLIGATORIO
+
+Todas las pantallas (web, escritorio y móvil) usan el sistema de diseño **Voxa** de `packages/ui` (`@cargo-3d/ui`).
+
+- **Fuente única de verdad:** `packages/ui/src/styles/tokens.css` (valores) y `components.css` (clases `vx-`).
+  Un valor se cambia ahí **y** en el sistema oficial de claude.ai (`https://claude.ai/artifact/1Daeb4Bq3esqWZXj3KNk3a`),
+  en el mismo cambio. Nunca en una pantalla.
+- **Nada escrito a mano:** ningún color hex, tamaño de letra, radio ni sombra en una pantalla. Solo tokens
+  y utilidades de Tailwind v4 del sistema (`bg-canvas`, `text-ink`, `text-h1`, `rounded-md`, `p-4`…).
+  Las paletas de Tailwind (`bg-blue-500`) están desactivadas a propósito. Color nuevo → token nuevo con función.
+- **Colores por función, 60 · 30 · 10:** superficies `canvas`/`card` (60 %), tinta `ink` (30 %), amarillo
+  `accent` #FFC400 (10 %). En claro el amarillo **solo es relleno** con texto `on-accent` (nunca texto, borde ni
+  blanco encima); para líneas y texto de acento, `accent-line`. **Un solo botón `primary` por vista.**
+- **Estados** (`success`, `progress`, `warning`, `danger`, `delayed`): nunca amarillo y nunca solo color
+  (texto + punto o ícono). Contraste mínimo 4.5:1 en texto, revisado en claro y oscuro.
+- **Temas:** `light-dark()` en los tokens; `data-theme="light"|"dark"` fuerza el tema, sin atributo sigue al
+  sistema. Casi nunca hace falta `dark:`.
+- **Tipografía:** Inter Tight (interfaz) e IBM Plex Mono (pesos, medidas, coordenadas). Solo la escala del
+  sistema: `display`, `h1`, `h2`, `body`, `label`, `small`, `pill`, `data`.
+- **Íconos:** Lucide con `<Icon>` (trazo 1.5, tamaños 14/16/18) y el vocabulario `appIcons`; un concepto nuevo
+  se agrega a `appIcons`, no en la pantalla.
+- **Logo:** componente `<Logo />` (cambia de tema solo) o los SVG de `packages/ui/src/brand/`. No girar,
+  recolorear, sombrear ni deformar. Mínimo 20 px el logotipo y 24 px la insignia.
+- **Componentes solo de presentación:** `@cargo-3d/ui` no importa la API, el motor ni estado global; recibe
+  propiedades y avisa con funciones. Cambiar el aspecto de una pantalla nunca toca su lógica, hooks, manejadores
+  de eventos ni conexiones.
+- **Voz:** español de México, directo; botones con verbo + objeto («Optimizar carga»); `24 310 kg`, `67,4 m³`.
+- «Voxa» es el nombre comercial en la interfaz; el proyecto y los paquetes siguen como `cargo-3d` (ADR-0014).
+
 ## Datos de clientes (OBLIGATORIO)
 
 - Los datos reales (cargas, catálogos, fotos, nombres de clientes) viven en `docs/datos/`, que **no se sube a git**.
@@ -156,6 +186,10 @@ packages/types           TS — tipos generados desde los contratos
 packages/api-client      TS — cliente generado desde OpenAPI
 packages/viewer-3d       TS — visor 3D reutilizable
 packages/validator       TS — validador independiente de planes
+packages/ui              TS — sistema de diseño Voxa (ADR-0014): tokens, Tailwind v4, logo, íconos y componentes
+  src/styles/            tokens.css (fuente única), components.css (clases vx-), fonts.css, index.css (entrada)
+  src/brand/             logo Vóxel: Logo.tsx y los SVG
+  preview/               vista previa en HTML (claro y oscuro)
 apps/web | desktop | mobile
 docs/                    mdBook: plan, prompts, ADRs, conceptos, aprendizaje, bitácora
 .claude/skills/          comandos de Claude Code del proyecto
@@ -180,6 +214,8 @@ gofmt -l backend                      # archivos sin formato (debe salir vacío)
 go doc ./backend/internal/engine      # documentación de un paquete
 docker compose --profile api up --build   # API dentro de Docker
 mdbook serve docs --open              # sitio de documentación
+pnpm --filter @cargo-3d/ui lint       # revisa los tipos del sistema de diseño
+pnpm --filter @cargo-3d/ui build:preview   # compila la vista previa (abrir packages/ui/preview/index.html)
 ```
 
 ## Estado
@@ -187,4 +223,6 @@ mdbook serve docs --open              # sitio de documentación
 - **Fase actual:** 0 — cimientos (estructura, Docker y documentación). Servidor con `/health`; motor vacío.
 - **Nivel de comentarios Go:** máximo (casi cada línea).
 - **Siguiente paso:** fase 1, sprint 1.1 (ver `docs/src/plan.md`) — modelos del motor y `contracts/engine.schema.json`.
-- **Pendiente:** cargas reales de ejemplo, catálogo de equipos usados, reglas del patio.
+- **Sistema de diseño:** base lista en `packages/ui` (2026-11-21, fuera del plan); se conecta a `apps/web` en el sprint 1.6.
+- **Pendiente:** cargas reales de ejemplo, catálogo de equipos usados, reglas del patio; subir al sistema oficial
+  de claude.ai los componentes «propuesta» (modal, toasts, barra masiva).
