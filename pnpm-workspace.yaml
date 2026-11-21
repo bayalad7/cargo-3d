@@ -2,3 +2,8 @@
 packages:
   - "apps/*"
   - "packages/*"
+
+# Dependencias cuyos scripts de instalación NO se ejecutan (pnpm 12 pide decidirlo).
+# @parcel/watcher: lo usa `tailwindcss --watch` y ya trae binarios precompilados.
+allowBuilds:
+  "@parcel/watcher": false

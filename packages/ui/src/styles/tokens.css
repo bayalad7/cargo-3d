@@ -1,0 +1,231 @@
+/*
+ * tokens.css — Fuente única de verdad del sistema de diseño Voxa (ADR-0014).
+ *
+ * Cómo funciona:
+ *   1. Los colores, la sombra y los colores del logo se definen UNA sola vez con
+ *      `light-dark(claro, oscuro)`. El navegador elige el valor según el `color-scheme`
+ *      del elemento: `data-theme="dark"` o `data-theme="light"` lo fuerzan y, si no hay
+ *      atributo, se sigue la preferencia del sistema operativo.
+ *   2. `@theme` le dice a Tailwind CSS v4 qué utilidades existen (`bg-canvas`, `text-ink`,
+ *      `text-h1`, `rounded-md`, `font-mono`…). Se borran las paletas de Tailwind
+ *      (`--color-*: initial`) para que solo se puedan usar los colores del sistema.
+ *   3. `components.css` y cualquier CSS propio usan las variables crudas (`var(--ink)`).
+ *
+ * Por qué así:
+ *   - `light-dark()` evita escribir cada color dos veces y permite temas anidados
+ *     (un panel oscuro dentro de una página clara).
+ *   - Los nombres son los del sistema oficial (claude.ai → «Voxa», `tokens.json` v4)
+ *     para que diseño y código hablen igual. Si un valor cambia, se cambia aquí y en el
+ *     sistema oficial, nunca en un componente.
+ */
+
+/* ---------------------------------------------------------------- Tema */
+
+:root,
+[data-theme="light"],
+[data-theme="dark"] {
+  /* Sin atributo: el sistema operativo decide. */
+  color-scheme: light dark;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+/* ---------------------------------------------------------------- Color */
+
+:root {
+  /* 60 % — superficies */
+  --canvas: light-dark(#efefea, #0f0f0e); /* Lienzo de la app, detrás de todas las tarjetas. */
+  --card: light-dark(#ffffff, #1a1a18); /* Tarjetas, paneles, buscador, navegación inactiva. */
+  --line: light-dark(#deded7, #2e2e2b); /* Bordes finos y separadores. Nunca el único indicio de un control. */
+
+  /* 30 % — tinta */
+  --ink: light-dark(#111111, #f4f4ef); /* Texto, cifras, íconos, navegación activa (≥15.8:1). */
+  --ink-muted: light-dark(#5c5c57, #a6a69e); /* Etiquetas y texto secundario (≥5.8:1). */
+  --on-ink: light-dark(#ffffff, #111111); /* Texto sobre un fondo ink. */
+
+  /* 10 % — amarillo grúa */
+  --accent: #ffc400; /* Solo RELLENO en claro (1.6:1 sobre blanco): nunca texto, borde ni línea. */
+  --on-accent: #111111; /* Texto sobre accent (11.8:1). Nunca blanco sobre amarillo. */
+  --accent-soft: light-dark(#fff6d6, #433914); /* Fondo de una fila o tarjeta seleccionada. */
+  --accent-line: light-dark(#8a6500, #ffc400); /* Bordes y texto de acento (5.3:1 en claro). */
+  --track: light-dark(#2a2a27, #3a3a36); /* Riel de las barras de progreso (accent encima, 9.0:1). */
+  --focus: light-dark(#111111, #ffc400); /* Anillo de foco: 2 px, separado 2 px. */
+
+  /* Estados: nunca amarillo, siempre con texto y punto (nunca solo color). */
+  --status-success: #12b76a; /* Listo */
+  --status-success-soft: light-dark(#e7f6ee, #0f2e20);
+  --status-success-ink: light-dark(#067647, #6ce9a6);
+  --status-progress: #2e90fa; /* Cargando */
+  --status-progress-soft: light-dark(#eaf2ff, #102446);
+  --status-progress-ink: light-dark(#1d4ed8, #8db8ff);
+  --status-warning: #f79009; /* Cerca del límite */
+  --status-warning-soft: light-dark(#fef1e2, #3a2410);
+  --status-warning-ink: light-dark(#b54708, #fdb022);
+  --status-danger: #f04438; /* Excede (VGM, NOM-012, CG fuera de rango) */
+  --status-danger-soft: light-dark(#fdecea, #3b1512);
+  --status-danger-ink: light-dark(#b42318, #fda29b);
+  --status-delayed: #7a5af8; /* Demorado */
+  --status-delayed-soft: light-dark(#f1eefe, #24194a);
+  --status-delayed-ink: light-dark(#5b2fd6, #bdb4fe);
+
+  /* PROPUESTA (no está en el sistema oficial): texto sobre status-danger-ink, para el
+     botón de una acción destructiva (6.5:1 en claro, 8.3:1 en oscuro). */
+  --on-danger: light-dark(#ffffff, #111111);
+
+  /* PROPUESTA: velo detrás de los modales. */
+  --scrim: light-dark(rgb(17 17 17 / 0.45), rgb(0 0 0 / 0.6));
+
+  /* Colores del logo (los SVG de `brand/` llevan estos mismos valores fijos). */
+  --logo-badge: #ffc400; /* Insignia: amarilla en ambos temas. */
+  --logo-badge-top: #64500b; /* Cara superior del cubo dentro de la insignia. */
+  --logo-badge-side: #3a300e; /* Cara derecha del cubo dentro de la insignia. */
+  --logo-badge-front: #111111; /* Cara izquierda del cubo dentro de la insignia. */
+  --logo-badge-voxel: #ffffff; /* Vóxel resaltado dentro de la insignia. */
+  --logo-word: light-dark(#111111, #f4f4ef); /* La palabra VOXA. */
+  --logo-mark-top: light-dark(#4d4d4a, #6b6b66); /* Isotipo sin cuadro: cara superior. */
+  --logo-mark-front: light-dark(#111111, #f4f4ef); /* Isotipo: cara izquierda. */
+  --logo-mark-side: light-dark(#2f2f2e, #b0b0ab); /* Isotipo: cara derecha. */
+  --logo-mark-voxel: #ffc400; /* Isotipo: vóxel resaltado en amarillo. */
+
+  /* ---------------------------------------------------------------- Forma */
+
+  /* Espaciado en pasos de 4 (en Tailwind: p-1 = 4 px … p-8 = 32 px). */
+  --space-1: 4px; /* Ícono y texto. */
+  --space-2: 8px; /* Dentro de un control; entre botones. */
+  --space-3: 12px; /* Relleno de tarjetas compactas; medianil. */
+  --space-4: 16px; /* Relleno de paneles. */
+  --space-6: 24px; /* Entre secciones. */
+  --space-8: 32px; /* Márgenes de página. */
+
+  /* Sombra única y casi imperceptible: la jerarquía la dan las superficies. */
+  --shadow-card: 0 1px 2px light-dark(rgb(17 17 17 / 0.06), rgb(0 0 0 / 0.4));
+  /* PROPUESTA: elementos que flotan sobre la página (modal, toast, barra masiva). */
+  --shadow-float: 0 8px 24px light-dark(rgb(17 17 17 / 0.12), rgb(0 0 0 / 0.5));
+
+  /* Movimiento (propuesta): corto y sin rebotes; se apaga con prefers-reduced-motion. */
+  --motion-fast: 120ms;
+  --motion-base: 200ms;
+  --motion-ease: cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* ---------------------------------------------------------------- Tailwind */
+
+/*
+ * `inline`: la utilidad usa `var(--canvas)` directamente, así cambia de tema sola.
+ * `--color-*: initial` quita las paletas de Tailwind (`bg-blue-500` deja de existir).
+ * Siguen disponibles `transparent`, `current` e `inherit`.
+ */
+@theme inline {
+  --color-*: initial;
+
+  --color-canvas: var(--canvas);
+  --color-card: var(--card);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-on-ink: var(--on-ink);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-line: var(--accent-line);
+  --color-track: var(--track);
+  --color-focus: var(--focus);
+
+  --color-success: var(--status-success);
+  --color-success-soft: var(--status-success-soft);
+  --color-success-ink: var(--status-success-ink);
+  --color-progress: var(--status-progress);
+  --color-progress-soft: var(--status-progress-soft);
+  --color-progress-ink: var(--status-progress-ink);
+  --color-warning: var(--status-warning);
+  --color-warning-soft: var(--status-warning-soft);
+  --color-warning-ink: var(--status-warning-ink);
+  --color-danger: var(--status-danger);
+  --color-danger-soft: var(--status-danger-soft);
+  --color-danger-ink: var(--status-danger-ink);
+  --color-delayed: var(--status-delayed);
+  --color-delayed-soft: var(--status-delayed-soft);
+  --color-delayed-ink: var(--status-delayed-ink);
+}
+
+/*
+ * Valores que no cambian con el tema. `static` hace que Tailwind siempre los emita en
+ * `:root`, aunque ninguna utilidad los use, para que `components.css` y el visor 3D
+ * los puedan leer.
+ */
+@theme static {
+  /* Tipografía: Inter Tight (interfaz) e IBM Plex Mono (pesos, medidas, coordenadas). */
+  --font-*: initial;
+  --font-sans: "Inter Tight", "Inter", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* Escala tipográfica oficial: `text-display`, `text-h1` … `text-data`. */
+  --text-*: initial;
+  --text-display: 44px; /* Cifras grandes de indicadores. */
+  --text-display--line-height: 48px;
+  --text-display--font-weight: 600;
+  --text-display--letter-spacing: -0.02em;
+  --text-h1: 28px; /* Título de pantalla. */
+  --text-h1--line-height: 34px;
+  --text-h1--font-weight: 600;
+  --text-h1--letter-spacing: -0.01em;
+  --text-h2: 18px; /* Título de tarjeta o panel. */
+  --text-h2--line-height: 24px;
+  --text-h2--font-weight: 600;
+  --text-body: 14px; /* Texto corrido. */
+  --text-body--line-height: 20px;
+  --text-label: 13px; /* Botones, navegación y filtros (peso 500). */
+  --text-label--line-height: 16px;
+  --text-label--font-weight: 500;
+  --text-small: 12px; /* Ayudas y etiquetas de indicadores, en ink-muted. */
+  --text-small--line-height: 16px;
+  --text-pill: 11px; /* Píldoras de estado (peso 500). */
+  --text-pill--line-height: 16px;
+  --text-pill--font-weight: 500;
+  --text-data: 12px; /* Datos en mono: usar junto con `font-mono`. */
+  --text-data--line-height: 16px;
+  --text-data--font-weight: 500;
+
+  /* Espaciado: multiplicador de Tailwind en px exactos (p-3 = 12 px). */
+  --spacing: 4px;
+
+  /* Radios. */
+  --radius-*: initial;
+  --radius-sm: 6px; /* Píldoras, cuadros de ícono, barras. */
+  --radius-md: 10px; /* Tarjetas, botones, buscador. */
+  --radius-lg: 16px; /* Paneles grandes e insignia. */
+  --radius-full: 999px; /* Avatar y botones redondos. */
+
+  /* Las sombras dependen del tema: se registran abajo con @utility. */
+  --shadow-*: initial;
+}
+
+/* `shadow-card` y `shadow-float` como utilidades de Tailwind. */
+@utility shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+@utility shadow-float {
+  box-shadow: var(--shadow-float);
+}
+
+/*
+ * Variante `dark:` (casi nunca hace falta: los tokens ya cambian solos).
+ * Se activa con data-theme="dark" o, sin atributo, con el tema oscuro del sistema.
+ */
+@custom-variant dark {
+  &:where([data-theme="dark"], [data-theme="dark"] *) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where(:not([data-theme="light"], [data-theme="light"] *)) {
+      @slot;
+    }
+  }
+}

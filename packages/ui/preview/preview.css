@@ -1,0 +1,7 @@
+/*
+ * Entrada de la vista previa: el mismo CSS que usan las apps, más las clases del HTML.
+ * Compilar con `pnpm --filter @cargo-3d/ui build:preview` (sale en preview/dist/, fuera de git).
+ */
+@import "../src/styles/index.css";
+
+@source "./index.html";

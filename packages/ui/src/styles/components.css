@@ -1,0 +1,726 @@
+/*
+ * components.css — Componentes base del sistema de diseño Voxa (ADR-0014).
+ *
+ * Cómo funciona:
+ *   - Todas las clases llevan el prefijo `vx-` y solo usan variables de `tokens.css`,
+ *     así que cambian de tema solas.
+ *   - Viven en `@layer components` de Tailwind: una utilidad (`mt-4`, `w-full`) puede
+ *     ajustar un componente sin `!important`.
+ *   - Las secciones marcadas «PROPUESTA» no están todavía en el sistema oficial de
+ *     claude.ai; se diseñaron con los mismos tokens y hay que agregarlas allá.
+ *
+ * Por qué clases y no solo utilidades: los componentes se comparten entre web,
+ * escritorio y la vista previa en HTML, y una clase con nombre se lee mejor en el
+ * código y en el inspector que veinte utilidades.
+ */
+
+@layer base {
+  body {
+    background: var(--canvas);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Cifras alineadas en todo lo que sea dato. */
+  .vx-data,
+  code,
+  kbd {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 1ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 1ms !important;
+    }
+  }
+}
+
+@layer components {
+  .vx {
+    font-family: var(--font-sans);
+    color: var(--ink);
+  }
+
+  .vx-muted {
+    color: var(--ink-muted);
+  }
+
+  .vx-data {
+    font-size: var(--text-data);
+    line-height: var(--text-data--line-height);
+    font-weight: var(--text-data--font-weight);
+  }
+
+  /* Anillo de foco común a todo lo que se puede enfocar con el teclado. */
+  .vx-btn:focus-visible,
+  .vx-chip:focus-visible,
+  .vx-nav__item:focus-visible,
+  .vx-round:focus-visible,
+  .vx-toast__close:focus-visible,
+  .vx-bulkbar__action:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  /* ------------------------------------------------------------ Botón */
+
+  .vx-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    height: 36px;
+    padding: 0 var(--space-4);
+    border-radius: var(--radius-md);
+    border: 1px solid transparent;
+    font: 500 13px/16px var(--font-sans);
+    cursor: pointer;
+    white-space: nowrap;
+    transition:
+      box-shadow var(--motion-fast) var(--motion-ease),
+      border-color var(--motion-fast) var(--motion-ease);
+  }
+
+  /* Uno solo por vista: la acción principal. */
+  .vx-btn--primary {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  .vx-btn--primary:hover {
+    box-shadow: inset 0 0 0 999px rgb(17 17 17 / 0.06);
+  }
+
+  .vx-btn--secondary {
+    background: var(--ink);
+    color: var(--on-ink);
+  }
+
+  .vx-btn--secondary:hover {
+    box-shadow: inset 0 0 0 999px light-dark(rgb(255 255 255 / 0.1), rgb(17 17 17 / 0.08));
+  }
+
+  .vx-btn--ghost {
+    background: var(--card);
+    color: var(--ink);
+    border-color: var(--line);
+  }
+
+  .vx-btn--ghost:hover {
+    border-color: var(--ink-muted);
+  }
+
+  /* PROPUESTA: acción destructiva confirmada («Eliminar plan»). Solo dentro de un modal. */
+  .vx-btn--danger {
+    background: var(--status-danger-ink);
+    color: var(--on-danger);
+  }
+
+  .vx-btn--danger:hover {
+    box-shadow: inset 0 0 0 999px rgb(17 17 17 / 0.08);
+  }
+
+  .vx-btn:disabled,
+  .vx-btn[aria-disabled="true"] {
+    background: var(--line);
+    color: var(--ink-muted);
+    border-color: transparent;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  .vx-btn--sm {
+    height: 28px;
+    padding: 0 var(--space-3);
+    font-size: 12px;
+  }
+
+  /* ------------------------------------------------------------ Navegación */
+
+  .vx-nav {
+    display: inline-flex;
+    gap: var(--space-1);
+  }
+
+  .vx-nav__item {
+    height: 34px;
+    min-width: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 0 10px;
+    border-radius: var(--radius-md);
+    background: var(--card);
+    color: var(--ink);
+    font: 500 13px var(--font-sans);
+    border: 0;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  /* La sección actual va en tinta, nunca en amarillo. Lleva aria-current="page". */
+  .vx-nav__item--active {
+    background: var(--ink);
+    color: var(--on-ink);
+    padding: 0 14px;
+  }
+
+  .vx-search {
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 0 var(--space-3);
+    border-radius: var(--radius-md);
+    background: var(--card);
+    color: var(--ink-muted);
+    font-size: 12px;
+    border: 1px solid transparent;
+  }
+
+  .vx-round {
+    width: 34px;
+    height: 34px;
+    border-radius: var(--radius-full);
+    background: var(--card);
+    display: inline-grid;
+    place-items: center;
+    color: var(--ink);
+    border: 0;
+    cursor: pointer;
+  }
+
+  /* ------------------------------------------------------------ Píldora de estado */
+
+  .vx-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    font: 500 11px/16px var(--font-sans);
+    white-space: nowrap;
+  }
+
+  /* El punto: el estado nunca se comunica solo con color. */
+  .vx-pill::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    flex: none;
+  }
+
+  .vx-pill--success {
+    background: var(--status-success-soft);
+    color: var(--status-success-ink);
+  }
+
+  .vx-pill--progress {
+    background: var(--status-progress-soft);
+    color: var(--status-progress-ink);
+  }
+
+  .vx-pill--warning {
+    background: var(--status-warning-soft);
+    color: var(--status-warning-ink);
+  }
+
+  .vx-pill--danger {
+    background: var(--status-danger-soft);
+    color: var(--status-danger-ink);
+  }
+
+  .vx-pill--delayed {
+    background: var(--status-delayed-soft);
+    color: var(--status-delayed-ink);
+  }
+
+  /* PROPUESTA — en tiempo real: el punto late mientras el estado sigue cambiando
+     (por ejemplo «Cargando» en el patio). Se apaga con prefers-reduced-motion. */
+  .vx-pill--live::before {
+    animation: vx-pulse 1.6s var(--motion-ease) infinite;
+  }
+
+  /* ------------------------------------------------------------ Filtro */
+
+  .vx-chip {
+    height: 28px;
+    padding: 0 var(--space-3);
+    border-radius: var(--radius-md);
+    background: var(--card);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    font: 500 12px var(--font-sans);
+    cursor: pointer;
+  }
+
+  /* El activo lleva aria-pressed="true". */
+  .vx-chip--active,
+  .vx-chip[aria-pressed="true"] {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--on-accent);
+    font-weight: 600;
+  }
+
+  /* ------------------------------------------------------------ Indicador */
+
+  .vx-kpi {
+    background: var(--card);
+    border-radius: var(--radius-md);
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    box-shadow: var(--shadow-card);
+  }
+
+  .vx-kpi__icon {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    background: var(--canvas);
+    display: grid;
+    place-items: center;
+    color: var(--ink);
+    flex: none;
+  }
+
+  .vx-kpi__label {
+    font-size: 12px;
+    color: var(--ink-muted);
+  }
+
+  .vx-kpi__value {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 28px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .vx-kpi__unit {
+    font-size: 13px;
+    color: var(--ink-muted);
+    font-weight: 500;
+    margin-left: 2px;
+  }
+
+  /* La dirección se dice con flecha y signo, no solo con color. */
+  .vx-delta {
+    font: 600 10px var(--font-sans);
+    padding: 1px 5px;
+    border-radius: 4px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  .vx-delta--up {
+    background: var(--status-success-soft);
+    color: var(--status-success-ink);
+  }
+
+  .vx-delta--down {
+    background: var(--status-danger-soft);
+    color: var(--status-danger-ink);
+  }
+
+  /* ------------------------------------------------------------ Progreso */
+
+  /* role="progressbar" con aria-valuenow, aria-valuemin y aria-valuemax. */
+  .vx-progress {
+    height: 8px;
+    border-radius: 4px;
+    background: var(--track);
+    overflow: hidden;
+  }
+
+  .vx-progress__fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 4px;
+    transition: width var(--motion-base) var(--motion-ease);
+  }
+
+  /* ------------------------------------------------------------ Tarjeta y panel */
+
+  .vx-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: var(--space-3);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    box-shadow: var(--shadow-card);
+  }
+
+  .vx-card--selected {
+    border: 2px solid var(--accent-line);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+    padding: calc(var(--space-3) - 1px);
+  }
+
+  .vx-card__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+
+  .vx-card__title {
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .vx-card__meta {
+    font-size: 11px;
+    color: var(--ink-muted);
+  }
+
+  .vx-card__stats {
+    display: flex;
+    justify-content: space-between;
+    font: 500 11px var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    border-top: 1px solid var(--line);
+    padding-top: var(--space-2);
+  }
+
+  .vx-panel {
+    background: var(--card);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    box-shadow: var(--shadow-card);
+  }
+
+  /* ------------------------------------------------------------ Logo */
+
+  /* Para los SVG de archivo (colores fijos): muestra la versión del tema actual. */
+  .vx-logo-light {
+    display: block;
+  }
+
+  .vx-logo-dark {
+    display: none;
+  }
+
+  [data-theme="dark"] .vx-logo-light {
+    display: none;
+  }
+
+  [data-theme="dark"] .vx-logo-dark {
+    display: block;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .vx-logo-light {
+      display: none;
+    }
+
+    :root:not([data-theme="light"]) .vx-logo-dark {
+      display: block;
+    }
+  }
+
+  /* ------------------------------------------------------------ Modal de confirmación (PROPUESTA) */
+
+  /* Sobre el <dialog> nativo: trae el foco atrapado, Esc para cerrar y el velo. */
+  .vx-dialog {
+    width: min(440px, calc(100vw - 2 * var(--space-4)));
+    margin: auto;
+    padding: var(--space-6);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--card);
+    color: var(--ink);
+    box-shadow: var(--shadow-float);
+  }
+
+  .vx-dialog::backdrop {
+    background: var(--scrim);
+  }
+
+  .vx-dialog[open] {
+    animation: vx-rise var(--motion-base) var(--motion-ease);
+  }
+
+  .vx-dialog__head {
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+  }
+
+  .vx-dialog__icon {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    display: grid;
+    place-items: center;
+    flex: none;
+    background: var(--canvas);
+    color: var(--ink);
+  }
+
+  .vx-dialog__icon--danger {
+    background: var(--status-danger-soft);
+    color: var(--status-danger-ink);
+  }
+
+  .vx-dialog__icon--warning {
+    background: var(--status-warning-soft);
+    color: var(--status-warning-ink);
+  }
+
+  .vx-dialog__title {
+    margin: 0;
+    font-size: var(--text-h2);
+    line-height: var(--text-h2--line-height);
+    font-weight: var(--text-h2--font-weight);
+  }
+
+  .vx-dialog__body {
+    margin: var(--space-1) 0 0;
+    color: var(--ink-muted);
+  }
+
+  .vx-dialog__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: var(--space-2);
+    margin-top: var(--space-6);
+  }
+
+  /* ------------------------------------------------------------ Notificaciones (PROPUESTA) */
+
+  /* Región fija abajo a la derecha; en teléfono ocupa el ancho con 16 px de margen. */
+  .vx-toaster {
+    position: fixed;
+    z-index: 50;
+    right: var(--space-4);
+    bottom: var(--space-4);
+    left: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-2);
+    pointer-events: none;
+  }
+
+  @media (min-width: 640px) {
+    .vx-toaster {
+      left: auto;
+      width: 360px;
+    }
+  }
+
+  .vx-toast {
+    pointer-events: auto;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    border: 1px solid var(--line);
+    border-left-width: 3px;
+    border-radius: var(--radius-md);
+    background: var(--card);
+    color: var(--ink);
+    box-shadow: var(--shadow-float);
+    animation: vx-rise var(--motion-base) var(--motion-ease);
+  }
+
+  /* El tono se ve en el borde izquierdo y en el ícono; el texto siempre en tinta. */
+  .vx-toast__icon {
+    flex: none;
+    margin-top: 1px;
+  }
+
+  .vx-toast--success {
+    border-left-color: var(--status-success);
+  }
+
+  .vx-toast--success .vx-toast__icon {
+    color: var(--status-success-ink);
+  }
+
+  .vx-toast--progress {
+    border-left-color: var(--status-progress);
+  }
+
+  .vx-toast--progress .vx-toast__icon {
+    color: var(--status-progress-ink);
+  }
+
+  .vx-toast--warning {
+    border-left-color: var(--status-warning);
+  }
+
+  .vx-toast--warning .vx-toast__icon {
+    color: var(--status-warning-ink);
+  }
+
+  .vx-toast--danger {
+    border-left-color: var(--status-danger);
+  }
+
+  .vx-toast--danger .vx-toast__icon {
+    color: var(--status-danger-ink);
+  }
+
+  .vx-toast--delayed {
+    border-left-color: var(--status-delayed);
+  }
+
+  .vx-toast--delayed .vx-toast__icon {
+    color: var(--status-delayed-ink);
+  }
+
+  .vx-toast__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .vx-toast__title {
+    margin: 0;
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 600;
+  }
+
+  .vx-toast__message {
+    margin: 2px 0 0;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--ink-muted);
+  }
+
+  .vx-toast__actions {
+    display: flex;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+  }
+
+  .vx-toast__close {
+    flex: none;
+    width: 24px;
+    height: 24px;
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--ink-muted);
+    cursor: pointer;
+  }
+
+  .vx-toast__close:hover {
+    background: var(--canvas);
+    color: var(--ink);
+  }
+
+  /* ------------------------------------------------------------ Barra de acciones masivas (PROPUESTA) */
+
+  /* Aparece cuando hay piezas o planes seleccionados. Va en tinta (30 %) para no competir
+     con el botón principal amarillo de la vista. */
+  .vx-bulkbar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4);
+    border-radius: var(--radius-md);
+    background: var(--ink);
+    color: var(--on-ink);
+    box-shadow: var(--shadow-float);
+    animation: vx-rise var(--motion-base) var(--motion-ease);
+  }
+
+  /* Para dejarla flotando abajo y al centro de la pantalla. */
+  .vx-bulkbar--floating {
+    position: fixed;
+    z-index: 40;
+    left: 50%;
+    bottom: var(--space-6);
+    /* `translate` (y no `transform`) para no chocar con la animación de entrada. */
+    translate: -50% 0;
+    max-width: calc(100vw - 2 * var(--space-4));
+  }
+
+  .vx-bulkbar__count {
+    font: 600 13px/16px var(--font-sans);
+    font-variant-numeric: tabular-nums;
+    margin-right: var(--space-2);
+  }
+
+  .vx-bulkbar__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+  }
+
+  .vx-bulkbar__action {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 28px;
+    padding: 0 var(--space-3);
+    border: 1px solid color-mix(in srgb, var(--on-ink) 22%, transparent);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--on-ink);
+    font: 500 12px var(--font-sans);
+    cursor: pointer;
+  }
+
+  .vx-bulkbar__action:hover {
+    background: color-mix(in srgb, var(--on-ink) 10%, transparent);
+  }
+
+  .vx-bulkbar__action:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .vx-bulkbar__clear {
+    margin-left: auto;
+    border-color: transparent;
+  }
+
+  /* Dentro de la barra el foco va en on-ink, porque el fondo es ink. */
+  .vx-bulkbar .vx-bulkbar__action:focus-visible {
+    outline-color: var(--on-ink);
+  }
+}
+
+@keyframes vx-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@keyframes vx-rise {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,246 @@
+<!doctype html>
+<!--
+  Vista previa del sistema de diseño Voxa (@cargo-3d/ui).
+
+  Cómo se abre:
+    pnpm --filter @cargo-3d/ui build:preview   (compila preview/dist/preview.css)
+    y abre este archivo en el navegador.
+
+  Es HTML estático con las mismas clases `vx-` y utilidades de Tailwind que usan los
+  componentes React. Cada columna fuerza un tema con data-theme para comparar claro y oscuro.
+  El JavaScript de abajo solo arma la vista previa (clona columnas, dibuja íconos, abre el
+  modal); no es lógica de la app.
+-->
+<html lang="es-MX">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Voxa · Sistema de diseño</title>
+    <link rel="icon" href="../src/brand/voxa-favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./dist/preview.css" />
+  </head>
+  <body class="vx">
+    <header class="flex flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-8">
+      <div class="flex items-center gap-3" data-logo="logo" data-height="32"></div>
+      <div class="flex items-center gap-2" role="group" aria-label="Tema de la página">
+        <span class="text-small text-ink-muted">Tema de la página</span>
+        <button class="vx-chip" data-page-theme="" aria-pressed="true">Sistema</button>
+        <button class="vx-chip" data-page-theme="light" aria-pressed="false">Claro</button>
+        <button class="vx-chip" data-page-theme="dark" aria-pressed="false">Oscuro</button>
+      </div>
+    </header>
+
+    <main class="grid gap-4 px-4 pb-8 sm:px-8 lg:grid-cols-2">
+      <section data-theme="light" class="bg-canvas text-ink rounded-lg border border-line p-4" data-showcase="Claro"></section>
+      <section data-theme="dark" class="bg-canvas text-ink rounded-lg border border-line p-4" data-showcase="Oscuro"></section>
+    </main>
+
+    <template id="showcase">
+      <h1 class="text-h1 mb-6" data-title></h1>
+
+      <!-- Marca -->
+      <h2 class="text-h2 mb-3">Logo</h2>
+      <div class="vx-panel mb-6 flex flex-wrap items-end gap-6">
+        <div data-logo="logo" data-height="40"></div>
+        <div data-logo="badge" data-height="48"></div>
+        <div data-logo="mark" data-height="48"></div>
+        <div class="flex items-end gap-2"><span data-logo="favicon" data-height="20"></span><span data-logo="favicon" data-height="16"></span></div>
+      </div>
+
+      <!-- Paleta -->
+      <h2 class="text-h2 mb-3">Paleta 60 · 30 · 10</h2>
+      <div class="mb-6 grid grid-cols-3 gap-2 sm:grid-cols-6">
+        <div class="rounded-md border border-line bg-canvas p-2 text-small">canvas</div>
+        <div class="rounded-md border border-line bg-card p-2 text-small">card</div>
+        <div class="rounded-md bg-ink p-2 text-small text-on-ink">ink</div>
+        <div class="rounded-md bg-accent p-2 text-small text-on-accent">accent</div>
+        <div class="rounded-md bg-accent-soft p-2 text-small">accent-soft</div>
+        <div class="rounded-md border-2 border-accent-line bg-card p-2 text-small text-accent-line">accent-line</div>
+      </div>
+
+      <!-- Tipografía -->
+      <h2 class="text-h2 mb-3">Tipografía</h2>
+      <div class="vx-panel mb-6 flex flex-col gap-2">
+        <span class="text-display">87 %</span>
+        <span class="text-h1">Planes de carga</span>
+        <span class="text-h2">Contenedor 40' HC</span>
+        <span class="text-body">Acomoda 312 cajas respetando el peso por eje.</span>
+        <span class="text-label">Optimizar carga</span>
+        <span class="text-small text-ink-muted">Actualizado hace 5 min</span>
+        <span class="font-mono text-data">24 310 kg · 67,4 m³</span>
+      </div>
+
+      <!-- Botones -->
+      <h2 class="text-h2 mb-3">Botones</h2>
+      <div class="mb-6 flex flex-wrap items-center gap-2">
+        <button class="vx-btn vx-btn--primary"><i data-lucide="zap"></i>Optimizar carga</button>
+        <button class="vx-btn vx-btn--secondary"><i data-lucide="send"></i>Liberar plan</button>
+        <button class="vx-btn vx-btn--ghost"><i data-lucide="rotate-3d"></i>Ver en 3D</button>
+        <button class="vx-btn vx-btn--primary" disabled>Optimizar carga</button>
+        <button class="vx-btn vx-btn--ghost vx-btn--sm">Cancelar</button>
+        <button class="vx-btn vx-btn--danger vx-btn--sm" data-open-dialog>Eliminar plan…</button>
+      </div>
+
+      <!-- Estados -->
+      <h2 class="text-h2 mb-3">Estados en tiempo real</h2>
+      <div class="mb-3 flex flex-wrap gap-2">
+        <span class="vx-pill vx-pill--success">Listo</span>
+        <span class="vx-pill vx-pill--progress vx-pill--live" role="status">Cargando</span>
+        <span class="vx-pill vx-pill--warning">Cerca del límite</span>
+        <span class="vx-pill vx-pill--danger">Excede VGM</span>
+        <span class="vx-pill vx-pill--delayed">Demorado</span>
+      </div>
+      <div class="mb-6 flex flex-wrap gap-1">
+        <button class="vx-chip" aria-pressed="true">Todas</button>
+        <button class="vx-chip" aria-pressed="false">Cargando</button>
+        <button class="vx-chip" aria-pressed="false">Listas</button>
+        <button class="vx-chip" aria-pressed="false">Con problema</button>
+      </div>
+
+      <!-- Indicadores y tarjeta -->
+      <h2 class="text-h2 mb-3">Indicadores y tarjeta de carga</h2>
+      <div class="mb-3 flex flex-wrap gap-2">
+        <div class="vx-kpi">
+          <span class="vx-kpi__icon"><i data-lucide="box" data-size="18"></i></span>
+          <div><div class="vx-kpi__label">Ocupación</div><span class="vx-kpi__value">87</span><span class="vx-kpi__unit">%</span><span class="vx-delta vx-delta--up">↑ 4,2 %</span></div>
+        </div>
+        <div class="vx-kpi">
+          <span class="vx-kpi__icon"><i data-lucide="weight" data-size="18"></i></span>
+          <div><div class="vx-kpi__label">Peso VGM</div><span class="vx-kpi__value">24,3</span><span class="vx-kpi__unit">t</span></div>
+        </div>
+      </div>
+      <div class="vx-card vx-card--selected mb-6">
+        <div class="vx-card__head">
+          <div><div class="vx-card__title">Contenedor 40' HC</div><div class="vx-card__meta">Plan de ejemplo · 4 destinos</div></div>
+          <span class="vx-pill vx-pill--progress">Cargando</span>
+        </div>
+        <div class="flex justify-between text-small text-ink-muted"><span>312 cajas</span><span>87 %</span></div>
+        <div class="vx-progress" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100"><div class="vx-progress__fill" style="width: 87%"></div></div>
+        <div class="vx-card__stats"><span>24 310 kg</span><span>67,4 m³</span><span>CG ✓</span></div>
+      </div>
+
+      <!-- Barra de acciones masivas -->
+      <h2 class="text-h2 mb-3">Acciones masivas <span class="vx-pill vx-pill--delayed">Propuesta</span></h2>
+      <div class="vx-bulkbar mb-6" role="toolbar" aria-label="Acciones para la selección">
+        <span class="vx-bulkbar__count">3 piezas</span>
+        <div class="vx-bulkbar__actions">
+          <button class="vx-bulkbar__action"><i data-lucide="container"></i>Mover a otro equipo</button>
+          <button class="vx-bulkbar__action"><i data-lucide="layers"></i>No apilable</button>
+          <button class="vx-bulkbar__action" data-open-dialog><i data-lucide="trash"></i>Eliminar</button>
+        </div>
+        <button class="vx-bulkbar__action vx-bulkbar__clear"><i data-lucide="x"></i>Quitar selección</button>
+      </div>
+
+      <!-- Notificaciones -->
+      <h2 class="text-h2 mb-3">Notificaciones <span class="vx-pill vx-pill--delayed">Propuesta</span></h2>
+      <div class="mb-6 flex flex-col gap-2">
+        <div class="vx-toast vx-toast--success">
+          <span class="vx-toast__icon"><i data-lucide="circle-check" data-size="18"></i></span>
+          <div class="vx-toast__content"><p class="vx-toast__title">Plan liberado</p><div class="vx-toast__message">312 cajas · 24 310 kg · CG en rango</div></div>
+          <button class="vx-toast__close" aria-label="Cerrar aviso"><i data-lucide="x" data-size="16"></i></button>
+        </div>
+        <div class="vx-toast vx-toast--warning">
+          <span class="vx-toast__icon"><i data-lucide="triangle-exclamation-point" data-size="18"></i></span>
+          <div class="vx-toast__content"><p class="vx-toast__title">Eje trasero al 93 %</p><div class="vx-toast__message">Cerca del límite de la NOM-012.</div><div class="vx-toast__actions"><button class="vx-btn vx-btn--ghost vx-btn--sm">Ver en 3D</button></div></div>
+          <button class="vx-toast__close" aria-label="Cerrar aviso"><i data-lucide="x" data-size="16"></i></button>
+        </div>
+        <div class="vx-toast vx-toast--danger" role="alert">
+          <span class="vx-toast__icon"><i data-lucide="octagon-exclamation-point" data-size="18"></i></span>
+          <div class="vx-toast__content"><p class="vx-toast__title">Excede VGM</p><div class="vx-toast__message">Sobran 1 240 kg para el contenedor elegido.</div></div>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <h2 class="text-h2 mb-3">Modal de confirmación <span class="vx-pill vx-pill--delayed">Propuesta</span></h2>
+      <button class="vx-btn vx-btn--ghost" data-open-dialog>Abrir modal</button>
+      <dialog class="vx-dialog" aria-label="¿Eliminar este plan?">
+        <div class="vx-dialog__head">
+          <span class="vx-dialog__icon vx-dialog__icon--danger"><i data-lucide="octagon-exclamation-point" data-size="18"></i></span>
+          <div>
+            <h2 class="vx-dialog__title">¿Eliminar este plan?</h2>
+            <div class="vx-dialog__body">Se borran las 312 cajas y su acomodo. No se puede deshacer.</div>
+          </div>
+        </div>
+        <form method="dialog" class="vx-dialog__actions">
+          <button class="vx-btn vx-btn--ghost" autofocus>Cancelar</button>
+          <button class="vx-btn vx-btn--danger">Eliminar plan</button>
+        </form>
+      </dialog>
+    </template>
+
+    <script src="../node_modules/lucide/dist/umd/lucide.min.js"></script>
+    <script>
+      // Solo para la vista previa. Va dentro de un bloque para no chocar con globales como window.top.
+      {
+      const cubeTop = [
+        "32,6.22 41.59,11.75 32,17.29 22.41,11.75",
+        "20.3,12.96 29.89,18.5 20.3,24.04 10.71,18.5",
+        "43.7,12.96 53.29,18.5 43.7,24.04 34.11,18.5",
+      ];
+      const voxel = "32,19.71 41.59,25.25 32,30.79 22.41,25.25";
+      const front = [
+        "9.65,20.32 19.25,25.86 19.25,36.93 9.65,31.39",
+        "9.65,33.82 19.25,39.36 19.25,50.43 9.65,44.89",
+        "21.35,27.07 30.95,32.61 30.95,43.68 21.35,38.14",
+        "21.35,40.57 30.95,46.11 30.95,57.18 21.35,51.64",
+      ];
+      const side = [
+        "33.05,32.61 42.65,27.07 42.65,38.14 33.05,43.68",
+        "33.05,46.11 42.65,40.57 42.65,51.64 33.05,57.18",
+        "44.75,25.86 54.35,20.32 54.35,31.39 44.75,36.93",
+        "44.75,39.36 54.35,33.82 54.35,44.89 44.75,50.43",
+      ];
+      const poly = (pts, v) => pts.map((p) => `<polygon points="${p}" style="fill:var(${v})"/>`).join("");
+      const cube = (p) => poly(cubeTop, `--logo-${p}-top`) + poly([voxel], `--logo-${p}-voxel`) + poly(front, `--logo-${p}-front`) + poly(side, `--logo-${p}-side`);
+      const badge = `<rect width="64" height="64" rx="14" style="fill:var(--logo-badge)"/><g transform="translate(10 10) scale(.6875)">${cube("badge")}</g>`;
+      let clip = 0;
+      const word = () => {
+        const id = `w${clip++}`;
+        return `<g transform="translate(86 12) scale(.8333)"><clipPath id="${id}"><rect x="0" y="4" width="170" height="40"/></clipPath><g clip-path="url(#${id})" fill="none" stroke-width="8" style="stroke:var(--logo-word)"><path d="M1.9 -2 L18 46 L34.1 -2"/><circle cx="62" cy="24" r="16"/><path d="M88 -2 L124 50 M124 -2 L88 50"/><path d="M127.9 50 L144 2 L160.1 50 M136 32 H152"/></g></g>`;
+      };
+      const favicon = `<rect width="64" height="64" rx="14" style="fill:var(--logo-badge)"/><g transform="translate(8 8) scale(.75)"><polygon points="32,6.35 53.06,18.5 32,30.65 10.94,18.5" style="fill:var(--logo-badge-top)"/><polygon points="32,19.85 41.36,25.25 32,30.65 22.64,25.25" style="fill:var(--logo-badge-voxel)"/><polygon points="9.77,20.52 30.83,32.67 30.83,56.98 9.77,44.83" style="fill:var(--logo-badge-front)"/><polygon points="33.17,32.67 54.23,20.52 54.23,44.83 33.17,56.98" style="fill:var(--logo-badge-side)"/></g>`;
+      const svg = (variant, h) => {
+        const w = variant === "logo" ? Math.round((h * 222) / 64) : h;
+        const vb = variant === "logo" ? "0 0 222 64" : "0 0 64 64";
+        const body = { logo: badge + word(), badge, mark: cube("mark"), favicon }[variant];
+        return `<svg viewBox="${vb}" width="${w}" height="${h}" role="img" aria-label="Voxa">${body}</svg>`;
+      };
+
+      const template = document.getElementById("showcase");
+      for (const column of document.querySelectorAll("[data-showcase]")) {
+        column.append(template.content.cloneNode(true));
+        column.querySelector("[data-title]").textContent = `Tema ${column.dataset.showcase.toLowerCase()}`;
+        const dialog = column.querySelector("dialog");
+        for (const opener of column.querySelectorAll("[data-open-dialog]")) opener.addEventListener("click", () => dialog.showModal());
+      }
+      for (const el of document.querySelectorAll("[data-logo]")) el.innerHTML = svg(el.dataset.logo, Number(el.dataset.height));
+
+      for (const icon of document.querySelectorAll("i[data-lucide]")) {
+        const size = icon.dataset.size ?? "14";
+        icon.setAttribute("width", size);
+        icon.setAttribute("height", size);
+        icon.setAttribute("stroke-width", "1.5");
+        icon.setAttribute("aria-hidden", "true");
+      }
+      lucide.createIcons({ attrs: { "stroke-width": 1.5 } });
+
+      // Filtros: el activo lleva aria-pressed="true".
+      document.addEventListener("click", (event) => {
+        const chip = event.target.closest(".vx-chip:not([data-page-theme])");
+        if (!chip) return;
+        for (const other of chip.parentElement.querySelectorAll(".vx-chip")) other.setAttribute("aria-pressed", String(other === chip));
+      });
+
+      // Tema de la página (fuera de las dos columnas).
+      for (const button of document.querySelectorAll("[data-page-theme]")) {
+        button.addEventListener("click", () => {
+          const theme = button.dataset.pageTheme;
+          if (theme) document.documentElement.dataset.theme = theme;
+          else delete document.documentElement.dataset.theme;
+          for (const other of document.querySelectorAll("[data-page-theme]")) other.setAttribute("aria-pressed", String(other === button));
+        });
+      }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+/*
+ * index.css — Hoja de entrada del sistema de diseño Voxa para las apps (ADR-0014).
+ *
+ * Cómo se usa (en `apps/web/src/main.css`, por ejemplo):
+ *
+ *   @import "@cargo-3d/ui/styles.css";
+ *
+ * Trae, en este orden: las fuentes, Tailwind CSS v4, los tokens y los componentes `vx-`.
+ * `@source` le pide a Tailwind que también busque clases en los componentes React de este
+ * paquete (dentro de node_modules no lo haría solo).
+ */
+@import "./fonts.css";
+@import "tailwindcss";
+@import "./tokens.css";
+@import "./components.css";
+
+@source "../";

@@ -1,0 +1,10 @@
+/*
+ * fonts.css — Familias tipográficas del sistema Voxa (licencia OFL, Google Fonts).
+ *
+ * Inter Tight: interfaz (400, 500, 600 y 700). IBM Plex Mono: pesos, medidas y coordenadas (500).
+ *
+ * Por qué separado: una app sin internet (escritorio en el patio) puede no importar este
+ * archivo y servir las fuentes desde sus propios archivos; los tokens ya traen respaldo
+ * (`system-ui`, `ui-monospace`). Debe importarse ANTES que cualquier otra regla.
+ */
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Inter+Tight:wght@400;500;600;700&display=swap");

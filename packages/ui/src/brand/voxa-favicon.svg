@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Voxa</title>
+  <rect width="64" height="64" rx="14" fill="#FFC400"/>
+  <g transform="translate(8 8) scale(.75)">
+    <polygon points="32,6.35 53.06,18.5 32,30.65 10.94,18.5" fill="#64500B"/>
+    <polygon points="32,19.85 41.36,25.25 32,30.65 22.64,25.25" fill="#FFFFFF"/>
+    <polygon points="9.77,20.52 30.83,32.67 30.83,56.98 9.77,44.83" fill="#111111"/>
+    <polygon points="33.17,32.67 54.23,20.52 54.23,44.83 33.17,56.98" fill="#3A300E"/>
+  </g>
+</svg>
