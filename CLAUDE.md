@@ -162,7 +162,10 @@ con el usuario en qué sprint estamos. No se pasa de fase sin cumplir su criteri
 - Cada sesión de trabajo tiene su prompt en `docs/src/prompts.md`, identificado por número (`1.1.2`).
 - Comandos del proyecto (skills en `.claude/skills/`): `/iniciar-sesion`, `/sesion <número>`, `/revisar`,
   `/cerrar-sesion`, `/punto-de-control <tema>`, `/cerrar-sprint <sprint>`, `/explicar <algo>`,
-  `/nuevo-adr <título>` y `/cambiar-contrato <cambio>`. Guía completa en `docs/src/flujo-claude-code.md`.
+  `/nuevo-adr <título>`, `/cambiar-contrato <cambio>` y `/buscador <sprint o tema>` (lanza el agente
+  `.claude/agents/investigador-logistico.md`: investiga datos logísticos con fuentes, no escribe archivos;
+  es **opcional**, solo cuando el sprint necesita datos que todavía no se tienen).
+  Guía completa en `docs/src/flujo-claude-code.md`.
 - Siempre se propone un plan y se espera la aprobación del usuario antes de escribir código.
 - Claude nunca hace commit ni push: propone el mensaje y el usuario los ejecuta.
 - Si cambias una sesión de `prompts.md`, conserva el formato de encabezado `### <número> — <título>`.
@@ -193,6 +196,7 @@ packages/ui              TS — sistema de diseño Voxa (ADR-0014): tokens, Tail
 apps/web | desktop | mobile
 docs/                    mdBook: plan, prompts, ADRs, conceptos, aprendizaje, bitácora
 .claude/skills/          comandos de Claude Code del proyecto
+.claude/agents/          subagentes del proyecto (investigador-logistico)
 docker-compose.yml       PostgreSQL (y la API con --profile api)
 scripts/servicios/        levantar y detener el entorno de desarrollo (.ps1/.cmd Windows, .sh/.command macOS/Linux)
 .vscode/tasks.json       tareas "Levantar servicios" (Ctrl+Shift+B) y "Detener servicios"

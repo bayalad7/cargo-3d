@@ -24,6 +24,7 @@ dispara por su cuenta.
 | Comando | Cuándo usarlo | Qué hace | ¿Modifica archivos? |
 | --- | --- | --- | --- |
 | `/iniciar-sesion [meta]` | Al abrir Claude Code, siempre | Lee `CLAUDE.md`, el plan y la última bitácora; revisa la rama y los cambios pendientes; te dice dónde vamos y qué sesión sigue | No |
+| `/buscador <sprint o tema>` | **Opcional.** Después de `/iniciar-sesion` y antes de `/sesion`, solo si el sprint necesita datos logísticos que todavía no tienes (si ya están en `docs/datos/`, `contracts/` o `engine/fixtures/`, sáltalo) | Lanza el agente `investigador-logistico` (`.claude/agents/`) en un contexto aparte: busca en fuentes primarias (ISO, NOM-012, CTU Code, VGM, EPAL), cita cada dato con su fuente y nivel de confianza y entrega catálogos, fórmulas, casos borde, escenarios sintéticos y el destino propuesto | No |
 | `/sesion 1.1.2` | Para ejecutar una sesión de `prompts.md` | Busca la sesión, revisa requisitos, que estés en `develop` y el modelo; **propone un plan y espera tu aprobación**; luego implementa y verifica | Sí, después de que apruebes |
 | `/revisar [enfoque]` | Antes de cerrar una sesión con cambios importantes | Revisión como ingeniero senior de todo lo que cambió contra `main`; hallazgos ordenados por gravedad | No |
 | `/cerrar-sesion [nota]` | Al terminar cada sesión | Corre `gofmt`, `go vet` y pruebas; actualiza bitácora, CHANGELOG, Estado de `CLAUDE.md` y checklist del plan; propone el mensaje de commit | Sí (solo documentación) |
