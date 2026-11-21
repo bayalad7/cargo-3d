@@ -7,7 +7,7 @@ disable-model-invocation: true
 
 # Iniciar sesión de trabajo
 
-Vas a arrancar una sesión de trabajo en el proyecto Cargo 3D (Plan C, backend en Go).
+Vas a arrancar una sesión de trabajo en el proyecto Cargo 3D (backend en Go).
 Responde siempre en español.
 
 ## Estado actual de git
