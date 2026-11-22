@@ -23,6 +23,24 @@ JSON Schema 2020-12. Las dos raíces están en `$defs`: `EngineInput` (lo que re
 - **Unidades en el nombre:** todo lo que termina en `Mm` son milímetros y en `Kg` kilogramos, **siempre enteros**.
   Al capturar, las medidas y pesos de las piezas se redondean hacia arriba y las capacidades del equipo hacia abajo
   (ADR-0016).
+  Regla corta: **redondea en tu contra**. El plan nunca debe prometer algo que no cabe.
+
+  | Valor real | Qué es | Se guarda | En Go (y en PHP) |
+  |---|---|---|---|
+  | puerta de 98,3" = 2 496,82 mm | equipo | 2 496 | `math.Floor` (`floor`) |
+  | caja de 47,2" = 1 198,88 mm | pieza | 1 199 | `math.Ceil` (`ceil`) |
+  | carga útil de 26 580,7 kg | equipo | 26 580 | `math.Floor` (`floor`) |
+  | pieza de 12,3 kg | pieza | 13 | `math.Ceil` (`ceil`) |
+
+- **Quién sabe qué** (ADR-0016):
+
+  | Quién | Qué sabe |
+  |---|---|
+  | API o catálogo | NOM-012, tipo de camino, configuración del vehículo. **Calcula** `maxPayloadKg` |
+  | Contrato | Que `maxPayloadKg` es un entero. Su `maximum` solo atrapa errores de captura; no es un límite legal |
+  | Motor | Ese número, y que no debe pasarse |
+
+  Si cambia la norma, se corrige la API; el contrato y el motor se quedan igual.
 - **Coordenadas** (ADR-0015): origen en la esquina interior del fondo, abajo, a la izquierda **mirando del fondo
   hacia la puerta**; `x` = largo hacia la puerta, `y` = alto hacia arriba, `z` = ancho hacia la derecha.
   Es de mano derecha, igual que Three.js.
@@ -39,7 +57,8 @@ JSON Schema 2020-12. Las dos raíces están en `$defs`: `EngineInput` (lo que re
 - **El equipo es una lista de tramos** (`sections`), cada uno una caja. En la versión 0.1.0 solo se acepta uno.
 - **Orientaciones:** 6 permutaciones (`LWH`, `WLH`, `LHW`, `HLW`, `WHL`, `HWL`); la 1.ª letra va sobre `x`,
   la 2.ª sobre `z` y la 3.ª sobre `y`.
-- **Lo que no cupo no es un error:** sale en `unplaced` con su motivo (ADR-0016). Los errores de validación son
+- **Lo que no cupo no es un error:** sale en `unplaced` con su motivo (ADR-0016). Cada unidad lleva **un solo** motivo,
+  el primero que se cumpla en el orden de `UnplacedReason`. Los errores de validación son
   solo para entradas mal formadas.
 - **Carga sobredimensionada (OOG)** (ADR-0017): un tramo abierto (flat rack, plataforma) puede traer
   `overhang: { topMm, leftMm, rightMm }`, el margen que una pieza puede rebasar por arriba y a cada lado (nunca al

@@ -195,7 +195,7 @@
     },
     "UnplacedItem": {
       "title": "UnplacedItem",
-      "description": "Unidades de una pieza que no se acomodaron por un mismo motivo.",
+      "description": "Unidades de una pieza que no se acomodaron por un mismo motivo. Cada unidad lleva exactamente UN motivo, aunque incumpla varios. Una pieza puede aparecer más de una vez solo si sus unidades tienen motivos distintos.",
       "type": "object",
       "additionalProperties": false,
       "required": ["itemId", "quantity", "reason"],
@@ -207,7 +207,7 @@
     },
     "UnplacedReason": {
       "title": "UnplacedReason",
-      "description": "Por qué no se acomodó. Se aplica el primero que se cumpla, en este orden: EXCEEDS_DIMENSIONS (no cabe en ningún tramo, ni con su margen de overhang, con ninguna orientación permitida); EXCEEDS_DOOR (cabe adentro, pero ninguna orientación que cabe pasa por la puerta); EXCEEDS_MAX_WEIGHT (una sola unidad pesa más que maxPayloadKg); WEIGHT_LIMIT_REACHED (el peso que queda no alcanza para la unidad); NO_SPACE_AVAILABLE (queda peso, pero no hay hueco válido); TIME_LIMIT_REACHED (el motor se detuvo por tiempo). Los motivos de restricciones futuras (apilado, ejes, centro de gravedad) se agregan cuando existan.",
+      "description": "Por qué no se acomodó una unidad. Es uno solo: el primero que se cumpla, en este orden, y ahí se detiene la revisión: EXCEEDS_DIMENSIONS (no cabe en ningún tramo, ni con su margen de overhang, con ninguna orientación permitida); EXCEEDS_DOOR (cabe adentro, pero ninguna orientación que cabe pasa por la puerta); EXCEEDS_MAX_WEIGHT (una sola unidad pesa más que maxPayloadKg); WEIGHT_LIMIT_REACHED (el peso que queda no alcanza para la unidad); NO_SPACE_AVAILABLE (queda peso, pero no hay hueco válido); TIME_LIMIT_REACHED (el motor se detuvo por tiempo). Los motivos de restricciones futuras (apilado, ejes, centro de gravedad) se agregan cuando existan.",
       "enum": [
         "EXCEEDS_DIMENSIONS",
         "EXCEEDS_DOOR",

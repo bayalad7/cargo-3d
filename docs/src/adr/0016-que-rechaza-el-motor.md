@@ -19,7 +19,9 @@ Al diseñar `contracts/engine.schema.json` (sesión 1.1.1) aparecieron tres preg
 
 1. **Lo que no cabe es un resultado, no un error.** La pieza sale en `unplaced` con un motivo de `UnplacedReason`.
    Se aplica el primero que se cumpla, en este orden: `EXCEEDS_DIMENSIONS`, `EXCEEDS_DOOR`, `EXCEEDS_MAX_WEIGHT`,
-   `WEIGHT_LIMIT_REACHED`, `NO_SPACE_AVAILABLE`, `TIME_LIMIT_REACHED`. Los errores de validación quedan solo para
+   `WEIGHT_LIMIT_REACHED`, `NO_SPACE_AVAILABLE`, `TIME_LIMIT_REACHED`. **Cada unidad lleva exactamente un motivo**,
+   aunque incumpla varios: un tubo más largo que el contenedor y además más pesado que el límite sale solo como
+   `EXCEEDS_DIMENSIONS`. Una pieza se repite en `unplaced` únicamente si sus unidades tienen motivos distintos. Los errores de validación quedan solo para
    entradas mal formadas (medidas en cero, ids repetidos, versión distinta, tramos encimados…). Una puerta más
    grande que el interior **no** es error: en el reefer la puerta es más alta que la altura útil bajo la línea de
    carga, y en ese caso la puerta simplemente no limita.
