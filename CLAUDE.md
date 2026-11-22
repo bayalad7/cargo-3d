@@ -232,9 +232,9 @@ pnpm --filter @cargo-3d/ui build:preview   # compila la vista previa (abrir pack
 - **Nivel de comentarios Go:** máximo (casi cada línea).
 - **Contrato del motor:** `contracts/engine.schema.json` v0.1.0, 23 ejemplos válidos y 17 inválidos en `contracts/examples/` (ADR-0015, 0016 y 0017).
   Escrito con datos sintéticos; la sesión 1.1.5 lo ajusta con las cargas reales.
-- **Siguiente paso:** sesión 1.1.2 (`Container` y `CargoItem` en Go, siguiendo el contrato). Falta el punto de control de
-  la 1.1.1 (explicar los campos del contrato).
+- **Siguiente paso:** sesión 1.1.2 (`Container` y `CargoItem` en Go, siguiendo el contrato).
+  El punto de control del contrato no se aprobó (P-007): sus dos temas se vuelven a ver en la 1.1.2 y la 1.1.6.
 - **Sistema de diseño:** base lista en `packages/ui` (2026-11-21, fuera del plan); se conecta a `apps/web` en el sprint 1.6.
 - **Pendientes:** registro completo en `docs/src/pendientes.md` (P-001 a P-019). Los de Benjamín más urgentes:
-  P-019 (copiar `docs/datos/` y `.env` antes de cambiar de computadora), P-007 (punto de control, antes de 1.1.2)
+  P-019 (copiar `docs/datos/` y `.env` antes de cambiar de computadora)
   y P-001 (cargas reales y reglas del patio, antes de 1.1.5).

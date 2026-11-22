@@ -95,6 +95,9 @@ backend/internal/engine, siguiendo exactamente contracts/engine.schema.json.
   campo (LengthMM, WeightKG).
 - Agrega etiquetas json que coincidan con el contrato.
 - Agrega el método Volume() a los dos tipos.
+- Al llegar a MaxPayloadKG y a las medidas, explícame sobre el código dos temas
+  que no me quedaron claros (P-007): quién calcula ese límite y por qué el motor
+  no conoce la NOM-012, y hacia dónde se redondea cada valor.
 - Comenta casi cada línea, como pide CLAUDE.md, explicando cada concepto
   de Go nuevo (struct, tipos numéricos, etiquetas, métodos) comparado con PHP.
 - Pruebas de tabla para Volume() y para convertir de JSON a Go y de regreso
@@ -235,6 +238,9 @@ Primero propón el plan.
 ```
 /punto-de-control modelos y validación del motor
 ```
+
+Incluye una pregunta de cada tema pendiente de la 1.1.1 (P-007): quién calcula `maxPayloadKg` y hacia dónde se
+redondea.
 
 Después:
 

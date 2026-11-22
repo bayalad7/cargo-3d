@@ -8,6 +8,7 @@ Cada versión liberada en `main` lleva su etiqueta de git (ADR-0012).
 
 ### Agregado
 - Ejemplos del contrato: 8 equipos más (23 en total) y 17 entradas inválidas en `contracts/examples/invalid/`.
+- Sistema oficial de Voxa v5: diálogo, aviso, barra masiva, botón `danger`, estado en vivo y tres tokens.
 - `scripts/contratos/check-examples.mjs` (`pnpm examples:check`): revisa las reglas físicas de los ejemplos.
 - Conceptos: sistema de coordenadas, y equipos y normas (Tablas A-2 y B-2 de la NOM-012 leídas del DOF).
 - Formatos para levantar datos en el patio (`docs/plantillas/patio/`) y sesión 2.1.6 (equipos con varios tramos).
