@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-40rh",
+    "description": "Contenedor 40' HC refrigerado (45R1), altura útil bajo la línea de carga, ejemplo sintético",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 11584,
+        "widthMm": 2280,
+        "heightMm": 2425
+      }
+    ],
+    "door": {
+      "widthMm": 2290,
+      "heightMm": 2557
+    },
+    "maxPayloadKg": 26000,
+    "tareKg": 4560
+  },
+  "items": [
+    {
+      "id": "pallet-epal",
+      "description": "Pallet EPAL refrigerado",
+      "lengthMm": 1200,
+      "widthMm": 800,
+      "heightMm": 2200,
+      "weightKg": 1100,
+      "quantity": 20,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false
+    },
+    {
+      "id": "tarima-alta",
+      "description": "Tarima alta de 2,5 m",
+      "lengthMm": 1200,
+      "widthMm": 1000,
+      "heightMm": 2500,
+      "weightKg": 800,
+      "quantity": 1,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ]
+    }
+  ]
+}

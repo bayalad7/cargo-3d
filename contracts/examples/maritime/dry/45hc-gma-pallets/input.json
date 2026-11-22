@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-45hc",
+    "description": "Contenedor 45' HC (L5G1 / 55G1 en ISO 6346:2022), ejemplo sintético; medidas ONE, DSV y Blue Water",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 13556,
+        "widthMm": 2352,
+        "heightMm": 2697
+      }
+    ],
+    "door": {
+      "widthMm": 2340,
+      "heightMm": 2580
+    },
+    "maxPayloadKg": 27600,
+    "tareKg": 4820
+  },
+  "items": [
+    {
+      "id": "pallet-gma",
+      "description": "Pallet GMA 48x40 cargado",
+      "lengthMm": 1219,
+      "widthMm": 1016,
+      "heightMm": 1300,
+      "weightKg": 600,
+      "quantity": 26,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false
+    }
+  ]
+}

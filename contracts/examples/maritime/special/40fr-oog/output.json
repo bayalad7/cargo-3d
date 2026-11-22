@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "0.1.0",
+  "containerId": "c-40fr",
+  "placements": [
+    { "itemId": "cajon", "instance": 0, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 0, "dxMm": 2800, "dyMm": 1800, "dzMm": 2000, "orientation": "LWH" },
+    { "itemId": "cajon", "instance": 1, "sectionId": "main", "xMm": 2800, "yMm": 0, "zMm": 0, "dxMm": 2800, "dyMm": 1800, "dzMm": 2000, "orientation": "LWH" },
+    { "itemId": "transformador", "instance": 0, "sectionId": "main", "xMm": 5600, "yMm": 0, "zMm": 0, "dxMm": 2500, "dyMm": 2100, "dzMm": 2100, "orientation": "LWH", "outOfGauge": true },
+    { "itemId": "tubo", "instance": 0, "sectionId": "main", "xMm": 8100, "yMm": 0, "zMm": 0, "dxMm": 3000, "dyMm": 400, "dzMm": 400, "orientation": "LWH" },
+    { "itemId": "tubo", "instance": 1, "sectionId": "main", "xMm": 8100, "yMm": 0, "zMm": 400, "dxMm": 3000, "dyMm": 400, "dzMm": 400, "orientation": "LWH" },
+    { "itemId": "tubo", "instance": 2, "sectionId": "main", "xMm": 8100, "yMm": 0, "zMm": 800, "dxMm": 3000, "dyMm": 400, "dzMm": 400, "orientation": "LWH" },
+    { "itemId": "tubo", "instance": 3, "sectionId": "main", "xMm": 8100, "yMm": 0, "zMm": 1200, "dxMm": 3000, "dyMm": 400, "dzMm": 400, "orientation": "LWH" },
+    { "itemId": "placa", "instance": 0, "sectionId": "main", "xMm": 11100, "yMm": 0, "zMm": -96, "dxMm": 500, "dyMm": 200, "dzMm": 2400, "orientation": "LWH", "outOfGauge": true }
+  ],
+  "unplaced": [
+    { "itemId": "cajon", "quantity": 1, "reason": "WEIGHT_LIMIT_REACHED" }
+  ],
+  "metrics": {
+    "placedCount": 8,
+    "unplacedCount": 1,
+    "outOfGaugeCount": 2,
+    "loadedWeightKg": 26900,
+    "loadedVolumeMm3": 33345000000,
+    "volumeUtilization": 0.663,
+    "weightUtilization": 0.9607
+  }
+}

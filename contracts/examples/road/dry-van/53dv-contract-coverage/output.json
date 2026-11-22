@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "0.1.0",
+  "containerId": "c-53dv",
+  "placements": [
+    { "itemId": "caja-libre", "instance": 0, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 0, "dxMm": 1200, "dyMm": 600, "dzMm": 800, "orientation": "LWH" },
+    { "itemId": "caja-libre", "instance": 1, "sectionId": "main", "xMm": 1200, "yMm": 0, "zMm": 0, "dxMm": 800, "dyMm": 600, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "caja-libre", "instance": 2, "sectionId": "main", "xMm": 2000, "yMm": 0, "zMm": 0, "dxMm": 1200, "dyMm": 800, "dzMm": 600, "orientation": "LHW" },
+    { "itemId": "caja-libre", "instance": 3, "sectionId": "main", "xMm": 3200, "yMm": 0, "zMm": 0, "dxMm": 600, "dyMm": 800, "dzMm": 1200, "orientation": "HLW" },
+    { "itemId": "caja-libre", "instance": 4, "sectionId": "main", "xMm": 3800, "yMm": 0, "zMm": 0, "dxMm": 800, "dyMm": 1200, "dzMm": 600, "orientation": "WHL" },
+    { "itemId": "caja-libre", "instance": 5, "sectionId": "main", "xMm": 4600, "yMm": 0, "zMm": 0, "dxMm": 600, "dyMm": 1200, "dzMm": 800, "orientation": "HWL" },
+    { "itemId": "caja-ligera", "instance": 0, "sectionId": "main", "xMm": 0, "yMm": 600, "zMm": 0, "dxMm": 1200, "dyMm": 400, "dzMm": 800, "orientation": "LWH" },
+    { "itemId": "tambor", "instance": 0, "sectionId": "main", "xMm": 15403, "yMm": 0, "zMm": 0, "dxMm": 600, "dyMm": 900, "dzMm": 600, "orientation": "LWH" },
+    { "itemId": "tambor", "instance": 1, "sectionId": "main", "xMm": 15403, "yMm": 0, "zMm": 600, "dxMm": 600, "dyMm": 900, "dzMm": 600, "orientation": "LWH" },
+    { "itemId": "tambor", "instance": 2, "sectionId": "main", "xMm": 15403, "yMm": 0, "zMm": 1200, "dxMm": 600, "dyMm": 900, "dzMm": 600, "orientation": "LWH" },
+    { "itemId": "tambor", "instance": 3, "sectionId": "main", "xMm": 15403, "yMm": 0, "zMm": 1800, "dxMm": 600, "dyMm": 900, "dzMm": 600, "orientation": "LWH" }
+  ],
+  "unplaced": [],
+  "metrics": {
+    "placedCount": 11,
+    "unplacedCount": 0,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 1730,
+    "loadedVolumeMm3": 5136000000,
+    "volumeUtilization": 0.0448,
+    "weightUtilization": 0.0577
+  }
+}

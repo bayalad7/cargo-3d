@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "0.1.0",
+  "containerId": "c-20ot-door",
+  "placements": [
+    { "itemId": "caja", "instance": 0, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 0, "dxMm": 1200, "dyMm": 1000, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "caja", "instance": 1, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 1000, "dxMm": 1200, "dyMm": 1000, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "caja", "instance": 2, "sectionId": "main", "xMm": 1200, "yMm": 0, "zMm": 0, "dxMm": 1200, "dyMm": 1000, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "caja", "instance": 3, "sectionId": "main", "xMm": 1200, "yMm": 0, "zMm": 1000, "dxMm": 1200, "dyMm": 1000, "dzMm": 1000, "orientation": "LWH" }
+  ],
+  "unplaced": [
+    { "itemId": "maquina-alta", "quantity": 1, "reason": "EXCEEDS_DOOR" }
+  ],
+  "metrics": {
+    "placedCount": 4,
+    "unplacedCount": 1,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 2000,
+    "loadedVolumeMm3": 4800000000,
+    "volumeUtilization": 0.1476,
+    "weightUtilization": 0.0708
+  }
+}

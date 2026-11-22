@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "containerId": "c-48dv",
+  "placements": [
+    { "itemId": "tarima", "instance": 0, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 0, "dxMm": 1000, "dyMm": 1400, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "tarima", "instance": 1, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 1200, "dxMm": 1000, "dyMm": 1400, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "tarima", "instance": 2, "sectionId": "main", "xMm": 1000, "yMm": 0, "zMm": 0, "dxMm": 1000, "dyMm": 1400, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "tarima", "instance": 3, "sectionId": "main", "xMm": 1000, "yMm": 0, "zMm": 1200, "dxMm": 1000, "dyMm": 1400, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "tarima", "instance": 4, "sectionId": "main", "xMm": 2000, "yMm": 0, "zMm": 0, "dxMm": 1000, "dyMm": 1400, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "tarima", "instance": 5, "sectionId": "main", "xMm": 2000, "yMm": 0, "zMm": 1200, "dxMm": 1000, "dyMm": 1400, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "tarima", "instance": 6, "sectionId": "main", "xMm": 3000, "yMm": 0, "zMm": 0, "dxMm": 1000, "dyMm": 1400, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "tarima", "instance": 7, "sectionId": "main", "xMm": 3000, "yMm": 0, "zMm": 1200, "dxMm": 1000, "dyMm": 1400, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "tarima", "instance": 8, "sectionId": "main", "xMm": 4000, "yMm": 0, "zMm": 0, "dxMm": 1000, "dyMm": 1400, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "tarima", "instance": 9, "sectionId": "main", "xMm": 4000, "yMm": 0, "zMm": 1200, "dxMm": 1000, "dyMm": 1400, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "tarima", "instance": 10, "sectionId": "main", "xMm": 5000, "yMm": 0, "zMm": 0, "dxMm": 1000, "dyMm": 1400, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "tarima", "instance": 11, "sectionId": "main", "xMm": 5000, "yMm": 0, "zMm": 1200, "dxMm": 1000, "dyMm": 1400, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "tarima", "instance": 12, "sectionId": "main", "xMm": 6000, "yMm": 0, "zMm": 0, "dxMm": 1000, "dyMm": 1400, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "tarima", "instance": 13, "sectionId": "main", "xMm": 6000, "yMm": 0, "zMm": 1200, "dxMm": 1000, "dyMm": 1400, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "tarima", "instance": 14, "sectionId": "main", "xMm": 7000, "yMm": 0, "zMm": 0, "dxMm": 1000, "dyMm": 1400, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "tarima", "instance": 15, "sectionId": "main", "xMm": 7000, "yMm": 0, "zMm": 1200, "dxMm": 1000, "dyMm": 1400, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "tarima", "instance": 16, "sectionId": "main", "xMm": 8000, "yMm": 0, "zMm": 0, "dxMm": 1000, "dyMm": 1400, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "tarima", "instance": 17, "sectionId": "main", "xMm": 8000, "yMm": 0, "zMm": 1200, "dxMm": 1000, "dyMm": 1400, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "tarima", "instance": 18, "sectionId": "main", "xMm": 9000, "yMm": 0, "zMm": 0, "dxMm": 1000, "dyMm": 1400, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "tarima", "instance": 19, "sectionId": "main", "xMm": 9000, "yMm": 0, "zMm": 1200, "dxMm": 1000, "dyMm": 1400, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "tarima", "instance": 20, "sectionId": "main", "xMm": 10000, "yMm": 0, "zMm": 0, "dxMm": 1000, "dyMm": 1400, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "tarima", "instance": 21, "sectionId": "main", "xMm": 10000, "yMm": 0, "zMm": 1200, "dxMm": 1000, "dyMm": 1400, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "rollo", "instance": 0, "sectionId": "main", "xMm": 11000, "yMm": 0, "zMm": 0, "dxMm": 1500, "dyMm": 1500, "dzMm": 1500, "orientation": "LWH" },
+    { "itemId": "rollo", "instance": 1, "sectionId": "main", "xMm": 12500, "yMm": 0, "zMm": 0, "dxMm": 1500, "dyMm": 1500, "dzMm": 1500, "orientation": "LWH" }
+  ],
+  "unplaced": [
+    { "itemId": "pieza-ancha", "quantity": 1, "reason": "EXCEEDS_DIMENSIONS" }
+  ],
+  "metrics": {
+    "placedCount": 24,
+    "unplacedCount": 1,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 21600,
+    "loadedVolumeMm3": 43710000000,
+    "volumeUtilization": 0.4357,
+    "weightUtilization": 0.72
+  }
+}

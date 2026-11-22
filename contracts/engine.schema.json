@@ -1,0 +1,243 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:cargo-3d:engine:0.1.0",
+  "title": "Contrato del motor de Cargo 3D",
+  "description": "Entrada (EngineInput) y salida (LoadPlan) del motor de acomodo: optimize(EngineInput) -> LoadPlan. Medidas en milímetros y pesos en kilogramos, siempre enteros. Coordenadas: origen en la esquina interior del fondo (nariz), abajo, a la izquierda mirando del fondo hacia la puerta; x = largo hacia la puerta, y = alto hacia arriba, z = ancho hacia la derecha (mano derecha, igual que Three.js). Ver ADR-0015, ADR-0016 y ADR-0017.",
+  "$defs": {
+    "EngineInput": {
+      "title": "EngineInput",
+      "description": "Lo que recibe el motor: un equipo y la lista de piezas por acomodar.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaVersion", "container", "items"],
+      "properties": {
+        "schemaVersion": {
+          "description": "Versión de este contrato. Si no coincide con la del motor, la entrada se rechaza.",
+          "const": "0.1.0"
+        },
+        "container": { "$ref": "#/$defs/Container" },
+        "items": {
+          "description": "Piezas por acomodar. Cada elemento es un tipo de pieza con su cantidad. Los ids no se pueden repetir (lo revisa la validación del motor; JSON Schema no puede expresarlo).",
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/CargoItem" }
+        }
+      }
+    },
+    "Container": {
+      "title": "Container",
+      "description": "El equipo donde se acomoda la carga: contenedor marítimo, caja seca o plataforma. Al motor solo le importan su geometría y sus límites; la categoría del equipo vive en el catálogo, no aquí.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "sections", "maxPayloadKg"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/Id",
+          "description": "Identificador del equipo dentro de este cálculo (no es el número de contenedor ISO 6346)."
+        },
+        "description": {
+          "description": "Texto libre para mostrar, por ejemplo «Contenedor 20' DV (22G1)».",
+          "type": "string",
+          "maxLength": 200
+        },
+        "sections": {
+          "description": "Espacios de carga del equipo, cada uno como una caja alineada a los ejes. Un contenedor o una caja seca tienen un solo tramo; una plataforma escalonada o de doble caída tendrá varios. En la versión 0.1.0 solo se acepta un tramo; subir el límite después es compatible.",
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": { "$ref": "#/$defs/Section" }
+        },
+        "door": { "$ref": "#/$defs/Door" },
+        "maxPayloadKg": {
+          "description": "Peso máximo de carga EFECTIVO, ya resuelto fuera del motor: el menor entre la carga útil del equipo y lo que permite la NOM-012-SCT-2 para la configuración vehicular y el tipo de camino.",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 200000
+        },
+        "tareKg": {
+          "description": "Tara del equipo. Opcional; sirve para calcular el VGM (SOLAS VI/2). El motor no la usa para acomodar.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100000
+        }
+      }
+    },
+    "Section": {
+      "title": "Section",
+      "description": "Un tramo del espacio de carga: una caja con su esquina mínima en coordenadas del equipo y sus medidas útiles. En una plataforma, heightMm es la altura útil: 4 250 mm (NOM-012) menos la altura de la cama de ese tramo.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "xMm", "yMm", "zMm", "lengthMm", "widthMm", "heightMm"],
+      "properties": {
+        "id": { "$ref": "#/$defs/Id", "description": "Identificador del tramo, único dentro del equipo." },
+        "xMm": { "description": "Inicio del tramo sobre x (desde el fondo).", "type": "integer", "minimum": 0, "maximum": 30000 },
+        "yMm": { "description": "Altura del piso del tramo sobre y (0 = el piso más bajo del equipo).", "type": "integer", "minimum": 0, "maximum": 4250 },
+        "zMm": { "description": "Inicio del tramo sobre z (desde la pared izquierda).", "type": "integer", "minimum": 0, "maximum": 3000 },
+        "lengthMm": { "description": "Largo útil del tramo, sobre x.", "type": "integer", "minimum": 1, "maximum": 30000 },
+        "widthMm": { "description": "Ancho útil del tramo, sobre z.", "type": "integer", "minimum": 1, "maximum": 3000 },
+        "heightMm": { "description": "Alto útil del tramo, sobre y.", "type": "integer", "minimum": 1, "maximum": 4250 },
+        "overhang": { "$ref": "#/$defs/Overhang" }
+      }
+    },
+    "Overhang": {
+      "title": "Overhang",
+      "description": "Margen de sobredimensión (carga OOG, out of gauge) de un tramo abierto, como un flat rack o una plataforma: cuánto puede rebasar una pieza el tramo por arriba y a cada lado. No hay margen al frente ni atrás. Si no viene, no se permite rebasar. Solo para tramos abiertos: un equipo con door no lleva margen mayor que cero (lo rechaza la validación del motor). Los límites legales (NOM-012: 4 250 mm de alto total y 2 600 mm de ancho en carretera) los aplica quien llama al motor al fijar estos valores. Ver ADR-0017.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "topMm": { "description": "Cuánto puede rebasar por arriba de heightMm.", "type": "integer", "minimum": 0, "maximum": 2000, "default": 0 },
+        "leftMm": { "description": "Cuánto puede rebasar por la izquierda (z menor que el inicio del tramo; la colocación puede tener zMm negativo).", "type": "integer", "minimum": 0, "maximum": 1000, "default": 0 },
+        "rightMm": { "description": "Cuánto puede rebasar por la derecha (z mayor que el final del tramo).", "type": "integer", "minimum": 0, "maximum": 1000, "default": 0 }
+      }
+    },
+    "Door": {
+      "title": "Door",
+      "description": "Puerta trasera del equipo, en el extremo de x máxima. Opcional: si no viene (plataforma abierta), no se revisa el paso por la puerta. Una pieza entra a lo largo de x, así que debe cumplir dz ≤ widthMm y dy ≤ heightMm en alguna orientación permitida. Puede ser más grande que el interior (en el reefer la puerta es más alta que la altura útil bajo la línea de carga); en ese caso no limita.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthMm", "heightMm"],
+      "properties": {
+        "widthMm": { "description": "Ancho libre de la puerta, sobre z.", "type": "integer", "minimum": 1, "maximum": 3000 },
+        "heightMm": { "description": "Alto libre de la puerta, sobre y.", "type": "integer", "minimum": 1, "maximum": 4250 }
+      }
+    },
+    "CargoItem": {
+      "title": "CargoItem",
+      "description": "Un tipo de pieza y cuántas unidades hay. Las medidas y el peso son de UNA unidad y se redondean hacia arriba al capturarlos. «Como viene» (orientación LWH) significa largo sobre x, ancho sobre z y alto sobre y.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "lengthMm", "widthMm", "heightMm", "weightKg", "quantity"],
+      "properties": {
+        "id": { "$ref": "#/$defs/Id", "description": "Identificador de la pieza, único dentro de la entrada." },
+        "description": { "description": "Texto libre para mostrar.", "type": "string", "maxLength": 200 },
+        "lengthMm": { "description": "Largo (L) de una unidad.", "type": "integer", "minimum": 1, "maximum": 30000 },
+        "widthMm": { "description": "Ancho (W) de una unidad.", "type": "integer", "minimum": 1, "maximum": 30000 },
+        "heightMm": { "description": "Alto (H) de una unidad.", "type": "integer", "minimum": 1, "maximum": 30000 },
+        "weightKg": { "description": "Peso de una unidad, redondeado hacia arriba (mínimo 1 kg).", "type": "integer", "minimum": 1, "maximum": 100000 },
+        "quantity": { "description": "Número de unidades iguales.", "type": "integer", "minimum": 1, "maximum": 10000 },
+        "allowedOrientations": {
+          "description": "Orientaciones permitidas. Si no viene, se permiten las 6. «Este lado arriba» = [\"LWH\", \"WLH\"].",
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 6,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/Orientation" },
+          "default": ["LWH", "WLH", "LHW", "HLW", "WHL", "HWL"]
+        },
+        "stackable": {
+          "description": "Si se le puede poner algo encima. Reservado para el sprint 2.1: en la fase 1 el motor lo acepta pero no lo aplica.",
+          "type": "boolean",
+          "default": true
+        },
+        "maxLoadOnTopKg": {
+          "description": "Peso máximo que soporta encima. Reservado para el sprint 2.1.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "deliverySequence": {
+          "description": "Orden de entrega (1 = se descarga primero, va junto a la puerta). Reservado para el sprint 2.1 (LIFO por destino).",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 999
+        }
+      }
+    },
+    "Orientation": {
+      "title": "Orientation",
+      "description": "Cómo queda girada la pieza. Las tres letras son las medidas de la pieza (L largo, W ancho, H alto) que quedan sobre los ejes del equipo en este orden: 1.ª sobre x, 2.ª sobre z, 3.ª sobre y (vertical). LWH = como viene; WLH = girada 90° sobre el eje vertical; LHW y HLW = acostada de lado; WHL y HWL = parada de punta.",
+      "enum": ["LWH", "WLH", "LHW", "HLW", "WHL", "HWL"]
+    },
+    "LoadPlan": {
+      "title": "LoadPlan",
+      "description": "Lo que devuelve el motor: dónde quedó cada unidad, qué no cupo y por qué, y las métricas.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaVersion", "containerId", "placements", "unplaced", "metrics"],
+      "properties": {
+        "schemaVersion": { "description": "Versión del contrato con que se generó el plan.", "const": "0.1.0" },
+        "containerId": { "$ref": "#/$defs/Id", "description": "El id del equipo de la entrada." },
+        "placements": {
+          "description": "Una colocación por cada unidad acomodada.",
+          "type": "array",
+          "items": { "$ref": "#/$defs/Placement" }
+        },
+        "unplaced": {
+          "description": "Unidades que no se acomodaron, agrupadas por pieza y motivo.",
+          "type": "array",
+          "items": { "$ref": "#/$defs/UnplacedItem" }
+        },
+        "metrics": { "$ref": "#/$defs/Metrics" }
+      }
+    },
+    "Placement": {
+      "title": "Placement",
+      "description": "Dónde quedó una unidad. (xMm, yMm, zMm) es la esquina mínima de la pieza ya girada, en coordenadas del equipo. dxMm, dyMm y dzMm son sus medidas sobre cada eje: son redundantes con orientation a propósito, para que el visor no recalcule y el validador revise que coincidan. En Three.js, BoxGeometry está centrada: position = (x + dx/2, y + dy/2, z + dz/2).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["itemId", "instance", "sectionId", "xMm", "yMm", "zMm", "dxMm", "dyMm", "dzMm", "orientation"],
+      "properties": {
+        "itemId": { "$ref": "#/$defs/Id", "description": "El id de la pieza en la entrada." },
+        "instance": { "description": "Qué unidad de la pieza es, de 0 a quantity − 1.", "type": "integer", "minimum": 0, "maximum": 9999 },
+        "sectionId": { "$ref": "#/$defs/Id", "description": "El tramo donde quedó." },
+        "xMm": { "description": "Esquina mínima sobre x.", "type": "integer", "minimum": 0 },
+        "yMm": { "description": "Esquina mínima sobre y.", "type": "integer", "minimum": 0 },
+        "zMm": { "description": "Esquina mínima sobre z. Puede ser negativa si la pieza rebasa por la izquierda dentro de overhang.leftMm.", "type": "integer", "minimum": -1000 },
+        "dxMm": { "description": "Medida de la pieza girada sobre x.", "type": "integer", "minimum": 1 },
+        "dyMm": { "description": "Medida de la pieza girada sobre y.", "type": "integer", "minimum": 1 },
+        "dzMm": { "description": "Medida de la pieza girada sobre z.", "type": "integer", "minimum": 1 },
+        "orientation": { "$ref": "#/$defs/Orientation" },
+        "outOfGauge": {
+          "description": "true si la pieza rebasa el tramo nominal (usa el margen de overhang): viaja como carga sobredimensionada, con recargo o permiso. Si no viene, la pieza queda dentro del tramo.",
+          "const": true
+        }
+      }
+    },
+    "UnplacedItem": {
+      "title": "UnplacedItem",
+      "description": "Unidades de una pieza que no se acomodaron por un mismo motivo.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["itemId", "quantity", "reason"],
+      "properties": {
+        "itemId": { "$ref": "#/$defs/Id", "description": "El id de la pieza en la entrada." },
+        "quantity": { "description": "Cuántas unidades no se acomodaron por este motivo.", "type": "integer", "minimum": 1 },
+        "reason": { "$ref": "#/$defs/UnplacedReason" }
+      }
+    },
+    "UnplacedReason": {
+      "title": "UnplacedReason",
+      "description": "Por qué no se acomodó. Se aplica el primero que se cumpla, en este orden: EXCEEDS_DIMENSIONS (no cabe en ningún tramo, ni con su margen de overhang, con ninguna orientación permitida); EXCEEDS_DOOR (cabe adentro, pero ninguna orientación que cabe pasa por la puerta); EXCEEDS_MAX_WEIGHT (una sola unidad pesa más que maxPayloadKg); WEIGHT_LIMIT_REACHED (el peso que queda no alcanza para la unidad); NO_SPACE_AVAILABLE (queda peso, pero no hay hueco válido); TIME_LIMIT_REACHED (el motor se detuvo por tiempo). Los motivos de restricciones futuras (apilado, ejes, centro de gravedad) se agregan cuando existan.",
+      "enum": [
+        "EXCEEDS_DIMENSIONS",
+        "EXCEEDS_DOOR",
+        "EXCEEDS_MAX_WEIGHT",
+        "WEIGHT_LIMIT_REACHED",
+        "NO_SPACE_AVAILABLE",
+        "TIME_LIMIT_REACHED"
+      ]
+    },
+    "Metrics": {
+      "title": "Metrics",
+      "description": "Resumen del plan. Las ocupaciones son fracciones (weightUtilization de 0 a 1; volumeUtilization puede pasar de 1 con carga sobredimensionada); el validador las compara con una tolerancia de 0,0001.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["placedCount", "unplacedCount", "outOfGaugeCount", "loadedWeightKg", "loadedVolumeMm3", "volumeUtilization", "weightUtilization"],
+      "properties": {
+        "placedCount": { "description": "Unidades acomodadas (largo de placements).", "type": "integer", "minimum": 0 },
+        "unplacedCount": { "description": "Unidades sin acomodar (suma de unplaced[].quantity).", "type": "integer", "minimum": 0 },
+        "outOfGaugeCount": { "description": "Unidades colocadas que rebasan el tramo nominal (placements con outOfGauge).", "type": "integer", "minimum": 0 },
+        "loadedWeightKg": { "description": "Suma del peso de las unidades acomodadas.", "type": "integer", "minimum": 0 },
+        "loadedVolumeMm3": { "description": "Suma de dx·dy·dz de las unidades acomodadas, en mm³. Cabe sin problema en int64 y en Number de JavaScript.", "type": "integer", "minimum": 0 },
+        "volumeUtilization": { "description": "loadedVolumeMm3 entre el volumen nominal de todos los tramos (sin contar el margen de overhang). Normalmente va de 0 a 1, pero puede pasar de 1 cuando hay piezas sobredimensionadas (outOfGauge) que ocupan el margen.", "type": "number", "minimum": 0 },
+        "weightUtilization": { "description": "loadedWeightKg entre maxPayloadKg.", "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "Id": {
+      "title": "Id",
+      "description": "Identificador corto: letras sin acentos, dígitos, punto, guion y guion bajo; de 1 a 64 caracteres.",
+      "type": "string",
+      "pattern": "^[A-Za-z0-9._-]{1,64}$"
+    }
+  }
+}

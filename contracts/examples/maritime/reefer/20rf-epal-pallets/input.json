@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-20rf",
+    "description": "Contenedor 20' refrigerado (22R1), ejemplo sintético; altura útil 2158 bajo la línea de carga POR CONFIRMAR (CMA CGM, fragmento)",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 5454,
+        "widthMm": 2290,
+        "heightMm": 2158
+      }
+    ],
+    "door": {
+      "widthMm": 2290,
+      "heightMm": 2221
+    },
+    "maxPayloadKg": 27400,
+    "tareKg": 3080
+  },
+  "items": [
+    {
+      "id": "pallet-epal",
+      "description": "Pallet EPAL refrigerado",
+      "lengthMm": 1200,
+      "widthMm": 800,
+      "heightMm": 2000,
+      "weightKg": 900,
+      "quantity": 12,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false
+    },
+    {
+      "id": "tarima-alta",
+      "description": "Tarima de 2,2 m",
+      "lengthMm": 1200,
+      "widthMm": 800,
+      "heightMm": 2200,
+      "weightKg": 700,
+      "quantity": 1,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ]
+    }
+  ]
+}

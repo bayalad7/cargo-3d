@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "containerId": "c-45hc",
+  "placements": [
+    { "itemId": "pallet-gma", "instance": 0, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 0, "dxMm": 1219, "dyMm": 1300, "dzMm": 1016, "orientation": "LWH" },
+    { "itemId": "pallet-gma", "instance": 1, "sectionId": "main", "xMm": 1219, "yMm": 0, "zMm": 0, "dxMm": 1219, "dyMm": 1300, "dzMm": 1016, "orientation": "LWH" },
+    { "itemId": "pallet-gma", "instance": 2, "sectionId": "main", "xMm": 2438, "yMm": 0, "zMm": 0, "dxMm": 1219, "dyMm": 1300, "dzMm": 1016, "orientation": "LWH" },
+    { "itemId": "pallet-gma", "instance": 3, "sectionId": "main", "xMm": 3657, "yMm": 0, "zMm": 0, "dxMm": 1219, "dyMm": 1300, "dzMm": 1016, "orientation": "LWH" },
+    { "itemId": "pallet-gma", "instance": 4, "sectionId": "main", "xMm": 4876, "yMm": 0, "zMm": 0, "dxMm": 1219, "dyMm": 1300, "dzMm": 1016, "orientation": "LWH" },
+    { "itemId": "pallet-gma", "instance": 5, "sectionId": "main", "xMm": 6095, "yMm": 0, "zMm": 0, "dxMm": 1219, "dyMm": 1300, "dzMm": 1016, "orientation": "LWH" },
+    { "itemId": "pallet-gma", "instance": 6, "sectionId": "main", "xMm": 7314, "yMm": 0, "zMm": 0, "dxMm": 1219, "dyMm": 1300, "dzMm": 1016, "orientation": "LWH" },
+    { "itemId": "pallet-gma", "instance": 7, "sectionId": "main", "xMm": 8533, "yMm": 0, "zMm": 0, "dxMm": 1219, "dyMm": 1300, "dzMm": 1016, "orientation": "LWH" },
+    { "itemId": "pallet-gma", "instance": 8, "sectionId": "main", "xMm": 9752, "yMm": 0, "zMm": 0, "dxMm": 1219, "dyMm": 1300, "dzMm": 1016, "orientation": "LWH" },
+    { "itemId": "pallet-gma", "instance": 9, "sectionId": "main", "xMm": 10971, "yMm": 0, "zMm": 0, "dxMm": 1219, "dyMm": 1300, "dzMm": 1016, "orientation": "LWH" },
+    { "itemId": "pallet-gma", "instance": 10, "sectionId": "main", "xMm": 12190, "yMm": 0, "zMm": 0, "dxMm": 1219, "dyMm": 1300, "dzMm": 1016, "orientation": "LWH" },
+    { "itemId": "pallet-gma", "instance": 11, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 1016, "dxMm": 1016, "dyMm": 1300, "dzMm": 1219, "orientation": "WLH" },
+    { "itemId": "pallet-gma", "instance": 12, "sectionId": "main", "xMm": 1016, "yMm": 0, "zMm": 1016, "dxMm": 1016, "dyMm": 1300, "dzMm": 1219, "orientation": "WLH" },
+    { "itemId": "pallet-gma", "instance": 13, "sectionId": "main", "xMm": 2032, "yMm": 0, "zMm": 1016, "dxMm": 1016, "dyMm": 1300, "dzMm": 1219, "orientation": "WLH" },
+    { "itemId": "pallet-gma", "instance": 14, "sectionId": "main", "xMm": 3048, "yMm": 0, "zMm": 1016, "dxMm": 1016, "dyMm": 1300, "dzMm": 1219, "orientation": "WLH" },
+    { "itemId": "pallet-gma", "instance": 15, "sectionId": "main", "xMm": 4064, "yMm": 0, "zMm": 1016, "dxMm": 1016, "dyMm": 1300, "dzMm": 1219, "orientation": "WLH" },
+    { "itemId": "pallet-gma", "instance": 16, "sectionId": "main", "xMm": 5080, "yMm": 0, "zMm": 1016, "dxMm": 1016, "dyMm": 1300, "dzMm": 1219, "orientation": "WLH" },
+    { "itemId": "pallet-gma", "instance": 17, "sectionId": "main", "xMm": 6096, "yMm": 0, "zMm": 1016, "dxMm": 1016, "dyMm": 1300, "dzMm": 1219, "orientation": "WLH" },
+    { "itemId": "pallet-gma", "instance": 18, "sectionId": "main", "xMm": 7112, "yMm": 0, "zMm": 1016, "dxMm": 1016, "dyMm": 1300, "dzMm": 1219, "orientation": "WLH" },
+    { "itemId": "pallet-gma", "instance": 19, "sectionId": "main", "xMm": 8128, "yMm": 0, "zMm": 1016, "dxMm": 1016, "dyMm": 1300, "dzMm": 1219, "orientation": "WLH" },
+    { "itemId": "pallet-gma", "instance": 20, "sectionId": "main", "xMm": 9144, "yMm": 0, "zMm": 1016, "dxMm": 1016, "dyMm": 1300, "dzMm": 1219, "orientation": "WLH" },
+    { "itemId": "pallet-gma", "instance": 21, "sectionId": "main", "xMm": 10160, "yMm": 0, "zMm": 1016, "dxMm": 1016, "dyMm": 1300, "dzMm": 1219, "orientation": "WLH" },
+    { "itemId": "pallet-gma", "instance": 22, "sectionId": "main", "xMm": 11176, "yMm": 0, "zMm": 1016, "dxMm": 1016, "dyMm": 1300, "dzMm": 1219, "orientation": "WLH" },
+    { "itemId": "pallet-gma", "instance": 23, "sectionId": "main", "xMm": 12192, "yMm": 0, "zMm": 1016, "dxMm": 1016, "dyMm": 1300, "dzMm": 1219, "orientation": "WLH" }
+  ],
+  "unplaced": [
+    { "itemId": "pallet-gma", "quantity": 2, "reason": "NO_SPACE_AVAILABLE" }
+  ],
+  "metrics": {
+    "placedCount": 24,
+    "unplacedCount": 2,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 14400,
+    "loadedVolumeMm3": 38641324800,
+    "volumeUtilization": 0.4494,
+    "weightUtilization": 0.5217
+  }
+}

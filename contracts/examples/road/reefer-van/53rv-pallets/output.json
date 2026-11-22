@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "0.1.0",
+  "containerId": "c-53rv",
+  "placements": [
+    { "itemId": "pallet", "instance": 0, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 0, "dxMm": 1000, "dyMm": 1800, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet", "instance": 1, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 1200, "dxMm": 1000, "dyMm": 1800, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet", "instance": 2, "sectionId": "main", "xMm": 1000, "yMm": 0, "zMm": 0, "dxMm": 1000, "dyMm": 1800, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet", "instance": 3, "sectionId": "main", "xMm": 1000, "yMm": 0, "zMm": 1200, "dxMm": 1000, "dyMm": 1800, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet", "instance": 4, "sectionId": "main", "xMm": 2000, "yMm": 0, "zMm": 0, "dxMm": 1000, "dyMm": 1800, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet", "instance": 5, "sectionId": "main", "xMm": 2000, "yMm": 0, "zMm": 1200, "dxMm": 1000, "dyMm": 1800, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet", "instance": 6, "sectionId": "main", "xMm": 3000, "yMm": 0, "zMm": 0, "dxMm": 1000, "dyMm": 1800, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet", "instance": 7, "sectionId": "main", "xMm": 3000, "yMm": 0, "zMm": 1200, "dxMm": 1000, "dyMm": 1800, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet", "instance": 8, "sectionId": "main", "xMm": 4000, "yMm": 0, "zMm": 0, "dxMm": 1000, "dyMm": 1800, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet", "instance": 9, "sectionId": "main", "xMm": 4000, "yMm": 0, "zMm": 1200, "dxMm": 1000, "dyMm": 1800, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet", "instance": 10, "sectionId": "main", "xMm": 5000, "yMm": 0, "zMm": 0, "dxMm": 1000, "dyMm": 1800, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet", "instance": 11, "sectionId": "main", "xMm": 5000, "yMm": 0, "zMm": 1200, "dxMm": 1000, "dyMm": 1800, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet", "instance": 12, "sectionId": "main", "xMm": 6000, "yMm": 0, "zMm": 0, "dxMm": 1000, "dyMm": 1800, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet", "instance": 13, "sectionId": "main", "xMm": 6000, "yMm": 0, "zMm": 1200, "dxMm": 1000, "dyMm": 1800, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet", "instance": 14, "sectionId": "main", "xMm": 7000, "yMm": 0, "zMm": 0, "dxMm": 1000, "dyMm": 1800, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet", "instance": 15, "sectionId": "main", "xMm": 7000, "yMm": 0, "zMm": 1200, "dxMm": 1000, "dyMm": 1800, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet", "instance": 16, "sectionId": "main", "xMm": 8000, "yMm": 0, "zMm": 0, "dxMm": 1000, "dyMm": 1800, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet", "instance": 17, "sectionId": "main", "xMm": 8000, "yMm": 0, "zMm": 1200, "dxMm": 1000, "dyMm": 1800, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet", "instance": 18, "sectionId": "main", "xMm": 9000, "yMm": 0, "zMm": 0, "dxMm": 1000, "dyMm": 1800, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet", "instance": 19, "sectionId": "main", "xMm": 9000, "yMm": 0, "zMm": 1200, "dxMm": 1000, "dyMm": 1800, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet", "instance": 20, "sectionId": "main", "xMm": 10000, "yMm": 0, "zMm": 0, "dxMm": 1000, "dyMm": 1800, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet", "instance": 21, "sectionId": "main", "xMm": 10000, "yMm": 0, "zMm": 1200, "dxMm": 1000, "dyMm": 1800, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet", "instance": 22, "sectionId": "main", "xMm": 11000, "yMm": 0, "zMm": 0, "dxMm": 1000, "dyMm": 1800, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet", "instance": 23, "sectionId": "main", "xMm": 11000, "yMm": 0, "zMm": 1200, "dxMm": 1000, "dyMm": 1800, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet", "instance": 24, "sectionId": "main", "xMm": 12000, "yMm": 0, "zMm": 0, "dxMm": 1000, "dyMm": 1800, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet", "instance": 25, "sectionId": "main", "xMm": 12000, "yMm": 0, "zMm": 1200, "dxMm": 1000, "dyMm": 1800, "dzMm": 1200, "orientation": "WLH" }
+  ],
+  "unplaced": [
+    { "itemId": "rack-alto", "quantity": 1, "reason": "EXCEEDS_DOOR" }
+  ],
+  "metrics": {
+    "placedCount": 26,
+    "unplacedCount": 1,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 23400,
+    "loadedVolumeMm3": 56160000000,
+    "volumeUtilization": 0.5527,
+    "weightUtilization": 0.9398
+  }
+}

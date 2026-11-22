@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "0.1.0",
+  "containerId": "c-20dv",
+  "placements": [
+    { "itemId": "pieza-A", "instance": 0, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 0, "dxMm": 1400, "dyMm": 1000, "dzMm": 1100, "orientation": "LWH" },
+    { "itemId": "pieza-A", "instance": 1, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 1100, "dxMm": 1400, "dyMm": 1000, "dzMm": 1100, "orientation": "LWH" },
+    { "itemId": "pieza-A", "instance": 2, "sectionId": "main", "xMm": 1400, "yMm": 0, "zMm": 0, "dxMm": 1400, "dyMm": 1000, "dzMm": 1100, "orientation": "LWH" },
+    { "itemId": "pieza-A", "instance": 3, "sectionId": "main", "xMm": 1400, "yMm": 0, "zMm": 1100, "dxMm": 1400, "dyMm": 1000, "dzMm": 1100, "orientation": "LWH" }
+  ],
+  "unplaced": [
+    { "itemId": "pieza-A", "quantity": 1, "reason": "WEIGHT_LIMIT_REACHED" },
+    { "itemId": "pieza-B", "quantity": 1, "reason": "EXCEEDS_DOOR" },
+    { "itemId": "pieza-C", "quantity": 1, "reason": "EXCEEDS_DIMENSIONS" }
+  ],
+  "metrics": {
+    "placedCount": 4,
+    "unplacedCount": 3,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 28000,
+    "loadedVolumeMm3": 6160000000,
+    "volumeUtilization": 0.1856,
+    "weightUtilization": 0.9929
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-20dv",
+    "description": "Contenedor 20' DV (22G1), ejemplo sintético",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 5898,
+        "widthMm": 2352,
+        "heightMm": 2393
+      }
+    ],
+    "door": {
+      "widthMm": 2340,
+      "heightMm": 2280
+    },
+    "maxPayloadKg": 28200,
+    "tareKg": 2200
+  },
+  "items": [
+    {
+      "id": "pieza-A",
+      "description": "Cajón de acero",
+      "lengthMm": 1400,
+      "widthMm": 1100,
+      "heightMm": 1000,
+      "weightKg": 7000,
+      "quantity": 5,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false
+    },
+    {
+      "id": "pieza-B",
+      "description": "Máquina",
+      "lengthMm": 2300,
+      "widthMm": 2000,
+      "heightMm": 2350,
+      "weightKg": 1500,
+      "quantity": 1,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ]
+    },
+    {
+      "id": "pieza-C",
+      "description": "Atado de tubo",
+      "lengthMm": 6000,
+      "widthMm": 300,
+      "heightMm": 300,
+      "weightKg": 400,
+      "quantity": 1
+    }
+  ]
+}

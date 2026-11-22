@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-48dv",
+    "description": "Caja seca 48', ejemplo sintético; ancho Remosa, largo y puerta C.H. Robinson 2017; carga útil supuesta",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 14427,
+        "widthMm": 2489,
+        "heightMm": 2794
+      }
+    ],
+    "door": {
+      "widthMm": 2496,
+      "heightMm": 2794
+    },
+    "maxPayloadKg": 30000
+  },
+  "items": [
+    {
+      "id": "tarima",
+      "description": "Tarima de 1,4 m",
+      "lengthMm": 1200,
+      "widthMm": 1000,
+      "heightMm": 1400,
+      "weightKg": 800,
+      "quantity": 22,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ]
+    },
+    {
+      "id": "rollo",
+      "description": "Rollo de cartón",
+      "lengthMm": 1500,
+      "widthMm": 1500,
+      "heightMm": 1500,
+      "weightKg": 2000,
+      "quantity": 2,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ]
+    },
+    {
+      "id": "pieza-ancha",
+      "description": "Pieza de 2,5 x 2,5 m",
+      "lengthMm": 2500,
+      "widthMm": 2500,
+      "heightMm": 1000,
+      "weightKg": 400,
+      "quantity": 1,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ]
+    }
+  ]
+}

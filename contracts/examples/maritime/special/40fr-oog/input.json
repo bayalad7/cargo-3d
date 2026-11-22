@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-40fr",
+    "description": "Flat rack 40' (42P3), ejemplo sintético; medidas ONE; margen OOG supuesto (600 arriba, 200 por lado); carga útil limitada por carretera (supuesto)",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 11652,
+        "widthMm": 2208,
+        "heightMm": 1955,
+        "overhang": {
+          "topMm": 600,
+          "leftMm": 200,
+          "rightMm": 200
+        }
+      }
+    ],
+    "maxPayloadKg": 28000,
+    "tareKg": 6200
+  },
+  "items": [
+    {
+      "id": "cajon",
+      "description": "Cajón de maquinaria",
+      "lengthMm": 2800,
+      "widthMm": 2000,
+      "heightMm": 1800,
+      "weightKg": 9500,
+      "quantity": 3,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false
+    },
+    {
+      "id": "transformador",
+      "description": "Transformador",
+      "lengthMm": 2500,
+      "widthMm": 2100,
+      "heightMm": 2100,
+      "weightKg": 6000,
+      "quantity": 1,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ]
+    },
+    {
+      "id": "tubo",
+      "description": "Tubo de 3 m",
+      "lengthMm": 3000,
+      "widthMm": 400,
+      "heightMm": 400,
+      "weightKg": 400,
+      "quantity": 4,
+      "allowedOrientations": [
+        "LWH"
+      ]
+    },
+    {
+      "id": "placa",
+      "description": "Placa de acero más ancha que el flat rack",
+      "lengthMm": 500,
+      "widthMm": 2400,
+      "heightMm": 200,
+      "weightKg": 300,
+      "quantity": 1,
+      "allowedOrientations": [
+        "LWH"
+      ]
+    }
+  ]
+}

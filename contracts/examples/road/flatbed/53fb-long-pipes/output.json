@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "0.1.0",
+  "containerId": "c-53fb",
+  "placements": [
+    { "itemId": "tubo", "instance": 0, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 0, "dxMm": 16000, "dyMm": 600, "dzMm": 600, "orientation": "LWH" },
+    { "itemId": "tubo", "instance": 1, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 600, "dxMm": 16000, "dyMm": 600, "dzMm": 600, "orientation": "LWH" },
+    { "itemId": "tubo", "instance": 2, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 1200, "dxMm": 16000, "dyMm": 600, "dzMm": 600, "orientation": "LWH" },
+    { "itemId": "tubo", "instance": 3, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 1800, "dxMm": 16000, "dyMm": 600, "dzMm": 600, "orientation": "LWH" }
+  ],
+  "unplaced": [
+    { "itemId": "caja", "quantity": 3, "reason": "TIME_LIMIT_REACHED" }
+  ],
+  "metrics": {
+    "placedCount": 4,
+    "unplacedCount": 3,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 8000,
+    "loadedVolumeMm3": 23040000000,
+    "volumeUtilization": 0.1987,
+    "weightUtilization": 0.2667
+  }
+}

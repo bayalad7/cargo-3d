@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-20ot-roof",
+    "description": "Open top 20' (22U1) cargado con grúa por el techo: el tramo es la abertura del techo (ONE, 5680 x 2252), centrada en el interior de 5898 x 2350; sin puerta; ejemplo sintético",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 109,
+        "yMm": 0,
+        "zMm": 49,
+        "lengthMm": 5680,
+        "widthMm": 2252,
+        "heightMm": 2348
+      }
+    ],
+    "maxPayloadKg": 28240,
+    "tareKg": 2240
+  },
+  "items": [
+    {
+      "id": "maquina-alta",
+      "description": "Máquina de 2,3 m de alto",
+      "lengthMm": 2000,
+      "widthMm": 1500,
+      "heightMm": 2300,
+      "weightKg": 3000,
+      "quantity": 1,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ]
+    },
+    {
+      "id": "caja",
+      "description": "Caja de refacciones",
+      "lengthMm": 1200,
+      "widthMm": 1000,
+      "heightMm": 1000,
+      "weightKg": 500,
+      "quantity": 4,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ]
+    }
+  ]
+}

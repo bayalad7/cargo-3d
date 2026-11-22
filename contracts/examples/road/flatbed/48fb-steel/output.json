@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "0.1.0",
+  "containerId": "c-48fb",
+  "placements": [
+    { "itemId": "viga", "instance": 0, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 0, "dxMm": 9000, "dyMm": 400, "dzMm": 300, "orientation": "LWH" },
+    { "itemId": "viga", "instance": 1, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 300, "dxMm": 9000, "dyMm": 400, "dzMm": 300, "orientation": "LWH" },
+    { "itemId": "viga", "instance": 2, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 600, "dxMm": 9000, "dyMm": 400, "dzMm": 300, "orientation": "LWH" },
+    { "itemId": "viga", "instance": 3, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 900, "dxMm": 9000, "dyMm": 400, "dzMm": 300, "orientation": "LWH" },
+    { "itemId": "viga", "instance": 4, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 1200, "dxMm": 9000, "dyMm": 400, "dzMm": 300, "orientation": "LWH" },
+    { "itemId": "viga", "instance": 5, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 1500, "dxMm": 9000, "dyMm": 400, "dzMm": 300, "orientation": "LWH" },
+    { "itemId": "bobina", "instance": 0, "sectionId": "main", "xMm": 9000, "yMm": 0, "zMm": 0, "dxMm": 1800, "dyMm": 1500, "dzMm": 1800, "orientation": "LWH" },
+    { "itemId": "bobina", "instance": 1, "sectionId": "main", "xMm": 10800, "yMm": 0, "zMm": 0, "dxMm": 1800, "dyMm": 1500, "dzMm": 1800, "orientation": "LWH" }
+  ],
+  "unplaced": [
+    { "itemId": "excavadora", "quantity": 1, "reason": "EXCEEDS_DIMENSIONS" }
+  ],
+  "metrics": {
+    "placedCount": 8,
+    "unplacedCount": 1,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 25000,
+    "loadedVolumeMm3": 16200000000,
+    "volumeUtilization": 0.1542,
+    "weightUtilization": 0.8333
+  }
+}

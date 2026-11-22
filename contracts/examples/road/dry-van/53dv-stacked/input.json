@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-53dv",
+    "description": "Caja seca 53', ejemplo sintético (puerta C.H. Robinson 2017)",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 16003,
+        "widthMm": 2565,
+        "heightMm": 2794
+      }
+    ],
+    "door": {
+      "widthMm": 2496,
+      "heightMm": 2794
+    },
+    "maxPayloadKg": 30000
+  },
+  "items": [
+    {
+      "id": "tarima-cajas",
+      "description": "Tarima de cajas",
+      "lengthMm": 1200,
+      "widthMm": 1000,
+      "heightMm": 1300,
+      "weightKg": 1200,
+      "quantity": 24,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ]
+    },
+    {
+      "id": "rollo-lamina",
+      "description": "Rollo de lámina",
+      "lengthMm": 1500,
+      "widthMm": 1500,
+      "heightMm": 1500,
+      "weightKg": 2000,
+      "quantity": 1,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ]
+    }
+  ]
+}

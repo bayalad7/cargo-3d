@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-53fb",
+    "description": "Plataforma 53', ejemplo sintético",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 16154,
+        "widthMm": 2590,
+        "heightMm": 2772
+      }
+    ],
+    "maxPayloadKg": 30000
+  },
+  "items": [
+    {
+      "id": "tubo",
+      "description": "Tubo de 16 m",
+      "lengthMm": 16000,
+      "widthMm": 600,
+      "heightMm": 600,
+      "weightKg": 2000,
+      "quantity": 4,
+      "allowedOrientations": [
+        "LWH"
+      ]
+    },
+    {
+      "id": "caja",
+      "description": "Caja de refacciones",
+      "lengthMm": 1000,
+      "widthMm": 1000,
+      "heightMm": 1000,
+      "weightKg": 50,
+      "quantity": 3
+    }
+  ]
+}

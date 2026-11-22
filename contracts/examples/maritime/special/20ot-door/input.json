@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-20ot-door",
+    "description": "Open top 20' (22U1) cargado por la puerta, ejemplo sintético; medidas Triton y ONE",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 5895,
+        "widthMm": 2350,
+        "heightMm": 2348
+      }
+    ],
+    "door": {
+      "widthMm": 2340,
+      "heightMm": 2280
+    },
+    "maxPayloadKg": 28240,
+    "tareKg": 2240
+  },
+  "items": [
+    {
+      "id": "maquina-alta",
+      "description": "Máquina de 2,3 m de alto",
+      "lengthMm": 2000,
+      "widthMm": 1500,
+      "heightMm": 2300,
+      "weightKg": 3000,
+      "quantity": 1,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ]
+    },
+    {
+      "id": "caja",
+      "description": "Caja de refacciones",
+      "lengthMm": 1200,
+      "widthMm": 1000,
+      "heightMm": 1000,
+      "weightKg": 500,
+      "quantity": 4,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ]
+    }
+  ]
+}

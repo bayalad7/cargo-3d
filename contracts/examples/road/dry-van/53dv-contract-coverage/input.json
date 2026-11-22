@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-53dv",
+    "description": "Caja seca 53', ejemplo sintético de cobertura del contrato",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 16003,
+        "widthMm": 2565,
+        "heightMm": 2794
+      }
+    ],
+    "door": {
+      "widthMm": 2496,
+      "heightMm": 2794
+    },
+    "maxPayloadKg": 30000
+  },
+  "items": [
+    {
+      "id": "caja-libre",
+      "lengthMm": 1200,
+      "widthMm": 800,
+      "heightMm": 600,
+      "weightKg": 150,
+      "quantity": 6,
+      "maxLoadOnTopKg": 100,
+      "deliverySequence": 2
+    },
+    {
+      "id": "caja-ligera",
+      "description": "Caja ligera encima de otra",
+      "lengthMm": 1200,
+      "widthMm": 800,
+      "heightMm": 400,
+      "weightKg": 30,
+      "quantity": 1,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "deliverySequence": 2
+    },
+    {
+      "id": "tambor",
+      "description": "Tambor que se entrega primero",
+      "lengthMm": 600,
+      "widthMm": 600,
+      "heightMm": 900,
+      "weightKg": 200,
+      "quantity": 4,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false,
+      "maxLoadOnTopKg": 0,
+      "deliverySequence": 1
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-40hc",
+    "description": "Contenedor 40' HC (45G1), ejemplo sintético",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 12032,
+        "widthMm": 2352,
+        "heightMm": 2698
+      }
+    ],
+    "door": {
+      "widthMm": 2340,
+      "heightMm": 2585
+    },
+    "maxPayloadKg": 26500,
+    "tareKg": 3750
+  },
+  "items": [
+    {
+      "id": "tarima-alta",
+      "description": "Tarima alta de 2,5 m",
+      "lengthMm": 1200,
+      "widthMm": 1000,
+      "heightMm": 2500,
+      "weightKg": 800,
+      "quantity": 24,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ]
+    },
+    {
+      "id": "transformador",
+      "description": "Transformador",
+      "lengthMm": 2000,
+      "widthMm": 1500,
+      "heightMm": 1800,
+      "weightKg": 30000,
+      "quantity": 1,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "0.1.0",
+  "containerId": "c-20rf",
+  "placements": [
+    { "itemId": "pallet-epal", "instance": 0, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 0, "dxMm": 800, "dyMm": 2000, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet-epal", "instance": 1, "sectionId": "main", "xMm": 800, "yMm": 0, "zMm": 0, "dxMm": 800, "dyMm": 2000, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet-epal", "instance": 2, "sectionId": "main", "xMm": 1600, "yMm": 0, "zMm": 0, "dxMm": 800, "dyMm": 2000, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet-epal", "instance": 3, "sectionId": "main", "xMm": 2400, "yMm": 0, "zMm": 0, "dxMm": 800, "dyMm": 2000, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet-epal", "instance": 4, "sectionId": "main", "xMm": 3200, "yMm": 0, "zMm": 0, "dxMm": 800, "dyMm": 2000, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet-epal", "instance": 5, "sectionId": "main", "xMm": 4000, "yMm": 0, "zMm": 0, "dxMm": 800, "dyMm": 2000, "dzMm": 1200, "orientation": "WLH" },
+    { "itemId": "pallet-epal", "instance": 6, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 1200, "dxMm": 1200, "dyMm": 2000, "dzMm": 800, "orientation": "LWH" },
+    { "itemId": "pallet-epal", "instance": 7, "sectionId": "main", "xMm": 1200, "yMm": 0, "zMm": 1200, "dxMm": 1200, "dyMm": 2000, "dzMm": 800, "orientation": "LWH" },
+    { "itemId": "pallet-epal", "instance": 8, "sectionId": "main", "xMm": 2400, "yMm": 0, "zMm": 1200, "dxMm": 1200, "dyMm": 2000, "dzMm": 800, "orientation": "LWH" },
+    { "itemId": "pallet-epal", "instance": 9, "sectionId": "main", "xMm": 3600, "yMm": 0, "zMm": 1200, "dxMm": 1200, "dyMm": 2000, "dzMm": 800, "orientation": "LWH" }
+  ],
+  "unplaced": [
+    { "itemId": "pallet-epal", "quantity": 2, "reason": "NO_SPACE_AVAILABLE" },
+    { "itemId": "tarima-alta", "quantity": 1, "reason": "EXCEEDS_DIMENSIONS" }
+  ],
+  "metrics": {
+    "placedCount": 10,
+    "unplacedCount": 3,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 9000,
+    "loadedVolumeMm3": 19200000000,
+    "volumeUtilization": 0.7124,
+    "weightUtilization": 0.3285
+  }
+}

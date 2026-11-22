@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-40dv",
+    "description": "Contenedor 40' DV / estándar (42G1), ejemplo sintético",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 12032,
+        "widthMm": 2352,
+        "heightMm": 2393
+      }
+    ],
+    "door": {
+      "widthMm": 2340,
+      "heightMm": 2280
+    },
+    "maxPayloadKg": 26700,
+    "tareKg": 3640
+  },
+  "items": [
+    {
+      "id": "pallet-gma",
+      "description": "Pallet GMA 48x40 cargado",
+      "lengthMm": 1219,
+      "widthMm": 1016,
+      "heightMm": 1200,
+      "weightKg": 520,
+      "quantity": 20,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false
+    }
+  ]
+}

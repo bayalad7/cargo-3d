@@ -1,0 +1,117 @@
+# Ejemplos del contrato del motor
+
+Cada caso es una carpeta `<modo>/<tipo de equipo>/<caso>/` con `input.json` (un `EngineInput`) y `output.json`
+(un `LoadPlan`), según `contracts/engine.schema.json`. Las carpetas siguen la jerarquía del catálogo de equipos.
+
+Este archivo es **la lista de lo que falta**: se actualiza en el mismo commit en que se agrega un caso.
+Hay dos tipos de cobertura: por **equipo** (¿hay un ejemplo para cada tipo de equipo?) y por **contrato**
+(¿cada campo y cada motivo aparece en algún ejemplo?).
+
+Estados: ✅ hay ejemplo · ⏳ falta, se puede agregar ya (falta el dato con fuente) · 🔒 bloqueado por el contrato
+(necesita varios tramos, `maxItems` > 1) · 🚫 fuera del alcance del motor por ahora.
+
+## 1. Cobertura por equipo
+
+### Marítimo (`maritime/`)
+
+Códigos ISO 6346 verificados en fuente secundaria (Wikipedia, BIC); el resto, de memoria, se verifica al agregar el caso.
+La ISO 6346:2022 cambió el código de largo 45' de `L` a `5`: el catálogo guarda los dos.
+
+| Ruta | Equipo | Código ISO | Estado | Qué falta |
+|---|---|---|---|---|
+| `dry/20dv-*` | 20' estándar (DV / GP / ST) | 22G1 | ✅ `20dv-heavy` | — |
+| `dry/40dv-*` | 40' estándar (DV / GP / ST) | 42G1 | ✅ `40dv-gma-pallets` | — |
+| `dry/40hc-*` | 40' high cube | 45G1 | ✅ `40hc-tall-pallets` | — |
+| `dry/45hc-*` | 45' high cube | L5G1 (1995) / 55G1 (2022) | ✅ `45hc-gma-pallets` | — |
+| `dry/45pw-*` | 45' pallet wide (el cliente tiene la fila «Pallet Wide 45») | LEG1 (de memoria) | ⏳ | Ficha con interior y puerta |
+| `dry/20hc-*` | 20' high cube (poco común) | 25G1 | ⏳ | Ficha; confirmar si el cliente lo usa (en su catálogo la fila «High Cube 20'» trae medidas de 40') |
+| `reefer/20rf-*` | 20' refrigerado | 22R1 | ✅ `20rf-epal-pallets` | Confirmar la altura útil (2 158, de un fragmento de CMA CGM) con una placa; el catálogo del cliente dice 5 724 de largo (revisar en 1.1.5) |
+| `reefer/40rf-*` | 40' refrigerado estándar | 42R1 | ⏳ | No se encontró ficha vigente; confirmar si existe en el patio |
+| `reefer/40rh-*` | 40' refrigerado high cube | 45R1 | ✅ `40rh-epal-pallets` | — |
+| `special/20ot-*` | Open top 20', por puerta y por techo | 22U1 | ✅ `20ot-door`, `20ot-roof` | — |
+| `special/40ot-*` | Open top 40', por puerta y por techo | 42U1 | ⏳ | Nada: datos listos (Triton, ONE; techo 11 798 × 2 230); solo falta escribir el caso |
+| `special/20fr-*` | Flat rack 20' | 22P1 (fijo) / 22P3 (plegable) | ⏳ | Nada: datos listos (ONE 5 568 × 2 194 × 2 213); falta el caso y el margen OOG real de la naviera |
+| `special/40fr-*` | Flat rack 40' | 42P1 / 42P3 | ✅ `40fr-oog` | Margen OOG real (hoy supuesto: 600 arriba, 200 por lado) |
+| `special/platform-*` | Plataforma ISO | 22P0 / 42P0 (de memoria) | ⏳ | Ficha |
+| `special/tank-*` | Tanque | 22T… | 🚫 | Granel líquido, no se acomoda con cajas |
+
+### Autotransporte (`road/`)
+
+| Ruta | Equipo | Estado | Qué falta |
+|---|---|---|---|
+| `dry-van/48dv-*` | Caja seca 48' | ✅ `48dv-mixed` | Interior completo de un fabricante mexicano (hoy ancho Remosa + largo y puerta C.H. Robinson); carga útil supuesta |
+| `dry-van/53dv-*` | Caja seca 53' | ✅ `53dv-stacked`, `53dv-contract-coverage` | — (puerta conservadora de C.H. Robinson, 2 496 × 2 794) |
+| `reefer-van/53rv-*` | Caja refrigerada (thermo) 53' | ✅ `53rv-pallets` | Carga útil supuesta (24 900) |
+| `reefer-van/48rv-*` | Caja refrigerada (thermo) 48' | ⏳ | Nada: datos listos (C.H. Robinson 14 173 × 2 463 × 2 628); solo falta escribir el caso |
+| `flatbed/40fb-*` | Plataforma 40' | ⏳ | Largo, ancho y altura de cama |
+| `flatbed/48fb-*` | Plataforma 48' | ✅ `48fb-steel` | Altura de cama real (hoy 1 478 mm de un fabricante de EE. UU.) |
+| `flatbed/53fb-*` | Plataforma 53' | ✅ `53fb-long-pipes` | Ídem |
+| `flatbed/extendable-*` | Plataforma extensible | ⏳ | Largo según la extensión usada (un tramo por configuración) |
+| `curtain/conestoga-*` | Plataforma con lona corrediza (Conestoga) | ⏳ | Ficha: altura bajo los arcos; sin puerta trasera rígida |
+| `step-deck/*` | Escalonada (drop deck) | 🔒 | Dos tramos con distinta altura de piso |
+| `double-drop/*` | Doble caída | 🔒 | Tres tramos (pozo central) |
+| `lowboy/*`, `rgn/*` | Cama baja y cuello desmontable (RGN) | 🔒 | Varios tramos; la carga suele pedir permiso por sobredimensión |
+| `rigid/rabon-*` | Camión rabón (C2) | ⏳ | **Medidas del patio:** placa o tarjeta de circulación y medir la caja de 1–2 unidades. Ya verificado: NOM-012 C2 = 19,0 t en ET/A |
+| `rigid/torton-*` | Camión tortón (C3) | ⏳ | Ídem, más el número de llantas (C3 = 24,0 t con 8 llantas, 27,5 t con 10, en ET/A) |
+| `rigid/van-3t-*` | Camioneta de 3,5 t | ⏳ | Medidas de la caja |
+| `specialized/hot-shot-*` | Hot shot | ⏳ | Poco usado en México; confirmar antes de agregarlo |
+| `specialized/car-hauler-*` | Nodriza | 🔒 | Varios niveles |
+| `combination/full-*`, `b-train-*` | Full (T3-S2-R4) y tren B | 🚫 | Varios equipos en un viaje (sprint 2.4) |
+
+### Ferroviario (`rail/`)
+
+| Ruta | Equipo | Estado |
+|---|---|---|
+| `boxcar/*`, `gondola/*`, `double-stack/*` | Furgón, góndola, doble estiba | 🚫 futuro (fase 4) |
+
+## 2. Cobertura del contrato
+
+| Parte del contrato | Dónde aparece | Estado |
+|---|---|---|
+| Equipo con puerta / sin puerta | contenedores y cajas secas / plataformas | ✅ |
+| Puerta más grande que el interior | `maritime/reefer/40rh-epal-pallets`, `road/dry-van/48dv-mixed` | ✅ |
+| Puerta más baja que el interior | `road/reefer-van/53rv-pallets` | ✅ |
+| Open top por puerta y por techo (dos entradas del catálogo) | `maritime/special/20ot-door`, `20ot-roof` | ✅ |
+| Margen OOG (`overhang`), `outOfGauge`, `outOfGaugeCount` > 0, `zMm` negativo | `maritime/special/40fr-oog` | ✅ |
+| `tareKg` presente / ausente | contenedores / caja seca y plataformas | ✅ |
+| Orientaciones `LWH`, `WLH` | casi todos | ✅ |
+| Orientaciones `LHW`, `HLW`, `WHL`, `HWL` | `road/dry-van/53dv-contract-coverage` | ✅ |
+| `allowedOrientations` ausente (se permiten las 6) | `20dv-heavy`, `48fb-steel`, `53fb-long-pipes`, `53dv-contract-coverage` | ✅ |
+| Piezas apiladas, con apoyo completo | `53dv-stacked`, `53dv-contract-coverage` | ✅ |
+| `stackable`, `maxLoadOnTopKg`, `deliverySequence` | `53dv-contract-coverage` (y `stackable` en varios) | ✅ (el motor los aplica hasta el sprint 2.1) |
+| `description` ausente en una pieza | `53dv-contract-coverage` | ✅ |
+| Todo cabe (`unplaced` vacío) | `40dv-gma-pallets`, `53dv-contract-coverage` | ✅ |
+| `EXCEEDS_DIMENSIONS` | `20dv-heavy`, `40rh-epal-pallets`, `48fb-steel` | ✅ |
+| `EXCEEDS_DOOR` | `20dv-heavy`, `20ot-door`, `53rv-pallets` | ✅ |
+| `EXCEEDS_MAX_WEIGHT` | `40hc-tall-pallets` | ✅ |
+| `WEIGHT_LIMIT_REACHED` | `20dv-heavy`, `53dv-stacked`, `40fr-oog` | ✅ |
+| `NO_SPACE_AVAILABLE` | `40hc-tall-pallets`, `45hc-gma-pallets`, `20rf-epal-pallets` | ✅ |
+| `TIME_LIMIT_REACHED` | `53fb-long-pipes` (ilustrativo) | ✅ |
+| Varios tramos (`sections` > 1) | — | 🔒 hasta que el contrato lo acepte |
+| Entradas **inválidas** a propósito | — | ⏳ propuesta: carpeta `invalid/` cuando exista la validación del motor (sesión 1.1.4) |
+
+## 3. Cómo agregar un caso
+
+1. **Elige la ruta** en las tablas de arriba (o crea una rama nueva, en inglés y sin acentos, por el ADR-0009).
+   Nombre del caso: `<largo><tipo>-<qué muestra>`, por ejemplo `road/dry-van/48dv-mixed-boxes/`.
+2. **Consigue los datos con fuente.** Medidas del equipo: ficha del fabricante o de la naviera, o la placa del
+   equipo del cliente. Si hace falta investigar, corre `/buscador <equipo>`. Los datos del cliente se guardan en
+   `docs/datos/` (no se sube a git) y aquí solo van medidas y pesos, **anonimizados**. Redondeo: capacidades del
+   equipo hacia abajo y piezas hacia arriba (ADR-0016).
+3. **Escribe `input.json`.** Un solo tramo `main` en `(0, 0, 0)`; en plataformas, `heightMm` = 4 250 − altura de la
+   cama; en `description` del equipo indica que es sintético y de dónde salen las medidas.
+4. **Escribe `output.json`**, un plan válido hecho a mano (no tiene que ser el mejor), que cumpla:
+   - cada colocación dentro del tramo (o de su margen `overhang`, marcando `outOfGauge: true` y sumándola a
+     `outOfGaugeCount`) y sin traslapes (caras que se tocan sí se permiten);
+   - `dxMm`, `dyMm`, `dzMm` iguales a las medidas que da la orientación (1.ª letra sobre x, 2.ª sobre z, 3.ª sobre y);
+   - orientaciones dentro de `allowedOrientations`; si hay puerta, `dz ≤ ancho` y `dy ≤ alto` de la puerta;
+   - nada flotando: lo que tiene `yMm > 0` se apoya completo sobre otras piezas;
+   - peso cargado ≤ `maxPayloadKg`; colocadas + no colocadas = `quantity` de cada pieza;
+   - cada `reason` es el primero que se cumple en el orden del contrato;
+   - métricas exactas (las ocupaciones con 4 decimales).
+5. **Valida** contra el esquema con ajv (ver `contracts/README.md`). Las reglas físicas del paso 4 las revisará
+   `packages/validator` desde el sprint 1.4; mientras, pide a Claude que las revise.
+6. **Actualiza este archivo** (estado ⏳ → ✅ y la tabla de cobertura del contrato) y la tabla de casos de
+   `contracts/README.md`. Commit: `contracts: ejemplo <ruta>`.
+
+Las **cargas reales** (de clientes) no van aquí sino en `engine/fixtures/real/`, anonimizadas (sesión 1.1.5).
