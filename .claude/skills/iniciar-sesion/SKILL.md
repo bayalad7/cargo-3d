@@ -27,10 +27,13 @@ $ARGUMENTS
 
 ## Qué hacer
 
-1. Lee completos `CLAUDE.md`, `docs/src/plan.md` y la bitácora más reciente de `docs/src/bitacora/`.
+1. Lee completos `CLAUDE.md`, `docs/src/plan.md`, `docs/src/pendientes.md` y la bitácora más reciente de
+   `docs/src/bitacora/`.
 2. Responde con un resumen corto, con estos apartados:
    - **Dónde vamos:** fase, sprint y última sesión terminada (según la sección "Estado" de `CLAUDE.md` y la bitácora).
-   - **Pendientes:** lo que quedó abierto en la última bitácora, incluidos pendientes de Benjamín.
+   - **Pendientes:** de «Abiertos» en `docs/src/pendientes.md`, primero los que **bloquean** la siguiente sesión
+     (su columna «Cuándo» es esa sesión o una anterior), después los de Benjamín; cita cada uno con su id y su
+     «Cómo retomarlo». No repitas toda la tabla.
    - **Siguiente sesión sugerida:** el número de sesión de `docs/src/prompts.md` que sigue (por ejemplo `1.1.3`),
      con su modelo sugerido.
 3. Revisa y avisa claramente si algo no cuadra:

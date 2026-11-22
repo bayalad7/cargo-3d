@@ -23,11 +23,11 @@ dispara por su cuenta.
 
 | Comando | Cuándo usarlo | Qué hace | ¿Modifica archivos? |
 | --- | --- | --- | --- |
-| `/iniciar-sesion [meta]` | Al abrir Claude Code, siempre | Lee `CLAUDE.md`, el plan y la última bitácora; revisa la rama y los cambios pendientes; te dice dónde vamos y qué sesión sigue | No |
+| `/iniciar-sesion [meta]` | Al abrir Claude Code, siempre | Lee `CLAUDE.md`, el plan, los pendientes y la última bitácora; revisa la rama y los cambios pendientes; te dice dónde vamos y qué sesión sigue | No |
 | `/buscador <sprint o tema>` | **Opcional.** Después de `/iniciar-sesion` y antes de `/sesion`, solo si el sprint necesita datos logísticos que todavía no tienes (si ya están en `docs/datos/`, `contracts/` o `engine/fixtures/`, sáltalo) | Lanza el agente `investigador-logistico` (`.claude/agents/`) en un contexto aparte: busca en fuentes primarias (ISO, NOM-012, CTU Code, VGM, EPAL), cita cada dato con su fuente y nivel de confianza y entrega catálogos, fórmulas, casos borde, escenarios sintéticos y el destino propuesto | No |
 | `/sesion 1.1.2` | Para ejecutar una sesión de `prompts.md` | Busca la sesión, revisa requisitos, que estés en `develop` y el modelo; **propone un plan y espera tu aprobación**; luego implementa y verifica | Sí, después de que apruebes |
 | `/revisar [enfoque]` | Antes de cerrar una sesión con cambios importantes | Revisión como ingeniero senior de todo lo que cambió contra `main`; hallazgos ordenados por gravedad | No |
-| `/cerrar-sesion [nota]` | Al terminar cada sesión | Corre `gofmt`, `go vet` y pruebas; actualiza bitácora, CHANGELOG, Estado de `CLAUDE.md` y checklist del plan; propone el mensaje de commit | Sí (solo documentación) |
+| `/cerrar-sesion [nota]` | Al terminar cada sesión | Corre `gofmt`, `go vet` y pruebas; actualiza bitácora, registro de pendientes (`docs/src/pendientes.md`), CHANGELOG, Estado de `CLAUDE.md` y checklist del plan; propone el mensaje de commit | Sí (solo documentación) |
 | `/punto-de-control <tema>` | Al terminar un módulo o sprint | Te hace 5 preguntas una por una, corrige y registra el veredicto en la bitácora | Sí (solo la bitácora) |
 | `/cerrar-sprint 1.1` | Al terminar todas las sesiones de un sprint | Verifica con evidencia cada tarea del sprint; si todo está, lo marca y actualiza el Estado; en el último sprint de una fase revisa el criterio de la fase | Sí (plan, Estado, bitácora) |
 | `/explicar <algo>` | Cuando no entiendes algo | Explica un archivo, una función, un error pegado o un concepto, comparando con PHP y con el código real | No |
@@ -172,6 +172,9 @@ claude
   `docs/datos/` antes de empezar.
 - **El repositorio es la memoria.** Lo que no quedó en la bitácora o en `CLAUDE.md`, la siguiente sesión no
   lo sabe. Por eso `/cerrar-sesion` no es opcional.
+- **Nada pendiente se queda en el chat.** Todo lo abierto (datos que faltan, valores supuestos, decisiones
+  aplazadas) va a [Pendientes](pendientes.md) con un id `P-NNN` y el «cómo retomarlo». `/iniciar-sesion` te
+  muestra primero los que bloquean la siguiente sesión.
 
 ## Si algo no funciona
 

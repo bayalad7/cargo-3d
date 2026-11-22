@@ -236,7 +236,7 @@ en segundos y la web la muestra en 3D.
 
 ### Sprint 1.1 — Modelos y contrato del motor
 
-- [ ] `contracts/engine.schema.json`: entrada y salida del motor.
+- [x] `contracts/engine.schema.json`: entrada y salida del motor.
 - [ ] Tipos `Container`, `CargoItem`, `Orientation`, `Placement` y `LoadPlan` en `internal/engine`, en milímetros y kilogramos (`int64`).
 - [ ] Validación de entrada que devuelve errores claros (`error`), nunca `panic`.
 - [ ] Primeras cargas reales en `engine/fixtures/real/` y catálogo de equipos.

@@ -7,6 +7,14 @@ Cada versión liberada en `main` lleva su etiqueta de git (ADR-0012).
 ## [Sin publicar]
 
 ### Agregado
+- Registro de pendientes `docs/src/pendientes.md` (id `P-NNN`, quién, cuándo y cómo retomarlo): `/cerrar-sesion`
+  lo actualiza en cada cierre y `/iniciar-sesion` y `/sesion` lo consultan.
+- Contrato del motor `contracts/engine.schema.json` v0.1.0 (sprint 1.1): entrada y salida con milímetros y
+  kilogramos enteros, tramos del equipo, puerta opcional, orientaciones, motivos de piezas no colocadas y margen de
+  carga sobredimensionada (OOG). 15 ejemplos sintéticos por tipo de equipo en `contracts/examples/`, con la lista
+  de lo que falta por cubrir.
+- ADR-0015 (geometría del contrato), ADR-0016 (qué rechaza el motor y qué reporta) y ADR-0017 (carga
+  sobredimensionada y open top).
 - Sistema de diseño Voxa (ADR-0014) en `packages/ui` (`@cargo-3d/ui`): tokens en claro y oscuro con
   `light-dark()` y Tailwind CSS v4 (`tokens.css`, fuente única de verdad), componentes `vx-` (`components.css`),
   logo Vóxel en SVG (componente `Logo` y 6 archivos), íconos con Lucide (`Icon`, `appIcons`) y componentes

@@ -2,6 +2,7 @@
 
 [Introducción](introduccion.md)
 [Plan de trabajo](plan.md)
+[Pendientes](pendientes.md)
 [Flujo de trabajo con Claude Code](flujo-claude-code.md)
 [Biblioteca de prompts por sesión](prompts.md)
 [Convenciones](convenciones.md)
@@ -28,6 +29,9 @@
 - [0012 — Ramas y versiones](adr/0012-ramas-y-versiones.md)
 - [0013 — CI y publicación de versiones](adr/0013-ci-y-release.md)
 - [0014 — Sistema de diseño Voxa](adr/0014-sistema-de-diseno.md)
+- [0015 — Geometría del contrato del motor](adr/0015-geometria-del-contrato-del-motor.md)
+- [0016 — Qué rechaza el motor y qué reporta](adr/0016-que-rechaza-el-motor.md)
+- [0017 — Carga sobredimensionada y open top](adr/0017-carga-sobredimensionada-y-open-top.md)
 
 # Experiencia de usuario
 
@@ -41,4 +45,4 @@
 # Bitácora
 
 - [2026-11-20 — Cimientos](bitacora/2026-11-20.md)
-- [2026-11-21 — Sistema de diseño Voxa](bitacora/2026-11-21.md)
+- [2026-11-21 — Sistema de diseño Voxa y contrato del motor (1.1.1)](bitacora/2026-11-21.md)

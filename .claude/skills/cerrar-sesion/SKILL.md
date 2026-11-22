@@ -1,6 +1,6 @@
 ---
 name: cerrar-sesion
-description: Cierra una sesión de trabajo de Cargo 3D. Corre las verificaciones, actualiza bitácora, CHANGELOG y el Estado de CLAUDE.md, y propone el mensaje de commit.
+description: Cierra una sesión de trabajo de Cargo 3D. Corre las verificaciones, actualiza bitácora, registro de pendientes, CHANGELOG y el Estado de CLAUDE.md, y propone el mensaje de commit.
 argument-hint: "[nota opcional para la bitácora]"
 model: sonnet
 effort: medium
@@ -41,6 +41,17 @@ Nota de Benjamín para la bitácora (puede venir vacía): $ARGUMENTS
      en `docs/src/SUMMARY.md` (la entrada más reciente va arriba de la lista de Bitácora);
    - si ya existe, agrega una sección nueva con el número de la sesión, sin borrar lo anterior.
    Escribe solo lo que realmente pasó en esta sesión; incluye la nota de Benjamín si dio una.
+   En su sección "Pendientes" **solo cita los ids** del registro (`P-012: …` en una línea); el detalle va en el paso 3b.
+3b. **Registro de pendientes** (`docs/src/pendientes.md`), **obligatorio en cada cierre** aunque no haya nada nuevo:
+   - todo lo que quedó abierto en la sesión (tareas sin terminar, datos que faltan, valores supuestos, decisiones
+     aplazadas, hallazgos de `/revisar` no corregidos, trabajo hecho con herramientas temporales que no quedó en el
+     repo) entra como fila nueva en «Abiertos», con el siguiente id `P-NNN` libre y todas las columnas llenas:
+     quién, cuándo (sesión de `prompts.md` antes de la cual debe resolverse), qué falta, por qué importa,
+     **cómo retomarlo** (comando, sesión y archivo exactos) y origen;
+   - los pendientes que se resolvieron en la sesión pasan a «Cerrados» con la fecha y cómo se resolvieron;
+     nunca se borra una fila ni se reutiliza un id;
+   - sin datos de clientes: si hace falta, apunta al archivo de `docs/datos/`.
+   Antes de seguir, revisa la conversación completa: nada de lo pendiente puede quedar solo en el chat.
 4. **CHANGELOG.md.** Agrega en "[Sin publicar]" lo que cambió para el producto o el proyecto
    (Agregado / Cambiado / Corregido). No repitas detalles internos.
 5. **CLAUDE.md, sección "Estado".** Actualiza fase, sprint, última sesión terminada, siguiente sesión sugerida
@@ -51,4 +62,5 @@ Nota de Benjamín para la bitácora (puede venir vacía): $ARGUMENTS
    (`área: descripción en presente`, en español, con viñetas en el cuerpo).
    **No hagas el commit ni el push**: Benjamín los hace. Muéstrale los comandos:
    `git add -A`, `git commit` con el mensaje, y `git push` (todo se trabaja en `develop`).
-8. Termina con un resumen de 3 líneas: qué se logró, qué quedó pendiente y cuál es la siguiente sesión.
+8. Termina con un resumen de 3 líneas: qué se logró, qué quedó pendiente (ids nuevos y cerrados de
+   `docs/src/pendientes.md`, y cuáles le tocan a Benjamín) y cuál es la siguiente sesión.

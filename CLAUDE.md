@@ -62,8 +62,10 @@ Principio rector: **Go para todo el backend, TypeScript para todas las pantallas
    estructuras reales del proyecto y comparados con PHP, no con ejemplos genéricos.
 7. **Pruebas como documentación:** nombres de prueba que describan el comportamiento
    (ej. `TestDoesNotStackFragileUnderHeavy`), con comentario en español. Preferir pruebas de tabla.
-8. **Bitácora:** al cerrar cada sesión, agregar `docs/src/bitacora/AAAA-MM-DD.md`
-   (qué se hizo, decisiones, pendientes) y actualizar `CHANGELOG.md` y la sección "Estado".
+8. **Bitácora y pendientes:** al cerrar cada sesión, agregar `docs/src/bitacora/AAAA-MM-DD.md`
+   (qué se hizo, decisiones, ids de pendientes) y actualizar `CHANGELOG.md` y la sección "Estado".
+   **Todo lo que quede abierto va a `docs/src/pendientes.md`** (id `P-NNN`, quién, cuándo, qué falta, por qué
+   importa y cómo retomarlo): nada pendiente se queda solo en la conversación. Lo resuelto pasa a «Cerrados».
 9. **Puntos de control:** al terminar cada módulo, pedir al usuario que lo explique
    con sus palabras antes de continuar.
 10. **El contrato va primero:** cualquier cambio de la API empieza en `contracts/openapi.yaml`;
@@ -224,9 +226,12 @@ pnpm --filter @cargo-3d/ui build:preview   # compila la vista previa (abrir pack
 
 ## Estado
 
-- **Fase actual:** 0 — cimientos (estructura, Docker y documentación). Servidor con `/health`; motor vacío.
+- **Fase actual:** 1 — prueba de concepto, sprint 1.1 (sesión 1.1.1 terminada el 2026-11-21). Servidor con `/health`; motor vacío.
 - **Nivel de comentarios Go:** máximo (casi cada línea).
-- **Siguiente paso:** fase 1, sprint 1.1 (ver `docs/src/plan.md`) — modelos del motor y `contracts/engine.schema.json`.
+- **Contrato del motor:** `contracts/engine.schema.json` v0.1.0 y 15 ejemplos en `contracts/examples/` (ADR-0015, 0016 y 0017).
+  Escrito con datos sintéticos; la sesión 1.1.5 lo ajusta con las cargas reales.
+- **Siguiente paso:** sesión 1.1.2 (`Container` y `CargoItem` en Go, siguiendo el contrato). Falta el punto de control de
+  la 1.1.1 (explicar los campos del contrato).
 - **Sistema de diseño:** base lista en `packages/ui` (2026-11-21, fuera del plan); se conecta a `apps/web` en el sprint 1.6.
-- **Pendiente:** cargas reales de ejemplo, catálogo de equipos usados, reglas del patio; subir al sistema oficial
-  de claude.ai los componentes «propuesta» (modal, toasts, barra masiva).
+- **Pendientes:** registro completo en `docs/src/pendientes.md` (P-001 a P-018). Los de Benjamín más urgentes:
+  P-007 (punto de control, antes de 1.1.2) y P-001 (cargas reales y catálogo, antes de 1.1.5).
