@@ -9,7 +9,7 @@ import { Icon } from "./Icon";
  * - `primary`: amarillo con texto en tinta. **Uno solo por vista** («Optimizar carga»).
  * - `secondary`: tinta con texto `on-ink`. Acción fuerte pero no principal («Liberar plan»).
  * - `ghost`: tarjeta con borde. Acciones de apoyo («Ver en 3D», «Cancelar»).
- * - `danger` (propuesta): rojo, solo para confirmar algo destructivo dentro de un modal.
+ * - `danger`: rojo, solo para confirmar algo destructivo dentro de un modal.
  */
 export type ButtonVariant = "primary" | "secondary" | "ghost" | "danger";
 

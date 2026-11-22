@@ -48,6 +48,7 @@ con los mismos colores, tamaños y componentes, y para que nadie escriba colores
   sistema no existen en Tailwind; el logo cambia de tema solo; la vista previa permite revisar el sistema sin app.
 - **Negativas / costos:** `light-dark()` requiere navegadores de 2024 en adelante (WebView2 y Safari actuales
   cumplen). React Native no lee CSS: en el sprint 3.2 habrá que conectar los tokens (por ejemplo con NativeWind).
-  Los componentes «propuesta» (modal, toasts, barra masiva) deben subirse al sistema oficial.
+  Los componentes que nacieron en el código (modal, toasts, barra masiva) se subieron al sistema oficial en su v5
+  (2026-11-21).
 - **Qué tendríamos que hacer para revertirla:** los tokens son variables CSS normales; quitar Tailwind es
   borrar los bloques `@theme` y reemplazar las utilidades de las pantallas por clases propias.

@@ -116,8 +116,8 @@ Las escalas de Tailwind (`text-sm`, `text-xl`…) están **desactivadas**: solo 
 - **Radios:** `rounded-sm` 6 (píldoras, barras), `rounded-md` 10 (tarjetas, botones), `rounded-lg` 16
   (paneles, insignia), `rounded-full`.
 - **Sombra:** una sola y casi imperceptible, `shadow-card`. La jerarquía la dan las superficies, no las
-  sombras. `shadow-float` (propuesta) es solo para lo que flota: modal, toast, barra masiva.
-- **Movimiento** (propuesta): `--motion-fast` 120 ms y `--motion-base` 200 ms, sin rebotes. Todo se apaga con
+  sombras. `shadow-float` es solo para lo que flota: modal, toast, barra masiva.
+- **Movimiento:** `--motion-fast` 120 ms y `--motion-base` 200 ms, sin rebotes. Todo se apaga con
   `prefers-reduced-motion`.
 
 ## Íconos
@@ -159,27 +159,27 @@ Todos están en `components.css` con el prefijo `vx-` y solo usan tokens. Los co
 |---|---|---|---|
 | Logo | `.vx-logo-light` / `-dark` | `Logo` | Oficial |
 | Botón | `.vx-btn` + `--primary` `--secondary` `--ghost` `--sm` | `Button` | Oficial |
-| Botón destructivo | `.vx-btn--danger` | `Button variant="danger"` | Propuesta |
+| Botón destructivo | `.vx-btn--danger` | `Button variant="danger"` | Oficial |
 | Navegación | `.vx-nav`, `.vx-nav__item`, `--active`, `.vx-search`, `.vx-round` | — | Oficial |
 | Píldora de estado | `.vx-pill--success/progress/warning/danger/delayed` | `StatusBadge` | Oficial |
-| Estado en tiempo real | `.vx-pill--live` | `StatusBadge live announce` | Propuesta |
+| Estado en tiempo real | `.vx-pill--live` | `StatusBadge live announce` | Oficial |
 | Filtro | `.vx-chip`, `--active` / `aria-pressed` | `FilterChip` | Oficial |
 | Indicador | `.vx-kpi` y sus partes, `.vx-delta--up/down` | — | Oficial |
 | Tarjeta de carga | `.vx-card`, `--selected`, `.vx-progress` | — | Oficial |
 | Panel | `.vx-panel` | — | Oficial |
-| Modal de confirmación | `.vx-dialog` y sus partes | `ConfirmDialog` | Propuesta |
-| Notificación | `.vx-toaster`, `.vx-toast--<estado>` | `Toaster`, `Toast` | Propuesta |
-| Acciones masivas | `.vx-bulkbar`, `.vx-bulkbar__action` | `BulkActionBar`, `BulkAction` | Propuesta |
+| Modal de confirmación | `.vx-dialog` y sus partes | `ConfirmDialog` | Oficial |
+| Notificación | `.vx-toaster`, `.vx-toast--<estado>` | `Toaster`, `Toast` | Oficial |
+| Acciones masivas | `.vx-bulkbar`, `.vx-bulkbar__action` | `BulkActionBar`, `BulkAction` | Oficial |
 
-«Propuesta» quiere decir que el componente se diseñó con los tokens oficiales pero todavía no está en el
-sistema de claude.ai; hay que agregarlo allá para que diseño y código no se separen.
+Todos están en el sistema oficial de claude.ai (v5, 2026-11-21). Un componente nuevo se agrega en los dos lados a la
+vez, para que diseño y código no se separen.
 
 ### Botones
 
 - `primary` (amarillo): **uno solo por vista**, la acción principal.
 - `secondary` (tinta): acción fuerte pero no principal.
 - `ghost` (tarjeta con borde): acciones de apoyo. Es el valor por omisión de `Button`.
-- `danger` (propuesta): **solo** para confirmar algo destructivo dentro de un `ConfirmDialog`.
+- `danger`: **solo** para confirmar algo destructivo dentro de un `ConfirmDialog`.
 - Deshabilitado con el atributo `disabled`, nunca solo con color. El anillo de foco nunca se quita.
 
 ### Badges de estado en tiempo real

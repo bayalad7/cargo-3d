@@ -33,8 +33,7 @@ export interface ConfirmDialogProps {
 }
 
 /**
- * ConfirmDialog es el modal de confirmación del sistema Voxa (`.vx-dialog`). PROPUESTA:
- * todavía no está en el sistema oficial.
+ * ConfirmDialog es el modal de confirmación del sistema Voxa (`.vx-dialog`).
  *
  * Cómo funciona: usa el `<dialog>` nativo del navegador, que ya atrapa el foco, cierra con
  * Esc y dibuja el velo. El componente solo abre o cierra el `<dialog>` según `open` y avisa

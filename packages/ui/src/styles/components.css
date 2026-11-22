@@ -6,8 +6,9 @@
  *     así que cambian de tema solas.
  *   - Viven en `@layer components` de Tailwind: una utilidad (`mt-4`, `w-full`) puede
  *     ajustar un componente sin `!important`.
- *   - Las secciones marcadas «PROPUESTA» no están todavía en el sistema oficial de
- *     claude.ai; se diseñaron con los mismos tokens y hay que agregarlas allá.
+ *   - Los componentes están también en el sistema oficial de claude.ai
+ *     (`components/bundle.css`, v5): un cambio se hace en los dos lados a la vez.
+ *     Solo `.vx-data` (cifras alineadas) y la capa base viven únicamente aquí.
  *
  * Por qué clases y no solo utilidades: los componentes se comparten entre web,
  * escritorio y la vista previa en HTML, y una clase con nombre se lee mejor en el
@@ -118,7 +119,7 @@
     border-color: var(--ink-muted);
   }
 
-  /* PROPUESTA: acción destructiva confirmada («Eliminar plan»). Solo dentro de un modal. */
+  /* Acción destructiva confirmada («Eliminar plan»). Solo dentro de un modal. */
   .vx-btn--danger {
     background: var(--status-danger-ink);
     color: var(--on-danger);
@@ -246,7 +247,7 @@
     color: var(--status-delayed-ink);
   }
 
-  /* PROPUESTA — en tiempo real: el punto late mientras el estado sigue cambiando
+  /* En tiempo real: el punto late mientras el estado sigue cambiando
      (por ejemplo «Cargando» en el patio). Se apaga con prefers-reduced-motion. */
   .vx-pill--live::before {
     animation: vx-pulse 1.6s var(--motion-ease) infinite;
@@ -434,7 +435,7 @@
     }
   }
 
-  /* ------------------------------------------------------------ Modal de confirmación (PROPUESTA) */
+  /* ------------------------------------------------------------ Modal de confirmación */
 
   /* Sobre el <dialog> nativo: trae el foco atrapado, Esc para cerrar y el velo. */
   .vx-dialog {
@@ -503,7 +504,7 @@
     margin-top: var(--space-6);
   }
 
-  /* ------------------------------------------------------------ Notificaciones (PROPUESTA) */
+  /* ------------------------------------------------------------ Notificaciones */
 
   /* Región fija abajo a la derecha; en teléfono ocupa el ancho con 16 px de margen. */
   .vx-toaster {
@@ -630,7 +631,7 @@
     color: var(--ink);
   }
 
-  /* ------------------------------------------------------------ Barra de acciones masivas (PROPUESTA) */
+  /* ------------------------------------------------------------ Barra de acciones masivas */
 
   /* Aparece cuando hay piezas o planes seleccionados. Va en tinta (30 %) para no competir
      con el botón principal amarillo de la vista. */

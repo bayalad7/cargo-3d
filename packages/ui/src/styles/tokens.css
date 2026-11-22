@@ -74,11 +74,11 @@
   --status-delayed-soft: light-dark(#f1eefe, #24194a);
   --status-delayed-ink: light-dark(#5b2fd6, #bdb4fe);
 
-  /* PROPUESTA (no está en el sistema oficial): texto sobre status-danger-ink, para el
+  /* Texto sobre status-danger-ink, para el
      botón de una acción destructiva (6.5:1 en claro, 8.3:1 en oscuro). */
   --on-danger: light-dark(#ffffff, #111111);
 
-  /* PROPUESTA: velo detrás de los modales. */
+  /* Velo detrás de los modales. */
   --scrim: light-dark(rgb(17 17 17 / 0.45), rgb(0 0 0 / 0.6));
 
   /* Colores del logo (los SVG de `brand/` llevan estos mismos valores fijos). */
@@ -105,10 +105,10 @@
 
   /* Sombra única y casi imperceptible: la jerarquía la dan las superficies. */
   --shadow-card: 0 1px 2px light-dark(rgb(17 17 17 / 0.06), rgb(0 0 0 / 0.4));
-  /* PROPUESTA: elementos que flotan sobre la página (modal, toast, barra masiva). */
+  /* Elementos que flotan sobre la página (modal, toast, barra masiva). */
   --shadow-float: 0 8px 24px light-dark(rgb(17 17 17 / 0.12), rgb(0 0 0 / 0.5));
 
-  /* Movimiento (propuesta): corto y sin rebotes; se apaga con prefers-reduced-motion. */
+  /* Movimiento (en el sistema oficial vive en bundle.css): corto y sin rebotes; se apaga con prefers-reduced-motion. */
   --motion-fast: 120ms;
   --motion-base: 200ms;
   --motion-ease: cubic-bezier(0.2, 0, 0, 1);

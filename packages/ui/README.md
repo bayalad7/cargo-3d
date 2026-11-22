@@ -14,7 +14,7 @@ import { Button, Logo, StatusBadge, appIcons } from "@cargo-3d/ui";
 | Archivo | Qué es |
 |---|---|
 | `src/styles/tokens.css` | **Fuente única de verdad**: colores claro/oscuro, tipografía, espaciado, radios, sombras |
-| `src/styles/components.css` | Clases `vx-` (oficiales y propuestas) |
+| `src/styles/components.css` | Clases `vx-` (las del sistema oficial, más `.vx-data`) |
 | `src/brand/` | Logo Vóxel: `Logo.tsx` y los SVG con colores fijos |
 | `src/icons.ts` | `appIcons`: un ícono de Lucide por concepto del dominio |
 | `src/components/` | Componentes React solo de presentación |

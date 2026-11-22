@@ -27,8 +27,7 @@ export interface ToastProps extends Omit<ComponentPropsWithRef<"div">, "title"> 
 }
 
 /**
- * Toast es una notificación breve del sistema Voxa (`.vx-toast`). PROPUESTA: todavía no
- * está en el sistema oficial.
+ * Toast es una notificación breve del sistema Voxa (`.vx-toast`).
  *
  * Cómo funciona: tarjeta con borde izquierdo e ícono del color del estado; el texto va
  * siempre en tinta. Solo se dibuja: cuándo aparece, cuánto dura y la cola de avisos las

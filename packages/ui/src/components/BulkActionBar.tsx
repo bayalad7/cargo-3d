@@ -27,7 +27,6 @@ export interface BulkActionBarProps extends ComponentPropsWithRef<"div"> {
 
 /**
  * BulkActionBar es la barra de acciones masivas del sistema Voxa (`.vx-bulkbar`).
- * PROPUESTA: todavía no está en el sistema oficial.
  *
  * Cómo funciona: muestra cuántos elementos hay seleccionados y las acciones para todos a
  * la vez («Mover a otro equipo», «Marcar no apilable», «Eliminar»). La pantalla decide
