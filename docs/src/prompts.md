@@ -98,7 +98,10 @@ backend/internal/engine, siguiendo exactamente contracts/engine.schema.json.
 - Comenta casi cada línea, como pide CLAUDE.md, explicando cada concepto
   de Go nuevo (struct, tipos numéricos, etiquetas, métodos) comparado con PHP.
 - Pruebas de tabla para Volume() y para convertir de JSON a Go y de regreso
-  usando contracts/examples/.
+  usando contracts/examples/ (todos los input.json y output.json). Ojo con
+  los valores por omisión (allowedOrientations = las 6, stackable = true,
+  overhang = 0): un campo que no viene debe regresar sin venir, así que no
+  se llenan al leer el JSON sino al calcular.
 - Escribe el capítulo 02 de la guía de Go (docs/src/aprendizaje/go/
   02-structs-y-tipos.md) con Container y CargoItem como ejemplos, y enlázalo
   en SUMMARY.md.
@@ -125,7 +128,8 @@ contracts/engine.schema.json.
   devuelva sus medidas rotadas (largo, ancho, alto).
 - CargoItem debe poder decir qué orientaciones tiene permitidas.
 - Placement une una pieza, su posición (x, y, z en mm desde la esquina del
-  fondo, abajo, a la izquierda) y su orientación.
+  fondo, abajo, a la izquierda mirando del fondo hacia la puerta; ver
+  ADR-0015) y su orientación.
 - LoadPlan junta las colocaciones, las métricas y las piezas que no
   cupieron.
 - Pruebas de tabla para las 6 orientaciones.
@@ -152,9 +156,15 @@ Sprint 1.1, sesión 4: validación de la entrada del motor.
 Escribe una función que revise la entrada antes de calcular y devuelva
 errores claros en español, nunca un panic:
 - medidas en cero o negativas, pesos negativos, cantidades menores a 1;
-- piezas que no caben en el equipo en ninguna orientación permitida;
 - lista de piezas vacía o con ids repetidos;
+- versión del contrato distinta y tramos (sections) encimados o fuera de
+  rango (una puerta más grande que el interior NO es error: ver ADR-0016);
+- un equipo con puerta (door) que además trae margen de sobredimensión
+  (overhang mayor que cero): el margen es solo para tramos abiertos (ADR-0017);
 - una pieza sin ninguna orientación permitida.
+
+Una pieza que no cabe en ninguna orientación NO es error de validación:
+sale en unplaced con EXCEEDS_DIMENSIONS o EXCEEDS_DOOR (ADR-0016).
 
 Usa errores con contexto (fmt.Errorf con %w) y errores comparables con
 errors.Is, para que la API pueda saber qué tipo de error fue. Si hay varios
