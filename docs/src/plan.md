@@ -1,6 +1,6 @@
 # Plan de trabajo
 
-> Versión del 2026-11-20. Si cambias el plan, actualiza este archivo en el mismo commit
+> Versión del 2026-11-21. Si cambias el plan, actualiza este archivo en el mismo commit
 > y regístralo en la bitácora.
 
 ## Cómo usar esta guía
@@ -300,6 +300,7 @@ Al terminar, Transportes Villa planea sus cargas reales con Cargo 3D cada semana
 - [ ] Apoyo y estabilidad, apilabilidad, orden de descarga por destino.
 - [ ] Reparto de peso por eje según la NOM-012 vigente (verifica la versión antes de programarla).
 - [ ] Cada restricción es una **interfaz** de Go intercambiable, con pruebas y su sección en conceptos.
+- [ ] Equipos con varios tramos: escalonada, doble caída, cama baja y RGN (sesión 2.1.6).
 
 ### Sprint 2.2 — Metaheurística en paralelo
 

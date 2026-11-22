@@ -22,7 +22,7 @@ Responde siempre en español. Sigue todas las reglas de `CLAUDE.md`.
    - Si no existe, dilo, muestra los números de sesión más cercanos que sí existen y detente.
    - Si `$numero` está vacío, pide el número y detente.
 2. **Revisa los requisitos** antes de hacer nada:
-   - **Pendientes:** busca en «Abiertos» de `docs/src/pendientes.md` los que tienen esta sesión en «Cuándo»;
+   - **Pendientes:** busca en «Abiertos» y «Agendados» de `docs/src/pendientes.md` los que tienen esta sesión en «Cuándo»;
      inclúyelos en el plan (y, si se resuelven, se cierran en `/cerrar-sesion`).
    - **Necesitas:** confirma que lo que pide existe (archivos, sesiones previas terminadas, datos en `docs/datos/`).
      Si falta algo, dilo y detente.

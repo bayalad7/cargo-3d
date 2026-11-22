@@ -196,10 +196,11 @@ packages/ui              TS — sistema de diseño Voxa (ADR-0014): tokens, Tail
   src/brand/             logo Vóxel: Logo.tsx y los SVG
   preview/               vista previa en HTML (claro y oscuro)
 apps/web | desktop | mobile
-docs/                    mdBook: plan, prompts, ADRs, conceptos, aprendizaje, bitácora
+docs/                    mdBook: plan, prompts, ADRs, conceptos, aprendizaje, bitácora; plantillas/ (formatos vacíos para el patio)
 .claude/skills/          comandos de Claude Code del proyecto
 .claude/agents/          subagentes del proyecto (investigador-logistico)
 docker-compose.yml       PostgreSQL (y la API con --profile api)
+scripts/contratos/        check-examples.mjs: reglas físicas de los ejemplos (provisional, hasta la sesión 1.4.2)
 scripts/servicios/        levantar y detener el entorno de desarrollo (.ps1/.cmd Windows, .sh/.command macOS/Linux)
 .vscode/tasks.json       tareas "Levantar servicios" (Ctrl+Shift+B) y "Detener servicios"
 .github/workflows/       ci.yml (revisión de cada cambio) y release.yml (publicación con etiqueta vX.Y.Z)
@@ -219,6 +220,7 @@ go vet ./backend/...                  # revisión estática
 gofmt -l backend                      # archivos sin formato (debe salir vacío)
 go doc ./backend/internal/engine      # documentación de un paquete
 docker compose --profile api up --build   # API dentro de Docker
+node scripts/contratos/check-examples.mjs   # revisa contracts/examples/ (o pnpm examples:check)
 mdbook serve docs --open              # sitio de documentación
 pnpm --filter @cargo-3d/ui lint       # revisa los tipos del sistema de diseño
 pnpm --filter @cargo-3d/ui build:preview   # compila la vista previa (abrir packages/ui/preview/index.html)
@@ -228,10 +230,11 @@ pnpm --filter @cargo-3d/ui build:preview   # compila la vista previa (abrir pack
 
 - **Fase actual:** 1 — prueba de concepto, sprint 1.1 (sesión 1.1.1 terminada el 2026-11-21). Servidor con `/health`; motor vacío.
 - **Nivel de comentarios Go:** máximo (casi cada línea).
-- **Contrato del motor:** `contracts/engine.schema.json` v0.1.0 y 15 ejemplos en `contracts/examples/` (ADR-0015, 0016 y 0017).
+- **Contrato del motor:** `contracts/engine.schema.json` v0.1.0, 23 ejemplos válidos y 17 inválidos en `contracts/examples/` (ADR-0015, 0016 y 0017).
   Escrito con datos sintéticos; la sesión 1.1.5 lo ajusta con las cargas reales.
 - **Siguiente paso:** sesión 1.1.2 (`Container` y `CargoItem` en Go, siguiendo el contrato). Falta el punto de control de
   la 1.1.1 (explicar los campos del contrato).
 - **Sistema de diseño:** base lista en `packages/ui` (2026-11-21, fuera del plan); se conecta a `apps/web` en el sprint 1.6.
-- **Pendientes:** registro completo en `docs/src/pendientes.md` (P-001 a P-018). Los de Benjamín más urgentes:
-  P-007 (punto de control, antes de 1.1.2) y P-001 (cargas reales y catálogo, antes de 1.1.5).
+- **Pendientes:** registro completo en `docs/src/pendientes.md` (P-001 a P-019). Los de Benjamín más urgentes:
+  P-019 (copiar `docs/datos/` y `.env` antes de cambiar de computadora), P-007 (punto de control, antes de 1.1.2)
+  y P-001 (cargas reales y reglas del patio, antes de 1.1.5).

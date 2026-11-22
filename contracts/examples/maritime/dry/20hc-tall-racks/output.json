@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "0.1.0",
+  "containerId": "c-20hc",
+  "placements": [
+    { "itemId": "rack", "instance": 0, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 0, "dxMm": 1400, "dyMm": 2500, "dzMm": 1100, "orientation": "LWH" },
+    { "itemId": "rack", "instance": 1, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 1100, "dxMm": 1400, "dyMm": 2500, "dzMm": 1100, "orientation": "LWH" },
+    { "itemId": "rack", "instance": 2, "sectionId": "main", "xMm": 1400, "yMm": 0, "zMm": 0, "dxMm": 1400, "dyMm": 2500, "dzMm": 1100, "orientation": "LWH" },
+    { "itemId": "rack", "instance": 3, "sectionId": "main", "xMm": 1400, "yMm": 0, "zMm": 1100, "dxMm": 1400, "dyMm": 2500, "dzMm": 1100, "orientation": "LWH" },
+    { "itemId": "rack", "instance": 4, "sectionId": "main", "xMm": 2800, "yMm": 0, "zMm": 0, "dxMm": 1400, "dyMm": 2500, "dzMm": 1100, "orientation": "LWH" },
+    { "itemId": "rack", "instance": 5, "sectionId": "main", "xMm": 2800, "yMm": 0, "zMm": 1100, "dxMm": 1400, "dyMm": 2500, "dzMm": 1100, "orientation": "LWH" },
+    { "itemId": "rack", "instance": 6, "sectionId": "main", "xMm": 4200, "yMm": 0, "zMm": 0, "dxMm": 1400, "dyMm": 2500, "dzMm": 1100, "orientation": "LWH" },
+    { "itemId": "rack", "instance": 7, "sectionId": "main", "xMm": 4200, "yMm": 0, "zMm": 1100, "dxMm": 1400, "dyMm": 2500, "dzMm": 1100, "orientation": "LWH" }
+  ],
+  "unplaced": [
+    { "itemId": "rack-alto", "quantity": 1, "reason": "EXCEEDS_DOOR" }
+  ],
+  "metrics": {
+    "placedCount": 8,
+    "unplacedCount": 1,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 12000,
+    "loadedVolumeMm3": 30800000000,
+    "volumeUtilization": 0.8272,
+    "weightUtilization": 0.553
+  }
+}

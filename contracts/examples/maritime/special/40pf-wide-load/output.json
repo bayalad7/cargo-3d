@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "0.1.0",
+  "containerId": "c-40pf",
+  "placements": [
+    { "itemId": "modulo", "instance": 0, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": -76, "dxMm": 5000, "dyMm": 2200, "dzMm": 2590, "orientation": "LWH", "outOfGauge": true },
+    { "itemId": "modulo", "instance": 1, "sectionId": "main", "xMm": 5000, "yMm": 0, "zMm": -76, "dxMm": 5000, "dyMm": 2200, "dzMm": 2590, "orientation": "LWH", "outOfGauge": true }
+  ],
+  "unplaced": [
+    { "itemId": "modulo-ancho", "quantity": 1, "reason": "EXCEEDS_DIMENSIONS" }
+  ],
+  "metrics": {
+    "placedCount": 2,
+    "unplacedCount": 1,
+    "outOfGaugeCount": 2,
+    "loadedWeightKg": 18000,
+    "loadedVolumeMm3": 56980000000,
+    "volumeUtilization": 0.7982,
+    "weightUtilization": 0.6429
+  }
+}

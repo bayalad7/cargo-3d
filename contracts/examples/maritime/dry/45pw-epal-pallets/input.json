@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-45pw",
+    "description": "Contenedor 45' HC pallet wide (LEG1), ejemplo sintético; interior, tara y bruto DP World; puerta y alto de un fragmento de Globy, POR CONFIRMAR",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 13570,
+        "widthMm": 2440,
+        "heightMm": 2690
+      }
+    ],
+    "door": {
+      "widthMm": 2343,
+      "heightMm": 2670
+    },
+    "maxPayloadKg": 28500,
+    "tareKg": 4500
+  },
+  "items": [
+    {
+      "id": "pallet-epal",
+      "description": "Pallet EPAL cargado",
+      "lengthMm": 1200,
+      "widthMm": 800,
+      "heightMm": 1800,
+      "weightKg": 600,
+      "quantity": 34,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false
+    }
+  ]
+}

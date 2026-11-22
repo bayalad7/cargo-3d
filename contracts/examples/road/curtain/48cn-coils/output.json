@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "0.1.0",
+  "containerId": "c-48cn",
+  "placements": [
+    { "itemId": "bobina", "instance": 0, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 0, "dxMm": 1800, "dyMm": 1500, "dzMm": 1800, "orientation": "LWH" },
+    { "itemId": "bobina", "instance": 1, "sectionId": "main", "xMm": 4000, "yMm": 0, "zMm": 0, "dxMm": 1800, "dyMm": 1500, "dzMm": 1800, "orientation": "LWH" },
+    { "itemId": "bobina", "instance": 2, "sectionId": "main", "xMm": 8000, "yMm": 0, "zMm": 0, "dxMm": 1800, "dyMm": 1500, "dzMm": 1800, "orientation": "LWH" }
+  ],
+  "unplaced": [
+    { "itemId": "bobina", "quantity": 1, "reason": "WEIGHT_LIMIT_REACHED" },
+    { "itemId": "cajon-alto", "quantity": 1, "reason": "EXCEEDS_DIMENSIONS" }
+  ],
+  "metrics": {
+    "placedCount": 3,
+    "unplacedCount": 2,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 18000,
+    "loadedVolumeMm3": 14580000000,
+    "volumeUtilization": 0.1712,
+    "weightUtilization": 0.9019
+  }
+}

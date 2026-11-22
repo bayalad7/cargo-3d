@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-40ot-roof",
+    "description": "Open top 40' (42U1) cargado con grúa por el techo: el tramo es la abertura (ONE, 11798 x 2230), centrada en el interior de 12022 x 2350; sin puerta; ejemplo sintético",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 112,
+        "yMm": 0,
+        "zMm": 60,
+        "lengthMm": 11798,
+        "widthMm": 2230,
+        "heightMm": 2348
+      }
+    ],
+    "maxPayloadKg": 26600,
+    "tareKg": 3880
+  },
+  "items": [
+    {
+      "id": "maquina-alta",
+      "description": "Máquina de 2,3 m de alto",
+      "lengthMm": 3000,
+      "widthMm": 1500,
+      "heightMm": 2300,
+      "weightKg": 6000,
+      "quantity": 1,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ]
+    },
+    {
+      "id": "viga",
+      "description": "Viga de 11,9 m",
+      "lengthMm": 11900,
+      "widthMm": 200,
+      "heightMm": 200,
+      "weightKg": 900,
+      "quantity": 1,
+      "allowedOrientations": [
+        "LWH"
+      ]
+    },
+    {
+      "id": "caja",
+      "description": "Caja de refacciones",
+      "lengthMm": 1200,
+      "widthMm": 1000,
+      "heightMm": 1000,
+      "weightKg": 500,
+      "quantity": 10,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "0.1.0",
+  "items": [
+    {
+      "id": "caja",
+      "lengthMm": 1200,
+      "widthMm": 1000,
+      "heightMm": 1000,
+      "weightKg": 500,
+      "quantity": 2
+    }
+  ]
+}

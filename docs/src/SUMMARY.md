@@ -11,6 +11,8 @@
 
 - [Visión general del sistema](conceptos/vision-general.md)
 - [El problema del acomodo 3D](conceptos/problema-bin-packing.md)
+- [Sistema de coordenadas](conceptos/sistema-coordenadas.md)
+- [Equipos y normas](conceptos/equipos-y-normas.md)
 
 # Decisiones de arquitectura (ADR)
 

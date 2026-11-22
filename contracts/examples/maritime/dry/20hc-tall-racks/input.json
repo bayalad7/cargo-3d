@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-20hc",
+    "description": "Contenedor 20' HC (25G1, código de memoria), ejemplo sintético; interior, puerta y carga Mainfreight (redondeados a cm)",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 5890,
+        "widthMm": 2350,
+        "heightMm": 2690
+      }
+    ],
+    "door": {
+      "widthMm": 2330,
+      "heightMm": 2590
+    },
+    "maxPayloadKg": 21700
+  },
+  "items": [
+    {
+      "id": "rack",
+      "description": "Rack de 2,5 m",
+      "lengthMm": 1400,
+      "widthMm": 1100,
+      "heightMm": 2500,
+      "weightKg": 1500,
+      "quantity": 8,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false
+    },
+    {
+      "id": "rack-alto",
+      "description": "Rack de 2,6 m",
+      "lengthMm": 1400,
+      "widthMm": 1100,
+      "heightMm": 2600,
+      "weightKg": 1500,
+      "quantity": 1,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false
+    }
+  ]
+}

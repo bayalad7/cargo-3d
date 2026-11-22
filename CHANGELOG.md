@@ -7,6 +7,10 @@ Cada versión liberada en `main` lleva su etiqueta de git (ADR-0012).
 ## [Sin publicar]
 
 ### Agregado
+- Ejemplos del contrato: 8 equipos más (23 en total) y 17 entradas inválidas en `contracts/examples/invalid/`.
+- `scripts/contratos/check-examples.mjs` (`pnpm examples:check`): revisa las reglas físicas de los ejemplos.
+- Conceptos: sistema de coordenadas, y equipos y normas (Tablas A-2 y B-2 de la NOM-012 leídas del DOF).
+- Formatos para levantar datos en el patio (`docs/plantillas/patio/`) y sesión 2.1.6 (equipos con varios tramos).
 - Registro de pendientes `docs/src/pendientes.md` (id `P-NNN`, quién, cuándo y cómo retomarlo): `/cerrar-sesion`
   lo actualiza en cada cierre y `/iniciar-sesion` y `/sesion` lo consultan.
 - Contrato del motor `contracts/engine.schema.json` v0.1.0 (sprint 1.1): entrada y salida con milímetros y

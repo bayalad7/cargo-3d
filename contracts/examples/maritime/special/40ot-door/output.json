@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "0.1.0",
+  "containerId": "c-40ot-door",
+  "placements": [
+    { "itemId": "viga", "instance": 0, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 2000, "dxMm": 11900, "dyMm": 200, "dzMm": 200, "orientation": "LWH" },
+    { "itemId": "caja", "instance": 0, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 0, "dxMm": 1200, "dyMm": 1000, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "caja", "instance": 1, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 1000, "dxMm": 1200, "dyMm": 1000, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "caja", "instance": 2, "sectionId": "main", "xMm": 1200, "yMm": 0, "zMm": 0, "dxMm": 1200, "dyMm": 1000, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "caja", "instance": 3, "sectionId": "main", "xMm": 1200, "yMm": 0, "zMm": 1000, "dxMm": 1200, "dyMm": 1000, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "caja", "instance": 4, "sectionId": "main", "xMm": 2400, "yMm": 0, "zMm": 0, "dxMm": 1200, "dyMm": 1000, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "caja", "instance": 5, "sectionId": "main", "xMm": 2400, "yMm": 0, "zMm": 1000, "dxMm": 1200, "dyMm": 1000, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "caja", "instance": 6, "sectionId": "main", "xMm": 3600, "yMm": 0, "zMm": 0, "dxMm": 1200, "dyMm": 1000, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "caja", "instance": 7, "sectionId": "main", "xMm": 3600, "yMm": 0, "zMm": 1000, "dxMm": 1200, "dyMm": 1000, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "caja", "instance": 8, "sectionId": "main", "xMm": 4800, "yMm": 0, "zMm": 0, "dxMm": 1200, "dyMm": 1000, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "caja", "instance": 9, "sectionId": "main", "xMm": 4800, "yMm": 0, "zMm": 1000, "dxMm": 1200, "dyMm": 1000, "dzMm": 1000, "orientation": "LWH" }
+  ],
+  "unplaced": [
+    { "itemId": "maquina-alta", "quantity": 1, "reason": "EXCEEDS_DOOR" }
+  ],
+  "metrics": {
+    "placedCount": 11,
+    "unplacedCount": 1,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 5900,
+    "loadedVolumeMm3": 12476000000,
+    "volumeUtilization": 0.1881,
+    "weightUtilization": 0.2218
+  }
+}

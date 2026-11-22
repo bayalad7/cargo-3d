@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-40pf",
+    "description": "Plataforma ISO 40', ejemplo sintético; largo DSV; alto 4250 - 648 de piso - 1200 de chasis (supuesto); margen lateral (2600 - 2438) / 2 de la NOM-012; carga útil de carretera (supuesto)",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 12190,
+        "widthMm": 2438,
+        "heightMm": 2402,
+        "overhang": {
+          "topMm": 0,
+          "leftMm": 81,
+          "rightMm": 81
+        }
+      }
+    ],
+    "maxPayloadKg": 28000,
+    "tareKg": 5700
+  },
+  "items": [
+    {
+      "id": "modulo",
+      "description": "Módulo de 2,59 m de ancho",
+      "lengthMm": 5000,
+      "widthMm": 2590,
+      "heightMm": 2200,
+      "weightKg": 9000,
+      "quantity": 2,
+      "allowedOrientations": [
+        "LWH"
+      ]
+    },
+    {
+      "id": "modulo-ancho",
+      "description": "Módulo de 2,7 m: rebasa hasta el margen",
+      "lengthMm": 2000,
+      "widthMm": 2700,
+      "heightMm": 1000,
+      "weightKg": 1000,
+      "quantity": 1,
+      "allowedOrientations": [
+        "LWH"
+      ]
+    }
+  ]
+}

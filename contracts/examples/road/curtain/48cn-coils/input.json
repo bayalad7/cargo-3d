@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-48cn",
+    "description": "Conestoga 48', ejemplo sintético; largo, alto y peso máximos de carga C.H. Robinson; ancho útil 96 in por los rieles (fragmento de búsqueda, POR CONFIRMAR)",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 14325,
+        "widthMm": 2438,
+        "heightMm": 2438
+      }
+    ],
+    "maxPayloadKg": 19958
+  },
+  "items": [
+    {
+      "id": "bobina",
+      "description": "Bobina protegida del clima",
+      "lengthMm": 1800,
+      "widthMm": 1800,
+      "heightMm": 1500,
+      "weightKg": 6000,
+      "quantity": 4,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ]
+    },
+    {
+      "id": "cajon-alto",
+      "description": "Cajón de 2,5 m de alto",
+      "lengthMm": 2000,
+      "widthMm": 1500,
+      "heightMm": 2500,
+      "weightKg": 900,
+      "quantity": 1,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ]
+    }
+  ]
+}

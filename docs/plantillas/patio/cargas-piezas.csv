@@ -1,0 +1,2 @@
+carga,pieza,descripcion,largo_mm,ancho_mm,alto_mm,peso_kg,cantidad,puede_girar,puede_voltearse,se_puede_apilar,peso_max_encima_kg,orden_entrega,notas
+carga-01,A,Ejemplo: caja de carton (borra esta fila),1200,800,600,150,10,si,no,si,300,1,

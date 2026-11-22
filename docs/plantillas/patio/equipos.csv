@@ -1,0 +1,2 @@
+equipo,categoria,largo_interior_mm,ancho_interior_mm,alto_util_mm,puerta_ancho_mm,puerta_alto_mm,altura_piso_mm,tara_kg,carga_util_kg,bruto_max_kg,ejes,llantas,fuente,notas
+Ejemplo: caja seca 53' (borra esta fila),autotransporte,16003,2565,2794,2496,2794,,6810,,,2,8,medido en patio,

@@ -2,7 +2,7 @@
   "schemaVersion": "0.1.0",
   "container": {
     "id": "c-40fr",
-    "description": "Flat rack 40' (42P3), ejemplo sintético; medidas ONE; margen OOG supuesto (600 arriba, 200 por lado); carga útil limitada por carretera (supuesto)",
+    "description": "Flat rack 40' (42P3), ejemplo sintético; medidas ONE; margen OOG: 196 por lado = (2600 - 2208) / 2 de la NOM-012; 400 arriba supuesto; carga útil limitada por carretera (supuesto)",
     "sections": [
       {
         "id": "main",
@@ -13,9 +13,9 @@
         "widthMm": 2208,
         "heightMm": 1955,
         "overhang": {
-          "topMm": 600,
-          "leftMm": 200,
-          "rightMm": 200
+          "topMm": 400,
+          "leftMm": 196,
+          "rightMm": 196
         }
       }
     ],

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "0.1.0",
+  "containerId": "c-40ot-roof",
+  "placements": [
+    { "itemId": "maquina-alta", "instance": 0, "sectionId": "main", "xMm": 112, "yMm": 0, "zMm": 60, "dxMm": 3000, "dyMm": 2300, "dzMm": 1500, "orientation": "LWH" },
+    { "itemId": "caja", "instance": 0, "sectionId": "main", "xMm": 3112, "yMm": 0, "zMm": 60, "dxMm": 1200, "dyMm": 1000, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "caja", "instance": 1, "sectionId": "main", "xMm": 3112, "yMm": 0, "zMm": 1060, "dxMm": 1200, "dyMm": 1000, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "caja", "instance": 2, "sectionId": "main", "xMm": 4312, "yMm": 0, "zMm": 60, "dxMm": 1200, "dyMm": 1000, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "caja", "instance": 3, "sectionId": "main", "xMm": 4312, "yMm": 0, "zMm": 1060, "dxMm": 1200, "dyMm": 1000, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "caja", "instance": 4, "sectionId": "main", "xMm": 5512, "yMm": 0, "zMm": 60, "dxMm": 1200, "dyMm": 1000, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "caja", "instance": 5, "sectionId": "main", "xMm": 5512, "yMm": 0, "zMm": 1060, "dxMm": 1200, "dyMm": 1000, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "caja", "instance": 6, "sectionId": "main", "xMm": 6712, "yMm": 0, "zMm": 60, "dxMm": 1200, "dyMm": 1000, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "caja", "instance": 7, "sectionId": "main", "xMm": 6712, "yMm": 0, "zMm": 1060, "dxMm": 1200, "dyMm": 1000, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "caja", "instance": 8, "sectionId": "main", "xMm": 7912, "yMm": 0, "zMm": 60, "dxMm": 1200, "dyMm": 1000, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "caja", "instance": 9, "sectionId": "main", "xMm": 7912, "yMm": 0, "zMm": 1060, "dxMm": 1200, "dyMm": 1000, "dzMm": 1000, "orientation": "LWH" }
+  ],
+  "unplaced": [
+    { "itemId": "viga", "quantity": 1, "reason": "EXCEEDS_DIMENSIONS" }
+  ],
+  "metrics": {
+    "placedCount": 11,
+    "unplacedCount": 1,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 11000,
+    "loadedVolumeMm3": 22350000000,
+    "volumeUtilization": 0.3618,
+    "weightUtilization": 0.4135
+  }
+}

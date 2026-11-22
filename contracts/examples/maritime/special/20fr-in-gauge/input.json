@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-20fr",
+    "description": "Flat rack 20' (22P3) sin margen OOG, ejemplo sintético; medidas ONE; carga útil limitada por carretera (supuesto)",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 5568,
+        "widthMm": 2194,
+        "heightMm": 2213
+      }
+    ],
+    "maxPayloadKg": 28000,
+    "tareKg": 3100
+  },
+  "items": [
+    {
+      "id": "generador",
+      "description": "Generador",
+      "lengthMm": 4000,
+      "widthMm": 1800,
+      "heightMm": 2100,
+      "weightKg": 12000,
+      "quantity": 1,
+      "allowedOrientations": [
+        "LWH"
+      ]
+    },
+    {
+      "id": "tarima",
+      "description": "Tarima",
+      "lengthMm": 1200,
+      "widthMm": 1000,
+      "heightMm": 1000,
+      "weightKg": 600,
+      "quantity": 2,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ]
+    },
+    {
+      "id": "gabinete",
+      "description": "Gabinete más alto que los postes",
+      "lengthMm": 1500,
+      "widthMm": 1200,
+      "heightMm": 2300,
+      "weightKg": 800,
+      "quantity": 1,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ]
+    }
+  ]
+}

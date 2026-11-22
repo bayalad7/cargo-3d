@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "0.1.0",
+  "containerId": "c-20fr",
+  "placements": [
+    { "itemId": "generador", "instance": 0, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 0, "dxMm": 4000, "dyMm": 2100, "dzMm": 1800, "orientation": "LWH" },
+    { "itemId": "tarima", "instance": 0, "sectionId": "main", "xMm": 4000, "yMm": 0, "zMm": 0, "dxMm": 1200, "dyMm": 1000, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "tarima", "instance": 1, "sectionId": "main", "xMm": 4000, "yMm": 0, "zMm": 1000, "dxMm": 1200, "dyMm": 1000, "dzMm": 1000, "orientation": "LWH" }
+  ],
+  "unplaced": [
+    { "itemId": "gabinete", "quantity": 1, "reason": "EXCEEDS_DIMENSIONS" }
+  ],
+  "metrics": {
+    "placedCount": 3,
+    "unplacedCount": 1,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 13200,
+    "loadedVolumeMm3": 17520000000,
+    "volumeUtilization": 0.6481,
+    "weightUtilization": 0.4714
+  }
+}

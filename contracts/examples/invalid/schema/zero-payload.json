@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-min",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 5898,
+        "widthMm": 2352,
+        "heightMm": 2393
+      }
+    ],
+    "door": {
+      "widthMm": 2340,
+      "heightMm": 2280
+    },
+    "maxPayloadKg": 0
+  },
+  "items": [
+    {
+      "id": "caja",
+      "lengthMm": 1200,
+      "widthMm": 1000,
+      "heightMm": 1000,
+      "weightKg": 500,
+      "quantity": 2
+    }
+  ]
+}

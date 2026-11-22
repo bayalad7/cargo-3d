@@ -23,16 +23,17 @@ La ISO 6346:2022 cambió el código de largo 45' de `L` a `5`: el catálogo guar
 | `dry/40dv-*` | 40' estándar (DV / GP / ST) | 42G1 | ✅ `40dv-gma-pallets` | — |
 | `dry/40hc-*` | 40' high cube | 45G1 | ✅ `40hc-tall-pallets` | — |
 | `dry/45hc-*` | 45' high cube | L5G1 (1995) / 55G1 (2022) | ✅ `45hc-gma-pallets` | — |
-| `dry/45pw-*` | 45' pallet wide (el cliente tiene la fila «Pallet Wide 45») | LEG1 (de memoria) | ⏳ | Ficha con interior y puerta |
-| `dry/20hc-*` | 20' high cube (poco común) | 25G1 | ⏳ | Ficha; confirmar si el cliente lo usa (en su catálogo la fila «High Cube 20'» trae medidas de 40') |
+| `dry/45pw-*` | 45' pallet wide | LEG1 (DP World) | ✅ `45pw-epal-pallets` | Confirmar puerta y alto (fragmento de búsqueda) |
+| `dry/20hc-*` | 20' high cube | 25G1 (de memoria) | ✅ `20hc-tall-racks` | Tara y carga útil de una placa (una sola fuente: Mainfreight) |
 | `reefer/20rf-*` | 20' refrigerado | 22R1 | ✅ `20rf-epal-pallets` | Confirmar la altura útil (2 158, de un fragmento de CMA CGM) con una placa; el catálogo del cliente dice 5 724 de largo (revisar en 1.1.5) |
 | `reefer/40rf-*` | 40' refrigerado estándar | 42R1 | ⏳ | No se encontró ficha vigente; confirmar si existe en el patio |
 | `reefer/40rh-*` | 40' refrigerado high cube | 45R1 | ✅ `40rh-epal-pallets` | — |
 | `special/20ot-*` | Open top 20', por puerta y por techo | 22U1 | ✅ `20ot-door`, `20ot-roof` | — |
-| `special/40ot-*` | Open top 40', por puerta y por techo | 42U1 | ⏳ | Nada: datos listos (Triton, ONE; techo 11 798 × 2 230); solo falta escribir el caso |
-| `special/20fr-*` | Flat rack 20' | 22P1 (fijo) / 22P3 (plegable) | ⏳ | Nada: datos listos (ONE 5 568 × 2 194 × 2 213); falta el caso y el margen OOG real de la naviera |
-| `special/40fr-*` | Flat rack 40' | 42P1 / 42P3 | ✅ `40fr-oog` | Margen OOG real (hoy supuesto: 600 arriba, 200 por lado) |
-| `special/platform-*` | Plataforma ISO | 22P0 / 42P0 (de memoria) | ⏳ | Ficha |
+| `special/40ot-*` | Open top 40', por puerta y por techo | 42U1 | ✅ `40ot-door`, `40ot-roof` | — |
+| `special/20fr-*` | Flat rack 20' | 22P1 (fijo) / 22P3 (plegable) | ✅ `20fr-in-gauge` | Carga útil supuesta (28 000) |
+| `special/40fr-*` | Flat rack 40' | 42P1 / 42P3 | ✅ `40fr-oog` | Confirmar el margen de arriba (400, supuesto); el de los lados (196) sale de la NOM-012: (2 600 − 2 208) / 2 |
+| `special/40pf-*` | Plataforma ISO 40' | 42P0 (de memoria) | ✅ `40pf-wide-load` | Altura del chasis (1 200) y carga útil por carretera (28 000), supuestas |
+| `special/20pf-*` | Plataforma ISO 20' | 22P0 (de memoria) | ⏳ | Altura del piso (DSV da largo, ancho, tara y carga útil) |
 | `special/tank-*` | Tanque | 22T… | 🚫 | Granel líquido, no se acomoda con cajas |
 
 ### Autotransporte (`road/`)
@@ -42,12 +43,12 @@ La ISO 6346:2022 cambió el código de largo 45' de `L` a `5`: el catálogo guar
 | `dry-van/48dv-*` | Caja seca 48' | ✅ `48dv-mixed` | Interior completo de un fabricante mexicano (hoy ancho Remosa + largo y puerta C.H. Robinson); carga útil supuesta |
 | `dry-van/53dv-*` | Caja seca 53' | ✅ `53dv-stacked`, `53dv-contract-coverage` | — (puerta conservadora de C.H. Robinson, 2 496 × 2 794) |
 | `reefer-van/53rv-*` | Caja refrigerada (thermo) 53' | ✅ `53rv-pallets` | Carga útil supuesta (24 900) |
-| `reefer-van/48rv-*` | Caja refrigerada (thermo) 48' | ⏳ | Nada: datos listos (C.H. Robinson 14 173 × 2 463 × 2 628); solo falta escribir el caso |
+| `reefer-van/48rv-*` | Caja refrigerada (thermo) 48' | ✅ `48rv-pallets` | Carga útil supuesta (24 900) |
 | `flatbed/40fb-*` | Plataforma 40' | ⏳ | Largo, ancho y altura de cama |
 | `flatbed/48fb-*` | Plataforma 48' | ✅ `48fb-steel` | Altura de cama real (hoy 1 478 mm de un fabricante de EE. UU.) |
 | `flatbed/53fb-*` | Plataforma 53' | ✅ `53fb-long-pipes` | Ídem |
 | `flatbed/extendable-*` | Plataforma extensible | ⏳ | Largo según la extensión usada (un tramo por configuración) |
-| `curtain/conestoga-*` | Plataforma con lona corrediza (Conestoga) | ⏳ | Ficha: altura bajo los arcos; sin puerta trasera rígida |
+| `curtain/48cn-*` | Plataforma con lona corrediza (Conestoga) 48' | ✅ `48cn-coils` | Confirmar el ancho útil entre rieles (2 438) |
 | `step-deck/*` | Escalonada (drop deck) | 🔒 | Dos tramos con distinta altura de piso |
 | `double-drop/*` | Doble caída | 🔒 | Tres tramos (pozo central) |
 | `lowboy/*`, `rgn/*` | Cama baja y cuello desmontable (RGN) | 🔒 | Varios tramos; la carga suele pedir permiso por sobredimensión |
@@ -81,14 +82,14 @@ La ISO 6346:2022 cambió el código de largo 45' de `L` a `5`: el catálogo guar
 | `stackable`, `maxLoadOnTopKg`, `deliverySequence` | `53dv-contract-coverage` (y `stackable` en varios) | ✅ (el motor los aplica hasta el sprint 2.1) |
 | `description` ausente en una pieza | `53dv-contract-coverage` | ✅ |
 | Todo cabe (`unplaced` vacío) | `40dv-gma-pallets`, `53dv-contract-coverage` | ✅ |
-| `EXCEEDS_DIMENSIONS` | `20dv-heavy`, `40rh-epal-pallets`, `48fb-steel` | ✅ |
-| `EXCEEDS_DOOR` | `20dv-heavy`, `20ot-door`, `53rv-pallets` | ✅ |
+| `EXCEEDS_DIMENSIONS` | `20dv-heavy`, `40rh-epal-pallets`, `48fb-steel`, `40ot-roof`, `20fr-in-gauge` y otros | ✅ |
+| `EXCEEDS_DOOR` | `20dv-heavy`, `20ot-door`, `40ot-door`, `53rv-pallets` | ✅ |
 | `EXCEEDS_MAX_WEIGHT` | `40hc-tall-pallets` | ✅ |
-| `WEIGHT_LIMIT_REACHED` | `20dv-heavy`, `53dv-stacked`, `40fr-oog` | ✅ |
+| `WEIGHT_LIMIT_REACHED` | `20dv-heavy`, `53dv-stacked`, `40fr-oog`, `48rv-pallets` | ✅ |
 | `NO_SPACE_AVAILABLE` | `40hc-tall-pallets`, `45hc-gma-pallets`, `20rf-epal-pallets` | ✅ |
 | `TIME_LIMIT_REACHED` | `53fb-long-pipes` (ilustrativo) | ✅ |
 | Varios tramos (`sections` > 1) | — | 🔒 hasta que el contrato lo acepte |
-| Entradas **inválidas** a propósito | — | ⏳ propuesta: carpeta `invalid/` cuando exista la validación del motor (sesión 1.1.4) |
+| Entradas **inválidas** a propósito | `invalid/schema` (15) e `invalid/semantic` (2); ver §4 | ✅ (falta «tramos encimados», 🔒 hasta que haya varios tramos) |
 
 ## 3. Cómo agregar un caso
 
@@ -109,9 +110,22 @@ La ISO 6346:2022 cambió el código de largo 45' de `L` a `5`: el catálogo guar
    - peso cargado ≤ `maxPayloadKg`; colocadas + no colocadas = `quantity` de cada pieza;
    - cada `reason` es el primero que se cumple en el orden del contrato;
    - métricas exactas (las ocupaciones con 4 decimales).
-5. **Valida** contra el esquema con ajv (ver `contracts/README.md`). Las reglas físicas del paso 4 las revisará
-   `packages/validator` desde el sprint 1.4; mientras, pide a Claude que las revise.
+5. **Valida** contra el esquema con ajv (ver `contracts/README.md`). Las reglas físicas del paso 4 se revisan
+   con `node scripts/contratos/check-examples.mjs` (provisional, hasta la sesión 1.4.2).
 6. **Actualiza este archivo** (estado ⏳ → ✅ y la tabla de cobertura del contrato) y la tabla de casos de
    `contracts/README.md`. Commit: `contracts: ejemplo <ruta>`.
+
+## 4. Entradas inválidas (`invalid/`)
+
+Cada archivo rompe **una sola regla** de la misma entrada mínima válida, y su nombre dice cuál. No se llaman
+`input.json`, para que las pruebas que recorren los casos válidos no los tomen.
+
+- `invalid/schema/`: los rechaza el propio esquema (medida en cero, campo desconocido, versión distinta…).
+- `invalid/semantic/`: **pasan el esquema** y los rechaza la validación del motor (sesión 1.1.4):
+
+| Archivo | Regla | De dónde sale |
+|---|---|---|
+| `duplicate-item-id.json` | Los ids de las piezas no se repiten | JSON Schema no lo puede expresar |
+| `door-with-overhang.json` | Un equipo con puerta no lleva margen OOG | ADR-0017 |
 
 Las **cargas reales** (de clientes) no van aquí sino en `engine/fixtures/real/`, anonimizadas (sesión 1.1.5).

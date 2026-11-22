@@ -136,8 +136,10 @@ contracts/engine.schema.json.
 - Escribe el capítulo 03 de la guía (métodos y receptores) y explícame
   cuándo usar receptor por valor y cuándo por puntero, con estos tipos.
 
-Primero propón el plan, incluido un dibujo en texto del sistema de
-coordenadas para que yo lo confirme.
+El sistema de coordenadas ya está en docs/src/conceptos/sistema-coordenadas.md:
+sigue ese documento y corrígelo si el código muestra algo distinto.
+
+Primero propón el plan.
 ```
 
 - **Terminada cuando:** las pruebas de las 6 orientaciones pasan y el sistema de coordenadas está
@@ -170,8 +172,9 @@ Usa errores con contexto (fmt.Errorf con %w) y errores comparables con
 errors.Is, para que la API pueda saber qué tipo de error fue. Si hay varios
 problemas, repórtalos todos juntos, no solo el primero.
 
-Pruebas de tabla con un caso por cada error y uno válido. Escribe el
-capítulo 04 de la guía (errores como valores) comparándolo con try/catch
+Pruebas de tabla con un caso por cada error y uno válido; usa también
+contracts/examples/invalid/ (schema y semantic): todos deben dar error.
+Escribe el capítulo 04 de la guía (errores como valores) comparándolo con try/catch
 de PHP.
 
 Primero propón el plan y la lista de errores que vas a definir.
@@ -203,6 +206,14 @@ clientes, destinatarios, direcciones, placas ni números de pedido; usa
 identificadores genéricos (carga-01, pieza-A) y conserva solo medidas,
 pesos, cantidades y restricciones. Nunca copies archivos de docs/datos/
 fuera de esa carpeta tal cual.
+
+Catálogo del cliente (P-002, ya decidido): la tara está en toneladas y la
+columna de peso bruto guarda en realidad la carga útil; usa la tabla de
+docs/datos/revision-catalogo-contenedores.md (fila por fila). «High Cube 20»
+es un 40' HC y «High Cube 40» un 45' HC; en los reefers usa las fichas
+públicas. Pregúntame por las filas marcadas «sin explicación». Cada equipo
+lleva category_path, su fuente y su nivel de confianza; nada «supuesto» entra
+sin confirmar (P-004). Corrige también contracts/examples/ si cambia un valor.
 
 Si algún dato real no cabe en el contrato o hay datos dudosos (medidas
 que parecen en centímetros, pesos faltantes), detente y pregúntame antes
@@ -451,11 +462,18 @@ configuración. Primero propón el plan.
 ```
 Sprint 1.4, sesión 2: implementa en packages/validator la función
 validatePlan(input, plan) que revise, SIN reutilizar código del motor:
-- ninguna pieza se sale del equipo;
-- ninguna pieza se encima con otra;
-- cada pieza usa una orientación permitida;
+- ninguna pieza se sale de su tramo ni de su margen (overhang), incluido un
+  zMm negativo; el sectionId existe y outOfGauge es correcto (ADR-0017);
+- ninguna pieza se encima con otra y ninguna queda flotando;
+- cada pieza usa una orientación permitida, sus dx/dy/dz coinciden con ella
+  y pasa por la puerta si la hay;
 - el peso total no excede el máximo;
-- toda pieza de la entrada aparece colocada o en no colocadas, una sola vez.
+- toda pieza de la entrada aparece colocada o en no colocadas, una sola vez;
+- el motivo de cada pieza no colocada es el que toca (ADR-0016) y las
+  métricas cuadran.
+Las mismas reglas están, provisionales, en scripts/contratos/check-examples.mjs:
+cuando los ejemplos de contracts/examples/ pasen con el validador, borra ese
+script, su línea en package.json y su mención en CLAUDE.md (P-010).
 Debe devolver la lista completa de problemas encontrados, no solo el
 primero. Pruebas con planes correctos y con planes rotos a propósito.
 Primero propón el plan.
@@ -598,7 +616,9 @@ Después: `/punto-de-control endpoint de optimización` y `/cerrar-sprint 1.5`.
 Sprint 1.6, sesión 1: crea apps/web con Vite, React y TypeScript estricto
 dentro del workspace. Una sola pantalla vacía con el nombre del producto,
 que llame a GET /health y muestre la versión del motor. La URL de la API
-viene de una variable de entorno de Vite. Explícame la estructura de una
+viene de una variable de entorno de Vite. Conecta el sistema de diseño
+@cargo-3d/ui (estilos, Logo y Button) desde esta primera pantalla, como pide
+el ADR-0014 (P-015). Explícame la estructura de una
 app de React como si viniera de PHP con plantillas. Primero propón el plan.
 ```
 
@@ -814,8 +834,10 @@ Primero propón el plan y define exactamente qué significa "bloquear".
 
 ```
 Sprint 2.1, sesión 5: reparto de peso por eje en cajas secas y
-plataformas. Antes de programar, busca la versión vigente de la NOM-012
-y sus límites aplicables, y preséntame las fuentes; no programes límites
+plataformas. Las tablas A-2 y B-2 de la NOM-012 ya están leídas del DOF en
+docs/src/conceptos/equipos-y-normas.md; antes de programar, revisa en
+dof.gob.mx si hubo una modificación después del 2026-11-21 (había una
+programada para 2026) y preséntame las fuentes; no programes límites
 que no puedas citar. Propón cómo modelar ejes y distancias en el
 catálogo de equipos, cambia el contrato, e implementa en el motor y el
 validador. Primero propón el plan.
@@ -823,7 +845,24 @@ validador. Primero propón el plan.
 
 - **Terminada cuando:** cada límite programado tiene su fuente citada en la documentación.
 
-### 2.1.6 — Punto de control y cierre
+### 2.1.6 — Equipos con varios tramos
+
+- **Modelo:** `opus` / `high`
+
+**Prompt:**
+
+```
+Sprint 2.1, sesión 6: plataformas con varios tramos (escalonada, doble caída,
+cama baja y RGN; P-012; decide si la nodriza entra). Sube sections.maxItems en contracts/engine.schema.json,
+decide en un ADR cómo se aplica la puerta y si una pieza puede apoyarse en dos
+tramos, agrega ejemplos en contracts/examples/road/ y el caso inválido de tramos
+encimados, y haz que el motor, el validador y el peso por eje los respeten.
+Primero propón el plan.
+```
+
+- **Terminada cuando:** hay un ejemplo válido de cada tipo y el validador no encuentra errores.
+
+### 2.1.7 — Punto de control y cierre
 
 **Prompt:** `/punto-de-control restricciones del patio` y después `/cerrar-sprint 2.1`.
 
@@ -1223,7 +1262,10 @@ Después:
 ```
 Bloque 3.2, sesión 1: crea apps/mobile con Expo y TypeScript dentro del
 workspace, con inicio de sesión de operador de patio usando el api-client
-generado. Explícame la diferencia entre React para web y React Native.
+generado. Genera los tokens de Voxa para React Native a partir de
+packages/ui/src/styles/tokens.css (fuente única, sin copiar valores a mano) y
+los íconos de la app desde packages/ui/src/brand/ (P-016). Explícame la
+diferencia entre React para web y React Native.
 Primero propón el plan.
 ```
 
@@ -1414,7 +1456,8 @@ Después:
 ```
 Bloque 3.5, sesión 1: crea apps/desktop con Wails v3 (fija una versión
 exacta) reutilizando apps/web. El motor de internal/engine se llama
-directamente desde Go para calcular sin conexión. Revisa la documentación
+directamente desde Go para calcular sin conexión. Genera los íconos de la app
+desde packages/ui/src/brand/ (P-016). Revisa la documentación
 actual de Wails antes de empezar. Primero propón el plan.
 ```
 

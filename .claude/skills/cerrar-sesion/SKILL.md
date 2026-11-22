@@ -48,6 +48,8 @@ Nota de Benjamín para la bitácora (puede venir vacía): $ARGUMENTS
      repo) entra como fila nueva en «Abiertos», con el siguiente id `P-NNN` libre y todas las columnas llenas:
      quién, cuándo (sesión de `prompts.md` antes de la cual debe resolverse), qué falta, por qué importa,
      **cómo retomarlo** (comando, sesión y archivo exactos) y origen;
+   - lo que no se puede hacer antes de cierta sesión pasa a «Agendados» **solo si** ya quedó escrito en el prompt de
+     esa sesión; no cuenta como hecho;
    - los pendientes que se resolvieron en la sesión pasan a «Cerrados» con la fecha y cómo se resolvieron;
      nunca se borra una fila ni se reutiliza un id;
    - sin datos de clientes: si hace falta, apunta al archivo de `docs/datos/`.

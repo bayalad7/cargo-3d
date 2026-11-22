@@ -76,8 +76,14 @@ const validate = ajv.getSchema("urn:cargo-3d:engine:0.1.0#/$defs/EngineInput"); 
 console.log(validate(require("./examples/maritime/dry/20dv-heavy/input.json")), validate.errors);
 ```
 
-Desde el sprint 1.4, `packages/validator` hace esta revisión y además las reglas físicas (sin traslapes,
-todo dentro del equipo, peso respetado).
+Las **reglas físicas** (traslapes, apoyo, tramo y margen, puerta, peso, motivos y métricas) se revisan sin instalar
+nada:
+
+```bash
+node scripts/contratos/check-examples.mjs   # o: pnpm examples:check
+```
+
+Es provisional: desde la sesión 1.4.2, `packages/validator` hace las dos revisiones.
 
 ### Ejemplos
 
@@ -93,22 +99,32 @@ examples/
 ├─ maritime/                 marítimo (contenedores ISO)
 │  ├─ dry/                   seco: estándar (DV, GP o ST) y high cube
 │  │  ├─ 20dv-heavy/
+│  │  ├─ 20hc-tall-racks/
 │  │  ├─ 40dv-gma-pallets/
 │  │  ├─ 40hc-tall-pallets/
-│  │  └─ 45hc-gma-pallets/
+│  │  ├─ 45hc-gma-pallets/
+│  │  └─ 45pw-epal-pallets/
 │  ├─ reefer/                refrigerado
 │  │  ├─ 20rf-epal-pallets/
 │  │  └─ 40rh-epal-pallets/
-│  └─ special/               open top y flat rack
+│  └─ special/               open top, flat rack y plataforma ISO
+│     ├─ 20fr-in-gauge/
 │     ├─ 20ot-door/
 │     ├─ 20ot-roof/
-│     └─ 40fr-oog/
+│     ├─ 40fr-oog/
+│     ├─ 40ot-door/
+│     ├─ 40ot-roof/
+│     └─ 40pf-wide-load/
+├─ invalid/                  entradas rotas a propósito (schema/ y semantic/)
 └─ road/                     autotransporte
+   ├─ curtain/               lona corrediza (Conestoga)
+   │  └─ 48cn-coils/
    ├─ dry-van/               caja seca
    │  ├─ 48dv-mixed/
    │  ├─ 53dv-contract-coverage/
    │  └─ 53dv-stacked/
    ├─ reefer-van/            caja refrigerada
+   │  ├─ 48rv-pallets/
    │  └─ 53rv-pallets/
    └─ flatbed/               plataforma abierta
       ├─ 48fb-steel/
@@ -118,19 +134,27 @@ examples/
 | Caso | Equipo | Qué muestra | Motivos de `unplaced` |
 |---|---|---|---|
 | `maritime/dry/20dv-heavy` | 20' DV / estándar (22G1) | Cajones de 7 t: se acaba el peso con el 18 % del volumen | `WEIGHT_LIMIT_REACHED`, `EXCEEDS_DOOR`, `EXCEEDS_DIMENSIONS` |
+| `maritime/dry/20hc-tall-racks` | 20' HC (25G1) | Racks de 2,5 m que no caben en un 20' estándar; uno de 2,6 m cabe adentro pero no pasa por la puerta | `EXCEEDS_DOOR` |
 | `maritime/dry/40dv-gma-pallets` | 40' DV / estándar (42G1) | 20 pallets GMA: un carril «como viene» y otro girado 90° | ninguno |
 | `maritime/dry/40hc-tall-pallets` | 40' HC (45G1) | Tarimas de 2,5 m que solo caben en HC; dos carriles con orientaciones distintas | `NO_SPACE_AVAILABLE`, `EXCEEDS_MAX_WEIGHT` |
 | `maritime/dry/45hc-gma-pallets` | 45' HC (L5G1 / 55G1) | 24 pallets GMA combinando orientaciones (11 + 13) | `NO_SPACE_AVAILABLE` |
+| `maritime/dry/45pw-epal-pallets` | 45' HC pallet wide (LEG1) | 33 EPAL, tres a lo ancho: no caben en un 45' normal | `NO_SPACE_AVAILABLE` |
 | `maritime/reefer/20rf-epal-pallets` | 20' refrigerado (22R1) | 10 pallets EPAL bajo la línea de carga (altura útil por confirmar) | `NO_SPACE_AVAILABLE`, `EXCEEDS_DIMENSIONS` |
 | `maritime/reefer/40rh-epal-pallets` | 40' HC refrigerado (45R1) | Altura útil bajo la línea de carga (puerta más alta que el interior); la tarima de 2,5 m ya no cabe | `EXCEEDS_DIMENSIONS` |
 | `maritime/special/20ot-door` | Open top 20' (22U1), por la puerta | Una máquina de 2,3 m cabe adentro pero no pasa por la puerta | `EXCEEDS_DOOR` |
 | `maritime/special/20ot-roof` | Open top 20' (22U1), por el techo | La misma carga con grúa: sin puerta, tramo = abertura del techo centrada en el interior (`xMm` 109, `zMm` 49); todo cabe | ninguno |
 | `maritime/special/40fr-oog` | Flat rack 40' (42P3) | Margen OOG: transformador sobre los postes y placa más ancha (`zMm` negativo), marcados `outOfGauge` | `WEIGHT_LIMIT_REACHED` |
+| `maritime/special/40ot-door` | Open top 40' (42U1), por la puerta | Cabe la viga de 11,9 m, pero la máquina de 2,3 m no pasa por la puerta | `EXCEEDS_DOOR` |
+| `maritime/special/40ot-roof` | Open top 40' (42U1), por el techo | Al revés: cabe la máquina, pero la viga no pasa por la abertura del techo | `EXCEEDS_DIMENSIONS` |
+| `maritime/special/20fr-in-gauge` | Flat rack 20' (22P3) | Sin margen OOG: un gabinete más alto que los postes se rechaza (compárese con `40fr-oog`) | `EXCEEDS_DIMENSIONS` |
+| `maritime/special/40pf-wide-load` | Plataforma ISO 40' | Margen lateral de 81 mm (NOM-012): 2,59 m de ancho viaja como OOG y 2,7 m ya no | `EXCEEDS_DIMENSIONS` |
+| `road/curtain/48cn-coils` | Conestoga 48' | Sin puerta rígida (se carga por los lados), pero con alto limitado por la lona | `WEIGHT_LIMIT_REACHED`, `EXCEEDS_DIMENSIONS` |
 | `road/dry-van/48dv-mixed` | Caja seca 48' | Ancho conservador (2 489): una pieza de 2,5 m ya no cabe; la puerta es más ancha que el interior | `EXCEEDS_DIMENSIONS` |
 | `road/dry-van/53dv-stacked` | Caja seca 53' | Tarimas en dos niveles, apoyadas completas | `WEIGHT_LIMIT_REACHED` |
 | `road/dry-van/53dv-contract-coverage` | Caja seca 53' | Las 6 orientaciones, orientaciones por omisión, `maxLoadOnTopKg` y `deliverySequence` (lo que se entrega primero va junto a la puerta) | ninguno |
 | `road/flatbed/48fb-steel` | Plataforma 48' | Sin puerta; altura útil = 4 250 − 1 478 mm de cama (NOM-012) | `EXCEEDS_DIMENSIONS` |
 | `road/flatbed/53fb-long-pipes` | Plataforma 53' | Tubos de 16 m que no caben en una de 48' | `TIME_LIMIT_REACHED` (ilustrativo) |
+| `road/reefer-van/48rv-pallets` | Caja refrigerada 48' | Se acaba el peso con espacio de sobra | `WEIGHT_LIMIT_REACHED` |
 | `road/reefer-van/53rv-pallets` | Caja refrigerada 53' | La puerta (2 585) es más baja que el interior (2 628): un rack de 2,6 m no pasa | `EXCEEDS_DOOR` |
 
 Qué equipos y qué partes del contrato faltan por cubrir, y el paso a paso para agregar un caso, está en
