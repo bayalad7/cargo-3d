@@ -74,4 +74,4 @@ No se crean ramas de trabajo ni pull requests: el proyecto lo trabaja una sola p
 ## Commits
 
 Formato: `área: descripción en presente`.
-Áreas: `motor`, `api`, `web`, `escritorio`, `movil`, `contratos`, `docs`, `infra`.
+Áreas: `motor`, `api`, `web`, `escritorio`, `movil`, `contratos`, `docs`, `infra`, `ui`.
