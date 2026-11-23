@@ -1,0 +1,907 @@
+{
+  "info": {
+    "generated": "2026-11-23",
+    "note": "Catálogo canónico de equipos de Cargo 3D. Fuente única: docs/src/catalogos/equipos.md (28 equipos, versión 2026-11-23). null = la fuente citada no publica ese dato; no es un cero. Medidas en milímetros enteros (Mm), pesos en kilogramos enteros (Kg), volumen en m3 publicado por la fuente, capacidad de tanques en litros (L). Conversión al motor: sections = una caja con lengthMm/widthMm/heightMm del interiorMm, door = doorMm, maxPayloadKg y tareKg directos; donde interiorMm o doorMm son null el equipo no se puede usar como contenedor cerrado sin medir la unidad. En reefers, interiorMm.heightMm es el alto interior publicado (Hapag-Lloyd), no la línea de carga: loadLineMm es la línea de carga Maersk (ISO 1496-2) cuando existe. En cajas de carretera maxPayloadKg es la capacidad estructural publicada por el fabricante, no la útil legal NOM-012: útil legal = mínimo(útil del equipo, PBV - tara del tracto - tara del equipo), por tipo de camino.",
+    "repo": "bayalad7/cargo-3d",
+    "schemaVersion": "0.1.0",
+    "source": "docs/src/catalogos/equipos.md"
+  },
+  "equipment": [
+    {
+      "bedHeightMm": null,
+      "capacityL": null,
+      "category": "dry",
+      "confidence": "Fabricante",
+      "doorMm": {
+        "heightMm": 2280,
+        "widthMm": 2338
+      },
+      "exteriorMm": {
+        "heightMm": 2591,
+        "lengthMm": 2991,
+        "widthMm": 2438
+      },
+      "foldedHeightMm": null,
+      "id": "10dv",
+      "interiorMm": {
+        "heightMm": 2393,
+        "lengthMm": 2831,
+        "widthMm": 2352
+      },
+      "isoCode": "12G1",
+      "loadLineMm": null,
+      "maxGrossKg": 10160,
+      "maxPayloadKg": 8960,
+      "mode": "maritime",
+      "name": "Contenedor 10' Dry",
+      "notes": "10' Dry de 8'6\". El código 10G1 es un 10' de 8' de alto, sin ficha publicada en fuentes preferidas.",
+      "source": "https://www.tritoncontainer.com/media/sn0dfodb/triton-sale-new-10-dry-container-unbranded.pdf",
+      "tareKg": 1200,
+      "volumeM3": 15.9
+    },
+    {
+      "bedHeightMm": null,
+      "capacityL": null,
+      "category": "dry",
+      "confidence": "Fabricante / naviera",
+      "doorMm": {
+        "heightMm": 2292,
+        "widthMm": 2340
+      },
+      "exteriorMm": {
+        "heightMm": 2591,
+        "lengthMm": 6058,
+        "widthMm": 2438
+      },
+      "foldedHeightMm": null,
+      "id": "20dv",
+      "interiorMm": {
+        "heightMm": 2395,
+        "lengthMm": 5900,
+        "widthMm": 2352
+      },
+      "isoCode": "22G1",
+      "loadLineMm": null,
+      "maxGrossKg": 30480,
+      "maxPayloadKg": 28130,
+      "mode": "maritime",
+      "name": "Contenedor 20' Dry (Estándar)",
+      "notes": "Unidad de ejemplo de Hapag-Lloyd; las cifras varían por serie y fabricante. Para una unidad concreta manda su placa CSC.",
+      "source": "https://www.hapag-lloyd.com/content/dam/website/downloads/pdf/17038_Update_Container_Specification_engl_sRGB.pdf",
+      "tareKg": 2350,
+      "volumeM3": 33.23
+    },
+    {
+      "bedHeightMm": null,
+      "capacityL": null,
+      "category": "dry",
+      "confidence": "Fabricante",
+      "doorMm": {
+        "heightMm": 2585,
+        "widthMm": 2340
+      },
+      "exteriorMm": {
+        "heightMm": 2896,
+        "lengthMm": 6058,
+        "widthMm": 2438
+      },
+      "foldedHeightMm": null,
+      "id": "20hc",
+      "interiorMm": {
+        "heightMm": 2698,
+        "lengthMm": 5898,
+        "widthMm": 2352
+      },
+      "isoCode": "25G1",
+      "loadLineMm": null,
+      "maxGrossKg": 30480,
+      "maxPayloadKg": null,
+      "mode": "maritime",
+      "name": "Contenedor 20' HC High Cube",
+      "notes": "Sin ficha de naviera (Hapag-Lloyd y ONE no lo publican). Tara solo como rango por serie: 2,150-2,300 kg. Carga útil solo como rango por serie: 28,180-28,330 kg.",
+      "source": "https://www.tanaxcontainers.com/solutions/families/iso-standard",
+      "tareKg": null,
+      "volumeM3": 37.4
+    },
+    {
+      "bedHeightMm": null,
+      "capacityL": null,
+      "category": "dry",
+      "confidence": "Fabricante / naviera",
+      "doorMm": {
+        "heightMm": 2292,
+        "widthMm": 2340
+      },
+      "exteriorMm": {
+        "heightMm": 2591,
+        "lengthMm": 12192,
+        "widthMm": 2438
+      },
+      "foldedHeightMm": null,
+      "id": "40dv",
+      "interiorMm": {
+        "heightMm": 2395,
+        "lengthMm": 12032,
+        "widthMm": 2352
+      },
+      "isoCode": "42G1",
+      "loadLineMm": null,
+      "maxGrossKg": 32500,
+      "maxPayloadKg": 28750,
+      "mode": "maritime",
+      "name": "Contenedor 40' Dry (Estándar)",
+      "notes": "Unidad de ejemplo de Hapag-Lloyd. En el repo Cargo 3D la misma ficha figura con tara 3,640 kg y útil 26,700 kg: es otra serie; no mezclar series en un mismo cálculo.",
+      "source": "https://www.hapag-lloyd.com/content/dam/website/downloads/pdf/17038_Update_Container_Specification_engl_sRGB.pdf",
+      "tareKg": 3750,
+      "volumeM3": 67.78
+    },
+    {
+      "bedHeightMm": null,
+      "capacityL": null,
+      "category": "dry",
+      "confidence": "Fabricante / naviera",
+      "doorMm": {
+        "heightMm": 2597,
+        "widthMm": 2340
+      },
+      "exteriorMm": {
+        "heightMm": 2896,
+        "lengthMm": 12192,
+        "widthMm": 2438
+      },
+      "foldedHeightMm": null,
+      "id": "40hc",
+      "interiorMm": {
+        "heightMm": 2700,
+        "lengthMm": 12032,
+        "widthMm": 2350
+      },
+      "isoCode": "45G1",
+      "loadLineMm": null,
+      "maxGrossKg": 32500,
+      "maxPayloadKg": 28600,
+      "mode": "maritime",
+      "name": "Contenedor 40' HC High Cube",
+      "notes": "Alto exterior 2,896 mm = 9'6\" (ISO 668). Ojo: 45G1 es un 40' HC, no un 45'.",
+      "source": "https://www.hapag-lloyd.com/content/dam/website/downloads/pdf/17038_Update_Container_Specification_engl_sRGB.pdf",
+      "tareKg": 3900,
+      "volumeM3": 76.34
+    },
+    {
+      "bedHeightMm": null,
+      "capacityL": null,
+      "category": "dry",
+      "confidence": "Oficial / naviera",
+      "doorMm": {
+        "heightMm": 2597,
+        "widthMm": 2340
+      },
+      "exteriorMm": {
+        "heightMm": 2896,
+        "lengthMm": 13716,
+        "widthMm": 2438
+      },
+      "foldedHeightMm": null,
+      "id": "45hc",
+      "interiorMm": {
+        "heightMm": 2700,
+        "lengthMm": 13556,
+        "widthMm": 2352
+      },
+      "isoCode": "L5G1",
+      "loadLineMm": null,
+      "maxGrossKg": 32500,
+      "maxPayloadKg": 27800,
+      "mode": "maritime",
+      "name": "Contenedor 45' HC Dry (Estándar)",
+      "notes": "Serie 1 Hapag. Rango de tara por serie: 4,600-5,050 kg (Triton 4,600 kg). No es pallet-wide (ancho interior 2,352 mm, no 2,442 mm).",
+      "source": "https://www.hapag-lloyd.com/content/dam/website/downloads/pdf/17038_Update_Container_Specification_engl_sRGB.pdf",
+      "tareKg": 4700,
+      "volumeM3": 86
+    },
+    {
+      "bedHeightMm": null,
+      "capacityL": null,
+      "category": "dry",
+      "confidence": "Secundaria",
+      "doorMm": {
+        "heightMm": 2585,
+        "widthMm": 2416
+      },
+      "exteriorMm": {
+        "heightMm": 2896,
+        "lengthMm": 13716,
+        "widthMm": null
+      },
+      "foldedHeightMm": null,
+      "id": "45pw",
+      "interiorMm": {
+        "heightMm": 2697,
+        "lengthMm": 13563,
+        "widthMm": 2442
+      },
+      "isoCode": "45G1 PW",
+      "loadLineMm": null,
+      "maxGrossKg": null,
+      "maxPayloadKg": null,
+      "mode": "maritime",
+      "name": "Contenedor 45' HC Pallet Wide",
+      "notes": "Volumen publicado aprox. 89.6 m3 (el calculado da 89.33 m3). Ancho útil publicado: 2,420 a 2,444 mm. Tara y carga útil del seco pallet wide no se publican en fuentes primarias (la ficha Triton de 45' PW es del reefer). Ancho exterior no publicado.",
+      "source": "https://palletspec.online/containers/45ft-pallet-wide-container/",
+      "tareKg": null,
+      "volumeM3": 89.6
+    },
+    {
+      "bedHeightMm": null,
+      "capacityL": null,
+      "category": "reefer",
+      "confidence": "Oficial / naviera",
+      "doorMm": {
+        "heightMm": 2264,
+        "widthMm": 2290
+      },
+      "exteriorMm": {
+        "heightMm": 2591,
+        "lengthMm": 6058,
+        "widthMm": 2438
+      },
+      "foldedHeightMm": null,
+      "id": "20rf",
+      "interiorMm": {
+        "heightMm": 2159,
+        "lengthMm": 5450,
+        "widthMm": 2280
+      },
+      "isoCode": "22R1",
+      "loadLineMm": 2167,
+      "maxGrossKg": 32000,
+      "maxPayloadKg": 29140,
+      "mode": "maritime",
+      "name": "Contenedor 20' Reefer",
+      "notes": "El alto interior 2,159 mm es ALTO INTERIOR de Hapag-Lloyd, no línea de carga. loadLineMm 2,167 mm es la línea de carga Maersk (rango de flota 2,155-2,184 mm). Volumen publicado por Hapag: 28.1 m3 (el calculado da 26.83 m3).",
+      "source": "https://www.hapag-lloyd.com/en/services-information/cargo-fleet/container/20-reefer.html",
+      "tareKg": 2860,
+      "volumeM3": 28.1
+    },
+    {
+      "bedHeightMm": null,
+      "capacityL": null,
+      "category": "reefer",
+      "confidence": "Fabricante",
+      "doorMm": {
+        "heightMm": null,
+        "widthMm": null
+      },
+      "exteriorMm": {
+        "heightMm": 2591,
+        "lengthMm": 12192,
+        "widthMm": 2438
+      },
+      "foldedHeightMm": null,
+      "id": "40rf",
+      "interiorMm": {
+        "heightMm": 2252,
+        "lengthMm": 11583,
+        "widthMm": 2290
+      },
+      "isoCode": "42R1",
+      "loadLineMm": null,
+      "maxGrossKg": 32500,
+      "maxPayloadKg": 28200,
+      "mode": "maritime",
+      "name": "Contenedor 40' Reefer (Estándar 8'6\")",
+      "notes": "CIMC Logistic, tabla 40RF. Maersk y Hapag-Lloyd no listan este equipo: en esas navieras todo reefer de 40' publicado es high cube. Puerta no publicada por CIMC. Temp. operativa -30 a +30 °C. El alto 2,252 mm es alto interior CIMC, no línea de carga; no hay línea de carga Maersk publicada para esta variante.",
+      "source": "https://www.cimclogistic.com/catalog/odm-high-cube-reefer-container-exporter-manufacturers/",
+      "tareKg": 4300,
+      "volumeM3": 59
+    },
+    {
+      "bedHeightMm": null,
+      "capacityL": null,
+      "category": "reefer",
+      "confidence": "Oficial / naviera",
+      "doorMm": {
+        "heightMm": 2557,
+        "widthMm": 2290
+      },
+      "exteriorMm": {
+        "heightMm": 2896,
+        "lengthMm": 12192,
+        "widthMm": 2438
+      },
+      "foldedHeightMm": null,
+      "id": "40rh",
+      "interiorMm": {
+        "heightMm": 2425,
+        "lengthMm": 11599,
+        "widthMm": 2290
+      },
+      "isoCode": "45R1",
+      "loadLineMm": 2415,
+      "maxGrossKg": 34000,
+      "maxPayloadKg": 29580,
+      "mode": "maritime",
+      "name": "Contenedor 40' Reefer High Cube",
+      "notes": "El alto interior 2,425 mm es ALTO INTERIOR de Hapag-Lloyd, no línea de carga. loadLineMm 2,415 mm es la línea de carga Maersk estándar; 2,425 mm StarFresh y 2,450 mm Magnum son otras series. Volumen publicado por Hapag: 67.7 m3 (el calculado da 64.41 m3).",
+      "source": "https://www.hapag-lloyd.com/en/services-information/cargo-fleet/container/40-reefer-high-cube.html",
+      "tareKg": 4420,
+      "volumeM3": 67.7
+    },
+    {
+      "bedHeightMm": null,
+      "capacityL": null,
+      "category": "reefer",
+      "confidence": "Fabricante / naviera",
+      "doorMm": {
+        "heightMm": 2570,
+        "widthMm": 2440
+      },
+      "exteriorMm": {
+        "heightMm": 2900,
+        "lengthMm": 13813,
+        "widthMm": 2550
+      },
+      "foldedHeightMm": null,
+      "id": "45pw-reefer",
+      "interiorMm": {
+        "heightMm": 2570,
+        "lengthMm": 13261,
+        "widthMm": 2440
+      },
+      "isoCode": "LNR1",
+      "loadLineMm": null,
+      "maxGrossKg": 35000,
+      "maxPayloadKg": 28920,
+      "mode": "maritime",
+      "name": "Contenedor 45' Reefer High Cube Pallet Wide",
+      "notes": "Valores Triton (serie principal). CMA CGM difiere: int. 13,280x2,440x2,582, tara 6,180 kg, útil 27,820 kg, bruto 34,000 kg, vol. 83.7 m3. El 45' reefer estándar L5R1 (ancho ISO) no tiene ficha publicada en fuentes preferidas. Altura útil de carga CMA CGM: 2,482 mm. El alto 2,570 mm es alto interior Triton, no línea de carga.",
+      "source": "https://www.tritoncontainers.com/media/phvlgvq5/triton-sale-new-45-high-cube-pallet-wide-reefer-unbranded.pdf",
+      "tareKg": 6080,
+      "volumeM3": 83.5
+    },
+    {
+      "bedHeightMm": null,
+      "capacityL": null,
+      "category": "special",
+      "confidence": "Oficial / naviera",
+      "doorMm": {
+        "heightMm": 2280,
+        "widthMm": 2338
+      },
+      "exteriorMm": {
+        "heightMm": 2591,
+        "lengthMm": 6058,
+        "widthMm": 2438
+      },
+      "foldedHeightMm": null,
+      "id": "20ot",
+      "interiorMm": {
+        "heightMm": 2380,
+        "lengthMm": 5895,
+        "widthMm": 2350
+      },
+      "isoCode": "22U1",
+      "loadLineMm": null,
+      "maxGrossKg": 32500,
+      "maxPayloadKg": 30050,
+      "mode": "maritime",
+      "name": "Contenedor 20' Open Top",
+      "notes": "Hapag-Lloyd, serie madera HLXU 362000-362999. Alto interior en centro 2,380 mm, laterales 2,340 mm (techo de lona con curvatura). Apertura de techo 5,338x2,230 mm (Hapag; Textainer publica 5,787x2,250 mm con otra definición). Variante Textainer/Triton de bruto 30,480 kg.",
+      "source": "https://www.hapag-lloyd.com/content/dam/website/downloads/pdf/17038_Update_Container_Specification_engl_sRGB.pdf",
+      "tareKg": 2450,
+      "volumeM3": 32.5
+    },
+    {
+      "bedHeightMm": null,
+      "capacityL": null,
+      "category": "special",
+      "confidence": "Fabricante / naviera",
+      "doorMm": {
+        "heightMm": 2276,
+        "widthMm": 2340
+      },
+      "exteriorMm": {
+        "heightMm": 2591,
+        "lengthMm": 12192,
+        "widthMm": 2438
+      },
+      "foldedHeightMm": null,
+      "id": "40ot",
+      "interiorMm": {
+        "heightMm": 2344,
+        "lengthMm": 12029,
+        "widthMm": 2350
+      },
+      "isoCode": "42U1",
+      "loadLineMm": null,
+      "maxGrossKg": 32500,
+      "maxPayloadKg": 28450,
+      "mode": "maritime",
+      "name": "Contenedor 40' Open Top",
+      "notes": "Sin techo rígido: lona removible sobre arcos; apertura de techo publicada de 11,552x2,230 mm. El alto interior 2,344 mm es bajo los arcos.",
+      "source": "https://www.hapag-lloyd.com/content/dam/website/downloads/pdf/17038_Update_Container_Specification_engl_sRGB.pdf",
+      "tareKg": 4050,
+      "volumeM3": 66.26
+    },
+    {
+      "bedHeightMm": null,
+      "capacityL": null,
+      "category": "special",
+      "confidence": "Oficial / naviera",
+      "doorMm": {
+        "heightMm": null,
+        "widthMm": null
+      },
+      "exteriorMm": {
+        "heightMm": 2591,
+        "lengthMm": 6058,
+        "widthMm": 2438
+      },
+      "foldedHeightMm": 370,
+      "id": "20fr",
+      "interiorMm": {
+        "heightMm": 2219,
+        "lengthMm": 5612,
+        "widthMm": 2227
+      },
+      "isoCode": "22P3",
+      "loadLineMm": null,
+      "maxGrossKg": 34000,
+      "maxPayloadKg": 31260,
+      "mode": "maritime",
+      "name": "Contenedor 20' Flatrack",
+      "notes": "Hapag-Lloyd / Textainer, serie 34 t. Sin puerta ni volumen (sin paredes ni techo). Interior entre postes. Altura plegada 370 mm. Otras series Hapag: 40 t (2,940 / 37,060 / 40,000 kg) y 45 t (2,900 / 42,100 / 45,000 kg). Apilado plegado: 7 unidades = 1 módulo de 2,591 mm.",
+      "source": "https://www.hapag-lloyd.com/content/dam/website/downloads/pdf/17038_Update_Container_Specification_engl_sRGB.pdf",
+      "tareKg": 2740,
+      "volumeM3": null
+    },
+    {
+      "bedHeightMm": null,
+      "capacityL": null,
+      "category": "special",
+      "confidence": "Oficial / naviera",
+      "doorMm": {
+        "heightMm": null,
+        "widthMm": null
+      },
+      "exteriorMm": {
+        "heightMm": 2591,
+        "lengthMm": 6058,
+        "widthMm": 2438
+      },
+      "foldedHeightMm": 370,
+      "id": "20fr-collapsible",
+      "interiorMm": {
+        "heightMm": 2219,
+        "lengthMm": 5612,
+        "widthMm": 2227
+      },
+      "isoCode": "22P8",
+      "loadLineMm": null,
+      "maxGrossKg": 34000,
+      "maxPayloadKg": 31260,
+      "mode": "maritime",
+      "name": "Contenedor 20' Flatrack Collapsible",
+      "notes": "Sin tabla dimensional propia publicada: Hapag describe su 22P3 ya como flush folding y Textainer dice que todos sus flats son flush folding. Valores = flatrack 20' (20fr). Flush folding = al plegarse los testeros quedan a ras de la cubierta (370 mm). El código 22P9 es un duplicado en la lista ISO 6346, sin tabla propia.",
+      "source": "https://www.hapag-lloyd.com/content/dam/website/downloads/pdf/17038_Update_Container_Specification_engl_sRGB.pdf",
+      "tareKg": 2740,
+      "volumeM3": null
+    },
+    {
+      "bedHeightMm": null,
+      "capacityL": null,
+      "category": "special",
+      "confidence": "Secundaria / supuesto",
+      "doorMm": {
+        "heightMm": null,
+        "widthMm": null
+      },
+      "exteriorMm": {
+        "heightMm": null,
+        "lengthMm": 12192,
+        "widthMm": 2438
+      },
+      "foldedHeightMm": 648,
+      "id": "40fr",
+      "interiorMm": {
+        "heightMm": 1955,
+        "lengthMm": 11652,
+        "widthMm": 2208
+      },
+      "isoCode": "42P3",
+      "loadLineMm": null,
+      "maxGrossKg": 34200,
+      "maxPayloadKg": 28000,
+      "mode": "maritime",
+      "name": "Contenedor 40' Flatrack",
+      "notes": "Los 648 mm son la ALTURA CON TESTEROS PLEGADOS (Textainer, modelo de 52.5 t), no la altura del piso sobre el suelo. El alto interior 1,955 mm corresponde a los testeros levantados. Tara y útil son los del repo y la útil figura como limitada por carretera (supuesto): verificar en la unidad. Este juego bruto/tara (34,200 / 6,200 kg) no aparece en las tablas actuales de Textainer/Triton (series 40' de 45-52.5 t): verificar contra placa CSC. Sobrealtura: ninguna naviera publica un tope de 400 mm; CMA CGM admite en principio hasta 1,700 mm sobre los testeros, caso por caso.",
+      "source": "https://www.textainer.com/equipment/specialized",
+      "tareKg": 6200,
+      "volumeM3": null
+    },
+    {
+      "bedHeightMm": null,
+      "capacityL": null,
+      "category": "special",
+      "confidence": "Fabricante / lessor",
+      "doorMm": {
+        "heightMm": null,
+        "widthMm": null
+      },
+      "exteriorMm": {
+        "heightMm": 2591,
+        "lengthMm": 12192,
+        "widthMm": 2438
+      },
+      "foldedHeightMm": 648,
+      "id": "40fr-collapsible",
+      "interiorMm": {
+        "heightMm": 1960,
+        "lengthMm": 11652,
+        "widthMm": 2374
+      },
+      "isoCode": "42P8",
+      "loadLineMm": null,
+      "maxGrossKg": 52500,
+      "maxPayloadKg": 47450,
+      "mode": "maritime",
+      "name": "Contenedor 40' Flatrack Collapsible",
+      "notes": "Textainer, serie 52.5 t. Altura plegada 648 mm. Serie ligera 45 t: 11,762x2,378x1,960, 641 mm, tara 4,795 kg, útil 40,205 kg, bruto 45,000 kg. Triton confirma la serie 52.5 t (tara 5,130 kg, útil 47,370 kg). Apilado plegado: 4 unidades = 1 módulo de 2,591 mm. Hapag no publica tabla 42P8 (su única tabla 40' es el HC 45P3). El código 42P9 es listado ISO sin tabla propia.",
+      "source": "https://www.textainer.com/equipment/specialized",
+      "tareKg": 5050,
+      "volumeM3": null
+    },
+    {
+      "bedHeightMm": null,
+      "capacityL": null,
+      "category": "platform",
+      "confidence": "Oficial / naviera",
+      "doorMm": {
+        "heightMm": null,
+        "widthMm": null
+      },
+      "exteriorMm": {
+        "heightMm": 370,
+        "lengthMm": 6058,
+        "widthMm": 2438
+      },
+      "foldedHeightMm": 370,
+      "id": "20pf",
+      "interiorMm": {
+        "heightMm": null,
+        "lengthMm": null,
+        "widthMm": null
+      },
+      "isoCode": "29P0",
+      "loadLineMm": null,
+      "maxGrossKg": 34000,
+      "maxPayloadKg": 31260,
+      "mode": "maritime",
+      "name": "Contenedor 20' Platform",
+      "notes": "Hapag-Lloyd, PLATFORM (COLLAPSED FLATRACK), serie 34 t. El código correcto es 29P0 (22P1 es flatrack de testeros fijos). En flota Hapag una plataforma es un flatrack plegado: mismos pesos de su serie (34/40/45 t). El alto exterior 370 mm es el espesor del fondo, no altura sobre el suelo. Variante dedicada CIMC Taicang de 236 mm (vía Shipit, secundaria), equipo distinto. Interior y volumen no aplican.",
+      "source": "https://www.hapag-lloyd.com/content/dam/website/downloads/pdf/17038_Update_Container_Specification_engl_sRGB.pdf",
+      "tareKg": 2740,
+      "volumeM3": null
+    },
+    {
+      "bedHeightMm": null,
+      "capacityL": null,
+      "category": "platform",
+      "confidence": "Oficial / naviera",
+      "doorMm": {
+        "heightMm": null,
+        "widthMm": null
+      },
+      "exteriorMm": {
+        "heightMm": 648,
+        "lengthMm": 12192,
+        "widthMm": 2438
+      },
+      "foldedHeightMm": 648,
+      "id": "40pf",
+      "interiorMm": {
+        "heightMm": null,
+        "lengthMm": null,
+        "widthMm": null
+      },
+      "isoCode": "49P0",
+      "loadLineMm": null,
+      "maxGrossKg": 50000,
+      "maxPayloadKg": 44050,
+      "mode": "maritime",
+      "name": "Contenedor 40' Platform",
+      "notes": "Hapag-Lloyd, PLATFORM (COLLAPSED FLATRACK), serie 50 t. El código correcto es 49P0 (42P1 es flatrack de testeros fijos). El alto exterior 648 mm es el espesor del fondo, no altura sobre el suelo. Otras series Hapag: 55 t (5,900 / 49,100 kg) y 60 t (5,800 / 54,200 kg). Interior y volumen no aplican. Carga estática como base: hasta 85,000 kg.",
+      "source": "https://www.hapag-lloyd.com/content/dam/website/downloads/pdf/17038_Update_Container_Specification_engl_sRGB.pdf",
+      "tareKg": 5950,
+      "volumeM3": null
+    },
+    {
+      "bedHeightMm": null,
+      "capacityL": null,
+      "category": "bulk",
+      "confidence": "Fabricante / lessor",
+      "doorMm": {
+        "heightMm": 2310,
+        "widthMm": 2340
+      },
+      "exteriorMm": {
+        "heightMm": 2591,
+        "lengthMm": 6058,
+        "widthMm": 2438
+      },
+      "foldedHeightMm": null,
+      "id": "20bk",
+      "interiorMm": {
+        "heightMm": 2382,
+        "lengthMm": 5854,
+        "widthMm": 2332
+      },
+      "isoCode": "22B0",
+      "loadLineMm": null,
+      "maxGrossKg": 34000,
+      "maxPayloadKg": 31040,
+      "mode": "maritime",
+      "name": "Contenedor 20' Bulk",
+      "notes": "Triton. 3 escotillas de carga en el techo. Carga: grano, malta, café, fertilizante, pellets de plástico, minerales; sólidos secos a granel, carga por gravedad desde silo, descarga por basculamiento. El alto interior publicado es 2,382.5 mm; aquí queda en 2,382 mm (entero, redondeo en contra para capacidad). Otros fabricantes publican bruto 30,480 kg y tara ~2,250-2,600 kg (dispersión por serie, no error). No existe bulk 40' estándar de flota: el código 42B0 está reservado en ISO 6346 pero sin ficha de fabricante/lessor.",
+      "source": "https://www.tritoncontainer.com/media/3scdvtg1/buying-new-20ft-bulk-containers.pdf",
+      "tareKg": 2960,
+      "volumeM3": 32.5
+    },
+    {
+      "bedHeightMm": null,
+      "capacityL": 24000,
+      "category": "tank",
+      "confidence": "Fabricante / lessor",
+      "doorMm": {
+        "heightMm": null,
+        "widthMm": null
+      },
+      "exteriorMm": {
+        "heightMm": 2591,
+        "lengthMm": 6058,
+        "widthMm": 2438
+      },
+      "foldedHeightMm": null,
+      "id": "20tk",
+      "interiorMm": {
+        "heightMm": null,
+        "lengthMm": null,
+        "widthMm": null
+      },
+      "isoCode": "22T6",
+      "loadLineMm": null,
+      "maxGrossKg": 36000,
+      "maxPayloadKg": 32380,
+      "mode": "maritime",
+      "name": "Contenedor 20' Tank (tanque ISO T11)",
+      "notes": "Seaco, T11 Standard Tank Containers. Capacidad 24,000 L (gama T11: 21,000 / 24,000 / 25,000 / 26,000 L, mismo marco y bruto 36,000 kg). Presión de trabajo 4 bar, prueba 6 bar, temp. de diseño 130 °C, acero inoxidable 316L. Interior y puerta no aplican (barril dentro de un marco). Carga: líquidos a granel, peligrosos y no peligrosos, incluido grado alimenticio. Corroborado por Triton (tara 3,500-3,910 kg, MAWP 4.00 bar). No existe tanque ISO 40' estándar T11: el código 42T0 está reservado en ISO 6346 pero la flota de líquidos es 20'.",
+      "source": "https://seacoglobal.com/wp-content/uploads/2022/12/T11-STANDARD-TANK-CONTAINERS.pdf",
+      "tareKg": 3620,
+      "volumeM3": 24
+    },
+    {
+      "bedHeightMm": null,
+      "capacityL": null,
+      "category": "road-dry",
+      "confidence": "Fabricante (capacidad) / repo (interior)",
+      "doorMm": {
+        "heightMm": null,
+        "widthMm": null
+      },
+      "exteriorMm": {
+        "heightMm": null,
+        "lengthMm": 14630,
+        "widthMm": 2591
+      },
+      "foldedHeightMm": null,
+      "id": "48dry",
+      "interiorMm": {
+        "heightMm": 2794,
+        "lengthMm": 14427,
+        "widthMm": 2489
+      },
+      "isoCode": null,
+      "loadLineMm": null,
+      "maxGrossKg": null,
+      "maxPayloadKg": 30000,
+      "mode": "road",
+      "name": "Caja seca 48'",
+      "notes": "Los 30,000 kg son CAPACIDAD ESTRUCTURAL publicada por Fruehauf para sus cajas de 28/40/48/53 pies, no la carga útil legal NOM-012: la legal sale de PBV menos tara del tracto y de la caja, por tipo de camino. Tara y puerta no publicadas para 48' en las fuentes citadas.",
+      "source": "https://fruehauf.mx/pdf/Fruehauf_CajaSeca_FLEET-FLYER_FBAWD91.5-LP-HT3-53W.pdf",
+      "tareKg": null,
+      "volumeM3": 100.33
+    },
+    {
+      "bedHeightMm": null,
+      "capacityL": null,
+      "category": "road-dry",
+      "confidence": "Fabricante",
+      "doorMm": {
+        "heightMm": null,
+        "widthMm": null
+      },
+      "exteriorMm": {
+        "heightMm": 4198,
+        "lengthMm": 16154,
+        "widthMm": 2600
+      },
+      "foldedHeightMm": null,
+      "id": "53dry",
+      "interiorMm": {
+        "heightMm": 2794,
+        "lengthMm": 16003,
+        "widthMm": 2540
+      },
+      "isoCode": null,
+      "loadLineMm": null,
+      "maxGrossKg": 36680,
+      "maxPayloadKg": 30000,
+      "mode": "road",
+      "name": "Caja seca 53'",
+      "notes": "Fruehauf de México, ficha Fleet Flyer 53' FBAWD9+1.5-LP-HT3-53W. Altura de quinta rueda: 1,206 mm. Peso de la ficha aproximado (6,680 kg). Los 30,000 kg son capacidad estructural, no útil legal NOM-012.",
+      "source": "https://fruehauf.mx/pdf/Fruehauf_CajaSeca_FLEET-FLYER_FBAWD91.5-LP-HT3-53W.pdf",
+      "tareKg": 6680,
+      "volumeM3": 113.57
+    },
+    {
+      "bedHeightMm": null,
+      "capacityL": null,
+      "category": "road-reefer",
+      "confidence": "Fabricante",
+      "doorMm": {
+        "heightMm": null,
+        "widthMm": null
+      },
+      "exteriorMm": {
+        "heightMm": 4200,
+        "lengthMm": 14630,
+        "widthMm": 2600
+      },
+      "foldedHeightMm": null,
+      "id": "48rv",
+      "interiorMm": {
+        "heightMm": 3790,
+        "lengthMm": null,
+        "widthMm": 2550
+      },
+      "isoCode": null,
+      "loadLineMm": null,
+      "maxGrossKg": null,
+      "maxPayloadKg": 25000,
+      "mode": "road",
+      "name": "Caja refrigerada 48'",
+      "notes": "Los 25,000 kg son el MÁXIMO publicado por Alzper en 48' (también 30,000 kg en 53', 20,000 kg en 40' y 15,000 kg en 28'): es capacidad estructural, no útil legal NOM-012. Largo interior, volumen, tara y PBV no publicados por Alzper. VERIFICAR: el alto interior publicado de 3,790 mm es inconsistente con el alto exterior de 4,200 mm y con el interior de la 53' (2,680 mm); probablemente es un error de la ficha y debe medirse en patio antes de usarlo.",
+      "source": "https://www.alzper.com.mx/.cm4all/uproc.php/0/imagen/Remolques/Fichas%20T%C3%A9cnicas/Caja%20Refrigerada.pdf?cdp=a&_=199efd8d508",
+      "tareKg": null,
+      "volumeM3": null
+    },
+    {
+      "bedHeightMm": null,
+      "capacityL": null,
+      "category": "road-reefer",
+      "confidence": "Fabricante",
+      "doorMm": {
+        "heightMm": null,
+        "widthMm": null
+      },
+      "exteriorMm": {
+        "heightMm": null,
+        "lengthMm": 16154,
+        "widthMm": 2600
+      },
+      "foldedHeightMm": null,
+      "id": "53rv",
+      "interiorMm": {
+        "heightMm": 2680,
+        "lengthMm": 15900,
+        "widthMm": 2470
+      },
+      "isoCode": null,
+      "loadLineMm": null,
+      "maxGrossKg": null,
+      "maxPayloadKg": 30000,
+      "mode": "road",
+      "name": "Caja refrigerada 53'",
+      "notes": "Hyundai Translead, ThermoTech + Alzper (máximo 53'). Interior de Hyundai publicado como aproximado (15.90x2.47x2.68 m). Tara de 5,420 kg SIN la unidad de frío. PBV publicado por Hyundai: 30,844 kg, por eso maxGrossKg queda en null: tara + útil (35,420 kg) no es el bruto aplicable. Los 30,000 kg son el máximo publicado por Alzper en 53': capacidad estructural, no útil legal NOM-012. La cifra de 24,900 kg que traía el repo NO quedó confirmada por ninguna ficha y no se usa.",
+      "source": "https://www.hyundaitranslead.com/product/refrigerated/thermotech/",
+      "tareKg": 5420,
+      "volumeM3": 105.25
+    },
+    {
+      "bedHeightMm": 1478,
+      "capacityL": null,
+      "category": "road-flatbed",
+      "confidence": "Repo / fabricante (cama)",
+      "doorMm": {
+        "heightMm": null,
+        "widthMm": null
+      },
+      "exteriorMm": {
+        "heightMm": null,
+        "lengthMm": 14630,
+        "widthMm": 2591
+      },
+      "foldedHeightMm": null,
+      "id": "48fb",
+      "interiorMm": {
+        "heightMm": 2772,
+        "lengthMm": 14630,
+        "widthMm": 2590
+      },
+      "isoCode": null,
+      "loadLineMm": null,
+      "maxGrossKg": null,
+      "maxPayloadKg": 30000,
+      "mode": "road",
+      "name": "Plataforma flatbed 48' / 53'",
+      "notes": "Repo Cargo 3D, contracts/examples + XL Specialized, cama cargada de 58 pulg. (1,473 mm). Largo de la versión 53': 16,154 mm. El alto útil 2,772 mm sale del repo como alto máximo NOM-012 (4,250 mm) menos la cama cargada (1,478 mm). Los 30,000 kg son capacidad estructural del repo, no útil legal NOM-012. Tara varía por fabricante y material. Volumen no aplica (plataforma abierta).",
+      "source": "https://github.com/bayalad7/cargo-3d/tree/develop",
+      "tareKg": null,
+      "volumeM3": null
+    },
+    {
+      "bedHeightMm": null,
+      "capacityL": null,
+      "category": "road-flatbed",
+      "confidence": "Sin ficha",
+      "doorMm": {
+        "heightMm": null,
+        "widthMm": null
+      },
+      "exteriorMm": {
+        "heightMm": null,
+        "lengthMm": null,
+        "widthMm": null
+      },
+      "foldedHeightMm": null,
+      "id": "40fb",
+      "interiorMm": {
+        "heightMm": null,
+        "lengthMm": null,
+        "widthMm": null
+      },
+      "isoCode": null,
+      "loadLineMm": null,
+      "maxGrossKg": null,
+      "maxPayloadKg": null,
+      "mode": "road",
+      "name": "Plataforma plana 40'",
+      "notes": "Sin ficha estándar: no se inventan medidas. Great Dane Freedom lista 28', 45', 48' y 53' (sin 40'); Hyundai Latitude 32'-53' y Wabash 28'-53' son rangos a pedido, sin modelo 40' con ficha. Se mide en patio: largo, ancho, altura de cama, tara y PBV.",
+      "source": "https://www.sizemarker.com/dimensions/flatbed-trailer-dimensions",
+      "tareKg": null,
+      "volumeM3": null
+    },
+    {
+      "bedHeightMm": 1219,
+      "capacityL": null,
+      "category": "chassis",
+      "confidence": "Fabricante / distribuidor",
+      "doorMm": {
+        "heightMm": null,
+        "widthMm": null
+      },
+      "exteriorMm": {
+        "heightMm": null,
+        "lengthMm": null,
+        "widthMm": null
+      },
+      "foldedHeightMm": null,
+      "id": "40chassis",
+      "interiorMm": {
+        "heightMm": null,
+        "lengthMm": null,
+        "widthMm": null
+      },
+      "isoCode": null,
+      "loadLineMm": null,
+      "maxGrossKg": 30481,
+      "maxPayloadKg": 27397,
+      "mode": "road",
+      "name": "Chasis portacontenedor gooseneck 40'",
+      "notes": "Triton y Conway, fichas del chasis gooseneck de 40', 2 ejes. Altura confirmada: 1,219 mm (48 pulg.) en peralte y cubierta trasera; corrige el 1,200 mm supuesto del repo. Bruto publicado: 30,481 kg; la carga útil es DERIVADA (30,481 menos tara 3,084 = 27,397 kg), no una cifra publicada.",
+      "source": "https://www.tritoncontainer.com/media/j5flxig5/triton-sale-used-40ft-gooseneck-chassis.pdf",
+      "tareKg": 3084,
+      "volumeM3": null
+    }
+  ]
+}
