@@ -14,6 +14,10 @@
 - [Sistema de coordenadas](conceptos/sistema-coordenadas.md)
 - [Equipos y normas](conceptos/equipos-y-normas.md)
 
+# Catálogos
+
+- [Catálogo de equipos](catalogos/equipos.md)
+
 # Decisiones de arquitectura (ADR)
 
 - [Plantilla](adr/plantilla.md)

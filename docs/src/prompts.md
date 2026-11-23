@@ -196,8 +196,9 @@ Primero propón el plan y la lista de errores que vas a definir.
 ```
 Sprint 1.1, sesión 5: convierte las cargas reales de docs/datos/ en
 archivos JSON en engine/fixtures/real/, uno por carga, siguiendo
-contracts/engine.schema.json. Convierte el catálogo de equipos en
-engine/fixtures/equipment.json.
+contracts/engine.schema.json. El catálogo de equipos ya existe en
+contracts/equipment.json (fuente única, 28 equipos): no lo copies ni
+lo cambies sin fuente; cada fixture usa el equipo por su id.
 
 Para cada carga agrega un archivo .expect.json con lo que debe cumplirse
 (por ahora: la entrada es válida). Escribe una prueba en Go que recorra
@@ -210,13 +211,11 @@ identificadores genéricos (carga-01, pieza-A) y conserva solo medidas,
 pesos, cantidades y restricciones. Nunca copies archivos de docs/datos/
 fuera de esa carpeta tal cual.
 
-Catálogo del cliente (P-002, ya decidido): la tara está en toneladas y la
-columna de peso bruto guarda en realidad la carga útil; usa la tabla de
-docs/datos/revision-catalogo-contenedores.md (fila por fila). «High Cube 20»
-es un 40' HC y «High Cube 40» un 45' HC; en los reefers usa las fichas
-públicas. Pregúntame por las filas marcadas «sin explicación». Cada equipo
-lleva category_path, su fuente y su nivel de confianza; nada «supuesto» entra
-sin confirmar (P-004). Corrige también contracts/examples/ si cambia un valor.
+Catálogo del cliente (P-002, cerrado el 2026-11-23): ya está convertido en
+docs/datos/sprint 1.1.1/catalogo-cliente-convertido.md, con la fila 9
+resuelta. Úsalo solo para reconocer qué equipo usa cada carga real; nada
+«supuesto» entra al catálogo sin confirmar (P-004 y P-020). Si una carga
+cambia un valor de contracts/examples/, anótalo antes de corregirlo.
 
 Si algún dato real no cabe en el contrato o hay datos dudosos (medidas
 que parecen en centímetros, pesos faltantes), detente y pregúntame antes
