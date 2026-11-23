@@ -2,7 +2,7 @@
   "schemaVersion": "0.1.0",
   "container": {
     "id": "c-40pf",
-    "description": "Plataforma ISO 40', ejemplo sintético; largo DSV; alto 4250 - 648 de piso - 1200 de chasis (supuesto); margen lateral (2600 - 2438) / 2 de la NOM-012; carga útil de carretera (supuesto)",
+    "description": "Plataforma ISO 40', ejemplo sintético; largo DSV; alto libre DERIVADO 4250 (NOM-012) - 648 de alto de la plataforma (Hapag 49P0) - 1219 de chasis (Triton, Conway), por medir en patio; margen lateral (2600 - 2438) / 2 de la NOM-012; carga útil de carretera (supuesto)",
     "sections": [
       {
         "id": "main",
@@ -11,7 +11,7 @@
         "zMm": 0,
         "lengthMm": 12190,
         "widthMm": 2438,
-        "heightMm": 2402,
+        "heightMm": 2383,
         "overhang": {
           "topMm": 0,
           "leftMm": 81,

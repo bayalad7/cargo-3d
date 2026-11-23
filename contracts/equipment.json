@@ -760,7 +760,7 @@
       "foldedHeightMm": null,
       "id": "48rv",
       "interiorMm": {
-        "heightMm": 3790,
+        "heightMm": null,
         "lengthMm": null,
         "widthMm": 2550
       },
@@ -770,7 +770,7 @@
       "maxPayloadKg": 25000,
       "mode": "road",
       "name": "Caja refrigerada 48'",
-      "notes": "Los 25,000 kg son el MÁXIMO publicado por Alzper en 48' (también 30,000 kg en 53', 20,000 kg en 40' y 15,000 kg en 28'): es capacidad estructural, no útil legal NOM-012. Largo interior, volumen, tara y PBV no publicados por Alzper. VERIFICAR: el alto interior publicado de 3,790 mm es inconsistente con el alto exterior de 4,200 mm y con el interior de la 53' (2,680 mm); probablemente es un error de la ficha y debe medirse en patio antes de usarlo.",
+      "notes": "Los 25,000 kg son el MÁXIMO publicado por Alzper en 48' (también 30,000 kg en 53', 20,000 kg en 40' y 15,000 kg en 28'): es capacidad estructural, no útil legal NOM-012. Largo interior, volumen, tara y PBV no publicados por Alzper. Alto interior en null a propósito: Alzper publica 3,790 mm, imposible con su alto total de 4,200 mm (quedarían 410 mm para piso y chasis); no se sustituye por 2,790 mm ni por otra cifra: se mide en el patio (P-013, hoja §5). El ejemplo del repo 48rv-pallets usa 2,628 mm (C.H. Robinson 2017, otra unidad).",
       "source": "https://www.alzper.com.mx/.cm4all/uproc.php/0/imagen/Remolques/Fichas%20T%C3%A9cnicas/Caja%20Refrigerada.pdf?cdp=a&_=199efd8d508",
       "tareKg": null,
       "volumeM3": null
@@ -843,32 +843,32 @@
       "bedHeightMm": null,
       "capacityL": null,
       "category": "road-flatbed",
-      "confidence": "Sin ficha",
+      "confidence": "Fabricante",
       "doorMm": {
         "heightMm": null,
         "widthMm": null
       },
       "exteriorMm": {
         "heightMm": null,
-        "lengthMm": null,
-        "widthMm": null
+        "lengthMm": 12192,
+        "widthMm": 2600
       },
       "foldedHeightMm": null,
       "id": "40fb",
       "interiorMm": {
         "heightMm": null,
-        "lengthMm": null,
-        "widthMm": null
+        "lengthMm": 12125,
+        "widthMm": 2457
       },
       "isoCode": null,
       "loadLineMm": null,
       "maxGrossKg": null,
-      "maxPayloadKg": null,
+      "maxPayloadKg": 34000,
       "mode": "road",
       "name": "Plataforma plana 40'",
-      "notes": "Sin ficha estándar: no se inventan medidas. Great Dane Freedom lista 28', 45', 48' y 53' (sin 40'); Hyundai Latitude 32'-53' y Wabash 28'-53' son rangos a pedido, sin modelo 40' con ficha. Se mide en patio: largo, ancho, altura de cama, tara y PBV.",
-      "source": "https://www.sizemarker.com/dimensions/flatbed-trailer-dimensions",
-      "tareKg": null,
+      "notes": "Fruehauf de México, Plataforma Estándar 40', modelo PM-HT2-40W, 2 ejes (ficha leída el 2026-11-23): longitud total 480\" (12,192 mm), longitud de carga 477 3/8\" (12,125 mm), ancho total 102 3/8\" (2,600 mm), ancho de carga 96 3/4\" (2,457 mm), altura de quinta rueda 49\" (1,244 mm), capacidad 34,000 kg, peso aproximado 5,650 kg. Los 34,000 kg son CAPACIDAD ESTRUCTURAL, no útil legal NOM-012. La ficha no publica la altura de la cama (la quinta rueda no es la cama): bedHeightMm e interiorMm.heightMm quedan en null y se miden en el patio (P-013, hoja §5). Bruto no publicado: tara + capacidad no se usa como bruto. Delucio (plataforma plana 40', 3 ejes) publica solo ancho 2.60 m y alto 1.52 m.",
+      "source": "https://fruehauf.mx/pdf/Fruehauf_Plataformas_ESTANDAR_PMHT240W.pdf",
+      "tareKg": 5650,
       "volumeM3": null
     },
     {

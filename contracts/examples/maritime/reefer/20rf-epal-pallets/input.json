@@ -2,24 +2,24 @@
   "schemaVersion": "0.1.0",
   "container": {
     "id": "c-20rf",
-    "description": "Contenedor 20' refrigerado (22R1), ejemplo sintético; altura útil 2158 bajo la línea de carga POR CONFIRMAR (CMA CGM, fragmento)",
+    "description": "Contenedor 20' refrigerado (22R1), ejemplo sintético; interior, puerta, tara y carga útil de la ficha Hapag-Lloyd (unidad de ejemplo); el alto 2159 es ALTO INTERIOR Hapag, no línea de carga (Maersk publica 2167 en otra serie)",
     "sections": [
       {
         "id": "main",
         "xMm": 0,
         "yMm": 0,
         "zMm": 0,
-        "lengthMm": 5454,
-        "widthMm": 2290,
-        "heightMm": 2158
+        "lengthMm": 5450,
+        "widthMm": 2280,
+        "heightMm": 2159
       }
     ],
     "door": {
       "widthMm": 2290,
-      "heightMm": 2221
+      "heightMm": 2264
     },
-    "maxPayloadKg": 27400,
-    "tareKg": 3080
+    "maxPayloadKg": 29140,
+    "tareKg": 2860
   },
   "items": [
     {

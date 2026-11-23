@@ -2,15 +2,15 @@
   "schemaVersion": "0.1.0",
   "container": {
     "id": "c-40rh",
-    "description": "Contenedor 40' HC refrigerado (45R1), altura útil bajo la línea de carga, ejemplo sintético",
+    "description": "Contenedor 40' HC refrigerado (45R1), ejemplo sintético; interior, puerta, tara y carga útil de la ficha Hapag-Lloyd (unidad de ejemplo); el alto 2425 es ALTO INTERIOR Hapag, no línea de carga (Maersk publica 2415 estándar en otra serie)",
     "sections": [
       {
         "id": "main",
         "xMm": 0,
         "yMm": 0,
         "zMm": 0,
-        "lengthMm": 11584,
-        "widthMm": 2280,
+        "lengthMm": 11599,
+        "widthMm": 2290,
         "heightMm": 2425
       }
     ],
@@ -18,8 +18,8 @@
       "widthMm": 2290,
       "heightMm": 2557
     },
-    "maxPayloadKg": 26000,
-    "tareKg": 4560
+    "maxPayloadKg": 29580,
+    "tareKg": 4420
   },
   "items": [
     {

@@ -2,7 +2,7 @@
   "schemaVersion": "0.1.0",
   "container": {
     "id": "c-48rv",
-    "description": "Caja refrigerada 48', ejemplo sintético; medidas C.H. Robinson 2017; carga útil supuesta",
+    "description": "Caja refrigerada 48', ejemplo sintético; medidas C.H. Robinson 2017; carga útil 25000 = máximo Alzper 48' (capacidad estructural, no útil legal NOM-012)",
     "sections": [
       {
         "id": "main",
@@ -18,7 +18,7 @@
       "widthMm": 2496,
       "heightMm": 2585
     },
-    "maxPayloadKg": 24900
+    "maxPayloadKg": 25000
   },
   "items": [
     {

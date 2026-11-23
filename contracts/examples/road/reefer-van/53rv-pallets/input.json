@@ -2,7 +2,7 @@
   "schemaVersion": "0.1.0",
   "container": {
     "id": "c-53rv",
-    "description": "Caja refrigerada 53', ejemplo sintético; medidas C.H. Robinson 2017; carga útil supuesta",
+    "description": "Caja refrigerada 53', ejemplo sintético; medidas C.H. Robinson 2017; carga útil 30000 = máximo Alzper 53' (capacidad estructural, no útil legal NOM-012)",
     "sections": [
       {
         "id": "main",
@@ -18,7 +18,7 @@
       "widthMm": 2496,
       "heightMm": 2585
     },
-    "maxPayloadKg": 24900
+    "maxPayloadKg": 30000
   },
   "items": [
     {

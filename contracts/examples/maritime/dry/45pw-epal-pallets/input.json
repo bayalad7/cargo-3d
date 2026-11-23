@@ -2,7 +2,7 @@
   "schemaVersion": "0.1.0",
   "container": {
     "id": "c-45pw",
-    "description": "Contenedor 45' HC pallet wide (LEG1), ejemplo sintético; interior, tara y bruto DP World; puerta y alto de un fragmento de Globy, POR CONFIRMAR",
+    "description": "Contenedor 45' HC pallet wide seco (LEG1), ejemplo sintético; interior, tara y bruto DP World; puerta 2416 × 2585 de PalletSpec (seco; el pallet wide reefer tiene puerta 2440)",
     "sections": [
       {
         "id": "main",
@@ -15,8 +15,8 @@
       }
     ],
     "door": {
-      "widthMm": 2343,
-      "heightMm": 2670
+      "widthMm": 2416,
+      "heightMm": 2585
     },
     "maxPayloadKg": 28500,
     "tareKg": 4500

@@ -2,7 +2,7 @@
   "schemaVersion": "0.1.0",
   "container": {
     "id": "c-53dv",
-    "description": "Caja seca 53', ejemplo sintético (puerta C.H. Robinson 2017)",
+    "description": "Caja seca 53', ejemplo sintético (puerta C.H. Robinson 2017); carga útil 30000 = capacidad estructural Fruehauf, no útil legal NOM-012",
     "sections": [
       {
         "id": "main",
