@@ -7,6 +7,14 @@ Cada versión liberada en `main` lleva su etiqueta de git (ADR-0012).
 ## [Sin publicar]
 
 ### Agregado
+- Casos de uso simulados en `docs/src/casos/` (29 casos por categoría, incluida carga sobredimensionada con permiso de la NOM-040) y procedimiento de pruebas con cargas reales
+  para la v0.2.0 (ADR-0020).
+- Equipos personalizados por empresa: plantilla por clase y versiones de cada equipo (ADR-0019, se construye en la fase 2).
+- Imagen `equipo.svg` en cada ejemplo de `contracts/examples/`, generada con `pnpm examples:render`.
+- Catálogo canónico de equipos `contracts/equipment.json` (26 equipos, con el ejemplo de cada uno en `examples`) y su página
+  `docs/src/catalogos/equipos.md`.
+- Ejemplos nuevos: 10' Dry, 45' reefer pallet wide, flat rack 40' plegable y 20' bulk (27 en total).
+- Índice de la bitácora (`docs/src/bitacora/README.md`).
 - Ejemplos del contrato: 8 equipos más (23 en total) y 17 entradas inválidas en `contracts/examples/invalid/`.
 - Sistema oficial de Voxa v5: diálogo, aviso, barra masiva, botón `danger`, estado en vivo y tres tokens.
 - `scripts/contratos/check-examples.mjs` (`pnpm examples:check`): revisa las reglas físicas de los ejemplos.
@@ -53,3 +61,16 @@ Cada versión liberada en `main` lleva su etiqueta de git (ADR-0012).
 - `docs/datos/` fuera de git (datos de clientes) y fixtures reales anonimizados.
 - Skills de Claude Code del proyecto en `.claude/skills/` (iniciar-sesion, sesion, cerrar-sesion, punto-de-control, revisar, explicar, nuevo-adr, cambiar-contrato, cerrar-sprint).
 - Guía del flujo de trabajo con Claude Code (`docs/src/flujo-claude-code.md`).
+
+### Cambiado
+- La bitácora es un archivo por tema (`AAAA-MM-DD-tema.md`), agrupada por mes en el sitio.
+- Las cargas reales del plan se sustituyen por casos simulados hasta la v0.2.0; el sprint 2.6 pasa a ser de pruebas
+  con cargas reales.
+- Ejemplos del contrato corregidos con fuente (reefers serie Hapag, cajas refrigeradas Alzper, chasis 1 219 mm).
+
+### Corregido
+- Cuatro ejemplos tenían una descripción de más de 200 caracteres, que el esquema no permite.
+
+### Eliminado
+- Skill `/punto-de-control` y los puntos de control del ciclo de sprints (ADR-0018).
+- Tanque ISO 20' y chasis portacontenedor del catálogo de equipos: no son espacios de carga para el motor.

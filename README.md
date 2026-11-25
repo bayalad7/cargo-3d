@@ -3,7 +3,9 @@
 Planeación de carga 3D para contenedores marítimos, cajas secas y plataformas,
 pensada para el mercado mexicano.
 
-> **Estado:** fase 0 — cimientos. Servidor con `/health`; el motor se construye en la fase 1.
+> **Estado:** fase 1 — prueba de concepto, sprint 1.1. Servidor con `/health`, contrato del motor v0.1.0 y
+> catálogo de equipos listos; el motor en Go empieza en la sesión 1.1.2. Mientras no hay cargas reales se trabaja
+> con casos de uso simulados ([ADR-0020](docs/src/adr/0020-casos-simulados.md)).
 
 ## Arquitectura en una frase
 
@@ -38,6 +40,22 @@ go test ./backend/...
 Para programar el backend: `Ctrl+Shift+B` en VS Code o `scripts/servicios/levantar` (`.ps1`/`.cmd` en Windows,
 `.sh`/`.command` en macOS y Linux). Levanta PostgreSQL en Docker y la API con `go run`.
 
+## Contrato, equipos y casos de uso
+
+| Qué | Dónde |
+|---|---|
+| Entrada y salida del motor (JSON Schema) | [`contracts/engine.schema.json`](contracts/engine.schema.json) |
+| API (OpenAPI) | [`contracts/openapi.yaml`](contracts/openapi.yaml) |
+| Catálogo de equipos (26, con fuente, confianza y su ejemplo) | [`contracts/equipment.json`](contracts/equipment.json) · [página con fotos](docs/src/catalogos/equipos.md) |
+| Ejemplos por equipo, cada uno con su dibujo `equipo.svg` | [`contracts/examples/`](contracts/examples/README.md) |
+| Casos de uso simulados (marítimo, carretera, restricciones, límites, operación) | [`docs/src/casos/`](docs/src/casos/README.md) |
+| Equipos personalizados por empresa | [ADR-0019](docs/src/adr/0019-equipos-personalizados.md) |
+
+```bash
+pnpm examples:check     # revisa las reglas físicas de los ejemplos
+pnpm examples:render    # vuelve a dibujar equipo.svg de cada ejemplo
+```
+
 ## Ramas
 
 - `develop`: aquí se trabaja todo, con commits directos (sin ramas de trabajo ni pull requests).
@@ -49,8 +67,9 @@ y el [ADR-0013](docs/src/adr/0013-ci-y-release.md).
 
 ## Documentación
 
-Toda la documentación vive en [`docs/`](docs/src/SUMMARY.md): decisiones (ADR), conceptos,
-guía de Go para quien viene de PHP, plan de trabajo y bitácora.
+Toda la documentación vive en [`docs/`](docs/src/SUMMARY.md): decisiones (ADR), conceptos, catálogo de equipos,
+casos de uso, guía de Go para quien viene de PHP, plan de trabajo, [pendientes](docs/src/pendientes.md) y
+[bitácora](docs/src/bitacora/README.md) (un archivo por tema, con índice por fecha y área).
 Para verla como sitio web: `mdbook serve docs --open` (requiere mdBook: `winget install Rustlang.mdBook` en Windows, `brew install mdbook` en macOS).
 
 ## Requisitos
@@ -60,7 +79,7 @@ Funciona en Windows, macOS (incluida Apple Silicon) y Linux. Guía de instalaci�
 
 - Go 1.27 o superior
 - Docker con Docker Compose
-- Node.js 26 LTS y pnpm 12 (para las pantallas, desde la fase 1)
+- Node.js 26 LTS y pnpm 12 (scripts de `contracts/` y, desde el sprint 1.6, las pantallas)
 
 Versiones de todas las tecnologías: [ADR-0011](docs/src/adr/0011-versiones.md).
 

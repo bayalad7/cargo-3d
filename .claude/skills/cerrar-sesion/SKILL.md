@@ -36,10 +36,14 @@ Nota de Benjamín para la bitácora (puede venir vacía): $ARGUMENTS
    se cierra la sesión con el pendiente anotado. No ocultes fallas.
 2. **Documentación del código.** Revisa que todo lo exportado que se agregó o cambió en esta sesión tenga
    comentario de documentación, como exige `CLAUDE.md`. Si falta, agrégalo.
-3. **Bitácora.** En `docs/src/bitacora/<fecha de hoy>.md`:
-   - si el archivo no existe, créalo con las secciones "Qué se hizo", "Decisiones" y "Pendientes", y enlázalo
-     en `docs/src/SUMMARY.md` (la entrada más reciente va arriba de la lista de Bitácora);
-   - si ya existe, agrega una sección nueva con el número de la sesión, sin borrar lo anterior.
+3. **Bitácora.** Un archivo **por tema** en `docs/src/bitacora/<fecha de hoy>-<tema>.md` (tema corto en minúsculas,
+   sin acentos, con guiones; por ejemplo `2026-11-21-contrato-del-motor.md`). Si en la sesión se trabajaron dos temas
+   distintos, son dos archivos. Cada archivo sigue el formato de `docs/src/bitacora/README.md`:
+   - título `# <día> <mes abreviado> <año> · <Tema>` y la línea `**Sesión:** <número o «Fuera del plan»> · **Área:** <áreas de `convenciones.md`>`;
+   - secciones "Qué se hizo", "Decisiones", "Verificación" y "Pendientes";
+   - agrega una fila arriba de la tabla de `docs/src/bitacora/README.md` (fecha, tema, sesión, área, ids) y la entrada
+     en `docs/src/SUMMARY.md` bajo el mes que le toca, la más reciente primero (crea el mes si no existe);
+   - si el tema ya tiene archivo de hoy, agrega una sección nueva sin borrar lo anterior.
    Escribe solo lo que realmente pasó en esta sesión; incluye la nota de Benjamín si dio una.
    En su sección "Pendientes" **solo cita los ids** del registro (`P-012: …` en una línea); el detalle va en el paso 3b.
 3b. **Registro de pendientes** (`docs/src/pendientes.md`), **obligatorio en cada cierre** aunque no haya nada nuevo:

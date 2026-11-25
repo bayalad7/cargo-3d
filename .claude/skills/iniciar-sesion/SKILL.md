@@ -27,8 +27,8 @@ $ARGUMENTS
 
 ## Qué hacer
 
-1. Lee completos `CLAUDE.md`, `docs/src/plan.md`, `docs/src/pendientes.md` y la bitácora más reciente de
-   `docs/src/bitacora/`.
+1. Lee completos `CLAUDE.md`, `docs/src/plan.md`, `docs/src/pendientes.md`, el índice `docs/src/bitacora/README.md`
+   y las entradas de la bitácora de la fecha más reciente (`docs/src/bitacora/AAAA-MM-DD-tema.md`).
 2. Responde con un resumen corto, con estos apartados:
    - **Dónde vamos:** fase, sprint y última sesión terminada (según la sección "Estado" de `CLAUDE.md` y la bitácora).
    - **Pendientes:** de «Abiertos» (y los «Agendados» para la siguiente sesión) en `docs/src/pendientes.md`, primero los que **bloquean** la siguiente sesión

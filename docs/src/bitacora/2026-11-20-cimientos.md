@@ -1,0 +1,40 @@
+# 20 nov 2026 · Cimientos del proyecto
+
+**Sesión:** Fase 0 · **Área:** infra, docs
+
+## Qué se hizo
+
+- Se analizaron alternativas (Go, Rust, Python, C#, PHP) y se eligió **Go** para todo el backend.
+- Backend en Go: módulo `backend/`, servidor con apagado ordenado, ruta `GET /health`, paquete del motor
+  vacío y 3 pruebas pasando (`go test`, `go vet` y `gofmt` limpios).
+- Docker: `docker-compose.yml` con PostgreSQL 17 (y la API con `--profile api`), `backend/Dockerfile`
+  multi-etapa con imagen final distroless sin privilegios, `.env.example`.
+- Contratos independientes del lenguaje en `contracts/` (OpenAPI con `/health`) y carpeta `engine/fixtures/`.
+- Documentación: `CLAUDE.md`, convenciones de Go, ADR 0001–0010, visión general, guía de Go
+  comparada con PHP (capítulos 00 y 01), plan de trabajo adaptado y esta bitácora.
+
+## Decisiones
+
+Ver ADR 0001–0010. Resumen: **Go para todo el backend (motor y API en un binario, librería estándar),
+PostgreSQL con pgx y sqlc, TypeScript para las pantallas, Wails para escritorio, Docker para la base de datos
+y el despliegue.**
+
+## Pendientes
+
+1. Benjamín: cargas reales, catálogo de equipos y reglas del patio.
+2. Benjamín: ejercicio del capítulo 01 de la guía de Go.
+3. Probar `docker compose --profile api up --build` en una máquina con Docker
+   (en la sesión no había daemon de Docker para construir la imagen).
+
+## Actualización de versiones
+
+- Go 1.24 → 1.27, PostgreSQL 17 → 19, distroless debian12 → debian13, Node 22 → 26 LTS,
+  pnpm 10 → 12, Turborepo 2.0 → 2.11.
+- Se registraron las versiones objetivo de las tecnologías que todavía no se instalan
+  (React, React Three Fiber, Vite, TypeScript, Expo, Wails, pgx, sqlc) en el ADR-0011.
+
+## Ubicación del código de PostgreSQL
+
+- Se definió en el ADR-0007 que todo el acceso a datos vive en `backend/internal/store`
+  (`migrations/`, `queries/`, `sqlcgen/`), con `sqlc.yaml` en `backend/`. Las carpetas se crean en el sprint 2.3.
+- Regla nueva en `CLAUDE.md`: solo `store` habla con PostgreSQL; `engine` nunca lo importa.

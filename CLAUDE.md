@@ -62,13 +62,12 @@ Principio rector: **Go para todo el backend, TypeScript para todas las pantallas
    estructuras reales del proyecto y comparados con PHP, no con ejemplos genéricos.
 7. **Pruebas como documentación:** nombres de prueba que describan el comportamiento
    (ej. `TestDoesNotStackFragileUnderHeavy`), con comentario en español. Preferir pruebas de tabla.
-8. **Bitácora y pendientes:** al cerrar cada sesión, agregar `docs/src/bitacora/AAAA-MM-DD.md`
-   (qué se hizo, decisiones, ids de pendientes) y actualizar `CHANGELOG.md` y la sección "Estado".
+8. **Bitácora y pendientes:** al cerrar cada sesión, agregar `docs/src/bitacora/AAAA-MM-DD-tema.md` (un archivo por
+   tema, registrado en el índice `bitacora/README.md` y por mes en `SUMMARY.md`; qué se hizo, decisiones, ids de
+   pendientes) y actualizar `CHANGELOG.md` y la sección "Estado".
    **Todo lo que quede abierto va a `docs/src/pendientes.md`** (id `P-NNN`, quién, cuándo, qué falta, por qué
    importa y cómo retomarlo): nada pendiente se queda solo en la conversación. Lo resuelto pasa a «Cerrados».
-9. **Puntos de control:** al terminar cada módulo, pedir al usuario que lo explique
-   con sus palabras antes de continuar.
-10. **El contrato va primero:** cualquier cambio de la API empieza en `contracts/openapi.yaml`;
+9. **El contrato va primero:** cualquier cambio de la API empieza en `contracts/openapi.yaml`;
     cualquier cambio de entrada o salida del motor, en `contracts/engine.schema.json`.
 
 ## Reglas de Go para este proyecto
@@ -137,7 +136,7 @@ Todas las pantallas (web, escritorio y móvil) usan el sistema de diseño **Voxa
 ## Datos de clientes (OBLIGATORIO)
 
 - Los datos reales (cargas, catálogos, fotos, nombres de clientes) viven en `docs/datos/`, que **no se sube a git**.
-- Lo que sí se sube (`engine/fixtures/real/`, ejemplos, pruebas, documentación) va **anonimizado**: sin nombres
+- Lo que sí se sube (`engine/fixtures/`, `docs/src/casos/`, ejemplos, pruebas, documentación) va **anonimizado**: sin nombres
   de clientes ni destinatarios, direcciones, placas ni números de pedido; solo medidas, pesos, cantidades y restricciones.
 - Nunca copiar un archivo de `docs/datos/` fuera de esa carpeta tal cual.
 
@@ -163,7 +162,7 @@ con el usuario en qué sprint estamos. No se pasa de fase sin cumplir su criteri
 
 - Cada sesión de trabajo tiene su prompt en `docs/src/prompts.md`, identificado por número (`1.1.2`).
 - Comandos del proyecto (skills en `.claude/skills/`): `/iniciar-sesion`, `/sesion <número>`, `/revisar`,
-  `/cerrar-sesion`, `/punto-de-control <tema>`, `/cerrar-sprint <sprint>`, `/explicar <algo>`,
+  `/cerrar-sesion`, `/cerrar-sprint <sprint>`, `/explicar <algo>`,
   `/nuevo-adr <título>`, `/cambiar-contrato <cambio>` y `/buscador <sprint o tema>` (lanza el agente
   `.claude/agents/investigador-logistico.md`: investiga datos logísticos con fuentes, no escribe archivos;
   es **opcional**, solo cuando el sprint necesita datos que todavía no se tienen).
@@ -196,11 +195,14 @@ packages/ui              TS — sistema de diseño Voxa (ADR-0014): tokens, Tail
   src/brand/             logo Vóxel: Logo.tsx y los SVG
   preview/               vista previa en HTML (claro y oscuro)
 apps/web | desktop | mobile
-docs/                    mdBook: plan, prompts, ADRs, conceptos, aprendizaje, bitácora; plantillas/ (formatos vacíos para el patio)
+docs/                    mdBook: plan, prompts, ADRs, conceptos, catálogos, aprendizaje, bitácora; plantillas/ (formatos para las pruebas reales)
+  src/casos/             casos de uso simulados por categoría (ADR-0020) y procedimiento de pruebas con cargas reales
+  src/bitacora/          un archivo por tema (AAAA-MM-DD-tema.md) e índice README.md
 .claude/skills/          comandos de Claude Code del proyecto
 .claude/agents/          subagentes del proyecto (investigador-logistico)
 docker-compose.yml       PostgreSQL (y la API con --profile api)
-scripts/contratos/        check-examples.mjs: reglas físicas de los ejemplos (provisional, hasta la sesión 1.4.2)
+scripts/contratos/        check-examples.mjs: reglas físicas de los ejemplos (provisional, hasta la sesión 1.4.2);
+                         render-examples.mjs: dibuja equipo.svg en cada ejemplo
 scripts/servicios/        levantar y detener el entorno de desarrollo (.ps1/.cmd Windows, .sh/.command macOS/Linux)
 .vscode/tasks.json       tareas "Levantar servicios" (Ctrl+Shift+B) y "Detener servicios"
 .github/workflows/       ci.yml (revisión de cada cambio) y release.yml (publicación con etiqueta vX.Y.Z)
@@ -221,6 +223,7 @@ gofmt -l backend                      # archivos sin formato (debe salir vacío)
 go doc ./backend/internal/engine      # documentación de un paquete
 docker compose --profile api up --build   # API dentro de Docker
 node scripts/contratos/check-examples.mjs   # revisa contracts/examples/ (o pnpm examples:check)
+node scripts/contratos/render-examples.mjs  # regenera equipo.svg de cada ejemplo (o pnpm examples:render)
 mdbook serve docs --open              # sitio de documentación
 pnpm --filter @cargo-3d/ui lint       # revisa los tipos del sistema de diseño
 pnpm --filter @cargo-3d/ui build:preview   # compila la vista previa (abrir packages/ui/preview/index.html)
@@ -230,11 +233,12 @@ pnpm --filter @cargo-3d/ui build:preview   # compila la vista previa (abrir pack
 
 - **Fase actual:** 1 — prueba de concepto, sprint 1.1 (sesión 1.1.1 terminada el 2026-11-21). Servidor con `/health`; motor vacío.
 - **Nivel de comentarios Go:** máximo (casi cada línea).
-- **Contrato del motor:** `contracts/engine.schema.json` v0.1.0, 23 ejemplos válidos y 17 inválidos en `contracts/examples/` (ADR-0015, 0016 y 0017).
-  Escrito con datos sintéticos; la sesión 1.1.5 lo ajusta con las cargas reales.
+- **Contrato del motor:** `contracts/engine.schema.json` v0.1.0, 27 ejemplos válidos y 17 inválidos en `contracts/examples/` (ADR-0015, 0016 y 0017).
+  Escrito con datos sintéticos; catálogo canónico en `contracts/equipment.json` (26 equipos, cada uno con su ejemplo o la razón de no tenerlo) y `equipo.svg` en cada ejemplo.
+- **Datos:** no hay cargas reales; se usan los 29 casos simulados de `docs/src/casos/` (ADR-0020). La sesión 1.1.5 los
+  convierte en fixtures. Las pruebas con cargas reales empiezan con la v0.2.0 (P-022).
 - **Siguiente paso:** sesión 1.1.2 (`Container` y `CargoItem` en Go, siguiendo el contrato).
-  El punto de control del contrato no se aprobó (P-007): sus dos temas se vuelven a ver en la 1.1.2 y la 1.1.6.
 - **Sistema de diseño:** base lista en `packages/ui` (2026-11-21, fuera del plan); se conecta a `apps/web` en el sprint 1.6.
-- **Pendientes:** registro completo en `docs/src/pendientes.md` (P-001 a P-019). Los de Benjamín más urgentes:
-  P-019 (copiar `docs/datos/` y `.env` antes de cambiar de computadora)
-  y P-001 (cargas reales y reglas del patio, antes de 1.1.5).
+- **Pendientes:** registro completo en `docs/src/pendientes.md` (P-001 a P-023). Los de Benjamín más urgentes:
+  P-019 (copiar `docs/datos/` y `.env` antes de cambiar de computadora) y P-022 (empresa para las pruebas reales, v0.2.0).
+- **Última sesión:** 2026-11-25, fuera del plan: casos simulados, sin puntos de control (ADR-0018 a 0020), bitácora por tema.
