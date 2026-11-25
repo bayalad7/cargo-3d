@@ -16,7 +16,8 @@ el proceso. Claude no recuerda perfectamente entre sesiones: el repositorio tien
    guía de aprendizaje de Go comparada con PHP, y bitácora/changelog, publicadas con **mdBook**.
 4. **`CLAUDE.md`** en la raíz como resumen vivo del proyecto para cada sesión.
 5. **Nada se da por terminado sin documentación, `gofmt`, `go vet` y pruebas.**
-6. **Puntos de control:** al terminar un módulo, Benjamín lo explica con sus palabras.
+6. ~~**Puntos de control:** al terminar un módulo, Benjamín lo explica con sus palabras.~~ Sustituido por el
+   [ADR-0018](0018-sin-puntos-de-control.md) (2026-11-25).
 
 ## Alternativas consideradas
 

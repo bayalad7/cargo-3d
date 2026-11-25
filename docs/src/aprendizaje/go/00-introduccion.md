@@ -8,7 +8,7 @@ backend (`Container`, `CargoItem`, `LoadPlan`, los handlers de la API) en el mom
 1. Cuando el código use un concepto nuevo, el comentario lo marcará con
    `// [aprendizaje: nombre-del-concepto]` y aquí habrá un capítulo con ese nombre.
 2. Lee el capítulo, luego vuelve al código y léelo línea por línea.
-3. En cada punto de control explicas el módulo con tus palabras.
+3. Si algo no queda claro, pide `/explicar <archivo o concepto>`.
 
 ## Comparación rápida con PHP
 

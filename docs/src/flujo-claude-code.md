@@ -28,7 +28,6 @@ dispara por su cuenta.
 | `/sesion 1.1.2` | Para ejecutar una sesión de `prompts.md` | Busca la sesión, revisa requisitos, que estés en `develop` y el modelo; **propone un plan y espera tu aprobación**; luego implementa y verifica | Sí, después de que apruebes |
 | `/revisar [enfoque]` | Antes de cerrar una sesión con cambios importantes | Revisión como ingeniero senior de todo lo que cambió contra `main`; hallazgos ordenados por gravedad | No |
 | `/cerrar-sesion [nota]` | Al terminar cada sesión | Corre `gofmt`, `go vet` y pruebas; actualiza bitácora, registro de pendientes (`docs/src/pendientes.md`), CHANGELOG, Estado de `CLAUDE.md` y checklist del plan; propone el mensaje de commit | Sí (solo documentación) |
-| `/punto-de-control <tema>` | Al terminar un módulo o sprint | Te hace 5 preguntas una por una, corrige y registra el veredicto en la bitácora | Sí (solo la bitácora) |
 | `/cerrar-sprint 1.1` | Al terminar todas las sesiones de un sprint | Verifica con evidencia cada tarea del sprint; si todo está, lo marca y actualiza el Estado; en el último sprint de una fase revisa el criterio de la fase | Sí (plan, Estado, bitácora) |
 | `/explicar <algo>` | Cuando no entiendes algo | Explica un archivo, una función, un error pegado o un concepto, comparando con PHP y con el código real | No |
 | `/nuevo-adr <título>` | Cuando se toma una decisión de arquitectura | Crea el ADR con el número siguiente desde la plantilla, lo enlaza y espera tu aceptación | Sí |
@@ -39,7 +38,7 @@ Detalles que conviene saber:
 - **Ninguna skill hace commit ni push.** Siempre te muestran los comandos y tú los ejecutas. Así revisas
   todo antes de que entre al historial.
 - **Algunas skills cambian de modelo solas** durante su ejecución: `/cerrar-sesion` usa Sonnet (es trabajo
-  rutinario); `/revisar`, `/punto-de-control` y `/cerrar-sprint` usan Opus. Al terminar, la conversación
+  rutinario); `/revisar` y `/cerrar-sprint` usan Opus. Al terminar, la conversación
   vuelve al modelo que tenías.
 - **Las skills leen el estado de git al arrancar** (rama, cambios, últimos commits) para no trabajar a ciegas.
   Por eso deben ejecutarse desde la raíz del repo.
@@ -153,7 +152,6 @@ claude
 
 ```
 /model opus
-/punto-de-control modelos y validación del motor
 /cerrar-sprint 1.1
 /cerrar-sesion
 ```

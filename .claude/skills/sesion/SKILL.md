@@ -30,7 +30,7 @@ Responde siempre en español. Sigue todas las reglas de `CLAUDE.md`.
      si existe. Si la rama actual no es `develop`, dile a Benjamín que cambie con `git switch develop` y espera.
    - **Modelo:** si el modelo sugerido es distinto al que estás usando, menciónalo en una línea
      (Benjamín lo cambia con `/model` y `/effort`).
-3. **Si el prompt de la sesión es una o más skills** (por ejemplo `/punto-de-control ...` o `/cerrar-sprint ...`),
+3. **Si el prompt de la sesión es una o más skills** (por ejemplo `/cerrar-sprint ...`),
    no las imites: dile a Benjamín que las ejecute él, en orden, y detente.
 4. **Propón el plan, sin modificar archivos todavía.** Toma el bloque "Prompt" de la sesión como la tarea y
    presenta:

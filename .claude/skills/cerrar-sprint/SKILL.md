@@ -33,8 +33,7 @@ sin cumplir el criterio de terminado de la actual.
    | Tarea | ¿Terminada? | Evidencia |
    | --- | --- | --- |
 
-   Solo cuenta como terminada si la evidencia existe. Revisa también que el punto de control del sprint
-   esté registrado como **Aprobado** en la bitácora.
+   Solo cuenta como terminada si la evidencia existe.
 5. Si falta algo, lista exactamente qué falta y qué sesión de `docs/src/prompts.md` lo cubre. No cierres el
    sprint y detente.
 6. Si todo está terminado:
