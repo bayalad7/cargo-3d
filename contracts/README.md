@@ -116,7 +116,10 @@ motor.
 ```
 examples/
 ├─ maritime/                 marítimo (contenedores ISO)
+│  ├─ bulk/                  granel seco cargado por la puerta
+│  │  └─ 20bk-coffee-sacks/
 │  ├─ dry/                   seco: estándar (DV, GP o ST) y high cube
+│  │  ├─ 10dv-epal-pallets/
 │  │  ├─ 20dv-heavy/
 │  │  ├─ 20hc-tall-racks/
 │  │  ├─ 40dv-gma-pallets/
@@ -125,11 +128,13 @@ examples/
 │  │  └─ 45pw-epal-pallets/
 │  ├─ reefer/                refrigerado
 │  │  ├─ 20rf-epal-pallets/
-│  │  └─ 40rh-epal-pallets/
+│  │  ├─ 40rh-epal-pallets/
+│  │  └─ 45pw-reefer-epal-pallets/
 │  └─ special/               open top, flat rack y plataforma ISO
 │     ├─ 20fr-in-gauge/
 │     ├─ 20ot-door/
 │     ├─ 20ot-roof/
+│     ├─ 40fr-collapsible-steel/
 │     ├─ 40fr-oog/
 │     ├─ 40ot-door/
 │     ├─ 40ot-roof/
@@ -152,6 +157,7 @@ examples/
 
 | Caso | Equipo | Qué muestra | Motivos de `unplaced` |
 |---|---|---|---|
+| `maritime/dry/10dv-epal-pallets` | 10' DV 8'6" (12G1) | 8 EPAL en dos niveles; el noveno no cabe y un compresor de 2,35 m no pasa por la puerta | `NO_SPACE_AVAILABLE`, `EXCEEDS_DOOR` |
 | `maritime/dry/20dv-heavy` | 20' DV / estándar (22G1) | Cajones de 7 t: se acaba el peso con el 18 % del volumen | `WEIGHT_LIMIT_REACHED`, `EXCEEDS_DOOR`, `EXCEEDS_DIMENSIONS` |
 | `maritime/dry/20hc-tall-racks` | 20' HC (25G1) | Racks de 2,5 m que no caben en un 20' estándar; uno de 2,6 m cabe adentro pero no pasa por la puerta | `EXCEEDS_DOOR` |
 | `maritime/dry/40dv-gma-pallets` | 40' DV / estándar (42G1) | 20 pallets GMA: un carril «como viene» y otro girado 90° | ninguno |
@@ -160,9 +166,12 @@ examples/
 | `maritime/dry/45pw-epal-pallets` | 45' HC pallet wide (LEG1) | 33 EPAL, tres a lo ancho: no caben en un 45' normal | `NO_SPACE_AVAILABLE` |
 | `maritime/reefer/20rf-epal-pallets` | 20' refrigerado (22R1) | 10 pallets EPAL bajo la línea de carga (altura útil por confirmar) | `NO_SPACE_AVAILABLE`, `EXCEEDS_DIMENSIONS` |
 | `maritime/reefer/40rh-epal-pallets` | 40' HC refrigerado (45R1) | Altura útil bajo la línea de carga (puerta más alta que el interior); la tarima de 2,5 m ya no cabe | `EXCEEDS_DIMENSIONS` |
+| `maritime/reefer/45pw-reefer-epal-pallets` | 45' HC refrigerado pallet wide (LNR1) | 3 EPAL a lo ancho; se acaba el peso antes que el espacio | `WEIGHT_LIMIT_REACHED` |
+| `maritime/bulk/20bk-coffee-sacks` | 20' bulk (22B0), por la puerta | 16 tarimas de sacos en dos niveles; un big bag cabe adentro pero no pasa por la puerta | `EXCEEDS_DOOR` |
 | `maritime/special/20ot-door` | Open top 20' (22U1), por la puerta | Una máquina de 2,3 m cabe adentro pero no pasa por la puerta | `EXCEEDS_DOOR` |
 | `maritime/special/20ot-roof` | Open top 20' (22U1), por el techo | La misma carga con grúa: sin puerta, tramo = abertura del techo centrada en el interior (`xMm` 109, `zMm` 49); todo cabe | ninguno |
 | `maritime/special/40fr-oog` | Flat rack 40' (42P3) | Margen OOG: transformador sobre los postes y placa más ancha (`zMm` negativo), marcados `outOfGauge` | `WEIGHT_LIMIT_REACHED` |
+| `maritime/special/40fr-collapsible-steel` | Flat rack 40' plegable (42P8) | Lingotes de 12 t: 47 450 kg de útil; un bloque más ancho que el piso no cabe | `WEIGHT_LIMIT_REACHED`, `EXCEEDS_DIMENSIONS` |
 | `maritime/special/40ot-door` | Open top 40' (42U1), por la puerta | Cabe la viga de 11,9 m, pero la máquina de 2,3 m no pasa por la puerta | `EXCEEDS_DOOR` |
 | `maritime/special/40ot-roof` | Open top 40' (42U1), por el techo | Al revés: cabe la máquina, pero la viga no pasa por la abertura del techo | `EXCEEDS_DIMENSIONS` |
 | `maritime/special/20fr-in-gauge` | Flat rack 20' (22P3) | Sin margen OOG: un gabinete más alto que los postes se rechaza (compárese con `40fr-oog`) | `EXCEEDS_DIMENSIONS` |

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 600" width="760" height="600" role="img" aria-label="Contenedor 20' Open Top · carga por el techo">
+  <title>Contenedor 20' Open Top · carga por el techo</title>
+  <style>
+    .bg{fill:#efefea}.card{fill:#ffffff;stroke:#deded7}
+    .top{fill:#ffffff}.side{fill:#deded7}.front{fill:#c9c9c1}.white{fill:#f7f7f3}
+    .top,.side,.front,.white,.tarp,.opening,.post,.frame,.unit,.wheel,.hub,.door{stroke:#111111;stroke-width:1.2;stroke-linejoin:round}
+    .tarp{fill:#fff6d6}.opening{fill:#ffc400}.post{fill:#5c5c57}.frame{fill:#5c5c57}.unit{fill:#5c5c57}
+    .wheel{fill:#111111}.hub{fill:#a6a69e}.door{fill:#ffc400}
+    .rib,.bow,.fold{fill:none;stroke:#5c5c57;stroke-width:.8}
+    .door-line,.door-bar{fill:none;stroke:#111111;stroke-width:1}.leg{fill:none;stroke:#111111;stroke-width:3}
+    .env{fill:none;stroke:#8a6500;stroke-width:1.2;stroke-dasharray:5 4}
+    .title{font:600 20px 'Inter Tight',system-ui,sans-serif;fill:#111111}
+    .sub{font:400 13px 'Inter Tight',system-ui,sans-serif;fill:#5c5c57}
+    .data{font:400 12px 'IBM Plex Mono',ui-monospace,monospace;fill:#111111}
+    .scale{stroke:#111111;stroke-width:2}
+    @media (prefers-color-scheme: dark){
+      .bg{fill:#0f0f0e}.card{fill:#1a1a18;stroke:#2e2e2b}
+      .top{fill:#3a3a36}.side{fill:#2e2e2b}.front{fill:#242421}.white{fill:#4a4a45}
+      .top,.side,.front,.white,.tarp,.opening,.post,.frame,.unit,.wheel,.hub,.door{stroke:#f4f4ef}
+      .tarp{fill:#433914}.post,.frame,.unit{fill:#a6a69e}.wheel{fill:#0f0f0e}.hub{fill:#5c5c57}
+      .rib,.bow,.fold{stroke:#a6a69e}.door-line,.door-bar,.leg,.scale{stroke:#111111}.leg,.scale{stroke:#f4f4ef}
+      .env{stroke:#ffc400}.title,.data{fill:#f4f4ef}.sub{fill:#a6a69e}
+    }
+  </style>
+  <rect class="bg" width="760" height="600"/>
+  <rect class="card" x="12" y="12" width="736" height="576" rx="12"/>
+  <text class="title" x="36" y="52">Contenedor 20' Open Top · carga por el techo</text>
+  <text class="sub" x="36" y="74">ISO 22U1 · Ejemplo maritime/special/20ot-roof</text>
+  <g>
+    <polygon class="opening" points="338.4,321.2 476.2,400.7 421.6,432.3 283.8,352.7"/>
+    <polygon class="side" points="283.8,418.5 421.6,498.0 421.6,432.3 283.8,352.7"/>
+    <polygon class="front" points="476.2,466.5 476.2,400.7 421.6,432.3 421.6,498.0"/>
+    <polyline class="rib" points="291.1,421.0 291.1,358.6"/>
+    <polyline class="rib" points="298.4,425.2 298.4,362.8"/>
+    <polyline class="rib" points="305.7,429.4 305.7,367.0"/>
+    <polyline class="rib" points="312.9,433.6 312.9,371.2"/>
+    <polyline class="rib" points="320.2,437.8 320.2,375.4"/>
+    <polyline class="rib" points="327.5,442.0 327.5,379.6"/>
+    <polyline class="rib" points="334.8,446.2 334.8,383.8"/>
+    <polyline class="rib" points="342.0,450.4 342.0,388.0"/>
+    <polyline class="rib" points="349.3,454.6 349.3,392.2"/>
+    <polyline class="rib" points="356.6,458.8 356.6,396.4"/>
+    <polyline class="rib" points="363.9,463.0 363.9,400.6"/>
+    <polyline class="rib" points="371.1,467.2 371.1,404.8"/>
+    <polyline class="rib" points="378.4,471.4 378.4,409.0"/>
+    <polyline class="rib" points="385.7,475.6 385.7,413.2"/>
+    <polyline class="rib" points="392.9,479.8 392.9,417.4"/>
+    <polyline class="rib" points="400.2,484.0 400.2,421.6"/>
+    <polyline class="rib" points="407.5,488.2 407.5,425.8"/>
+    <polyline class="rib" points="414.8,492.4 414.8,430.0"/>
+    <polyline class="bow" points="353.0,329.6 298.4,361.1"/>
+    <polyline class="bow" points="382.1,346.4 327.5,377.9"/>
+    <polyline class="bow" points="411.2,363.2 356.6,394.7"/>
+    <polyline class="bow" points="440.3,380.0 385.7,411.5"/>
+    <polyline class="bow" points="469.4,396.8 414.8,428.3"/>
+  </g>
+  <line class="scale" x1="36" y1="532" x2="60.2" y2="532"/>
+  <text class="sub" x="66.2" y="536">1 m · misma escala en todos los ejemplos</text>
+  <text class="data" x="36" y="568">Interior 5 680 × 2 252 × 2 348 mm  ·  Carga útil 28 240 kg</text>
+</svg>

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "0.1.0",
+  "containerId": "c-40frc",
+  "placements": [
+    { "itemId": "lingote", "instance": 0, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 0, "dxMm": 2000, "dyMm": 1000, "dzMm": 1500, "orientation": "LWH" },
+    { "itemId": "lingote", "instance": 1, "sectionId": "main", "xMm": 2400, "yMm": 0, "zMm": 0, "dxMm": 2000, "dyMm": 1000, "dzMm": 1500, "orientation": "LWH" },
+    { "itemId": "lingote", "instance": 2, "sectionId": "main", "xMm": 4800, "yMm": 0, "zMm": 0, "dxMm": 2000, "dyMm": 1000, "dzMm": 1500, "orientation": "LWH" }
+  ],
+  "unplaced": [
+    { "itemId": "lingote", "quantity": 1, "reason": "WEIGHT_LIMIT_REACHED" },
+    { "itemId": "bloque", "quantity": 1, "reason": "EXCEEDS_DIMENSIONS" }
+  ],
+  "metrics": {
+    "placedCount": 3,
+    "unplacedCount": 2,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 36000,
+    "loadedVolumeMm3": 9000000000,
+    "volumeUtilization": 0.166,
+    "weightUtilization": 0.7587
+  }
+}

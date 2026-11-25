@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-10dv",
+    "description": "Contenedor 10' Dry 8'6\" (12G1), ejemplo sintético; interior, puerta, tara y carga útil de la ficha Triton",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 2831,
+        "widthMm": 2352,
+        "heightMm": 2393
+      }
+    ],
+    "door": {
+      "widthMm": 2338,
+      "heightMm": 2280
+    },
+    "maxPayloadKg": 8960,
+    "tareKg": 1200
+  },
+  "items": [
+    {
+      "id": "pallet-epal",
+      "description": "Pallet EPAL de refacciones",
+      "lengthMm": 1200,
+      "widthMm": 800,
+      "heightMm": 1100,
+      "weightKg": 600,
+      "quantity": 9,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ]
+    },
+    {
+      "id": "maquina",
+      "description": "Compresor",
+      "lengthMm": 1500,
+      "widthMm": 1000,
+      "heightMm": 2350,
+      "weightKg": 900,
+      "quantity": 1,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ]
+    }
+  ]
+}

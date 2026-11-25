@@ -15,6 +15,7 @@
     "api": "go run ./backend/cmd/api",
     "test:go": "go test ./backend/...",
     "examples:check": "node scripts/contratos/check-examples.mjs",
+    "examples:render": "node scripts/contratos/render-examples.mjs",
     "db:up": "docker compose up -d db",
     "db:down": "docker compose --profile api down",
     "docker:api": "docker compose --profile api up -d --build",

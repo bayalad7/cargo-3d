@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-40frc",
+    "description": "Flat rack 40' plegable (42P8), ejemplo sintético; serie 52.5 t de Textainer: piso entre testeros, alto con testeros levantados, tara y carga útil de la ficha",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 11652,
+        "widthMm": 2374,
+        "heightMm": 1960
+      }
+    ],
+    "maxPayloadKg": 47450,
+    "tareKg": 5050
+  },
+  "items": [
+    {
+      "id": "lingote",
+      "description": "Lingote de acero",
+      "lengthMm": 2000,
+      "widthMm": 1500,
+      "heightMm": 1000,
+      "weightKg": 12000,
+      "quantity": 4,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false
+    },
+    {
+      "id": "bloque",
+      "description": "Bloque de concreto prefabricado",
+      "lengthMm": 4000,
+      "widthMm": 2500,
+      "heightMm": 1000,
+      "weightKg": 3000,
+      "quantity": 1,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ]
+    }
+  ]
+}

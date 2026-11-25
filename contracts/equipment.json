@@ -1,11 +1,4 @@
 {
-  "info": {
-    "generated": "2026-11-23",
-    "note": "Catálogo canónico de equipos de Cargo 3D. Fuente única: docs/src/catalogos/equipos.md (28 equipos, versión 2026-11-23). null = la fuente citada no publica ese dato; no es un cero. Medidas en milímetros enteros (Mm), pesos en kilogramos enteros (Kg), volumen en m3 publicado por la fuente, capacidad de tanques en litros (L). Conversión al motor: sections = una caja con lengthMm/widthMm/heightMm del interiorMm, door = doorMm, maxPayloadKg y tareKg directos; donde interiorMm o doorMm son null el equipo no se puede usar como contenedor cerrado sin medir la unidad. En reefers, interiorMm.heightMm es el alto interior publicado (Hapag-Lloyd), no la línea de carga: loadLineMm es la línea de carga Maersk (ISO 1496-2) cuando existe. En cajas de carretera maxPayloadKg es la capacidad estructural publicada por el fabricante, no la útil legal NOM-012: útil legal = mínimo(útil del equipo, PBV - tara del tracto - tara del equipo), por tipo de camino.",
-    "repo": "bayalad7/cargo-3d",
-    "schemaVersion": "0.1.0",
-    "source": "docs/src/catalogos/equipos.md"
-  },
   "equipment": [
     {
       "bedHeightMm": null,
@@ -16,6 +9,10 @@
         "heightMm": 2280,
         "widthMm": 2338
       },
+      "exampleNote": null,
+      "examples": [
+        "contracts/examples/maritime/dry/10dv-epal-pallets"
+      ],
       "exteriorMm": {
         "heightMm": 2591,
         "lengthMm": 2991,
@@ -48,6 +45,10 @@
         "heightMm": 2292,
         "widthMm": 2340
       },
+      "exampleNote": null,
+      "examples": [
+        "contracts/examples/maritime/dry/20dv-heavy"
+      ],
       "exteriorMm": {
         "heightMm": 2591,
         "lengthMm": 6058,
@@ -80,6 +81,10 @@
         "heightMm": 2585,
         "widthMm": 2340
       },
+      "exampleNote": null,
+      "examples": [
+        "contracts/examples/maritime/dry/20hc-tall-racks"
+      ],
       "exteriorMm": {
         "heightMm": 2896,
         "lengthMm": 6058,
@@ -112,6 +117,10 @@
         "heightMm": 2292,
         "widthMm": 2340
       },
+      "exampleNote": null,
+      "examples": [
+        "contracts/examples/maritime/dry/40dv-gma-pallets"
+      ],
       "exteriorMm": {
         "heightMm": 2591,
         "lengthMm": 12192,
@@ -144,6 +153,10 @@
         "heightMm": 2597,
         "widthMm": 2340
       },
+      "exampleNote": null,
+      "examples": [
+        "contracts/examples/maritime/dry/40hc-tall-pallets"
+      ],
       "exteriorMm": {
         "heightMm": 2896,
         "lengthMm": 12192,
@@ -176,6 +189,10 @@
         "heightMm": 2597,
         "widthMm": 2340
       },
+      "exampleNote": null,
+      "examples": [
+        "contracts/examples/maritime/dry/45hc-gma-pallets"
+      ],
       "exteriorMm": {
         "heightMm": 2896,
         "lengthMm": 13716,
@@ -208,6 +225,10 @@
         "heightMm": 2585,
         "widthMm": 2416
       },
+      "exampleNote": null,
+      "examples": [
+        "contracts/examples/maritime/dry/45pw-epal-pallets"
+      ],
       "exteriorMm": {
         "heightMm": 2896,
         "lengthMm": 13716,
@@ -240,6 +261,10 @@
         "heightMm": 2264,
         "widthMm": 2290
       },
+      "exampleNote": null,
+      "examples": [
+        "contracts/examples/maritime/reefer/20rf-epal-pallets"
+      ],
       "exteriorMm": {
         "heightMm": 2591,
         "lengthMm": 6058,
@@ -272,6 +297,8 @@
         "heightMm": null,
         "widthMm": null
       },
+      "exampleNote": "La puerta no está publicada (CIMC): se mide en la unidad real (P-013).",
+      "examples": [],
       "exteriorMm": {
         "heightMm": 2591,
         "lengthMm": 12192,
@@ -304,6 +331,10 @@
         "heightMm": 2557,
         "widthMm": 2290
       },
+      "exampleNote": null,
+      "examples": [
+        "contracts/examples/maritime/reefer/40rh-epal-pallets"
+      ],
       "exteriorMm": {
         "heightMm": 2896,
         "lengthMm": 12192,
@@ -336,6 +367,10 @@
         "heightMm": 2570,
         "widthMm": 2440
       },
+      "exampleNote": null,
+      "examples": [
+        "contracts/examples/maritime/reefer/45pw-reefer-epal-pallets"
+      ],
       "exteriorMm": {
         "heightMm": 2900,
         "lengthMm": 13813,
@@ -368,6 +403,11 @@
         "heightMm": 2280,
         "widthMm": 2338
       },
+      "exampleNote": null,
+      "examples": [
+        "contracts/examples/maritime/special/20ot-door",
+        "contracts/examples/maritime/special/20ot-roof"
+      ],
       "exteriorMm": {
         "heightMm": 2591,
         "lengthMm": 6058,
@@ -400,6 +440,11 @@
         "heightMm": 2276,
         "widthMm": 2340
       },
+      "exampleNote": null,
+      "examples": [
+        "contracts/examples/maritime/special/40ot-door",
+        "contracts/examples/maritime/special/40ot-roof"
+      ],
       "exteriorMm": {
         "heightMm": 2591,
         "lengthMm": 12192,
@@ -432,6 +477,10 @@
         "heightMm": null,
         "widthMm": null
       },
+      "exampleNote": null,
+      "examples": [
+        "contracts/examples/maritime/special/20fr-in-gauge"
+      ],
       "exteriorMm": {
         "heightMm": 2591,
         "lengthMm": 6058,
@@ -464,6 +513,8 @@
         "heightMm": null,
         "widthMm": null
       },
+      "exampleNote": "Mismas medidas que el flatrack 20' (20fr), que ya tiene ejemplo; Hapag no publica una tabla propia del 22P8.",
+      "examples": [],
       "exteriorMm": {
         "heightMm": 2591,
         "lengthMm": 6058,
@@ -496,6 +547,10 @@
         "heightMm": null,
         "widthMm": null
       },
+      "exampleNote": null,
+      "examples": [
+        "contracts/examples/maritime/special/40fr-oog"
+      ],
       "exteriorMm": {
         "heightMm": null,
         "lengthMm": 12192,
@@ -528,6 +583,10 @@
         "heightMm": null,
         "widthMm": null
       },
+      "exampleNote": null,
+      "examples": [
+        "contracts/examples/maritime/special/40fr-collapsible-steel"
+      ],
       "exteriorMm": {
         "heightMm": 2591,
         "lengthMm": 12192,
@@ -560,6 +619,8 @@
         "heightMm": null,
         "widthMm": null
       },
+      "exampleNote": "Falta el alto libre: hace falta la altura con fuente de un chasis de 20' (los 1,219 mm son del chasis gooseneck de 40').",
+      "examples": [],
       "exteriorMm": {
         "heightMm": 370,
         "lengthMm": 6058,
@@ -592,6 +653,10 @@
         "heightMm": null,
         "widthMm": null
       },
+      "exampleNote": null,
+      "examples": [
+        "contracts/examples/maritime/special/40pf-wide-load"
+      ],
       "exteriorMm": {
         "heightMm": 648,
         "lengthMm": 12192,
@@ -610,7 +675,7 @@
       "maxPayloadKg": 44050,
       "mode": "maritime",
       "name": "Contenedor 40' Platform",
-      "notes": "Hapag-Lloyd, PLATFORM (COLLAPSED FLATRACK), serie 50 t. El código correcto es 49P0 (42P1 es flatrack de testeros fijos). El alto exterior 648 mm es el espesor del fondo, no altura sobre el suelo. Otras series Hapag: 55 t (5,900 / 49,100 kg) y 60 t (5,800 / 54,200 kg). Interior y volumen no aplican. Carga estática como base: hasta 85,000 kg.",
+      "notes": "Hapag-Lloyd, PLATFORM (COLLAPSED FLATRACK), serie 50 t. El código correcto es 49P0 (42P1 es flatrack de testeros fijos). El alto exterior 648 mm es el espesor del fondo, no altura sobre el suelo. Otras series Hapag: 55 t (5,900 / 49,100 kg) y 60 t (5,800 / 54,200 kg). Interior y volumen no aplican. Carga estática como base: hasta 85,000 kg. Chasis para montarla (antes fila propia del catálogo, retirada el 2026-11-25 porque no es un espacio de carga): gooseneck de 40', 2 ejes, altura 1,219 mm (48 pulg.) en peralte y cubierta trasera, tara 3,084 kg y bruto 30,481 kg (Triton y Conway: https://www.tritoncontainer.com/media/j5flxig5/triton-sale-used-40ft-gooseneck-chassis.pdf ; https://conwaycs.com/en/containers/40ft-gooseneck-chassis). Con ese chasis el alto libre derivado es 4,250 − 648 − 1,219 = 2,383 mm.",
       "source": "https://www.hapag-lloyd.com/content/dam/website/downloads/pdf/17038_Update_Container_Specification_engl_sRGB.pdf",
       "tareKg": 5950,
       "volumeM3": null
@@ -624,6 +689,10 @@
         "heightMm": 2310,
         "widthMm": 2340
       },
+      "exampleNote": null,
+      "examples": [
+        "contracts/examples/maritime/bulk/20bk-coffee-sacks"
+      ],
       "exteriorMm": {
         "heightMm": 2591,
         "lengthMm": 6058,
@@ -649,38 +718,6 @@
     },
     {
       "bedHeightMm": null,
-      "capacityL": 24000,
-      "category": "tank",
-      "confidence": "Fabricante / lessor",
-      "doorMm": {
-        "heightMm": null,
-        "widthMm": null
-      },
-      "exteriorMm": {
-        "heightMm": 2591,
-        "lengthMm": 6058,
-        "widthMm": 2438
-      },
-      "foldedHeightMm": null,
-      "id": "20tk",
-      "interiorMm": {
-        "heightMm": null,
-        "lengthMm": null,
-        "widthMm": null
-      },
-      "isoCode": "22T6",
-      "loadLineMm": null,
-      "maxGrossKg": 36000,
-      "maxPayloadKg": 32380,
-      "mode": "maritime",
-      "name": "Contenedor 20' Tank (tanque ISO T11)",
-      "notes": "Seaco, T11 Standard Tank Containers. Capacidad 24,000 L (gama T11: 21,000 / 24,000 / 25,000 / 26,000 L, mismo marco y bruto 36,000 kg). Presión de trabajo 4 bar, prueba 6 bar, temp. de diseño 130 °C, acero inoxidable 316L. Interior y puerta no aplican (barril dentro de un marco). Carga: líquidos a granel, peligrosos y no peligrosos, incluido grado alimenticio. Corroborado por Triton (tara 3,500-3,910 kg, MAWP 4.00 bar). No existe tanque ISO 40' estándar T11: el código 42T0 está reservado en ISO 6346 pero la flota de líquidos es 20'.",
-      "source": "https://seacoglobal.com/wp-content/uploads/2022/12/T11-STANDARD-TANK-CONTAINERS.pdf",
-      "tareKg": 3620,
-      "volumeM3": 24
-    },
-    {
-      "bedHeightMm": null,
       "capacityL": null,
       "category": "road-dry",
       "confidence": "Fabricante (capacidad) / repo (interior)",
@@ -688,6 +725,10 @@
         "heightMm": null,
         "widthMm": null
       },
+      "exampleNote": null,
+      "examples": [
+        "contracts/examples/road/dry-van/48dv-mixed"
+      ],
       "exteriorMm": {
         "heightMm": null,
         "lengthMm": 14630,
@@ -720,6 +761,11 @@
         "heightMm": null,
         "widthMm": null
       },
+      "exampleNote": null,
+      "examples": [
+        "contracts/examples/road/dry-van/53dv-stacked",
+        "contracts/examples/road/dry-van/53dv-contract-coverage"
+      ],
       "exteriorMm": {
         "heightMm": 4198,
         "lengthMm": 16154,
@@ -752,6 +798,10 @@
         "heightMm": null,
         "widthMm": null
       },
+      "exampleNote": null,
+      "examples": [
+        "contracts/examples/road/reefer-van/48rv-pallets"
+      ],
       "exteriorMm": {
         "heightMm": 4200,
         "lengthMm": 14630,
@@ -784,6 +834,10 @@
         "heightMm": null,
         "widthMm": null
       },
+      "exampleNote": null,
+      "examples": [
+        "contracts/examples/road/reefer-van/53rv-pallets"
+      ],
       "exteriorMm": {
         "heightMm": null,
         "lengthMm": 16154,
@@ -816,6 +870,11 @@
         "heightMm": null,
         "widthMm": null
       },
+      "exampleNote": null,
+      "examples": [
+        "contracts/examples/road/flatbed/48fb-steel",
+        "contracts/examples/road/flatbed/53fb-long-pipes"
+      ],
       "exteriorMm": {
         "heightMm": null,
         "lengthMm": 14630,
@@ -848,6 +907,8 @@
         "heightMm": null,
         "widthMm": null
       },
+      "exampleNote": "Falta la altura de la cama: Fruehauf no la publica (caso CS-016, P-013).",
+      "examples": [],
       "exteriorMm": {
         "heightMm": null,
         "lengthMm": 12192,
@@ -870,38 +931,13 @@
       "source": "https://fruehauf.mx/pdf/Fruehauf_Plataformas_ESTANDAR_PMHT240W.pdf",
       "tareKg": 5650,
       "volumeM3": null
-    },
-    {
-      "bedHeightMm": 1219,
-      "capacityL": null,
-      "category": "chassis",
-      "confidence": "Fabricante / distribuidor",
-      "doorMm": {
-        "heightMm": null,
-        "widthMm": null
-      },
-      "exteriorMm": {
-        "heightMm": null,
-        "lengthMm": null,
-        "widthMm": null
-      },
-      "foldedHeightMm": null,
-      "id": "40chassis",
-      "interiorMm": {
-        "heightMm": null,
-        "lengthMm": null,
-        "widthMm": null
-      },
-      "isoCode": null,
-      "loadLineMm": null,
-      "maxGrossKg": 30481,
-      "maxPayloadKg": 27397,
-      "mode": "road",
-      "name": "Chasis portacontenedor gooseneck 40'",
-      "notes": "Triton y Conway, fichas del chasis gooseneck de 40', 2 ejes. Altura confirmada: 1,219 mm (48 pulg.) en peralte y cubierta trasera; corrige el 1,200 mm supuesto del repo. Bruto publicado: 30,481 kg; la carga útil es DERIVADA (30,481 menos tara 3,084 = 27,397 kg), no una cifra publicada.",
-      "source": "https://www.tritoncontainer.com/media/j5flxig5/triton-sale-used-40ft-gooseneck-chassis.pdf",
-      "tareKg": 3084,
-      "volumeM3": null
     }
-  ]
+  ],
+  "info": {
+    "generated": "2026-11-25",
+    "note": "Catálogo canónico de equipos de Cargo 3D. Fuente única: docs/src/catalogos/equipos.md (26 equipos, versión 2026-11-25). null = la fuente citada no publica ese dato; no es un cero. Medidas en milímetros enteros (Mm), pesos en kilogramos enteros (Kg), volumen en m3 publicado por la fuente, capacidad de tanques en litros (L). Conversión al motor: sections = una caja con lengthMm/widthMm/heightMm del interiorMm, door = doorMm, maxPayloadKg y tareKg directos; donde interiorMm o doorMm son null el equipo no se puede usar como contenedor cerrado sin medir la unidad. En reefers, interiorMm.heightMm es el alto interior publicado (Hapag-Lloyd), no la línea de carga: loadLineMm es la línea de carga Maersk (ISO 1496-2) cuando existe. En cajas de carretera maxPayloadKg es la capacidad estructural publicada por el fabricante, no la útil legal NOM-012: útil legal = mínimo(útil del equipo, PBV - tara del tracto - tara del equipo), por tipo de camino. examples = ejemplos de contracts/examples/ que usan el equipo; exampleNote = por qué no tiene ejemplo. El tanque ISO 20' y el chasis portacontenedor se retiraron el 2026-11-25: no son espacios de carga para el motor.",
+    "repo": "bayalad7/cargo-3d",
+    "schemaVersion": "0.1.0",
+    "source": "docs/src/catalogos/equipos.md"
+  }
 }

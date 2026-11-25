@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "0.1.0",
+  "containerId": "c-10dv",
+  "placements": [
+    { "itemId": "pallet-epal", "instance": 0, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 0, "dxMm": 1200, "dyMm": 1100, "dzMm": 800, "orientation": "LWH" },
+    { "itemId": "pallet-epal", "instance": 1, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 800, "dxMm": 1200, "dyMm": 1100, "dzMm": 800, "orientation": "LWH" },
+    { "itemId": "pallet-epal", "instance": 2, "sectionId": "main", "xMm": 1200, "yMm": 0, "zMm": 0, "dxMm": 1200, "dyMm": 1100, "dzMm": 800, "orientation": "LWH" },
+    { "itemId": "pallet-epal", "instance": 3, "sectionId": "main", "xMm": 1200, "yMm": 0, "zMm": 800, "dxMm": 1200, "dyMm": 1100, "dzMm": 800, "orientation": "LWH" },
+    { "itemId": "pallet-epal", "instance": 4, "sectionId": "main", "xMm": 0, "yMm": 1100, "zMm": 0, "dxMm": 1200, "dyMm": 1100, "dzMm": 800, "orientation": "LWH" },
+    { "itemId": "pallet-epal", "instance": 5, "sectionId": "main", "xMm": 0, "yMm": 1100, "zMm": 800, "dxMm": 1200, "dyMm": 1100, "dzMm": 800, "orientation": "LWH" },
+    { "itemId": "pallet-epal", "instance": 6, "sectionId": "main", "xMm": 1200, "yMm": 1100, "zMm": 0, "dxMm": 1200, "dyMm": 1100, "dzMm": 800, "orientation": "LWH" },
+    { "itemId": "pallet-epal", "instance": 7, "sectionId": "main", "xMm": 1200, "yMm": 1100, "zMm": 800, "dxMm": 1200, "dyMm": 1100, "dzMm": 800, "orientation": "LWH" }
+  ],
+  "unplaced": [
+    { "itemId": "pallet-epal", "quantity": 1, "reason": "NO_SPACE_AVAILABLE" },
+    { "itemId": "maquina", "quantity": 1, "reason": "EXCEEDS_DOOR" }
+  ],
+  "metrics": {
+    "placedCount": 8,
+    "unplacedCount": 2,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 4800,
+    "loadedVolumeMm3": 8448000000,
+    "volumeUtilization": 0.5302,
+    "weightUtilization": 0.5357
+  }
+}

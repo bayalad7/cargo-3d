@@ -2,7 +2,7 @@
   "schemaVersion": "0.1.0",
   "container": {
     "id": "c-40rh",
-    "description": "Contenedor 40' HC refrigerado (45R1), ejemplo sintético; interior, puerta, tara y carga útil de la ficha Hapag-Lloyd (unidad de ejemplo); el alto 2425 es ALTO INTERIOR Hapag, no línea de carga (Maersk publica 2415 estándar en otra serie)",
+    "description": "Contenedor 40' HC refrigerado (45R1), ejemplo sintético; ficha Hapag-Lloyd. Alto 2425 = alto interior, no línea de carga (Maersk: 2415, otra serie)",
     "sections": [
       {
         "id": "main",

@@ -2,6 +2,9 @@
 
 Cada caso es una carpeta `<modo>/<tipo de equipo>/<caso>/` con `input.json` (un `EngineInput`) y `output.json`
 (un `LoadPlan`), según `contracts/engine.schema.json`. Las carpetas siguen la jerarquía del catálogo de equipos.
+Cada caso trae además `equipo.svg`: un dibujo del equipo generado desde su `input.json`, con la misma escala, ángulo y
+paleta en todos (se ve en claro y oscuro). No es una fotografía: el repositorio es público y las fotos de
+fabricantes no se pueden redistribuir. Se regenera con `pnpm examples:render`.
 
 Este archivo es **la lista de lo que falta**: se actualiza en el mismo commit en que se agrega un caso.
 Hay dos tipos de cobertura: por **equipo** (¿hay un ejemplo para cada tipo de equipo?) y por **contrato**
@@ -19,6 +22,7 @@ La ISO 6346:2022 cambió el código de largo 45' de `L` a `5`: el catálogo guar
 
 | Ruta | Equipo | Código ISO | Estado | Qué falta |
 |---|---|---|---|---|
+| `dry/10dv-*` | 10' estándar de 8'6" | 12G1 | ✅ `10dv-epal-pallets` | — (ficha Triton) |
 | `dry/20dv-*` | 20' estándar (DV / GP / ST) | 22G1 | ✅ `20dv-heavy` | — |
 | `dry/40dv-*` | 40' estándar (DV / GP / ST) | 42G1 | ✅ `40dv-gma-pallets` | — |
 | `dry/40hc-*` | 40' high cube | 45G1 | ✅ `40hc-tall-pallets` | — |
@@ -26,15 +30,18 @@ La ISO 6346:2022 cambió el código de largo 45' de `L` a `5`: el catálogo guar
 | `dry/45pw-*` | 45' pallet wide | LEG1 (DP World) | ✅ `45pw-epal-pallets` | Confirmar puerta y alto (fragmento de búsqueda) |
 | `dry/20hc-*` | 20' high cube | 25G1 (de memoria) | ✅ `20hc-tall-racks` | Tara y carga útil de una placa (una sola fuente: Mainfreight) |
 | `reefer/20rf-*` | 20' refrigerado | 22R1 | ✅ `20rf-epal-pallets` | Usa la unidad de ejemplo de Hapag-Lloyd (interior 5 450 × 2 280 × 2 159, puerta 2 290 × 2 264, tara 2 860, útil 29 140). El alto es alto interior, no línea roja: medir la línea roja en la unidad (hoja §4). El largo 5 724 del catálogo del cliente no coincide con ninguna ficha |
-| `reefer/40rf-*` | 40' refrigerado estándar | 42R1 | ⏳ | No se encontró ficha vigente; confirmar si existe en el patio |
+| `reefer/40rf-*` | 40' refrigerado estándar | 42R1 | ⏳ | CIMC publica interior, tara y útil; falta la puerta (P-013) |
 | `reefer/40rh-*` | 40' refrigerado high cube | 45R1 | ✅ `40rh-epal-pallets` | — |
+| `reefer/45pw-reefer-*` | 45' refrigerado HC pallet wide | LNR1 | ✅ `45pw-reefer-epal-pallets` | — (ficha Triton; el alto es alto interior, no línea roja) |
 | `special/20ot-*` | Open top 20', por puerta y por techo | 22U1 | ✅ `20ot-door`, `20ot-roof` | — |
 | `special/40ot-*` | Open top 40', por puerta y por techo | 42U1 | ✅ `40ot-door`, `40ot-roof` | — |
 | `special/20fr-*` | Flat rack 20' | 22P1 (fijo) / 22P3 (plegable) | ✅ `20fr-in-gauge` | Carga útil supuesta (28 000) |
+| `special/40fr-collapsible-*` | Flat rack 40' plegable | 42P8 | ✅ `40fr-collapsible-steel` | — (Textainer, serie 52,5 t: carga muy pesada) |
 | `special/40fr-*` | Flat rack 40' | 42P1 / 42P3 | ✅ `40fr-oog` | El margen de arriba (400) es un límite interno conservador, no un tope de naviera (CMA CGM admite en principio 1 700; Maersk pide aprobación por reserva); el de los lados (196) sale de la NOM-012: (2 600 − 2 208) / 2 |
 | `special/40pf-*` | Plataforma ISO 40' | 42P0 (de memoria) | ✅ `40pf-wide-load` | Alto libre derivado 2 383 = 4 250 − 648 (alto de la plataforma) − 1 219 (chasis, Triton y Conway), por medir en patio; carga útil por carretera (28 000), supuesta |
-| `special/20pf-*` | Plataforma ISO 20' | 22P0 (de memoria) | ⏳ | Altura del piso (DSV da largo, ancho, tara y carga útil) |
-| `special/tank-*` | Tanque | 22T… | 🚫 | Granel líquido, no se acomoda con cajas |
+| `special/20pf-*` | Plataforma ISO 20' | 29P0 | ⏳ | Alto libre: falta la altura con fuente de un chasis de 20' |
+| `bulk/20bk-*` | Granel seco 20', cargado por la puerta | 22B0 | ✅ `20bk-coffee-sacks` | — (ficha Triton; el granel suelto por las escotillas no es un problema de acomodo) |
+| `special/tank-*` | Tanque | 22T… | 🚫 | Granel líquido, no se acomoda con cajas (se retiró del catálogo el 2026-11-25) |
 
 ### Autotransporte (`road/`)
 
@@ -44,7 +51,7 @@ La ISO 6346:2022 cambió el código de largo 45' de `L` a `5`: el catálogo guar
 | `dry-van/53dv-*` | Caja seca 53' | ✅ `53dv-stacked`, `53dv-contract-coverage` | — (puerta conservadora de C.H. Robinson, 2 496 × 2 794) |
 | `reefer-van/53rv-*` | Caja refrigerada (thermo) 53' | ✅ `53rv-pallets` | Carga útil 30 000 = máximo Alzper 53' (estructural, no útil legal); interior C.H. Robinson 2017 por confirmar |
 | `reefer-van/48rv-*` | Caja refrigerada (thermo) 48' | ✅ `48rv-pallets` | Carga útil 25 000 = máximo Alzper 48' (estructural, no útil legal); interior C.H. Robinson 2017 por confirmar |
-| `flatbed/40fb-*` | Plataforma 40' | ⏳ | Largo, ancho y altura de cama |
+| `flatbed/40fb-*` | Plataforma 40' | ⏳ | Altura de cama (Fruehauf PM-HT2-40W da largo, ancho, tara y capacidad) |
 | `flatbed/48fb-*` | Plataforma 48' | ✅ `48fb-steel` | Altura de cama real (hoy 1 478 mm de un fabricante de EE. UU.) |
 | `flatbed/53fb-*` | Plataforma 53' | ✅ `53fb-long-pipes` | Ídem |
 | `flatbed/extendable-*` | Plataforma extensible | ⏳ | Largo según la extensión usada (un tramo por configuración) |
@@ -112,7 +119,9 @@ La ISO 6346:2022 cambió el código de largo 45' de `L` a `5`: el catálogo guar
    - métricas exactas (las ocupaciones con 4 decimales).
 5. **Valida** contra el esquema con ajv (ver `contracts/README.md`). Las reglas físicas del paso 4 se revisan
    con `node scripts/contratos/check-examples.mjs` (provisional, hasta la sesión 1.4.2).
-6. **Actualiza este archivo** (estado ⏳ → ✅ y la tabla de cobertura del contrato) y la tabla de casos de
+6. **Genera su imagen** con `pnpm examples:render` (escribe `equipo.svg` en cada caso; si el tipo de equipo es nuevo,
+   agrégalo en `scripts/contratos/render-examples.mjs`).
+7. **Actualiza este archivo** (estado ⏳ → ✅ y la tabla de cobertura del contrato) y la tabla de casos de
    `contracts/README.md`. Commit: `contracts: ejemplo <ruta>`.
 
 ## 4. Entradas inválidas (`invalid/`)
@@ -128,4 +137,4 @@ Cada archivo rompe **una sola regla** de la misma entrada mínima válida, y su 
 | `duplicate-item-id.json` | Los ids de las piezas no se repiten | JSON Schema no lo puede expresar |
 | `door-with-overhang.json` | Un equipo con puerta no lleva margen OOG | ADR-0017 |
 
-Las **cargas reales** (de clientes) no van aquí sino en `engine/fixtures/real/`, anonimizadas (sesión 1.1.5).
+Los **casos de uso** (simulados, ADR-0020) no van aquí sino en `docs/src/casos/`, y sus fixtures en `engine/fixtures/casos/` (sesión 1.1.5).

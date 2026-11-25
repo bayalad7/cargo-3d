@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-45pwr",
+    "description": "Contenedor 45' reefer HC pallet wide (LNR1), ejemplo sintético; interior, puerta, tara y carga útil de la ficha Triton; el alto es alto interior, no línea de carga",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 13261,
+        "widthMm": 2440,
+        "heightMm": 2570
+      }
+    ],
+    "door": {
+      "widthMm": 2440,
+      "heightMm": 2570
+    },
+    "maxPayloadKg": 28920,
+    "tareKg": 6080
+  },
+  "items": [
+    {
+      "id": "pallet-epal",
+      "description": "Pallet EPAL de carne congelada",
+      "lengthMm": 1200,
+      "widthMm": 800,
+      "heightMm": 2000,
+      "weightKg": 950,
+      "quantity": 33,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false
+    }
+  ]
+}

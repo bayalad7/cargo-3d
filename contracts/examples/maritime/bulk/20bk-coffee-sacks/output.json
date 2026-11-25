@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "0.1.0",
+  "containerId": "c-20bk",
+  "placements": [
+    { "itemId": "tarima-sacos", "instance": 0, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 0, "dxMm": 1200, "dyMm": 1100, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "tarima-sacos", "instance": 1, "sectionId": "main", "xMm": 0, "yMm": 0, "zMm": 1000, "dxMm": 1200, "dyMm": 1100, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "tarima-sacos", "instance": 2, "sectionId": "main", "xMm": 1200, "yMm": 0, "zMm": 0, "dxMm": 1200, "dyMm": 1100, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "tarima-sacos", "instance": 3, "sectionId": "main", "xMm": 1200, "yMm": 0, "zMm": 1000, "dxMm": 1200, "dyMm": 1100, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "tarima-sacos", "instance": 4, "sectionId": "main", "xMm": 2400, "yMm": 0, "zMm": 0, "dxMm": 1200, "dyMm": 1100, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "tarima-sacos", "instance": 5, "sectionId": "main", "xMm": 2400, "yMm": 0, "zMm": 1000, "dxMm": 1200, "dyMm": 1100, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "tarima-sacos", "instance": 6, "sectionId": "main", "xMm": 3600, "yMm": 0, "zMm": 0, "dxMm": 1200, "dyMm": 1100, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "tarima-sacos", "instance": 7, "sectionId": "main", "xMm": 3600, "yMm": 0, "zMm": 1000, "dxMm": 1200, "dyMm": 1100, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "tarima-sacos", "instance": 8, "sectionId": "main", "xMm": 0, "yMm": 1100, "zMm": 0, "dxMm": 1200, "dyMm": 1100, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "tarima-sacos", "instance": 9, "sectionId": "main", "xMm": 0, "yMm": 1100, "zMm": 1000, "dxMm": 1200, "dyMm": 1100, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "tarima-sacos", "instance": 10, "sectionId": "main", "xMm": 1200, "yMm": 1100, "zMm": 0, "dxMm": 1200, "dyMm": 1100, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "tarima-sacos", "instance": 11, "sectionId": "main", "xMm": 1200, "yMm": 1100, "zMm": 1000, "dxMm": 1200, "dyMm": 1100, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "tarima-sacos", "instance": 12, "sectionId": "main", "xMm": 2400, "yMm": 1100, "zMm": 0, "dxMm": 1200, "dyMm": 1100, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "tarima-sacos", "instance": 13, "sectionId": "main", "xMm": 2400, "yMm": 1100, "zMm": 1000, "dxMm": 1200, "dyMm": 1100, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "tarima-sacos", "instance": 14, "sectionId": "main", "xMm": 3600, "yMm": 1100, "zMm": 0, "dxMm": 1200, "dyMm": 1100, "dzMm": 1000, "orientation": "LWH" },
+    { "itemId": "tarima-sacos", "instance": 15, "sectionId": "main", "xMm": 3600, "yMm": 1100, "zMm": 1000, "dxMm": 1200, "dyMm": 1100, "dzMm": 1000, "orientation": "LWH" }
+  ],
+  "unplaced": [
+    { "itemId": "big-bag", "quantity": 1, "reason": "EXCEEDS_DOOR" }
+  ],
+  "metrics": {
+    "placedCount": 16,
+    "unplacedCount": 1,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 20000,
+    "loadedVolumeMm3": 21120000000,
+    "volumeUtilization": 0.6495,
+    "weightUtilization": 0.6443
+  }
+}

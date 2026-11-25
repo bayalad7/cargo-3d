@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 600" width="760" height="600" role="img" aria-label="Contenedor 20' Bulk">
+  <title>Contenedor 20' Bulk</title>
+  <style>
+    .bg{fill:#efefea}.card{fill:#ffffff;stroke:#deded7}
+    .top{fill:#ffffff}.side{fill:#deded7}.front{fill:#c9c9c1}.white{fill:#f7f7f3}
+    .top,.side,.front,.white,.tarp,.opening,.post,.frame,.unit,.wheel,.hub,.door{stroke:#111111;stroke-width:1.2;stroke-linejoin:round}
+    .tarp{fill:#fff6d6}.opening{fill:#ffc400}.post{fill:#5c5c57}.frame{fill:#5c5c57}.unit{fill:#5c5c57}
+    .wheel{fill:#111111}.hub{fill:#a6a69e}.door{fill:#ffc400}
+    .rib,.bow,.fold{fill:none;stroke:#5c5c57;stroke-width:.8}
+    .door-line,.door-bar{fill:none;stroke:#111111;stroke-width:1}.leg{fill:none;stroke:#111111;stroke-width:3}
+    .env{fill:none;stroke:#8a6500;stroke-width:1.2;stroke-dasharray:5 4}
+    .title{font:600 20px 'Inter Tight',system-ui,sans-serif;fill:#111111}
+    .sub{font:400 13px 'Inter Tight',system-ui,sans-serif;fill:#5c5c57}
+    .data{font:400 12px 'IBM Plex Mono',ui-monospace,monospace;fill:#111111}
+    .scale{stroke:#111111;stroke-width:2}
+    @media (prefers-color-scheme: dark){
+      .bg{fill:#0f0f0e}.card{fill:#1a1a18;stroke:#2e2e2b}
+      .top{fill:#3a3a36}.side{fill:#2e2e2b}.front{fill:#242421}.white{fill:#4a4a45}
+      .top,.side,.front,.white,.tarp,.opening,.post,.frame,.unit,.wheel,.hub,.door{stroke:#f4f4ef}
+      .tarp{fill:#433914}.post,.frame,.unit{fill:#a6a69e}.wheel{fill:#0f0f0e}.hub{fill:#5c5c57}
+      .rib,.bow,.fold{stroke:#a6a69e}.door-line,.door-bar,.leg,.scale{stroke:#111111}.leg,.scale{stroke:#f4f4ef}
+      .env{stroke:#ffc400}.title,.data{fill:#f4f4ef}.sub{fill:#a6a69e}
+    }
+  </style>
+  <rect class="bg" width="760" height="600"/>
+  <rect class="card" x="12" y="12" width="736" height="576" rx="12"/>
+  <text class="title" x="36" y="52">Contenedor 20' Bulk</text>
+  <text class="sub" x="36" y="74">ISO 22B0 · Ejemplo maritime/bulk/20bk-coffee-sacks</text>
+  <g>
+    <polygon class="top" points="337.2,316.6 479.2,398.6 422.7,431.2 280.7,349.3"/>
+    <polygon class="side" points="280.7,416.0 422.7,497.9 422.7,431.2 280.7,349.3"/>
+    <polygon class="front" points="479.2,465.3 479.2,398.6 422.7,431.2 422.7,497.9"/>
+    <polyline class="rib" points="288.0,418.5 288.0,355.2"/>
+    <polyline class="rib" points="295.3,422.7 295.3,359.4"/>
+    <polyline class="rib" points="302.5,426.9 302.5,363.6"/>
+    <polyline class="rib" points="309.8,431.1 309.8,367.8"/>
+    <polyline class="rib" points="317.1,435.3 317.1,372.0"/>
+    <polyline class="rib" points="324.3,439.5 324.3,376.2"/>
+    <polyline class="rib" points="331.6,443.7 331.6,380.4"/>
+    <polyline class="rib" points="338.9,447.9 338.9,384.6"/>
+    <polyline class="rib" points="346.2,452.1 346.2,388.8"/>
+    <polyline class="rib" points="353.4,456.3 353.4,393.0"/>
+    <polyline class="rib" points="360.7,460.5 360.7,397.2"/>
+    <polyline class="rib" points="368.0,464.7 368.0,401.4"/>
+    <polyline class="rib" points="375.3,468.9 375.3,405.6"/>
+    <polyline class="rib" points="382.5,473.1 382.5,409.8"/>
+    <polyline class="rib" points="389.8,477.3 389.8,414.0"/>
+    <polyline class="rib" points="397.1,481.5 397.1,418.2"/>
+    <polyline class="rib" points="404.4,485.7 404.4,422.4"/>
+    <polyline class="rib" points="411.6,489.9 411.6,426.6"/>
+    <polyline class="rib" points="418.9,494.1 418.9,430.8"/>
+    <polygon class="opening" points="343.4,352.9 341.7,353.6 339.6,354.1 337.4,354.3 335.1,354.1 333.1,353.6 331.3,352.9 329.9,351.8 329.1,350.6 328.8,349.4 329.1,348.1 329.9,346.9 331.3,345.9 333.1,345.1 335.1,344.6 337.4,344.4 339.6,344.6 341.7,345.1 343.4,345.9 344.8,346.9 345.6,348.1 345.9,349.4 345.6,350.6 344.8,351.8"/>
+    <polygon class="opening" points="386.0,377.4 384.2,378.2 382.2,378.7 380.0,378.9 377.7,378.7 375.7,378.2 373.9,377.4 372.5,376.4 371.7,375.2 371.4,373.9 371.7,372.7 372.5,371.5 373.9,370.4 375.7,369.7 377.7,369.2 380.0,369.0 382.2,369.2 384.2,369.7 386.0,370.4 387.4,371.5 388.2,372.7 388.5,373.9 388.2,375.2 387.4,376.4"/>
+    <polygon class="opening" points="428.6,402.0 426.8,402.8 424.8,403.3 422.5,403.5 420.3,403.3 418.3,402.8 416.5,402.0 415.1,401.0 414.3,399.8 414.0,398.5 414.3,397.3 415.1,396.1 416.5,395.0 418.3,394.2 420.3,393.8 422.5,393.6 424.8,393.8 426.8,394.2 428.6,395.0 430.0,396.1 430.8,397.3 431.1,398.5 430.8,399.8 430.0,401.0"/>
+    <polygon class="door" points="479.3,465.2 479.3,400.6 422.6,433.3 422.6,498.0"/>
+    <polyline class="door-line" points="450.9,481.6 450.9,416.9"/>
+    <polyline class="door-bar" points="469.1,468.9 469.1,408.7"/>
+    <polyline class="door-bar" points="457.7,475.4 457.7,415.2"/>
+    <polyline class="door-bar" points="444.1,483.3 444.1,423.1"/>
+    <polyline class="door-bar" points="432.8,489.9 432.8,429.7"/>
+  </g>
+  <line class="scale" x1="36" y1="532" x2="60.2" y2="532"/>
+  <text class="sub" x="66.2" y="536">1 m · misma escala en todos los ejemplos</text>
+  <text class="data" x="36" y="568">Interior 5 854 × 2 332 × 2 382 mm  ·  Puerta 2 340 × 2 310 mm  ·  Carga útil 31 040 kg</text>
+</svg>
