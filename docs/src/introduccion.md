@@ -23,7 +23,7 @@ go doc ./backend/internal/engine
 
 1. **Fase 0 — Cimientos** *(actual)*: estructura, Docker, servidor `/health` y documentación.
 2. **Fase 1 — Prueba de concepto**: motor básico en Go + endpoint de optimización + visor 3D web.
-3. **Fase 2 — MVP y piloto**: restricciones reales, PostgreSQL, PDF del plan, piloto con Transportes Villa.
+3. **Fase 2 — MVP y piloto**: restricciones reales, PostgreSQL, PDF del plan, pruebas con cargas reales de una empresa piloto.
 4. **Fase 3 — Producto y lanzamiento**: multiempresa, app de patio, cobro, beta con empresas del puerto.
 5. **Fase 4 — Crecimiento**: integraciones, mejoras del motor y otros puertos.
 

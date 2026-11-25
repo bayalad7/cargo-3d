@@ -96,7 +96,7 @@ backend/internal/engine, siguiendo exactamente contracts/engine.schema.json.
 - Agrega etiquetas json que coincidan con el contrato.
 - Agrega el método Volume() a los dos tipos.
 - Al llegar a MaxPayloadKG y a las medidas, explícame sobre el código dos temas
-  que no me quedaron claros (P-007): quién calcula ese límite y por qué el motor
+  que no me quedaron claros: quién calcula ese límite y por qué el motor
   no conoce la NOM-012, y hacia dónde se redondea cada valor.
 - Comenta casi cada línea, como pide CLAUDE.md, explicando cada concepto
   de Go nuevo (struct, tipos numéricos, etiquetas, métodos) comparado con PHP.
@@ -186,48 +186,39 @@ Primero propón el plan y la lista de errores que vas a definir.
 - **Terminada cuando:** cada error tiene su prueba, ninguna entrada inválida provoca `panic`
   y entiendes la diferencia entre `errors.Is` y comparar textos.
 
-### 1.1.5 — Cargas reales y catálogo de equipos
+### 1.1.5 — Casos simulados y catálogo de equipos
 
 - **Modelo:** `opus` / `medium`
-- **Necesitas:** sesión 1.1.4 terminada y los datos reales en `docs/datos/`.
+- **Necesitas:** sesión 1.1.4 terminada.
 
 **Prompt:**
 
 ```
-Sprint 1.1, sesión 5: convierte las cargas reales de docs/datos/ en
-archivos JSON en engine/fixtures/real/, uno por carga, siguiendo
-contracts/engine.schema.json. El catálogo de equipos ya existe en
-contracts/equipment.json (fuente única, 28 equipos): no lo copies ni
-lo cambies sin fuente; cada fixture usa el equipo por su id.
+Sprint 1.1, sesión 5: convierte los casos de uso de docs/src/casos/ en
+fixtures del motor: engine/fixtures/casos/cs-NNN/input.json, más una
+variante por cada equipo o camino que el caso compare (por ejemplo
+input-camino-b.json), siguiendo contracts/engine.schema.json. El catálogo
+de equipos ya existe en contracts/equipment.json: usa sus medidas por id y
+no lo cambies sin fuente. Los equipos simulados de los casos (camionetas,
+rabón, tortón) van tal cual, marcados como simulados (ADR-0020).
 
-Para cada carga agrega un archivo .expect.json con lo que debe cumplirse
-(por ahora: la entrada es válida). Escribe una prueba en Go que recorra
-todos los fixtures, los lea, los valide contra el contrato y pase la
-validación de entrada.
+Para cada fixture agrega un .expect.json: por ahora, que la entrada es
+válida; además anota el resultado esperado del caso (piezas colocadas y
+motivos) para usarlo desde el sprint 1.3. Los casos de la fase 2 solo se
+convierten si el contrato 0.1.0 ya tiene sus campos. Escribe una prueba en
+Go que recorra todos los fixtures, los lea, los valide contra el contrato y
+pase la validación de entrada.
 
-Los fixtures sí se suben a git, así que van ANONIMIZADOS: sin nombres de
-clientes, destinatarios, direcciones, placas ni números de pedido; usa
-identificadores genéricos (carga-01, pieza-A) y conserva solo medidas,
-pesos, cantidades y restricciones. Nunca copies archivos de docs/datos/
-fuera de esa carpeta tal cual.
-
-Catálogo del cliente (P-002, cerrado el 2026-11-23): ya está convertido en
-docs/datos/sprint 1.1.1/catalogo-cliente-convertido.md, con la fila 9
-resuelta. Úsalo solo para reconocer qué equipo usa cada carga real; nada
-«supuesto» entra al catálogo sin confirmar (P-004 y P-020). Si una carga
-cambia un valor de contracts/examples/, anótalo antes de corregirlo.
-
-Si algún dato real no cabe en el contrato o hay datos dudosos (medidas
-que parecen en centímetros, pesos faltantes), detente y pregúntame antes
-de inventar o cambiar nada. Documenta en engine/fixtures/README.md de dónde
-salió cada carga (sin datos que identifiquen al cliente).
+Si un caso no cabe en el contrato o tiene un dato dudoso, detente y
+pregúntame antes de inventar o cambiar nada. Documenta en
+engine/fixtures/README.md qué caso produce cada fixture.
 
 Primero propón el plan.
 ```
 
-- **Terminada cuando:** todas las cargas reales son fixtures válidos y la prueba los recorre.
+- **Terminada cuando:** todos los casos de la fase 1 son fixtures válidos y la prueba los recorre.
 
-### 1.1.6 — Punto de control y cierre del sprint 1.1
+### 1.1.6 — Cierre del sprint 1.1
 
 - **Modelo:** `opus` / `high`
 - **Necesitas:** sesiones 1.1.1 a 1.1.5 terminadas en `develop`.
@@ -235,20 +226,10 @@ Primero propón el plan.
 **Prompt:**
 
 ```
-/punto-de-control modelos y validación del motor
-```
-
-Incluye una pregunta de cada tema pendiente de la 1.1.1 (P-007): quién calcula `maxPayloadKg` y hacia dónde se
-redondea.
-
-Después:
-
-```
 /cerrar-sprint 1.1
 ```
 
-- **Terminada cuando:** respondiste bien el punto de control y el checklist del sprint 1.1 en
-  `plan.md` está completo.
+- **Terminada cuando:** el checklist del sprint 1.1 en `plan.md` está completo.
 
 ## Sprint 1.2 — Geometría
 
@@ -289,7 +270,7 @@ texto. Primero propón el plan y la lista de casos límite.
 ```
 Sprint 1.2, sesión 2: une Orientation con Box. Para una pieza y un punto,
 genera las cajas candidatas en cada orientación permitida, descartando las
-que se salen del equipo. Agrega casos reales: "este lado arriba" (solo
+que se salen del equipo. Agrega casos de la vida real: "este lado arriba" (solo
 giros sobre el eje vertical), piezas cúbicas (orientaciones repetidas que
 hay que eliminar) y piezas largas.
 
@@ -321,7 +302,7 @@ Primero propón el plan.
 
 - **Terminada cuando:** el fuzzing corre al menos 1 minuto por propiedad sin fallas y sabes correrlo.
 
-### 1.2.4 — Punteros, punto de control y cierre
+### 1.2.4 — Punteros y cierre
 
 - **Modelo:** `opus` / `medium`
 - **Necesitas:** sesiones 1.2.1 a 1.2.3 terminadas.
@@ -335,7 +316,7 @@ algún lugar del motor usa punteros sin necesidad o copia estructuras
 grandes donde convendría un puntero. No cambies código sin preguntarme.
 ```
 
-Después: `/punto-de-control geometría` y `/cerrar-sprint 1.2`.
+Después: `/cerrar-sprint 1.2`.
 
 - **Terminada cuando:** el capítulo 06 existe y el sprint 1.2 está cerrado.
 
@@ -401,14 +382,14 @@ Optimize(input) (LoadPlan, error).
   criterio elegido en el diseño.
 - Las piezas que no caben van a la lista de no colocadas con su motivo.
 - Pruebas: el ejemplo a mano de 3 piezas debe dar exactamente el
-  resultado del documento; además, todos los fixtures reales deben producir
+  resultado del documento; además, todos los fixtures de casos deben producir
   planes sin traslapes y dentro del equipo.
 
 Comenta el algoritmo paso a paso enlazando a la sección del documento de
 conceptos. Primero propón el plan.
 ```
 
-- **Terminada cuando:** las cargas reales producen planes sin traslapes.
+- **Terminada cuando:** los fixtures de casos producen planes sin traslapes y con el resultado que dice cada caso.
 
 ### 1.3.4 — Peso máximo y métricas
 
@@ -426,15 +407,15 @@ Pruebas de tabla, incluido un caso donde el peso se acaba antes que el
 espacio. Primero propón el plan.
 ```
 
-- **Terminada cuando:** las métricas cuadran con un cálculo a mano en al menos un fixture real.
+- **Terminada cuando:** las métricas cuadran con un cálculo a mano en al menos un caso (por ejemplo CS-001).
 
-### 1.3.5 — Punto de control y cierre
+### 1.3.5 — Cierre
 
 - **Modelo:** `opus` / `high`
 
-**Prompt:** `/punto-de-control algoritmo de puntos extremos` y después `/cerrar-sprint 1.3`.
+**Prompt:** `/cerrar-sprint 1.3`.
 
-- **Terminada cuando:** explicas el algoritmo sin ver el documento.
+- **Terminada cuando:** el sprint 1.3 está cerrado.
 
 ## Sprint 1.4 — Validador independiente y banco de pruebas
 
@@ -498,7 +479,7 @@ Primero propón el plan.
 Sprint 1.4, sesión 3: convierte las instancias BR de docs/datos/br/ a
 fixtures en engine/fixtures/br/ siguiendo el contrato (documenta el formato
 original y la conversión en engine/fixtures/README.md). Luego crea una
-herramienta que corra el motor en Go sobre TODOS los fixtures (reales y BR),
+herramienta que corra el motor en Go sobre TODOS los fixtures (casos y BR),
 guarde los planes y los revise con packages/validator. Cualquier error del
 validador hace fallar la prueba. Primero propón el plan.
 ```
@@ -515,7 +496,7 @@ validador hace fallar la prueba. Primero propón el plan.
 ```
 Sprint 1.4, sesión 4: agrega benchmarks con testing.B para Optimize sobre
 fixtures pequeños, medianos y grandes. Genera una tabla con tiempo y
-ocupación de volumen por instancia BR y por carga real, y regístrala en la
+ocupación de volumen por instancia BR y por caso, y regístrala en la
 bitácora como línea base. Explícame cómo leer la salida de go test -bench.
 Primero propón el plan.
 ```
@@ -535,7 +516,7 @@ cómo las estrategias de ordenamiento podrían ser una interfaz y compáralo
 con interface/implements de PHP.
 ```
 
-Después: `/punto-de-control validador y banco de pruebas` y `/cerrar-sprint 1.4`.
+Después: `/cerrar-sprint 1.4`.
 
 ## Sprint 1.5 — Endpoint de optimización
 
@@ -595,7 +576,7 @@ el contrato. Primero propón el plan.
 
 - **Terminada cuando:** cambiar el contrato y regenerar actualiza los tipos sin editar nada a mano.
 
-### 1.5.4 — HTTP en Go, punto de control y cierre
+### 1.5.4 — HTTP en Go y cierre
 
 - **Modelo:** `opus` / `medium`
 
@@ -607,7 +588,7 @@ JSON) con el endpoint /plans/optimize como ejemplo: enrutador, handlers,
 decodificar y codificar JSON, códigos de estado y context.
 ```
 
-Después: `/punto-de-control endpoint de optimización` y `/cerrar-sprint 1.5`.
+Después: `/cerrar-sprint 1.5`.
 
 ## Sprint 1.6 — Visor web mínimo
 
@@ -663,7 +644,7 @@ métricas. Primero propón el plan y los estados de la pantalla (vacío,
 calculando, error, resultado).
 ```
 
-- **Terminada cuando:** pegas una carga real desde Excel y la ves acomodada.
+- **Terminada cuando:** pegas un caso simulado desde Excel y lo ves acomodado.
 
 ### 1.6.4 — Validador en la web y revisión
 
@@ -679,7 +660,7 @@ Luego revisa toda la web como un ingeniero senior: accesibilidad básica,
 manejo de errores de red y textos en español.
 ```
 
-Después: `/punto-de-control la web y el visor 3D` y `/cerrar-sprint 1.6`.
+Después: `/cerrar-sprint 1.6`.
 
 ## Sprint 1.7 — Integración continua, Docker y demo
 
@@ -723,12 +704,6 @@ sin preguntarme.
 - **Modelo:** `opus` / `high`
 
 **Prompt:**
-
-```
-/punto-de-control integración continua, Docker y despliegue de la demo
-```
-
-Después:
 
 ```
 /cerrar-sprint 1.7
@@ -813,8 +788,8 @@ Primero propón el plan.
 Sprint 2.1, sesión 3: restricción de apilabilidad: piezas no apilables
 (nada encima), peso máximo que soporta cada pieza encima y piezas frágiles
 siempre arriba. Cambia el contrato primero si hace falta. Implementa en el
-motor y en el validador, con pruebas de tabla y con al menos un fixture
-real que lo use. Primero propón el plan.
+motor y en el validador, con pruebas de tabla y con al menos un caso de
+docs/src/casos/restricciones/ que lo use. Primero propón el plan.
 ```
 
 ### 2.1.4 — Orden de descarga por destino
@@ -867,9 +842,9 @@ Primero propón el plan.
 
 - **Terminada cuando:** hay un ejemplo válido de cada tipo y el validador no encuentra errores.
 
-### 2.1.7 — Punto de control y cierre
+### 2.1.7 — Cierre
 
-**Prompt:** `/punto-de-control restricciones del patio` y después `/cerrar-sprint 2.1`.
+**Prompt:** `/cerrar-sprint 2.1`.
 
 ## Sprint 2.2 — Metaheurística en paralelo
 
@@ -918,7 +893,7 @@ context antes de escribirlo. Primero propón el plan.
 
 - **Terminada cuando:** `go test -race` pasa y el resultado es repetible con la misma semilla.
 
-### 2.2.4 — Concurrencia, punto de control y cierre
+### 2.2.4 — Concurrencia y cierre
 
 **Prompt:**
 
@@ -928,7 +903,7 @@ con la metaheurística como ejemplo, incluidos los errores típicos de
 concurrencia y cómo los detecta -race.
 ```
 
-Después: `/punto-de-control metaheurística y concurrencia` y `/cerrar-sprint 2.2`.
+Después: `/cerrar-sprint 2.2`.
 
 ## Sprint 2.3 — PostgreSQL y autenticación
 
@@ -1003,10 +978,10 @@ revísalo como auditor de seguridad.
 
 - **Terminada cuando:** existe una prueba de acceso cruzado por cada endpoint y todas fallan como deben.
 
-### 2.3.6 — PostgreSQL en Go, punto de control y cierre
+### 2.3.6 — PostgreSQL en Go y cierre
 
 **Prompt:** *"Escribe el capítulo 11 de la guía de Go (PostgreSQL con pgx y sqlc)."*
-Después: `/punto-de-control base de datos y autenticación` y `/cerrar-sprint 2.3`.
+Después: `/cerrar-sprint 2.3`.
 
 ## Sprint 2.4 — La web como producto
 
@@ -1063,7 +1038,7 @@ motor, el validador, la API y el visor (pestañas por equipo).
 Primero propón el plan.
 ```
 
-Después: `/punto-de-control la web como producto` y `/cerrar-sprint 2.4`.
+Después: `/cerrar-sprint 2.4`.
 
 ## Sprint 2.5 — El plan en papel
 
@@ -1094,9 +1069,9 @@ Tamaño carta, legible impreso en blanco y negro. Primero propón el diseño
 de cada página.
 ```
 
-Después: `/punto-de-control generación del PDF del plan` y `/cerrar-sprint 2.5`.
+Después: `/cerrar-sprint 2.5`.
 
-## Sprint 2.6 — Piloto con Transportes Villa
+## Sprint 2.6 — Despliegue y pruebas con cargas reales
 
 ### 2.6.1 — Despliegue de producción
 
@@ -1135,10 +1110,10 @@ prueba en una base de datos aparte y regístrala en la bitácora.
 
 ```
 Sprint 2.6, sesión 3: escribe una guía de uso de 2 páginas para quien
-planea las cargas en Transportes Villa (sin tecnicismos) y un formato
-sencillo para registrar durante el piloto: fecha, carga, tiempo de
-planeación antes y con Cargo 3D, si el plan se respetó en el patio y
-comentarios.
+planea las cargas en la empresa piloto (sin tecnicismos) y prepara el
+registro de pruebas de docs/src/casos/pruebas-reales.md (carpeta privada
+docs/datos/pruebas/<empresa>/ con empresa.md, equipos.csv, reglas.md y
+registro.csv).
 ```
 
 ### 2.6.4 — Seguimiento semanal del piloto
@@ -1148,9 +1123,11 @@ comentarios.
 **Prompt (una vez por semana durante 4 semanas):**
 
 ```
-Seguimiento del piloto, semana N. Te paso el registro de esta semana.
-Resume tiempos, cargas rehechas y comentarios; convierte cada problema en
-una tarea priorizada para la lista de mejoras y regístralo en la bitácora.
+Seguimiento de las pruebas con cargas reales, semana N. Lee el
+registro.csv de cada empresa en docs/datos/pruebas/. Resume tiempos,
+cargas rehechas y comentarios; aplica docs/src/casos/pruebas-reales.md
+(caso validado, corregido o nuevo, anonimizado) y convierte cada problema
+en una tarea priorizada; regístralo en la bitácora.
 No cambies código en esta sesión.
 ```
 
@@ -1159,12 +1136,6 @@ No cambies código en esta sesión.
 - **Modelo:** `opus` / `high`
 
 **Prompt:**
-
-```
-/punto-de-control despliegue, respaldos y operación del piloto
-```
-
-Después:
 
 ```
 /cerrar-sprint 2.6
@@ -1184,8 +1155,8 @@ está terminada. Si lo está, actualiza la hoja de ruta y el Estado de CLAUDE.md
 Prepara la versión v0.2.0 siguiendo el ADR-0013. En CHANGELOG.md mueve
 todo lo de "## [Sin publicar]" a "## [0.2.0] - <fecha de hoy>", deja una
 sección "## [Sin publicar]" vacía arriba y revisa que el texto describa lo
-que entrega esta versión. Es la versión que usa Transportes Villa en el
-piloto: incluye en las notas cómo actualizar el servidor del piloto. Corre gofmt, go vet y go test.
+que entrega esta versión. Es la versión que usan las empresas en el
+periodo de pruebas: incluye en las notas cómo actualizar el servidor del piloto. Corre gofmt, go vet y go test.
 No hagas commit, merge, etiqueta ni push: dame los comandos exactos en orden
 (commit en develop, merge --ff-only a main, etiqueta v0.2.0, push de main
 y de la etiqueta, regreso a develop) y lo que debo revisar en GitHub
@@ -1240,17 +1211,11 @@ calculados por mes), con mensajes claros cuando se alcanzan y sin bloquear
 el acceso a planes ya guardados. Primero propón el plan.
 ```
 
-### 3.1.4 — Punto de control y cierre del bloque 3.1
+### 3.1.4 — Cierre del bloque 3.1
 
 - **Modelo:** `opus` / `high`
 
 **Prompt:**
-
-```
-/punto-de-control multiempresa, permisos y registro de actividad
-```
-
-Después:
 
 ```
 /cerrar-sprint 3.1
@@ -1315,17 +1280,11 @@ build con Expo. Escribe docs/src/operacion/publicacion-movil.md. No
 publiques nada sin mi confirmación.
 ```
 
-### 3.2.5 — Punto de control y cierre del bloque 3.2
+### 3.2.5 — Cierre del bloque 3.2
 
 - **Modelo:** `opus` / `high`
 
 **Prompt:**
-
-```
-/punto-de-control la app móvil y el modo sin conexión
-```
-
-Después:
 
 ```
 /cerrar-sprint 3.2
@@ -1374,17 +1333,11 @@ PAC. Antes de programar, dime qué datos fiscales necesito confirmar con mi
 contador.
 ```
 
-### 3.3.4 — Punto de control y cierre del bloque 3.3
+### 3.3.4 — Cierre del bloque 3.3
 
 - **Modelo:** `opus` / `high`
 
 **Prompt:**
-
-```
-/punto-de-control suscripciones y facturación CFDI
-```
-
-Después:
 
 ```
 /cerrar-sprint 3.3
@@ -1434,17 +1387,11 @@ concretos y tiempos objetivo, y guíame en un simulacro de recuperación
 completa en un servidor nuevo. Regístralo en la bitácora.
 ```
 
-### 3.4.4 — Punto de control y cierre del bloque 3.4
+### 3.4.4 — Cierre del bloque 3.4
 
 - **Modelo:** `opus` / `high`
 
 **Prompt:**
-
-```
-/punto-de-control monitoreo, seguridad y recuperación
-```
-
-Después:
 
 ```
 /cerrar-sprint 3.4
@@ -1478,18 +1425,12 @@ falta) construidos en la CI. Explícame qué certificados se necesitan y
 cuánto cuestan antes de configurar nada.
 ```
 
-### 3.5.3 — Punto de control y cierre del bloque 3.5
+### 3.5.3 — Cierre del bloque 3.5
 
 - **Modelo:** `opus` / `high`
 - **Solo si se hizo el bloque 3.5.**
 
 **Prompt:**
-
-```
-/punto-de-control la app de escritorio y sus instaladores
-```
-
-Después:
 
 ```
 /cerrar-sprint 3.5
@@ -1506,7 +1447,7 @@ Después:
 ```
 Bloque 3.6, sesión 1: página de producto con propuesta de valor, demo,
 precios en pesos y un caso real con números del piloto (solo con permiso
-de Transportes Villa). Textos en español claro para gente de logística,
+de la empresa piloto). Textos en español claro para gente de logística,
 sin tecnicismos. Primero propón la estructura y los textos.
 ```
 
@@ -1541,12 +1482,6 @@ preguntas frecuentes para el soporte por WhatsApp con horario definido.
 - **Modelo:** `opus` / `high`
 
 **Prompt:**
-
-```
-/punto-de-control salida al mercado y beta
-```
-
-Después:
 
 ```
 /cerrar-sprint 3.6

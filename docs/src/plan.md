@@ -160,8 +160,7 @@ se trabaja directo en `develop` y termina con la bitácora actualizada.
 4. **Implementación en pasos chicos**, cada uno con pruebas de tabla y documentación.
 5. **Verificación:** `gofmt -l backend` vacío, `go vet ./backend/...` y `go test ./backend/...` sin errores.
 6. **Revisión tuya:** lee el diff completo; pregunta lo que no entiendas: *"Explícame esta línea como si viniera de PHP."*
-7. **Punto de control:** si se terminó un módulo, explícalo con tus palabras.
-8. **Cierre:** *"Actualiza la bitácora, el CHANGELOG y la sección Estado de CLAUDE.md."* Commit y push a `develop`.
+7. **Cierre:** *"Actualiza la bitácora, el CHANGELOG y la sección Estado de CLAUDE.md."* Commit y push a `develop`.
 
 ### Reglas que no se negocian
 
@@ -212,26 +211,26 @@ Del arranque de la fase 1 al lanzamiento: aproximadamente de 8 a 11 meses con 10
 ```
 Fase 0 · Cimientos ............................................ Terminada
    │  Backend Go con /health, Docker, contratos, 13 ADR, CI y guía de Go.
-   ◇  Puerta: entorno verificado y cargas reales de Transportes Villa reunidas
+   ◇  Puerta: entorno verificado y casos de uso simulados documentados (ADR-0020)
    ▼
 Fase 1 · Prueba de concepto ........................ SIGUIENTE · 6 a 8 semanas
    │  Motor de puntos extremos en Go, validador TS, endpoint y visor 3D web.
-   ◇  Puerta: una carga real acomodada en menos de 2 s y sin errores del validador
+   ◇  Puerta: un caso simulado acomodado en menos de 2 s y sin errores del validador
    ▼
 Fase 2 · MVP y piloto ........................................ 10 a 14 semanas
-   │  Restricciones, metaheurística paralela, PostgreSQL, PDF y 4 semanas en Villa.
-   ◇  Puerta: 4 semanas de uso real sin volver al método anterior
+   │  Restricciones, metaheurística paralela, PostgreSQL, equipos por empresa, PDF y pruebas reales.
+   ◇  Puerta: 4 semanas de pruebas con cargas reales sin volver al método anterior
    ▼
 Fase 3 · Producto y lanzamiento .................................. 4 a 6 meses
    │  Multiempresa, app de patio, cobro con CFDI y beta con empresas del puerto.
-   ◇  Puerta: 3 empresas, además de Transportes Villa, pagando suscripción
+   ◇  Puerta: 3 empresas, además de la empresa piloto, pagando suscripción
    ▼
 Fase 4 · Crecimiento ................................................ Continua
 ```
 
 ## Fase 1 — Prueba de concepto (6 a 8 semanas)
 
-Al terminar, la web manda una carga real de Transportes Villa a la API, el motor en Go la acomoda
+Al terminar, la web manda un caso de uso simulado a la API, el motor en Go lo acomoda
 en segundos y la web la muestra en 3D.
 
 ### Sprint 1.1 — Modelos y contrato del motor
@@ -239,9 +238,8 @@ en segundos y la web la muestra en 3D.
 - [x] `contracts/engine.schema.json`: entrada y salida del motor.
 - [ ] Tipos `Container`, `CargoItem`, `Orientation`, `Placement` y `LoadPlan` en `internal/engine`, en milímetros y kilogramos (`int64`).
 - [ ] Validación de entrada que devuelve errores claros (`error`), nunca `panic`.
-- [ ] Primeras cargas reales en `engine/fixtures/real/` y catálogo de equipos.
+- [ ] Casos de uso simulados (`docs/src/casos/`) convertidos en fixtures en `engine/fixtures/casos/`.
 - [ ] Guía de Go: capítulos 02 a 04.
-- [ ] Punto de control: explicas los modelos con tus palabras.
 
 ### Sprint 1.2 — Geometría
 
@@ -261,7 +259,7 @@ en segundos y la web la muestra en 3D.
 ### Sprint 1.4 — Validador independiente y banco de pruebas
 
 - [ ] `packages/validator` en TypeScript: sin traslapes, todo dentro del equipo, peso respetado.
-- [ ] Banco de pruebas con BR1 a BR15 en `engine/fixtures/br/` y las cargas reales.
+- [ ] Banco de pruebas con BR1 a BR15 en `engine/fixtures/br/` y los casos simulados.
 - [ ] Benchmarks con `testing.B` y línea base de ocupación registrada en la bitácora.
 - [ ] Guía de Go: capítulos 07 y 08.
 
@@ -286,14 +284,13 @@ en segundos y la web la muestra en 3D.
 
 ### Criterio de terminado
 
-1. Una carga real de Transportes Villa se acomoda y se muestra en menos de 2 segundos (incluida la red).
+1. Un caso simulado se acomoda y se muestra en menos de 2 segundos (incluida la red).
 2. El validador no encuentra errores en ningún plan del banco de pruebas.
-3. La ocupación en BR quedó medida y los acomodos reales le parecen razonables a quien carga en el patio.
-4. Tú puedes explicar el algoritmo y el flujo completo, de la web al motor y de regreso.
+3. La ocupación en BR quedó medida y cada caso simulado de la fase 1 da el resultado que dice su documento.
 
 ## Fase 2 — MVP y piloto (10 a 14 semanas)
 
-Al terminar, Transportes Villa planea sus cargas reales con Cargo 3D cada semana.
+Al terminar, al menos una empresa planea sus cargas reales con Cargo 3D cada semana (periodo de pruebas de la v0.2.0).
 
 ### Sprint 2.1 — Restricciones del patio
 
@@ -314,6 +311,7 @@ Al terminar, Transportes Villa planea sus cargas reales con Cargo 3D cada semana
 - [ ] Paquete `backend/internal/store` con `migrations/`, `queries/` y `sqlcgen/` (estructura en ADR-0007).
 - [ ] Migraciones SQL (herramienta elegida en un ADR) y consultas con sqlc + pgx.
 - [ ] Empresas, usuarios, catálogos y planes (JSONB).
+- [ ] Equipos de la empresa: plantillas por clase y versiones de cada equipo (ADR-0019).
 - [ ] Autenticación y separación de datos por empresa, con pruebas.
 - [ ] Guía de Go: capítulo 11.
 
@@ -322,26 +320,27 @@ Al terminar, Transportes Villa planea sus cargas reales con Cargo 3D cada semana
 - [ ] Importación de Excel con mapeo de columnas.
 - [ ] Editor manual con validación en vivo (`packages/validator`).
 - [ ] Historial, duplicar planes y varios equipos por carga.
+- [ ] Alta de equipos de la empresa con guía de medición (ADR-0019).
 
 ### Sprint 2.5 — El plan en papel
 
 - [ ] PDF del plan (vista 3D, paso a paso por capas, lista de piezas, pesos por eje). Dónde se genera (web o Go) se decide en un ADR.
 
-### Sprint 2.6 — Piloto con Transportes Villa
+### Sprint 2.6 — Despliegue y pruebas con cargas reales
 
 - [ ] Despliegue con Docker Compose en un VPS: API, PostgreSQL, HTTPS y respaldos diarios.
-- [ ] Capacitación de 1 hora y 4 semanas de uso real, midiendo tiempo antes y después.
+- [ ] Capacitación de 1 hora y 4 semanas de pruebas con cargas reales de al menos una empresa, con el registro de `docs/src/casos/pruebas-reales.md`.
 
 ### Criterio de terminado
 
 1. Cuatro semanas de uso real sin volver al método anterior.
-2. Ningún plan fue imposible de cargar.
+2. Ningún plan fue imposible de cargar, y cada diferencia quedó como caso validado, corregido o nuevo.
 3. Números reales para vender: tiempo ahorrado y ocupación lograda.
 4. Restauraste la base de datos al menos una vez desde un respaldo.
 
 ## Fase 3 — Producto y lanzamiento (4 a 6 meses)
 
-Al terminar, empresas además de Transportes Villa pagan cada mes.
+Al terminar, empresas además de la empresa piloto pagan cada mes.
 
 - **3.1 Multiempresa y permisos:** roles, invitaciones, registro de actividad, límites por plan.
 - **3.2 App móvil de patio (Expo):** plan del día, paso a paso, fotos de evidencia, modo sin conexión.
@@ -352,7 +351,7 @@ Al terminar, empresas además de Transportes Villa pagan cada mes.
 
 ### Criterio de terminado
 
-1. Al menos 3 empresas, además de Transportes Villa, pagando.
+1. Al menos 3 empresas, además de la empresa piloto, pagando.
 2. Un mes sin caídas que afecten a un cliente.
 3. La app de patio en uso real en al menos un cliente.
 4. Cobro y facturación sin intervención manual.
@@ -365,7 +364,7 @@ Al terminar, empresas además de Transportes Villa pagan cada mes.
 - **El validador manda.** Ningún plan sale sin pasar por él.
 - **El contrato va primero.** Cambiar `contracts/` antes que el código evita que backend y pantallas se desincronicen.
 - **El servidor paga el cálculo.** Pon límites de piezas y de tiempo por petición desde el sprint 1.5.
-- **Datos reales antes que inventados.** Cada restricción se prueba primero con una carga real.
+- **Casos documentados antes que código.** Cada restricción se prueba primero con un caso de `docs/src/casos/`, y en el periodo de pruebas con una carga real (ADR-0020).
 - **Unidades fijas:** milímetros y kilogramos enteros en todo el backend.
 
 ### Aprendizaje
@@ -389,7 +388,7 @@ Al terminar, empresas además de Transportes Villa pagan cada mes.
 
 | Riesgo | Señal de alerta | Mitigación |
 | --- | --- | --- |
-| Acomodos imposibles de cargar | El patio cambia el plan sobre la marcha | Probar con cargas reales; convertir cada cambio del patio en restricción |
+| Acomodos imposibles de cargar | El patio cambia el plan sobre la marcha | Casos simulados de bordes desde la fase 1; pruebas con cargas reales en la v0.2.0; cada cambio del patio se vuelve caso o restricción |
 | Errores de concurrencia | Resultados distintos con la misma entrada; fallas raras | `go test -race`, semilla fija para lo aleatorio, concurrencia solo en la metaheurística |
 | Costo de servidor por cálculos grandes | Peticiones lentas o servidor saturado | Límites por petición, tiempo máximo con `context`, cola de trabajos si hace falta |
 | Dependencia de la conexión | Quejas de patios sin señal | El móvil descarga planes ya calculados; Wails calcula local en escritorio |
@@ -410,13 +409,13 @@ Al terminar, empresas además de Transportes Villa pagan cada mes.
 - [x] Las verificaciones del entorno pasan.
 - [x] Ejercicio del capítulo 01 de la guía de Go hecho.
 - [x] Leíste `CLAUDE.md` y los ADR 0002, 0006, 0010, 0012 y 0013.
-- [ ] Al menos 3 cargas reales, el catálogo de equipos y las reglas del patio.
+- [x] Casos de uso simulados en `docs/src/casos/` y catálogo de equipos (sustituyen a las cargas reales, ADR-0020).
 
 Primer mensaje sugerido para Claude Code (con `/model opus`):
 
 ```
 Lee CLAUDE.md, docs/src/plan.md y la bitácora más reciente. Vamos a empezar
-la fase 1, sprint 1.1: modelos y contrato del motor en Go. Te paso las cargas
-reales en engine/fixtures/real/. Antes de programar, propón un plan con el
+la fase 1, sprint 1.1: modelos y contrato del motor en Go. Los casos de uso
+están en docs/src/casos/. Antes de programar, propón un plan con el
 esquema JSON, los archivos, las pruebas y los capítulos de la guía.
 ```

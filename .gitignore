@@ -16,7 +16,7 @@ build/
 docs/book/
 
 # Datos reales de clientes (cargas, catálogos, fotos): nunca se suben al repo.
-# Los fixtures de engine/fixtures/real/ van anonimizados.
+# Los fixtures de engine/fixtures/ y los casos de docs/src/casos/ van anonimizados.
 docs/datos/
 
 # Entornos y secretos

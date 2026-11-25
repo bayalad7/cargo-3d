@@ -109,6 +109,32 @@ dice que el programa 2026 la contempla, y el 19/11/2026 salió un aviso de autor
 [según T21](https://t21.us/self-regulation-of-road-transport-these-are-the-requirements-set-by-the-sict/) no cambia
 pesos ni dimensiones. **Se vuelve a revisar el DOF en la sesión 2.1.5**, antes de programar los límites.
 
+## Carga sobredimensionada en carretera (NOM-040)
+
+Cuando un objeto **indivisible** hace que el vehículo pase de las medidas o pesos de la NOM-012, se mueve con permiso
+especial de la SCT bajo la NOM-040-SCT-2-2012 (DOF del 20 de marzo de 2013). Leído del texto publicado el 2026-11-25:
+
+| Tipo de combinación (Tabla B) | Largo | Ancho | Alto | Torretas | Señales «EXCESO DE…» | Unidades piloto (Tabla D) |
+|---|---|---|---|---|---|---|
+| 1 | hasta 23,00 m | 2,60 m | 4,25 m | 1 | no | no |
+| 2 | hasta 28,00 m | hasta 3,30 m | libre | 2 | 2 (delante y atrás) | no |
+| 3 | hasta 30,00 m | hasta 3,70 m | libre | 2 | 2 | 1 |
+| 4 | más de 30,00 m | hasta 3,70 m | libre | 2 | 2 | 2 |
+| 5 | libre | más de 3,70 m | libre | 2 | 2 | 2 |
+
+- Señales de 1,20 × 0,60 m, fondo amarillo reflejante, letras negras de 0,20 m (8.5.4). Si la carga no deja poner
+  torreta, luces ámbar intermitentes visibles a 150 m (nota de la Tabla D).
+- Los elementos de sujeción de hasta 10 cm por lado no cuentan en el ancho (8.1.1).
+- Horario (5.5): lunes a viernes; en caminos ET2, A2, B2, C y D de 6:00 a 18:30 y de 0:00 a 6:00 (de 18:30 a 23:59 solo
+  con dos carros piloto); sábados de 6:00 a 14:00; domingos y días de descanso obligatorio no se circula.
+- Más de 90 t de carga útil: dictamen de ruta de la Secretaría y aviso con 24 h de anticipación (8.6).
+- Lo que **no** rebasa la NOM-012 no necesita permiso ni tiene horario (5.4).
+
+En Cargo 3D el permiso no lo conoce el motor: la API convierte el ancho y alto autorizados en el margen (`overhang`) del
+tramo y agrega al plan el tipo de combinación y lo que exige (caso
+[CS-028](../casos/carretera/sobredimensionada/cs-028-plataforma-carga-ancha-con-permiso.md)). La norma cita la NOM-012
+de 2008; su vigencia se revisa en la sesión 2.1.5 (P-023).
+
 ## Plataformas con varios tramos
 
 La escalonada, la doble caída, la cama baja y el RGN tienen pisos a distinta altura: cada tramo lleva su propia altura

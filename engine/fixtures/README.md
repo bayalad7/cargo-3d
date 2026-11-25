@@ -12,5 +12,5 @@ Las pruebas revisan **propiedades**, no posiciones exactas, así que sirven para
 
 Se llenan en la fase 1:
 
-- `real/` — cargas reales de Transportes Villa (sprint 1.1).
+- `casos/` — casos de uso simulados de `docs/src/casos/` (sesión 1.1.5, ADR-0020).
 - `br/` — instancias académicas BR1 a BR15 (sprint 1.4).

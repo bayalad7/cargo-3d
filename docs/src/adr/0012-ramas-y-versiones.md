@@ -6,7 +6,7 @@
 ## Contexto
 
 Hasta ahora todo se subía directo a `main`. Cuando haya clientes (empezando por el piloto con
-Transportes Villa en la fase 2) se necesita distinguir entre "lo que se está construyendo" y
+la empresa piloto en la fase 2) se necesita distinguir entre "lo que se está construyendo" y
 "lo que ya se entregó", para poder desplegar una versión estable y arreglarla sin arrastrar trabajo a medias.
 
 ## Decisión

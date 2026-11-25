@@ -1,6 +1,8 @@
 # Hoja de medición para el patio
 
-Copia esta carpeta a `docs/datos/patio/` (que no se sube a git) y llénala **ahí**. Estos originales van siempre vacíos.
+Formato para el **periodo de pruebas con cargas reales** (v0.2.0, `docs/src/casos/pruebas-reales.md`). Copia esta carpeta a
+`docs/datos/pruebas/<empresa>/` (que no se sube a git) y llénala **ahí**. Estos originales van siempre vacíos. Mientras se
+construye la app se usan los casos simulados de `docs/src/casos/` (ADR-0020).
 
 **Cómo medir:** en milímetros, entre los puntos más angostos (rieles, refuerzos, bisagras). Si dudas, anota la medida
 más chica en equipos y la más grande en piezas (ADR-0016). Sin placas, nombres de clientes ni números de pedido.
