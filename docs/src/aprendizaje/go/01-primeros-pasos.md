@@ -27,7 +27,8 @@ Agrupa los módulos de Go del monorepo. Por eso puedes correr `go test ./backend
 ### `backend/go.mod`
 
 Define el módulo `github.com/bayalad7/cargo-3d/backend`. Esa ruta es el prefijo de todos los imports
-internos, por ejemplo `github.com/bayalad7/cargo-3d/backend/internal/engine`.
+internos, por ejemplo `github.com/bayalad7/cargo-3d/backend/internal/engine`. Ese prefijo es un nombre, no una
+descarga: Go lo resuelve en tu disco (ver [Módulos e imports](01b-modulos-e-imports.md)).
 
 ### `backend/cmd/api/main.go`
 

@@ -90,6 +90,7 @@
 
 - [Go para este proyecto](aprendizaje/go/00-introduccion.md)
   - [Primeros pasos](aprendizaje/go/01-primeros-pasos.md)
+  - [Módulos e imports](aprendizaje/go/01b-modulos-e-imports.md)
 
 # Bitácora
 

@@ -29,6 +29,7 @@ backend (`Container`, `CargoItem`, `LoadPlan`, los handlers de la API) en el mom
 ## Ruta de capítulos (se escriben conforme avanza el backend)
 
 - [x] 01 — Primeros pasos: herramientas, módulos y el servidor `/health`
+- [x] 01b — [Módulos e imports](01b-modulos-e-imports.md): por qué `github.com/...` se lee del disco
 - [ ] 02 — `struct` y tipos numéricos (con `Container` y `CargoItem`)
 - [ ] 03 — Métodos y receptores (volumen, orientaciones)
 - [ ] 04 — Errores como valores (cuando una pieza no cabe)
