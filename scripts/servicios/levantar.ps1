@@ -13,7 +13,7 @@
 #   .\scripts\servicios\levantar.ps1 -DejarDb     # al salir, PostgreSQL sigue encendido
 #   o doble clic en scripts\servicios\levantar.cmd
 #
-# Ver "Preparación del entorno → 8. Verificación" en docs/src/plan.md.
+# Ver docs/src/desarrollo/entorno/servicios.md (uso) e instalacion.md (8. Verificación).
 
 param(
     # Si se indica, PostgreSQL NO se detiene al cerrar la API.
@@ -39,7 +39,7 @@ function Test-Docker {
 }
 
 # --- 0. Herramientas instaladas ---
-if (-not (Get-Command docker -ErrorAction SilentlyContinue)) { Stop-WithError 'Docker no está instalado (ver docs/src/plan.md).' }
+if (-not (Get-Command docker -ErrorAction SilentlyContinue)) { Stop-WithError 'Docker no está instalado (ver docs/src/desarrollo/entorno/instalacion.md).' }
 if (-not (Get-Command go -ErrorAction SilentlyContinue)) { Stop-WithError 'Go no está instalado (winget install GoLang.Go).' }
 
 # --- 1. Docker corriendo ---

@@ -7,6 +7,7 @@ Cada versión liberada en `main` lleva su etiqueta de git (ADR-0012).
 ## [Sin publicar]
 
 ### Agregado
+- Sección `docs/src/desarrollo/` (ADR-0021): instalación del entorno, servicios, conexión a PostgreSQL con pgAdmin y psql (`entorno/base-de-datos.md`) y guía de ramas, commits y versiones (`flujo/ramas-y-commits.md`).
 - Capítulo de aprendizaje `docs/src/aprendizaje/go/01b-modulos-e-imports.md`: por qué los imports `github.com/...` se leen del disco (comparado con PSR-4 de Composer).
 - Casos de uso simulados en `docs/src/casos/` (29 casos por categoría, incluida carga sobredimensionada con permiso de la NOM-040) y procedimiento de pruebas con cargas reales
   para la v0.2.0 (ADR-0020).

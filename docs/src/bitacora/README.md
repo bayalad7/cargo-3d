@@ -5,10 +5,11 @@ Un archivo por tema, con la fecha al inicio del nombre: `AAAA-MM-DD-tema.md` (po
 con su título, la sesión de `prompts.md` (o «Fuera del plan») y el área, y tiene las secciones «Qué se hizo»,
 «Decisiones», «Verificación» y «Pendientes» (solo ids `P-NNN`; el detalle vive en [Pendientes](../pendientes.md)).
 
-Áreas (las mismas de los commits, `convenciones.md`): `motor`, `api`, `web`, `escritorio`, `movil`, `contratos`, `docs`, `infra`, `ui`.
+Áreas (las mismas de los commits, [Ramas, commits y versiones](../desarrollo/flujo/ramas-y-commits.md)): `motor`, `api`, `web`, `escritorio`, `movil`, `contratos`, `docs`, `infra`, `ui`.
 
 | Fecha | Tema | Sesión | Área | Pendientes |
 |---|---|---|---|---|
+| 2026-11-26 | [Documentación de desarrollo y pgAdmin](2026-11-26-documentacion-de-desarrollo.md) | Fuera del plan | docs, infra | P-024 |
 | 2026-11-25 | [Casos simulados y ajustes al flujo](2026-11-25-casos-simulados-y-ajustes.md) | Fuera del plan | docs, contratos | P-001, P-003, P-004, P-007, P-013, P-019, P-022, P-023 |
 | 2026-11-23 | [Catálogo de equipos y correcciones de P-004](2026-11-23-catalogo-de-equipos.md) | 1.1.5 (datos) | contratos, docs | P-002, P-004, P-013, P-020, P-021 |
 | 2026-11-21 | [Recorrido de pendientes](2026-11-21-recorrido-de-pendientes.md) | 1.1.1 | docs | P-001 a P-019 |

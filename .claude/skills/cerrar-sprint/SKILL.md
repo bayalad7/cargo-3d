@@ -45,4 +45,4 @@ sin cumplir el criterio de terminado de la actual.
      punto con evidencia, y di claramente si la fase está terminada. No la des por terminada si falta un punto.
 7. Si `$sprint` es el 1.1, 1.2 o 1.4, recuerda revisar con Benjamín qué tan cómodo se siente con Go y si el
    ritmo del plan es realista; anota su respuesta en la bitácora.
-8. Propón el mensaje de commit (formato de `docs/src/convenciones.md`). No hagas el commit tú.
+8. Propón el mensaje de commit (formato de `docs/src/desarrollo/flujo/ramas-y-commits.md`). No hagas el commit tú.

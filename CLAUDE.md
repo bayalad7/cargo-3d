@@ -166,7 +166,7 @@ con el usuario en qué sprint estamos. No se pasa de fase sin cumplir su criteri
   `/nuevo-adr <título>`, `/cambiar-contrato <cambio>` y `/buscador <sprint o tema>` (lanza el agente
   `.claude/agents/investigador-logistico.md`: investiga datos logísticos con fuentes, no escribe archivos;
   es **opcional**, solo cuando el sprint necesita datos que todavía no se tienen).
-  Guía completa en `docs/src/flujo-claude-code.md`.
+  Guía completa en `docs/src/desarrollo/flujo/claude-code.md`.
 - Siempre se propone un plan y se espera la aprobación del usuario antes de escribir código.
 - Claude nunca hace commit ni push: propone el mensaje y el usuario los ejecuta.
 - Si cambias una sesión de `prompts.md`, conserva el formato de encabezado `### <número> — <título>`.
@@ -196,6 +196,7 @@ packages/ui              TS — sistema de diseño Voxa (ADR-0014): tokens, Tail
   preview/               vista previa en HTML (claro y oscuro)
 apps/web | desktop | mobile
 docs/                    mdBook: plan, prompts, ADRs, conceptos, catálogos, aprendizaje, bitácora; plantillas/ (formatos para las pruebas reales)
+  src/desarrollo/        cómo desarrollar: entorno/ (instalación, servicios, base de datos con pgAdmin), flujo/ (Claude Code, ramas y commits), convenciones (ADR-0021)
   src/casos/             casos de uso simulados por categoría (ADR-0020) y procedimiento de pruebas con cargas reales
   src/bitacora/          un archivo por tema (AAAA-MM-DD-tema.md) e índice README.md
 .claude/skills/          comandos de Claude Code del proyecto
@@ -239,6 +240,6 @@ pnpm --filter @cargo-3d/ui build:preview   # compila la vista previa (abrir pack
   convierte en fixtures. Las pruebas con cargas reales empiezan con la v0.2.0 (P-022).
 - **Siguiente paso:** sesión 1.1.2 (`Container` y `CargoItem` en Go, siguiendo el contrato).
 - **Sistema de diseño:** base lista en `packages/ui` (2026-11-21, fuera del plan); se conecta a `apps/web` en el sprint 1.6.
-- **Pendientes:** registro completo en `docs/src/pendientes.md` (P-001 a P-023). Los de Benjamín más urgentes:
+- **Pendientes:** registro completo en `docs/src/pendientes.md` (P-001 a P-024). Los de Benjamín más urgentes:
   P-019 (copiar `docs/datos/` y `.env` antes de cambiar de computadora) y P-022 (empresa para las pruebas reales, v0.2.0).
-- **Última sesión:** 2026-11-25, fuera del plan: casos simulados, sin puntos de control (ADR-0018 a 0020), bitácora por tema.
+- **Última sesión:** 2026-11-26, fuera del plan: sección `docs/src/desarrollo/` (ADR-0021), conexión a PostgreSQL con pgAdmin y guía de ramas y commits.

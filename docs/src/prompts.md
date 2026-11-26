@@ -11,7 +11,7 @@ Todo se trabaja directo en `develop` (ver "Ramas" en `CLAUDE.md`). Tienes dos fo
    la sesión `1.1.2`, la lee completa y la ejecuta empezando por un plan. No tienes que copiar nada.
 2. **Copiando el prompt:** copia el bloque "Prompt" de la sesión y pégalo en Claude Code.
 
-En ambos casos el ciclo es el mismo (detallado en [Flujo de trabajo con Claude Code](flujo-claude-code.md)):
+En ambos casos el ciclo es el mismo (detallado en [Flujo de trabajo con Claude Code](desarrollo/flujo/claude-code.md)):
 
 ```
 git switch develop && git pull

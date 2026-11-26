@@ -14,7 +14,7 @@
 #   ./scripts/servicios/levantar.sh --dejar-db  # al salir, PostgreSQL sigue encendido
 #   o doble clic en scripts/servicios/levantar.command (macOS)
 #
-# Ver "Preparación del entorno → 8. Verificación" en docs/src/plan.md.
+# Ver docs/src/desarrollo/entorno/servicios.md (uso) e instalacion.md (8. Verificación).
 
 set -euo pipefail
 
@@ -30,7 +30,7 @@ fail() { printf '\033[31mERROR: %s\033[0m\n' "$1" >&2; exit 1; }
 docker_ok() { docker info >/dev/null 2>&1; }
 
 # --- 0. Herramientas instaladas ---
-command -v docker >/dev/null || fail "Docker no está instalado (ver docs/src/plan.md)."
+command -v docker >/dev/null || fail "Docker no está instalado (ver docs/src/desarrollo/entorno/instalacion.md)."
 command -v go >/dev/null || fail "Go no está instalado (macOS: brew install go)."
 
 # --- 1. Docker corriendo ---

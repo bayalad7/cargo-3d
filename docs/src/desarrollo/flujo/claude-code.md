@@ -9,7 +9,7 @@ hasta el `git push`.
 | Pieza | Dónde vive | Para qué sirve |
 | --- | --- | --- |
 | **`CLAUDE.md`** | Raíz del repo | La memoria del proyecto. Claude Code lo lee solo al arrancar: stack, reglas, estado actual. |
-| **Biblioteca de prompts** | [`docs/src/prompts.md`](prompts.md) | El prompt de cada sesión de cada sprint (fases 1 a 3), con modelo, requisitos y criterio de terminado. |
+| **Biblioteca de prompts** | [`docs/src/prompts.md`](../../prompts.md) | El prompt de cada sesión de cada sprint (fases 1 a 3), con modelo, requisitos y criterio de terminado. |
 | **Skills (comandos propios)** | `.claude/skills/<nombre>/SKILL.md` | Comandos que escribes con `/` en Claude Code para los pasos que se repiten: arrancar, ejecutar una sesión, revisar, cerrar. |
 
 `CLAUDE.md` dice **cómo** se trabaja; `prompts.md` dice **qué** se hace en cada sesión; las skills
@@ -171,7 +171,7 @@ claude
 - **El repositorio es la memoria.** Lo que no quedó en la bitácora o en `CLAUDE.md`, la siguiente sesión no
   lo sabe. Por eso `/cerrar-sesion` no es opcional.
 - **Nada pendiente se queda en el chat.** Todo lo abierto (datos que faltan, valores supuestos, decisiones
-  aplazadas) va a [Pendientes](pendientes.md) con un id `P-NNN` y el «cómo retomarlo». `/iniciar-sesion` te
+  aplazadas) va a [Pendientes](../../pendientes.md) con un id `P-NNN` y el «cómo retomarlo». `/iniciar-sesion` te
   muestra primero los que bloquean la siguiente sesión.
 
 ## Si algo no funciona

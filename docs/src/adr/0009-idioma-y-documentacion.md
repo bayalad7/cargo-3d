@@ -10,7 +10,7 @@ el proceso. Claude no recuerda perfectamente entre sesiones: el repositorio tien
 
 ## Decisión
 
-1. **Código en inglés, comentarios y documentación en español** (detalle en `convenciones.md`).
+1. **Código en inglés, comentarios y documentación en español** (detalle en `desarrollo/convenciones.md`).
 2. **Comentarios de Go muy detallados al inicio** (casi cada línea), reduciéndose por etapas.
 3. **Cinco capas de documentación:** código (comentarios de `go doc` y TSDoc), ADRs, conceptos,
    guía de aprendizaje de Go comparada con PHP, y bitácora/changelog, publicadas con **mdBook**.

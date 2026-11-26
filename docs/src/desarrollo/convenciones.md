@@ -60,18 +60,7 @@ para evitar errores de redondeo. Cuando haya ambigüedad, la unidad va en el nom
 
 El cambio de etapa lo decide Benjamín y se registra en `CLAUDE.md` y en la bitácora.
 
-## Ramas
+## Ramas y commits
 
-Ver ADR-0012.
-
-| Rama | Para qué |
-|---|---|
-| `develop` | Todo el trabajo diario, con commits directos y `git push`. Siempre compila y pasa las pruebas |
-| `main` | Solo versiones liberadas: se une `develop` y se etiqueta `vX.Y.Z` |
-
-No se crean ramas de trabajo ni pull requests: el proyecto lo trabaja una sola persona.
-
-## Commits
-
-Formato: `área: descripción en presente`.
-Áreas: `motor`, `api`, `web`, `escritorio`, `movil`, `contratos`, `docs`, `infra`, `ui`.
+Ver [Ramas, commits y versiones](flujo/ramas-y-commits.md): las dos ramas, el formato `área: descripción en presente`
+con sus áreas, y cómo liberar una versión (ADR-0012).

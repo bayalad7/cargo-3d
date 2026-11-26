@@ -75,7 +75,7 @@ Para verla como sitio web: `mdbook serve docs --open` (requiere mdBook: `winget 
 ## Requisitos
 
 Funciona en Windows, macOS (incluida Apple Silicon) y Linux. Guía de instalación por sistema en el
-[plan de trabajo](docs/src/plan.md#preparación-del-entorno).
+[instalación del entorno](docs/src/desarrollo/entorno/instalacion.md); para ver la base de datos con pgAdmin, [Base de datos](docs/src/desarrollo/entorno/base-de-datos.md).
 
 - Go 1.27 o superior
 - Docker con Docker Compose
@@ -87,4 +87,4 @@ Versiones de todas las tecnologías: [ADR-0011](docs/src/adr/0011-versiones.md).
 
 Código en inglés, comentarios y documentación en español.
 Si usas Docker para probar algo, elimina al terminar todo lo que creaste (ver "Reglas de Docker" en [CLAUDE.md](CLAUDE.md)).
-Detalles en [docs/src/convenciones.md](docs/src/convenciones.md).
+Detalles en [convenciones](docs/src/desarrollo/convenciones.md) y [ramas y commits](docs/src/desarrollo/flujo/ramas-y-commits.md); todo lo de desarrollo, en [docs/src/desarrollo/](docs/src/desarrollo/README.md).

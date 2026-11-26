@@ -3,9 +3,17 @@
 [Introducción](introduccion.md)
 [Plan de trabajo](plan.md)
 [Pendientes](pendientes.md)
-[Flujo de trabajo con Claude Code](flujo-claude-code.md)
 [Biblioteca de prompts por sesión](prompts.md)
-[Convenciones](convenciones.md)
+
+# Desarrollo
+
+- [Desarrollo](desarrollo/README.md)
+  - [Instalación del entorno](desarrollo/entorno/instalacion.md)
+  - [Levantar y detener servicios](desarrollo/entorno/servicios.md)
+  - [Base de datos: pgAdmin y psql](desarrollo/entorno/base-de-datos.md)
+  - [Flujo con Claude Code](desarrollo/flujo/claude-code.md)
+  - [Ramas, commits y versiones](desarrollo/flujo/ramas-y-commits.md)
+  - [Convenciones](desarrollo/convenciones.md)
 
 # Conceptos
 
@@ -81,6 +89,7 @@
 - [0018 — Sin puntos de control](adr/0018-sin-puntos-de-control.md)
 - [0019 — Equipos personalizados](adr/0019-equipos-personalizados.md)
 - [0020 — Casos simulados](adr/0020-casos-simulados.md)
+- [0021 — Organización de la documentación](adr/0021-organizacion-de-la-documentacion.md)
 
 # Experiencia de usuario
 
@@ -96,6 +105,7 @@
 
 - [Índice](bitacora/README.md)
   - [Noviembre 2026]()
+    - [26 nov · Documentación de desarrollo y pgAdmin](bitacora/2026-11-26-documentacion-de-desarrollo.md)
     - [25 nov · Casos simulados y ajustes al flujo](bitacora/2026-11-25-casos-simulados-y-ajustes.md)
     - [23 nov · Catálogo de equipos y correcciones de P-004](bitacora/2026-11-23-catalogo-de-equipos.md)
     - [21 nov · Recorrido de pendientes](bitacora/2026-11-21-recorrido-de-pendientes.md)

@@ -39,7 +39,7 @@ Nota de Benjamín para la bitácora (puede venir vacía): $ARGUMENTS
 3. **Bitácora.** Un archivo **por tema** en `docs/src/bitacora/<fecha de hoy>-<tema>.md` (tema corto en minúsculas,
    sin acentos, con guiones; por ejemplo `2026-11-21-contrato-del-motor.md`). Si en la sesión se trabajaron dos temas
    distintos, son dos archivos. Cada archivo sigue el formato de `docs/src/bitacora/README.md`:
-   - título `# <día> <mes abreviado> <año> · <Tema>` y la línea `**Sesión:** <número o «Fuera del plan»> · **Área:** <áreas de `convenciones.md`>`;
+   - título `# <día> <mes abreviado> <año> · <Tema>` y la línea `**Sesión:** <número o «Fuera del plan»> · **Área:** <áreas de `desarrollo/flujo/ramas-y-commits.md`>`;
    - secciones "Qué se hizo", "Decisiones", "Verificación" y "Pendientes";
    - agrega una fila arriba de la tabla de `docs/src/bitacora/README.md` (fecha, tema, sesión, área, ids) y la entrada
      en `docs/src/SUMMARY.md` bajo el mes que le toca, la más reciente primero (crea el mes si no existe);
@@ -64,7 +64,7 @@ Nota de Benjamín para la bitácora (puede venir vacía): $ARGUMENTS
    (número de `docs/src/prompts.md`) y pendientes de Benjamín. No cambies otras secciones sin preguntar.
 6. **Plan.** Si una tarea del checklist del sprint en `docs/src/plan.md` quedó realmente terminada, márcala
    con `[x]`. No marques tareas a medias.
-7. **Mensaje de commit.** Propón un mensaje con el formato de `docs/src/convenciones.md`
+7. **Mensaje de commit.** Propón un mensaje con el formato de `docs/src/desarrollo/flujo/ramas-y-commits.md`
    (`área: descripción en presente`, en español, con viñetas en el cuerpo).
    **No hagas el commit ni el push**: Benjamín los hace. Muéstrale los comandos:
    `git add -A`, `git commit` con el mensaje, y `git push` (todo se trabaja en `develop`).
