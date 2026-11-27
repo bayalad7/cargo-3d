@@ -1,0 +1,19 @@
+{
+  "case": "CS-022",
+  "doc": "docs/src/casos/restricciones/multidestino/cs-022-tres-destinos-lifo.md",
+  "variant": "Caja seca 48'",
+  "phase": "2.1",
+  "validInput": true,
+  "expected": {
+    "placedCount": 24,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 14400,
+    "unplaced": []
+  },
+  "rules": [
+    {
+      "from": "2.1",
+      "text": "Las de Colima (entrega 1) junto a la puerta y las de León al fondo; ninguna entrega posterior bloquea a una anterior"
+    }
+  ]
+}

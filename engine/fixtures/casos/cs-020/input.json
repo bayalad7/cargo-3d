@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-torton",
+    "description": "Tortón C3 con caja seca, equipo de la empresa simulado (ADR-0020); 10 llantas",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 9500,
+        "widthMm": 2450,
+        "heightMm": 2600
+      }
+    ],
+    "door": {
+      "widthMm": 2400,
+      "heightMm": 2500
+    },
+    "maxPayloadKg": 17000
+  },
+  "items": [
+    {
+      "id": "cemento",
+      "description": "Tarima de cemento (30 sacos de 50 kg)",
+      "lengthMm": 1200,
+      "widthMm": 1000,
+      "heightMm": 1000,
+      "weightKg": 1500,
+      "quantity": 12,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": true
+    }
+  ]
+}

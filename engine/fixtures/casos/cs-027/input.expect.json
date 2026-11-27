@@ -1,0 +1,13 @@
+{
+  "case": "CS-027",
+  "doc": "docs/src/casos/operacion/cambios-en-patio/cs-027-tarima-mas-alta-de-lo-declarado.md",
+  "variant": "Plan original (declarado)",
+  "phase": "2.4",
+  "validInput": true,
+  "expected": {
+    "placedCount": 40,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 20000,
+    "unplaced": []
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "case": "CS-001",
+  "doc": "docs/src/casos/maritimo/seco/cs-001-20dv-justo-por-espacio.md",
+  "variant": "20' Dry",
+  "phase": "1",
+  "validInput": true,
+  "expected": {
+    "placedCount": 20,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 10000,
+    "unplaced": [
+      {
+        "itemId": "caja",
+        "quantity": 1,
+        "reason": "NO_SPACE_AVAILABLE"
+      }
+    ]
+  }
+}

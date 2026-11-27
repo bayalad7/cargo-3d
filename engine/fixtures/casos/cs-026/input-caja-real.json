@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-53dry-forrada",
+    "description": "Caja seca 53' con forro de madera y techo reforzado: interior real simulado (ADR-0020); puerta del repo",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 15950,
+        "widthMm": 2480,
+        "heightMm": 2700
+      }
+    ],
+    "door": {
+      "widthMm": 2496,
+      "heightMm": 2794
+    },
+    "maxPayloadKg": 30000,
+    "tareKg": 6680
+  },
+  "items": [
+    {
+      "id": "panel",
+      "description": "Panel aislante (viaja acostado)",
+      "lengthMm": 6000,
+      "widthMm": 2490,
+      "heightMm": 300,
+      "weightKg": 900,
+      "quantity": 4,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": true
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "case": "CS-025",
+  "doc": "docs/src/casos/limites/vgm/cs-025-vgm-40dv.md",
+  "variant": "40' Dry",
+  "phase": "1.5",
+  "validInput": true,
+  "expected": {
+    "placedCount": 24,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 25200,
+    "unplaced": []
+  },
+  "rules": [
+    {
+      "from": "1.5",
+      "text": "La API reporta el VGM: tara 3750 + carga 25200 = 28950 kg (más amarres y calzas)"
+    }
+  ]
+}

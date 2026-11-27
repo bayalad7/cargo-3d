@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-53fb",
+    "description": "Plataforma 53', catálogo 48fb (versión 53'); alto útil 4250 - 1478 de cama",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 16154,
+        "widthMm": 2590,
+        "heightMm": 2772
+      }
+    ],
+    "maxPayloadKg": 30000
+  },
+  "items": [
+    {
+      "id": "atado",
+      "description": "Atado de tubo",
+      "lengthMm": 12000,
+      "widthMm": 1200,
+      "heightMm": 600,
+      "weightKg": 2000,
+      "quantity": 8,
+      "stackable": true
+    },
+    {
+      "id": "tubo-largo",
+      "description": "Tubo de 16,5 m",
+      "lengthMm": 16500,
+      "widthMm": 400,
+      "heightMm": 400,
+      "weightKg": 900,
+      "quantity": 1,
+      "stackable": true
+    }
+  ]
+}

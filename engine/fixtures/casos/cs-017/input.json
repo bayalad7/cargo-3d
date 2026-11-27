@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-camioneta-1-5t",
+    "description": "Camioneta 1,5 t con caja seca, equipo de la empresa simulado (ADR-0020)",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 3000,
+        "widthMm": 1800,
+        "heightMm": 1800
+      }
+    ],
+    "door": {
+      "widthMm": 1700,
+      "heightMm": 1700
+    },
+    "maxPayloadKg": 1500
+  },
+  "items": [
+    {
+      "id": "caja",
+      "description": "Caja de paquetería",
+      "lengthMm": 600,
+      "widthMm": 400,
+      "heightMm": 400,
+      "weightKg": 30,
+      "quantity": 60,
+      "stackable": true
+    }
+  ]
+}

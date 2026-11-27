@@ -24,12 +24,12 @@ La empresa forró su caja con madera para proteger la carga; nadie actualizó la
 
 | Id | Descripción | L × A × H (mm) | Peso (kg) | Cantidad | Orientaciones | Apilable | Entrega |
 |---|---|---|---|---|---|---|---|
-| `panel` | Panel aislante (viaja acostado) | 6 000 × 2 500 × 300 | 900 | 4 | "este lado arriba" (LWH, WLH) | sí | — |
+| `panel` | Panel aislante (viaja acostado) | 6 000 × 2 490 × 300 | 900 | 4 | "este lado arriba" (LWH, WLH) | sí | — |
 
 ## Resultado esperado
 
-- Con la caja de catálogo: 4 paneles colocados, acostados y apilados (2 500 ≤ 2 540).
-- Con la caja real: los 4 con `EXCEEDS_DIMENSIONS` (2 500 > 2 480). De canto sí cabrían, pero el panel no se puede parar.
+- Con la caja de catálogo: 4 paneles colocados, acostados y apilados (2 490 ≤ 2 540, y pasan por la puerta de 2 496).
+- Con la caja real: los 4 con `EXCEEDS_DIMENSIONS` (2 490 > 2 480). De canto sí cabrían, pero el panel no se puede parar.
 
 ## Por qué
 
@@ -44,3 +44,4 @@ La empresa forró su caja con madera para proteger la carga; nadie actualizó la
 | Fecha | Estado | Nota |
 |---|---|---|
 | 2026-11-25 | Simulado | Caso creado con datos simulados y fichas públicas del catálogo. |
+| 2026-11-26 | Simulado | El panel pasa de 2 500 a 2 490 de ancho: con la puerta de la caja seca 53' (2 496 × 2 794, del repo) uno de 2 500 no entraba ni en la caja de catálogo (sesión 1.1.5). |

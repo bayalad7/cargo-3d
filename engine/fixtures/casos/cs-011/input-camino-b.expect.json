@@ -1,0 +1,19 @@
+{
+  "case": "CS-011",
+  "doc": "docs/src/casos/carretera/caja-seca/cs-011-53-dos-niveles-y-tipo-de-camino.md",
+  "variant": "Camino B (22 520 kg, tracto simulado)",
+  "phase": "1",
+  "validInput": true,
+  "expected": {
+    "placedCount": 50,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 22500,
+    "unplaced": [
+      {
+        "itemId": "tarima",
+        "quantity": 2,
+        "reason": "WEIGHT_LIMIT_REACHED"
+      }
+    ]
+  }
+}

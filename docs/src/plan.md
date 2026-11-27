@@ -115,7 +115,7 @@ en segundos y la web la muestra en 3D.
 - [x] `contracts/engine.schema.json`: entrada y salida del motor.
 - [x] Tipos `Container`, `CargoItem`, `Orientation`, `Placement` y `LoadPlan` en `internal/engine`, en milímetros y kilogramos (`int64`).
 - [x] Validación de entrada que devuelve errores claros (`error`), nunca `panic`.
-- [ ] Casos de uso simulados (`docs/src/casos/`) convertidos en fixtures en `engine/fixtures/casos/`.
+- [x] Casos de uso simulados (`docs/src/casos/`) convertidos en fixtures en `engine/fixtures/casos/`.
 - [x] Guía de Go: capítulos 02 a 04.
 
 ### Sprint 1.2 — Geometría

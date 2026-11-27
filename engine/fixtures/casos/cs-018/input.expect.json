@@ -1,0 +1,19 @@
+{
+  "case": "CS-018",
+  "doc": "docs/src/casos/carretera/rigidos/cs-018-camioneta-3-5t-linea-blanca.md",
+  "variant": "Camioneta 3,5 t (simulada)",
+  "phase": "1",
+  "validInput": true,
+  "expected": {
+    "placedCount": 10,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 1200,
+    "unplaced": [
+      {
+        "itemId": "estufa",
+        "quantity": 1,
+        "reason": "EXCEEDS_DOOR"
+      }
+    ]
+  }
+}

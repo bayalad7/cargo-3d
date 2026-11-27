@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-45pw",
+    "description": "Contenedor 45' HC pallet wide, catálogo 45pw; carga útil simulada (no publicada)",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 13563,
+        "widthMm": 2442,
+        "heightMm": 2697
+      }
+    ],
+    "door": {
+      "widthMm": 2416,
+      "heightMm": 2585
+    },
+    "maxPayloadKg": 29000
+  },
+  "items": [
+    {
+      "id": "epal",
+      "description": "Europallet EPAL 1",
+      "lengthMm": 1200,
+      "widthMm": 800,
+      "heightMm": 1600,
+      "weightKg": 600,
+      "quantity": 34,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false
+    }
+  ]
+}

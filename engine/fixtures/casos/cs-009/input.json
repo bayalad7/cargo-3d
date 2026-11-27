@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-20ot",
+    "description": "Open top 20', catálogo 20ot (Hapag-Lloyd); alto de los costados 2340, cargado por la puerta",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 5895,
+        "widthMm": 2350,
+        "heightMm": 2340
+      }
+    ],
+    "door": {
+      "widthMm": 2338,
+      "heightMm": 2280
+    },
+    "maxPayloadKg": 30050,
+    "tareKg": 2450
+  },
+  "items": [
+    {
+      "id": "maquina",
+      "description": "Torno CNC",
+      "lengthMm": 3000,
+      "widthMm": 2000,
+      "heightMm": 2330,
+      "weightKg": 6500,
+      "quantity": 1,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false
+    }
+  ]
+}

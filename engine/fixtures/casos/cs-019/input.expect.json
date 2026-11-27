@@ -1,0 +1,13 @@
+{
+  "case": "CS-019",
+  "doc": "docs/src/casos/carretera/rigidos/cs-019-rabon-tipo-de-camino.md",
+  "variant": "Camino ET (10 000 kg)",
+  "phase": "1",
+  "validInput": true,
+  "expected": {
+    "placedCount": 14,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 9800,
+    "unplaced": []
+  }
+}

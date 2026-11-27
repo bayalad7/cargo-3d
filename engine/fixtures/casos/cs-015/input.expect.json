@@ -1,0 +1,19 @@
+{
+  "case": "CS-015",
+  "doc": "docs/src/casos/carretera/plataforma/cs-015-53fb-tubos-largos.md",
+  "variant": "Plataforma 53'",
+  "phase": "1",
+  "validInput": true,
+  "expected": {
+    "placedCount": 8,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 16000,
+    "unplaced": [
+      {
+        "itemId": "tubo-largo",
+        "quantity": 1,
+        "reason": "EXCEEDS_DIMENSIONS"
+      }
+    ]
+  }
+}

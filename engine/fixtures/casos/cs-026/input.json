@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-53dry",
+    "description": "Caja seca 53', catálogo 53dry (Fruehauf); puerta del repo (C.H. Robinson 2017)",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 16003,
+        "widthMm": 2540,
+        "heightMm": 2794
+      }
+    ],
+    "door": {
+      "widthMm": 2496,
+      "heightMm": 2794
+    },
+    "maxPayloadKg": 30000,
+    "tareKg": 6680
+  },
+  "items": [
+    {
+      "id": "panel",
+      "description": "Panel aislante (viaja acostado)",
+      "lengthMm": 6000,
+      "widthMm": 2490,
+      "heightMm": 300,
+      "weightKg": 900,
+      "quantity": 4,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": true
+    }
+  ]
+}

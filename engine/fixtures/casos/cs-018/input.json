@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-camioneta-3-5t",
+    "description": "Camioneta 3,5 t con caja seca, equipo de la empresa simulado (ADR-0020)",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 4500,
+        "widthMm": 2200,
+        "heightMm": 2100
+      }
+    ],
+    "door": {
+      "widthMm": 2100,
+      "heightMm": 2000
+    },
+    "maxPayloadKg": 3500
+  },
+  "items": [
+    {
+      "id": "refri",
+      "description": "Refrigerador",
+      "lengthMm": 900,
+      "widthMm": 800,
+      "heightMm": 1800,
+      "weightKg": 120,
+      "quantity": 10,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false
+    },
+    {
+      "id": "estufa",
+      "description": "Estufa industrial",
+      "lengthMm": 1500,
+      "widthMm": 900,
+      "heightMm": 2050,
+      "weightKg": 250,
+      "quantity": 1,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false
+    }
+  ]
+}

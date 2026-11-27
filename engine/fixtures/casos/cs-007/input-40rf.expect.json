@@ -1,0 +1,19 @@
+{
+  "case": "CS-007",
+  "doc": "docs/src/casos/maritimo/refrigerado/cs-007-40rf-contra-40rh.md",
+  "variant": "40' Reefer estándar",
+  "phase": "1",
+  "validInput": true,
+  "expected": {
+    "placedCount": 0,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 0,
+    "unplaced": [
+      {
+        "itemId": "tarima",
+        "quantity": 20,
+        "reason": "EXCEEDS_DIMENSIONS"
+      }
+    ]
+  }
+}

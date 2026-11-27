@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-48fb",
+    "description": "Plataforma 48', catálogo 48fb, alto útil 4250 - 1478 de cama; permiso tipo 2: (3300 - 2590) / 2 (NOM-040)",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 14630,
+        "widthMm": 2590,
+        "heightMm": 2772,
+        "overhang": {
+          "topMm": 0,
+          "leftMm": 355,
+          "rightMm": 355
+        }
+      }
+    ],
+    "maxPayloadKg": 30000
+  },
+  "items": [
+    {
+      "id": "intercambiador",
+      "description": "Intercambiador de calor (indivisible)",
+      "lengthMm": 12000,
+      "widthMm": 3200,
+      "heightMm": 2500,
+      "weightKg": 22000,
+      "quantity": 1,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false
+    },
+    {
+      "id": "refacciones",
+      "description": "Tarima de refacciones del mismo cliente",
+      "lengthMm": 1200,
+      "widthMm": 1000,
+      "heightMm": 1000,
+      "weightKg": 600,
+      "quantity": 2,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": true
+    }
+  ]
+}

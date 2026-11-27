@@ -1,0 +1,19 @@
+{
+  "case": "CS-014",
+  "doc": "docs/src/casos/carretera/refrigerada/cs-014-53rv-rack-mas-alto-que-la-puerta.md",
+  "variant": "Caja refrigerada 53'",
+  "phase": "1",
+  "validInput": true,
+  "expected": {
+    "placedCount": 26,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 23400,
+    "unplaced": [
+      {
+        "itemId": "rack",
+        "quantity": 1,
+        "reason": "EXCEEDS_DOOR"
+      }
+    ]
+  }
+}

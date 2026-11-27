@@ -1,0 +1,19 @@
+{
+  "case": "CS-008",
+  "doc": "docs/src/casos/maritimo/especial/cs-008-40fr-sobredimensionada.md",
+  "variant": "40' Flat rack",
+  "phase": "1",
+  "validInput": true,
+  "expected": {
+    "placedCount": 1,
+    "outOfGaugeCount": 1,
+    "loadedWeightKg": 6000,
+    "unplaced": [
+      {
+        "itemId": "torre",
+        "quantity": 1,
+        "reason": "EXCEEDS_DIMENSIONS"
+      }
+    ]
+  }
+}

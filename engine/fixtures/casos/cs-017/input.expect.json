@@ -1,0 +1,19 @@
+{
+  "case": "CS-017",
+  "doc": "docs/src/casos/carretera/rigidos/cs-017-camioneta-1-5t-paqueteria.md",
+  "variant": "Camioneta 1,5 t (simulada)",
+  "phase": "1",
+  "validInput": true,
+  "expected": {
+    "placedCount": 50,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 1500,
+    "unplaced": [
+      {
+        "itemId": "caja",
+        "quantity": 10,
+        "reason": "WEIGHT_LIMIT_REACHED"
+      }
+    ]
+  }
+}

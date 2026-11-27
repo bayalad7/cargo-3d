@@ -111,6 +111,8 @@
 
 - [Índice](bitacora/README.md)
   - [Noviembre 2026]()
+    - [26 nov · Fixtures de los casos simulados (1.1.5)](bitacora/2026-11-26-fixtures-de-casos.md)
+    - [26 nov · PostgreSQL sin contraseña en desarrollo](bitacora/2026-11-26-postgresql-sin-contrasena.md)
     - [26 nov · Lectura y validación de la entrada (1.1.4)](bitacora/2026-11-26-validacion-de-la-entrada.md)
     - [26 nov · Orientaciones, colocaciones y plan de carga (1.1.3)](bitacora/2026-11-26-orientaciones-y-plan-de-carga.md)
     - [26 nov · Tipos del motor y Go explicado solo con Go (1.1.2)](bitacora/2026-11-26-tipos-del-motor-y-go-puro.md)

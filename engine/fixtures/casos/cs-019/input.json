@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-rabon",
+    "description": "Rabón C2 con caja seca, equipo de la empresa simulado (ADR-0020); camino ET",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 7300,
+        "widthMm": 2450,
+        "heightMm": 2500
+      }
+    ],
+    "door": {
+      "widthMm": 2400,
+      "heightMm": 2400
+    },
+    "maxPayloadKg": 10000
+  },
+  "items": [
+    {
+      "id": "tarima",
+      "description": "Tarima de abarrotes",
+      "lengthMm": 1200,
+      "widthMm": 1000,
+      "heightMm": 1100,
+      "weightKg": 700,
+      "quantity": 14,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": true
+    }
+  ]
+}

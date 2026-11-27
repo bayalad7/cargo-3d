@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-48rv",
+    "description": "Caja refrigerada 48'; interior y puerta del ejemplo del repo (C.H. Robinson 2017), no del catálogo (P-020); máximo Alzper",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 14173,
+        "widthMm": 2463,
+        "heightMm": 2628
+      }
+    ],
+    "door": {
+      "widthMm": 2496,
+      "heightMm": 2585
+    },
+    "maxPayloadKg": 25000
+  },
+  "items": [
+    {
+      "id": "pallet",
+      "description": "Pallet de lácteos",
+      "lengthMm": 1200,
+      "widthMm": 1000,
+      "heightMm": 1800,
+      "weightKg": 1100,
+      "quantity": 24,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false
+    }
+  ]
+}

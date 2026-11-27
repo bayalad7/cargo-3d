@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-20dv",
+    "description": "Contenedor 20' Dry, catálogo 20dv (Hapag-Lloyd)",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 5900,
+        "widthMm": 2352,
+        "heightMm": 2395
+      }
+    ],
+    "door": {
+      "widthMm": 2340,
+      "heightMm": 2292
+    },
+    "maxPayloadKg": 28130,
+    "tareKg": 2350
+  },
+  "items": [
+    {
+      "id": "refrigerador",
+      "description": "Refrigerador industrial",
+      "lengthMm": 2000,
+      "widthMm": 800,
+      "heightMm": 2450,
+      "weightKg": 400,
+      "quantity": 1,
+      "stackable": false
+    }
+  ]
+}

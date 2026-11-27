@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-20ot",
+    "description": "Open top 20', catálogo 20ot; tramo = abertura del techo 5338 x 2230 (x 278, medio mm descentrada), sin puerta",
+    "sections": [
+      {
+        "id": "techo",
+        "xMm": 278,
+        "yMm": 0,
+        "zMm": 60,
+        "lengthMm": 5338,
+        "widthMm": 2230,
+        "heightMm": 2340
+      }
+    ],
+    "maxPayloadKg": 30050,
+    "tareKg": 2450
+  },
+  "items": [
+    {
+      "id": "maquina",
+      "description": "Torno CNC",
+      "lengthMm": 3000,
+      "widthMm": 2000,
+      "heightMm": 2330,
+      "weightKg": 6500,
+      "quantity": 1,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "case": "CS-026",
+  "doc": "docs/src/casos/operacion/equipo-alterado/cs-026-caja-forrada-por-dentro.md",
+  "variant": "Caja de catálogo",
+  "phase": "2.3",
+  "validInput": true,
+  "expected": {
+    "placedCount": 4,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 3600,
+    "unplaced": []
+  }
+}

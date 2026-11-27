@@ -1,0 +1,19 @@
+{
+  "case": "CS-024",
+  "doc": "docs/src/casos/restricciones/orientacion/cs-024-este-lado-arriba.md",
+  "variant": "Este lado arriba",
+  "phase": "1",
+  "validInput": true,
+  "expected": {
+    "placedCount": 0,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 0,
+    "unplaced": [
+      {
+        "itemId": "refrigerador",
+        "quantity": 1,
+        "reason": "EXCEEDS_DIMENSIONS"
+      }
+    ]
+  }
+}

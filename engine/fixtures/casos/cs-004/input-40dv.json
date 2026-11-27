@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-40dv",
+    "description": "Contenedor 40' Dry, catálogo 40dv (Hapag-Lloyd)",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 12032,
+        "widthMm": 2352,
+        "heightMm": 2395
+      }
+    ],
+    "door": {
+      "widthMm": 2340,
+      "heightMm": 2292
+    },
+    "maxPayloadKg": 28750,
+    "tareKg": 3750
+  },
+  "items": [
+    {
+      "id": "tarima-alta",
+      "description": "Tarima de rollos de tela",
+      "lengthMm": 1200,
+      "widthMm": 1000,
+      "heightMm": 2500,
+      "weightKg": 900,
+      "quantity": 22,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "case": "CS-021",
+  "doc": "docs/src/casos/restricciones/apilado/cs-021-fragil-no-debajo.md",
+  "variant": "Caja seca 53'",
+  "phase": "2.1",
+  "validInput": true,
+  "expected": {
+    "placedCount": 40,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 30000,
+    "unplaced": []
+  },
+  "rules": [
+    {
+      "from": "2.1",
+      "text": "Ninguna tarima queda encima de una pantalla (stackable: false); en la fase 1 el motor no lo aplica"
+    }
+  ]
+}

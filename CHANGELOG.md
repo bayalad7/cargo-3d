@@ -7,6 +7,7 @@ Cada versión liberada en `main` lleva su etiqueta de git (ADR-0012).
 ## [Sin publicar]
 
 ### Agregado
+- 36 fixtures de 26 casos simulados en `engine/fixtures/casos/`, cada uno con su `.expect.json`, y una prueba que los valida con `DecodeInput` y revisa que sus cuentas y sus motivos de dimensión, puerta y peso cuadren con la entrada (sesión 1.1.5).
 - Lectura y validación de la entrada del motor: `DecodeInput` y `EngineInput.Validate`, con errores por categoría y la ruta de cada campo, que juntan todos los problemas; rechazan `null`, llaves repetidas y campos obligatorios que faltan (sesión 1.1.4, ADR-0023).
 - Capítulo de aprendizaje `04-errores-como-valores.md` y una prueba que compara los tipos y los rangos del motor con `contracts/engine.schema.json`.
 - Tipos de salida del motor `Placement`, `LoadPlan`, `UnplacedItem` y `Metrics`; orientaciones con `RotatedDimensions` y `Orientations`; y pruebas que pasan los 27 ejemplos de salida de JSON a Go y de regreso y revisan sus medidas contra la orientación (sesión 1.1.3).
@@ -71,6 +72,8 @@ Cada versión liberada en `main` lleva su etiqueta de git (ADR-0012).
 - Guía del flujo de trabajo con Claude Code (`docs/src/flujo-claude-code.md`).
 
 ### Cambiado
+- PostgreSQL de desarrollo sin contraseña (`trust`, solo en `127.0.0.1`); producción siempre con contraseña (ADR-0024).
+- CS-010 (módulo ancho solo `LWH`) y CS-026 (panel de 2 490 mm de ancho): corregidos al convertirlos en fixtures.
 - Regla 6 de `CLAUDE.md`, skill `/explicar` y guía de Go (capítulos 00, 01 y 01b): se explica Go solo con Go, sin comparaciones con otros lenguajes (ADR-0022).
 - La bitácora es un archivo por tema (`AAAA-MM-DD-tema.md`), agrupada por mes en el sitio.
 - Las cargas reales del plan se sustituyen por casos simulados hasta la v0.2.0; el sprint 2.6 pasa a ser de pruebas

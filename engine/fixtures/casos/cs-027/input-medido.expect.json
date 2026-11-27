@@ -1,0 +1,19 @@
+{
+  "case": "CS-027",
+  "doc": "docs/src/casos/operacion/cambios-en-patio/cs-027-tarima-mas-alta-de-lo-declarado.md",
+  "variant": "Plan corregido (una tarima medida en el patio)",
+  "phase": "2.4",
+  "validInput": true,
+  "expected": {
+    "placedCount": 40,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 20000,
+    "unplaced": []
+  },
+  "rules": [
+    {
+      "from": "2.4",
+      "text": "La tarima de 1450 no se encima con otra (1450 + 1300 > 2700) y va sola en su columna"
+    }
+  ]
+}

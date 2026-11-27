@@ -1,0 +1,19 @@
+{
+  "case": "CS-004",
+  "doc": "docs/src/casos/maritimo/seco/cs-004-40hc-tarimas-altas.md",
+  "variant": "40' Dry",
+  "phase": "1",
+  "validInput": true,
+  "expected": {
+    "placedCount": 0,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 0,
+    "unplaced": [
+      {
+        "itemId": "tarima-alta",
+        "quantity": 22,
+        "reason": "EXCEEDS_DIMENSIONS"
+      }
+    ]
+  }
+}

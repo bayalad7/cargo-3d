@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-40rh",
+    "description": "Contenedor 40' Reefer HC, catálogo 40rh (Hapag-Lloyd)",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 11599,
+        "widthMm": 2290,
+        "heightMm": 2425
+      }
+    ],
+    "door": {
+      "widthMm": 2290,
+      "heightMm": 2557
+    },
+    "maxPayloadKg": 29580,
+    "tareKg": 4420
+  },
+  "items": [
+    {
+      "id": "tarima",
+      "description": "Tarima de carne congelada",
+      "lengthMm": 1200,
+      "widthMm": 1000,
+      "heightMm": 2300,
+      "weightKg": 1000,
+      "quantity": 20,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false
+    }
+  ]
+}

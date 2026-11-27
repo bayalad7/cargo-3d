@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-53rv",
+    "description": "Caja refrigerada 53'; interior y puerta del ejemplo del repo (C.H. Robinson 2017), no del catálogo (P-020); máximo Alzper",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 15697,
+        "widthMm": 2463,
+        "heightMm": 2628
+      }
+    ],
+    "door": {
+      "widthMm": 2496,
+      "heightMm": 2585
+    },
+    "maxPayloadKg": 30000
+  },
+  "items": [
+    {
+      "id": "pallet",
+      "description": "Pallet de cajas de verdura",
+      "lengthMm": 1200,
+      "widthMm": 1000,
+      "heightMm": 1800,
+      "weightKg": 900,
+      "quantity": 26,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false
+    },
+    {
+      "id": "rack",
+      "description": "Rack de pan",
+      "lengthMm": 1200,
+      "widthMm": 1000,
+      "heightMm": 2600,
+      "weightKg": 500,
+      "quantity": 1,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false
+    }
+  ]
+}

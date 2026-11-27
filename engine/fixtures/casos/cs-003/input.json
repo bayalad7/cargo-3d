@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-20dv",
+    "description": "Contenedor 20' Dry, catálogo 20dv (Hapag-Lloyd)",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 5900,
+        "widthMm": 2352,
+        "heightMm": 2395
+      }
+    ],
+    "door": {
+      "widthMm": 2340,
+      "heightMm": 2292
+    },
+    "maxPayloadKg": 28130,
+    "tareKg": 2350
+  },
+  "items": [
+    {
+      "id": "transformador",
+      "description": "Transformador",
+      "lengthMm": 3000,
+      "widthMm": 2000,
+      "heightMm": 2000,
+      "weightKg": 30000,
+      "quantity": 1,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false
+    }
+  ]
+}

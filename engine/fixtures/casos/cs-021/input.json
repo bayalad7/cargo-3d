@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-53dry",
+    "description": "Caja seca 53', catálogo 53dry (Fruehauf); puerta del repo (C.H. Robinson 2017)",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 16003,
+        "widthMm": 2540,
+        "heightMm": 2794
+      }
+    ],
+    "door": {
+      "widthMm": 2496,
+      "heightMm": 2794
+    },
+    "maxPayloadKg": 30000,
+    "tareKg": 6680
+  },
+  "items": [
+    {
+      "id": "pantalla",
+      "description": "Caja de pantallas",
+      "lengthMm": 1200,
+      "widthMm": 1000,
+      "heightMm": 1300,
+      "weightKg": 300,
+      "quantity": 20,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false
+    },
+    {
+      "id": "ferreteria",
+      "description": "Tarima de ferretería",
+      "lengthMm": 1200,
+      "widthMm": 1000,
+      "heightMm": 1300,
+      "weightKg": 1200,
+      "quantity": 20,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": true
+    }
+  ]
+}

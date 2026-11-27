@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-48dry",
+    "description": "Caja seca 48', catálogo 48dry; puerta del repo (C.H. Robinson 2017)",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 14427,
+        "widthMm": 2489,
+        "heightMm": 2794
+      }
+    ],
+    "door": {
+      "widthMm": 2496,
+      "heightMm": 2794
+    },
+    "maxPayloadKg": 30000
+  },
+  "items": [
+    {
+      "id": "colima",
+      "description": "Tarima para Colima",
+      "lengthMm": 1200,
+      "widthMm": 1000,
+      "heightMm": 1400,
+      "weightKg": 600,
+      "quantity": 8,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": true,
+      "deliverySequence": 1
+    },
+    {
+      "id": "guadalajara",
+      "description": "Tarima para Guadalajara",
+      "lengthMm": 1200,
+      "widthMm": 1000,
+      "heightMm": 1400,
+      "weightKg": 600,
+      "quantity": 8,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": true,
+      "deliverySequence": 2
+    },
+    {
+      "id": "leon",
+      "description": "Tarima para León",
+      "lengthMm": 1200,
+      "widthMm": 1000,
+      "heightMm": 1400,
+      "weightKg": 600,
+      "quantity": 8,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": true,
+      "deliverySequence": 3
+    }
+  ]
+}

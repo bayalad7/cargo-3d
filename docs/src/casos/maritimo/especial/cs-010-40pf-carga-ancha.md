@@ -27,7 +27,7 @@ Módulos prefabricados que rebasan un poco el piso de la plataforma.
 | Id | Descripción | L × A × H (mm) | Peso (kg) | Cantidad | Orientaciones | Apilable | Entrega |
 |---|---|---|---|---|---|---|---|
 | `modulo` | Módulo de casa prefabricada | 5 000 × 2 590 × 2 200 | 9 000 | 2 | "este lado arriba" (LWH, WLH) | no | — |
-| `modulo-ancho` | Módulo ancho | 2 000 × 2 700 × 1 000 | 1 000 | 1 | "este lado arriba" (LWH, WLH) | no | — |
+| `modulo-ancho` | Módulo ancho | 2 000 × 2 700 × 1 000 | 1 000 | 1 | solo como viene (LWH) | no | — |
 
 ## Resultado esperado
 
@@ -37,6 +37,7 @@ Módulos prefabricados que rebasan un poco el piso de la plataforma.
 ## Por qué
 
 - El ancho máximo en carretera es 2 600 mm (NOM-012); de ahí sale el margen.
+- El módulo ancho solo viaja como viene: girado (`WLH`) mediría 2 000 de ancho y sí cabría en el piso.
 
 ## Qué validar con datos reales
 
@@ -47,3 +48,4 @@ Módulos prefabricados que rebasan un poco el piso de la plataforma.
 | Fecha | Estado | Nota |
 |---|---|---|
 | 2026-11-25 | Simulado | Caso creado con datos simulados y fichas públicas del catálogo. |
+| 2026-11-26 | Simulado | El módulo ancho pasa a solo `LWH`, como el ejemplo `40pf-wide-load`: con `WLH` medía 2 000 de ancho y sí cabía, así que su motivo no podía ser `EXCEEDS_DIMENSIONS` (sesión 1.1.5). |

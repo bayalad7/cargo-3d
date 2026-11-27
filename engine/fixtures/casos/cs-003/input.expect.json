@@ -1,0 +1,19 @@
+{
+  "case": "CS-003",
+  "doc": "docs/src/casos/limites/peso/cs-003-pieza-mas-pesada-que-el-equipo.md",
+  "variant": "20' Dry",
+  "phase": "1",
+  "validInput": true,
+  "expected": {
+    "placedCount": 0,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 0,
+    "unplaced": [
+      {
+        "itemId": "transformador",
+        "quantity": 1,
+        "reason": "EXCEEDS_MAX_WEIGHT"
+      }
+    ]
+  }
+}

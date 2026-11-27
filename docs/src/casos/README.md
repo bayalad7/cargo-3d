@@ -51,9 +51,15 @@ caso al índice de su categoría y a `SUMMARY.md`.
 
 ## De los casos a las pruebas del motor
 
-En la sesión 1.1.5 cada caso se convierte en `engine/fixtures/casos/cs-NNN/input.json` (y una variante por cada
-equipo o camino que el caso compara) con su `.expect.json`. Los casos de la fase 2 entran como fixtures cuando llegue
-su sesión; mientras, sirven de especificación.
+Desde la sesión 1.1.5, cada caso es un fixture del motor: `engine/fixtures/casos/cs-NNN/input.json`, una variante por
+cada equipo o camino que el caso compara (por ejemplo `input-camino-b.json`) y su `.expect.json` con el resultado
+esperado. Hay 36 fixtures de 26 casos. Los de la fase 2 entran desde ya cuando el contrato 0.1.0 tiene sus campos
+(CS-021, 022, 025, 026 y 027); su regla se exige desde la sesión que dice su `.expect.json`.
+
+Todavía no son fixtures CS-016 (falta la altura de cama), CS-023 (no hay campos de peso por eje) y CS-029 (dos tramos,
+P-012). La lista completa, con la fuente de cada medida, está en `engine/fixtures/README.md`.
+
+Si se cambia un caso, se cambia su fixture en el mismo commit: `go test ./backend/...` revisa que las cuentas cuadren.
 
 ## Índice
 

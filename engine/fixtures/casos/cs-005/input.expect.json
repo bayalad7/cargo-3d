@@ -1,0 +1,19 @@
+{
+  "case": "CS-005",
+  "doc": "docs/src/casos/maritimo/seco/cs-005-45pw-europallets.md",
+  "variant": "45' HC pallet wide",
+  "phase": "1",
+  "validInput": true,
+  "expected": {
+    "placedCount": 33,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 19800,
+    "unplaced": [
+      {
+        "itemId": "epal",
+        "quantity": 1,
+        "reason": "NO_SPACE_AVAILABLE"
+      }
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-20rf",
+    "description": "Contenedor 20' Reefer, catálogo 20rf (Hapag-Lloyd); alto interior, no línea roja",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 5450,
+        "widthMm": 2280,
+        "heightMm": 2159
+      }
+    ],
+    "door": {
+      "widthMm": 2290,
+      "heightMm": 2264
+    },
+    "maxPayloadKg": 29140,
+    "tareKg": 2860
+  },
+  "items": [
+    {
+      "id": "epal",
+      "description": "Pallet EPAL de fruta",
+      "lengthMm": 1200,
+      "widthMm": 800,
+      "heightMm": 2000,
+      "weightKg": 900,
+      "quantity": 12,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false
+    },
+    {
+      "id": "tarima-alta",
+      "description": "Tarima de flores",
+      "lengthMm": 1200,
+      "widthMm": 800,
+      "heightMm": 2200,
+      "weightKg": 700,
+      "quantity": 1,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false
+    }
+  ]
+}

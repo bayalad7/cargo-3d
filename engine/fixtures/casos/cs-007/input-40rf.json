@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-40rf",
+    "description": "Contenedor 40' Reefer, catálogo 40rf (CIMC); sin puerta porque no está publicada (P-013)",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 11583,
+        "widthMm": 2290,
+        "heightMm": 2252
+      }
+    ],
+    "maxPayloadKg": 28200,
+    "tareKg": 4300
+  },
+  "items": [
+    {
+      "id": "tarima",
+      "description": "Tarima de carne congelada",
+      "lengthMm": 1200,
+      "widthMm": 1000,
+      "heightMm": 2300,
+      "weightKg": 1000,
+      "quantity": 20,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false
+    }
+  ]
+}

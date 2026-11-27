@@ -1,0 +1,19 @@
+{
+  "case": "CS-019",
+  "doc": "docs/src/casos/carretera/rigidos/cs-019-rabon-tipo-de-camino.md",
+  "variant": "Camino D (6 000 kg)",
+  "phase": "1",
+  "validInput": true,
+  "expected": {
+    "placedCount": 8,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 5600,
+    "unplaced": [
+      {
+        "itemId": "tarima",
+        "quantity": 6,
+        "reason": "WEIGHT_LIMIT_REACHED"
+      }
+    ]
+  }
+}

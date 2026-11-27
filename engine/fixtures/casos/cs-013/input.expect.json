@@ -1,0 +1,19 @@
+{
+  "case": "CS-013",
+  "doc": "docs/src/casos/carretera/refrigerada/cs-013-48rv-limite-de-peso.md",
+  "variant": "Caja refrigerada 48'",
+  "phase": "1",
+  "validInput": true,
+  "expected": {
+    "placedCount": 22,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 24200,
+    "unplaced": [
+      {
+        "itemId": "pallet",
+        "quantity": 2,
+        "reason": "WEIGHT_LIMIT_REACHED"
+      }
+    ]
+  }
+}

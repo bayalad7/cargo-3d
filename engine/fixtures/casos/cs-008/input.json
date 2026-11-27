@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-40fr",
+    "description": "Flat rack 40', catálogo 40fr; margen 400 arriba (límite interno) y 196 por lado (NOM-012); carga útil supuesta",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 11652,
+        "widthMm": 2208,
+        "heightMm": 1955,
+        "overhang": {
+          "topMm": 400,
+          "leftMm": 196,
+          "rightMm": 196
+        }
+      }
+    ],
+    "maxPayloadKg": 28000,
+    "tareKg": 6200
+  },
+  "items": [
+    {
+      "id": "transformador",
+      "description": "Transformador",
+      "lengthMm": 2500,
+      "widthMm": 2100,
+      "heightMm": 2100,
+      "weightKg": 6000,
+      "quantity": 1,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false
+    },
+    {
+      "id": "torre",
+      "description": "Sección de torre",
+      "lengthMm": 1500,
+      "widthMm": 1500,
+      "heightMm": 2500,
+      "weightKg": 1000,
+      "quantity": 1,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false
+    }
+  ]
+}

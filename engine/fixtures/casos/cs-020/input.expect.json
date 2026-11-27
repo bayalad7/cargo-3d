@@ -1,0 +1,19 @@
+{
+  "case": "CS-020",
+  "doc": "docs/src/casos/carretera/rigidos/cs-020-torton-cemento-llantas.md",
+  "variant": "10 llantas (17 000 kg)",
+  "phase": "1",
+  "validInput": true,
+  "expected": {
+    "placedCount": 11,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 16500,
+    "unplaced": [
+      {
+        "itemId": "cemento",
+        "quantity": 1,
+        "reason": "WEIGHT_LIMIT_REACHED"
+      }
+    ]
+  }
+}

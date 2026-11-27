@@ -1,0 +1,19 @@
+{
+  "case": "CS-028",
+  "doc": "docs/src/casos/carretera/sobredimensionada/cs-028-plataforma-carga-ancha-con-permiso.md",
+  "variant": "Sin permiso (margen 5 mm por lado)",
+  "phase": "1",
+  "validInput": true,
+  "expected": {
+    "placedCount": 2,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 1200,
+    "unplaced": [
+      {
+        "itemId": "intercambiador",
+        "quantity": 1,
+        "reason": "EXCEEDS_DIMENSIONS"
+      }
+    ]
+  }
+}

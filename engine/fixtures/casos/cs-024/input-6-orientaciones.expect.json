@@ -1,0 +1,19 @@
+{
+  "case": "CS-024",
+  "doc": "docs/src/casos/restricciones/orientacion/cs-024-este-lado-arriba.md",
+  "variant": "Las 6 orientaciones",
+  "phase": "1",
+  "validInput": true,
+  "expected": {
+    "placedCount": 1,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 400,
+    "unplaced": []
+  },
+  "rules": [
+    {
+      "from": "1.3",
+      "text": "El refrigerador queda acostado: su alto de 2450 no va sobre y"
+    }
+  ]
+}

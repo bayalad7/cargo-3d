@@ -1,0 +1,19 @@
+{
+  "case": "CS-010",
+  "doc": "docs/src/casos/maritimo/especial/cs-010-40pf-carga-ancha.md",
+  "variant": "40' Platform",
+  "phase": "1",
+  "validInput": true,
+  "expected": {
+    "placedCount": 2,
+    "outOfGaugeCount": 2,
+    "loadedWeightKg": 18000,
+    "unplaced": [
+      {
+        "itemId": "modulo-ancho",
+        "quantity": 1,
+        "reason": "EXCEEDS_DIMENSIONS"
+      }
+    ]
+  }
+}

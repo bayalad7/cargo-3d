@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "0.1.0",
+  "container": {
+    "id": "c-40hc",
+    "description": "Contenedor 40' HC, catálogo 40hc",
+    "sections": [
+      {
+        "id": "main",
+        "xMm": 0,
+        "yMm": 0,
+        "zMm": 0,
+        "lengthMm": 12032,
+        "widthMm": 2350,
+        "heightMm": 2700
+      }
+    ],
+    "door": {
+      "widthMm": 2340,
+      "heightMm": 2597
+    },
+    "maxPayloadKg": 28600,
+    "tareKg": 3900
+  },
+  "items": [
+    {
+      "id": "tarima-alta",
+      "description": "Tarima de rollos de tela",
+      "lengthMm": 1200,
+      "widthMm": 1000,
+      "heightMm": 2500,
+      "weightKg": 900,
+      "quantity": 22,
+      "allowedOrientations": [
+        "LWH",
+        "WLH"
+      ],
+      "stackable": false
+    }
+  ]
+}

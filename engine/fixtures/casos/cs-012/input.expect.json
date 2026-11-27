@@ -1,0 +1,19 @@
+{
+  "case": "CS-012",
+  "doc": "docs/src/casos/carretera/caja-seca/cs-012-53-pieza-mas-ancha-que-la-puerta.md",
+  "variant": "Caja seca 53'",
+  "phase": "1",
+  "validInput": true,
+  "expected": {
+    "placedCount": 0,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 0,
+    "unplaced": [
+      {
+        "itemId": "tablero",
+        "quantity": 1,
+        "reason": "EXCEEDS_DOOR"
+      }
+    ]
+  }
+}

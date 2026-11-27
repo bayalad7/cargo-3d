@@ -400,7 +400,9 @@ Optimize(input) (LoadPlan, error).
   algoritmo no haga perder unidades sin que nadie lo note (P-026).
 - Pruebas: el ejemplo a mano de 3 piezas debe dar exactamente el
   resultado del documento; además, todos los fixtures de casos deben producir
-  planes sin traslapes y dentro del equipo.
+  planes sin traslapes y dentro del equipo, y coincidir con el .expect.json de
+  cada uno (placedCount, outOfGaugeCount, loadedWeightKg y no colocadas con su
+  motivo; las reglas con "from" posterior a la 1.3 todavía no se exigen).
 
 Comenta el algoritmo paso a paso enlazando a la sección del documento de
 conceptos. Primero propón el plan.

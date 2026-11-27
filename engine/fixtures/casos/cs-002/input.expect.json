@@ -1,0 +1,19 @@
+{
+  "case": "CS-002",
+  "doc": "docs/src/casos/maritimo/seco/cs-002-20dv-justo-por-peso.md",
+  "variant": "20' Dry",
+  "phase": "1",
+  "validInput": true,
+  "expected": {
+    "placedCount": 10,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 28130,
+    "unplaced": [
+      {
+        "itemId": "cajon",
+        "quantity": 1,
+        "reason": "WEIGHT_LIMIT_REACHED"
+      }
+    ]
+  }
+}

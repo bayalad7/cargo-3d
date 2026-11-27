@@ -1,0 +1,19 @@
+{
+  "case": "CS-028",
+  "doc": "docs/src/casos/carretera/sobredimensionada/cs-028-plataforma-carga-ancha-con-permiso.md",
+  "variant": "Con permiso tipo 2 (margen 355 mm por lado)",
+  "phase": "1",
+  "validInput": true,
+  "expected": {
+    "placedCount": 3,
+    "outOfGaugeCount": 1,
+    "loadedWeightKg": 23200,
+    "unplaced": []
+  },
+  "rules": [
+    {
+      "from": "2.1.5",
+      "text": "Las tarimas de refacciones van dentro del ancho de la plataforma: el margen del permiso es solo para la pieza indivisible (P-023)"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "case": "CS-006",
+  "doc": "docs/src/casos/maritimo/refrigerado/cs-006-20rf-tarima-sobre-alto-interior.md",
+  "variant": "20' Reefer",
+  "phase": "1",
+  "validInput": true,
+  "expected": {
+    "placedCount": 10,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 9000,
+    "unplaced": [
+      {
+        "itemId": "epal",
+        "quantity": 2,
+        "reason": "NO_SPACE_AVAILABLE"
+      },
+      {
+        "itemId": "tarima-alta",
+        "quantity": 1,
+        "reason": "EXCEEDS_DIMENSIONS"
+      }
+    ]
+  }
+}

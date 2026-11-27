@@ -1,0 +1,13 @@
+{
+  "case": "CS-011",
+  "doc": "docs/src/casos/carretera/caja-seca/cs-011-53-dos-niveles-y-tipo-de-camino.md",
+  "variant": "Camino ET (30 000 kg)",
+  "phase": "1",
+  "validInput": true,
+  "expected": {
+    "placedCount": 52,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 23400,
+    "unplaced": []
+  }
+}

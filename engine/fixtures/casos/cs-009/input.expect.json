@@ -1,0 +1,19 @@
+{
+  "case": "CS-009",
+  "doc": "docs/src/casos/maritimo/especial/cs-009-20ot-carga-por-techo.md",
+  "variant": "20' Open top por la puerta",
+  "phase": "1",
+  "validInput": true,
+  "expected": {
+    "placedCount": 0,
+    "outOfGaugeCount": 0,
+    "loadedWeightKg": 0,
+    "unplaced": [
+      {
+        "itemId": "maquina",
+        "quantity": 1,
+        "reason": "EXCEEDS_DOOR"
+      }
+    ]
+  }
+}
