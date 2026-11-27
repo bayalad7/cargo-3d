@@ -65,10 +65,13 @@ type CargoItem struct {
 	MaxLoadOnTopKG *int64 `json:"maxLoadOnTopKg,omitempty"`
 
 	// DeliverySequence es el orden de entrega (1 = se descarga primero, va
-	// junto a la puerta). El contrato no permite 0, así que el valor cero de
-	// int64 sirve para "no vino" y basta omitempty, sin puntero. Reservado para
-	// el sprint 2.1 (LIFO por destino).
-	DeliverySequence int64 `json:"deliverySequence,omitempty"`
+	// junto a la puerta). Reservado para el sprint 2.1 (LIFO por destino).
+	//
+	// Es *int64 aunque el contrato no permita 0: con int64 + omitempty, un
+	// "deliverySequence": 0 se leería igual que "no vino" y la validación no
+	// podría rechazarlo. Con el puntero, nil es "no vino" y un puntero a 0 es
+	// un valor fuera de rango que Validate reporta.
+	DeliverySequence *int64 `json:"deliverySequence,omitempty"`
 }
 
 // Volume devuelve el volumen de UNA unidad en mm³ (largo × ancho × alto). Para

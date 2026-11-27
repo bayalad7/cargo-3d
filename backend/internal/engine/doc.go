@@ -11,11 +11,12 @@
 //   - Container, Section, Overhang y Door (container.go): el equipo.
 //   - CargoItem (cargo_item.go): las piezas.
 //   - Orientation y Dimensions (orientation.go): cómo se gira una pieza.
-//   - Placement (placement.go) y LoadPlan, UnplacedItem y Metrics
-//     (load_plan.go): la salida.
+//   - Placement (placement.go): dónde quedó una unidad.
+//   - LoadPlan, UnplacedItem y Metrics (load_plan.go): la salida.
+//   - DecodeInput (decode.go) y EngineInput.Validate (validate.go): la lectura.
+//   - Las categorías de error y FieldError (errors.go), ver ADR-0023.
 //
-// Faltan la validación de la entrada (sesión 1.1.4) y el algoritmo (sprint
-// 1.3). Ver docs/src/plan.md.
+// Falta el algoritmo (sprint 1.3). Ver docs/src/plan.md.
 //
 // Medidas en milímetros y pesos en kilogramos, siempre int64 y ya redondeados
 // por quien llama (ADR-0016). Explicación en

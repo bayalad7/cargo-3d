@@ -7,6 +7,8 @@ Cada versión liberada en `main` lleva su etiqueta de git (ADR-0012).
 ## [Sin publicar]
 
 ### Agregado
+- Lectura y validación de la entrada del motor: `DecodeInput` y `EngineInput.Validate`, con errores por categoría y la ruta de cada campo, que juntan todos los problemas; rechazan `null`, llaves repetidas y campos obligatorios que faltan (sesión 1.1.4, ADR-0023).
+- Capítulo de aprendizaje `04-errores-como-valores.md` y una prueba que compara los tipos y los rangos del motor con `contracts/engine.schema.json`.
 - Tipos de salida del motor `Placement`, `LoadPlan`, `UnplacedItem` y `Metrics`; orientaciones con `RotatedDimensions` y `Orientations`; y pruebas que pasan los 27 ejemplos de salida de JSON a Go y de regreso y revisan sus medidas contra la orientación (sesión 1.1.3).
 - Capítulo de aprendizaje `03-metodos-y-receptores.md`; `sistema-coordenadas.md` dice ahora dónde vive cada concepto en el código.
 - Tipos del motor `EngineInput`, `Container`, `Section`, `Overhang`, `Door`, `CargoItem` y `Orientation` en `backend/internal/engine`, con `Volume()`, `Margin()` e `IsStackable()`, y una prueba que pasa los 27 ejemplos de entrada de JSON a Go y de regreso (sesión 1.1.2).

@@ -572,7 +572,9 @@ backend/internal/httpapi según contracts/openapi.yaml.
 - Tiempo máximo de cálculo con context.WithTimeout; el motor debe
   respetar la cancelación.
 - Traduce los errores de validación del motor a 400 con la lista de
-  problemas, usando errors.Is.
+  problemas, usando errors.Is. Lee el cuerpo con engine.DecodeInput (limitado
+  con http.MaxBytesReader) y saca la lista de *FieldError, con la ruta de
+  cada campo, con errors.As (ADR-0023).
 - Pruebas con httptest para cada código de respuesta.
 - Agrega las variables nuevas a .env.example y a docker-compose.yml.
 Primero propón el plan.

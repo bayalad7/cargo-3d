@@ -91,6 +91,7 @@
 - [0020 — Casos simulados](adr/0020-casos-simulados.md)
 - [0021 — Organización de la documentación](adr/0021-organizacion-de-la-documentacion.md)
 - [0022 — Go explicado solo con Go](adr/0022-go-sin-comparaciones.md)
+- [0023 — Lectura y validación de la entrada](adr/0023-lectura-y-validacion-de-la-entrada.md)
 
 # Experiencia de usuario
 
@@ -103,11 +104,13 @@
   - [Módulos e imports](aprendizaje/go/01b-modulos-e-imports.md)
   - [Structs y tipos numéricos](aprendizaje/go/02-structs-y-tipos.md)
   - [Métodos y receptores](aprendizaje/go/03-metodos-y-receptores.md)
+  - [Errores como valores](aprendizaje/go/04-errores-como-valores.md)
 
 # Bitácora
 
 - [Índice](bitacora/README.md)
   - [Noviembre 2026]()
+    - [26 nov · Lectura y validación de la entrada (1.1.4)](bitacora/2026-11-26-validacion-de-la-entrada.md)
     - [26 nov · Orientaciones, colocaciones y plan de carga (1.1.3)](bitacora/2026-11-26-orientaciones-y-plan-de-carga.md)
     - [26 nov · Tipos del motor y Go explicado solo con Go (1.1.2)](bitacora/2026-11-26-tipos-del-motor-y-go-puro.md)
     - [26 nov · Documentación de desarrollo y pgAdmin](bitacora/2026-11-26-documentacion-de-desarrollo.md)

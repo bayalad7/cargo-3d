@@ -159,7 +159,7 @@ func decodeStrict[T any](t *testing.T, path string) T {
 // findExamples regresa las rutas de todos los archivos llamados fileName en
 // contracts/examples/, sin entrar a invalid/. Falla si no encuentra ninguno:
 // con una ruta equivocada, la prueba pasaría sin probar nada.
-func findExamples(t *testing.T, fileName string) []string {
+func findExamples(t testing.TB, fileName string) []string {
 	t.Helper()
 
 	var paths []string
@@ -206,7 +206,11 @@ func exampleName(t *testing.T, path string) string {
 }
 
 // readFile lee el archivo completo o detiene la prueba.
-func readFile(t *testing.T, path string) []byte {
+//
+// Go: testing.TB es la interfaz que cumplen *testing.T (pruebas), *testing.B
+// (benchmarks) y *testing.F (fuzz). Con ella la misma función auxiliar sirve
+// para las tres.
+func readFile(t testing.TB, path string) []byte {
 	t.Helper()
 	// os.ReadFile regresa (bytes, error): el error siempre va al final.
 	data, err := os.ReadFile(path)

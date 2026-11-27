@@ -48,6 +48,13 @@ func allOrientations() []Orientation {
 	}
 }
 
+// IsValid dice si o es una de las seis orientaciones del contrato. Distingue
+// mayúsculas: "lwh" no es válida.
+func (o Orientation) IsValid() bool {
+	// slices.Contains recorre la lista y dice si o está en ella.
+	return slices.Contains(allOrientations(), o)
+}
+
 // Dimensions son las medidas de una pieza ya girada, sobre cada eje del
 // equipo, en mm. Son las mismas que Placement guarda en dxMm, dyMm y dzMm.
 //

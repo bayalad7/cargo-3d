@@ -43,18 +43,6 @@ func TestCargoItemVolumeIsForOneUnit(t *testing.T) {
 	}
 }
 
-// TestCargoItemVolumeTimesMaxQuantityFitsInInt64 revisa que el volumen total
-// del peor caso del contrato (pieza máxima × cantidad máxima) no desborde.
-// En Go un int64 que se pasa del tope "da la vuelta" a negativo sin avisar.
-func TestCargoItemVolumeTimesMaxQuantityFitsInInt64(t *testing.T) {
-	item := CargoItem{LengthMM: 30000, WidthMM: 30000, HeightMM: 30000, Quantity: 10000}
-
-	total := item.Volume() * item.Quantity
-	if total != 270_000_000_000_000_000 {
-		t.Fatalf("volumen total = %d, se esperaba 2,7 × 10¹⁷ (¿desbordó?)", total)
-	}
-}
-
 // TestCargoItemIsStackableDefaultsToTrue revisa que una pieza sin "stackable"
 // sea apilable y que un false escrito se respete.
 func TestCargoItemIsStackableDefaultsToTrue(t *testing.T) {

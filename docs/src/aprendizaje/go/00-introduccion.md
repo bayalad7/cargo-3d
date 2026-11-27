@@ -35,7 +35,7 @@ Un resumen de lo que más se usa en el backend. Cada idea se explica a fondo en 
 - [x] 01b — [Módulos e imports](01b-modulos-e-imports.md): por qué `github.com/...` se lee del disco
 - [x] 02 — [`struct` y tipos numéricos](02-structs-y-tipos.md) (con `Container` y `CargoItem`)
 - [x] 03 — [Métodos y receptores](03-metodos-y-receptores.md) (volumen, orientaciones, plan de carga)
-- [ ] 04 — Errores como valores (cuando una pieza no cabe)
+- [x] 04 — [Errores como valores](04-errores-como-valores.md) (validación de la entrada)
 - [ ] 05 — Slices, maps y ciclos (recorrer puntos extremos)
 - [ ] 06 — Punteros: cuándo `*Container` y cuándo `Container`
 - [ ] 07 — Interfaces (restricciones intercambiables)

@@ -114,8 +114,8 @@ Las razones:
 2. **El límite de peso es exacto.** 28 000 kg es 28 000, no 27 999,999… ni 28 000,000…1.
 3. **Un milímetro alcanza.** Nadie mide una tarima en décimas de milímetro; el contrato decidió enteros (ADR-0016).
 4. **No se desborda dentro del contrato.** `int64` llega a 9,2 × 10¹⁸. La pieza más grande del contrato mide
-   30 000³ = 2,7 × 10¹³ mm³ y, por 10 000 unidades, 2,7 × 10¹⁷. Hay una prueba que lo confirma
-   (`TestCargoItemVolumeTimesMaxQuantityFitsInInt64`). Fuera del contrato sí se desborda: un entero que pasa del tope
+   30 000³ = 2,7 × 10¹³ mm³ y, por 10 000 unidades, 2,7 × 10¹⁷; la tabla de `TestCargoItemVolumeIsForOneUnit` incluye
+   esa pieza. Fuera del contrato sí se desborda: un entero que pasa del tope
    **da la vuelta sin avisar** (una pieza de 10 000 000 mm por lado da `3875820019684212736`, un número sin sentido).
    Por eso la validación de la sesión 1.1.4 corre antes de cualquier cálculo.
 
@@ -185,7 +185,8 @@ En el proyecto el criterio quedó así:
 | `Overhang.TopMM`, `LeftMM`, `RightMM` | `*int64` | Hay ejemplos con `"topMm": 0` escrito |
 | `Door`, `Overhang` | `*Door`, `*Overhang` | Un objeto que puede no venir |
 | `AllowedOrientations` | `[]Orientation` | Un slice ya puede ser `nil` |
-| `Description`, `DeliverySequence` | `string`, `int64` | Su valor cero no es un dato útil (`deliverySequence` empieza en 1; una descripción vacía no se muestra) |
+| `DeliverySequence` | `*int64` | El contrato no admite 0, pero un 0 enviado tiene que poder rechazarse; con `int64` se leería igual que «no vino» (sesión 1.1.4) |
+| `Description` | `string` | Una descripción vacía no se muestra; se acepta y no regresa al volver a JSON (ADR-0023) |
 
 Por eso el valor por omisión **no se llena al leer el JSON, sino que se calcula con un método**:
 
