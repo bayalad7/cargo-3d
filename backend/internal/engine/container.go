@@ -205,6 +205,19 @@ func (s Section) Volume() int64 {
 	return s.LengthMM * s.WidthMM * s.HeightMM
 }
 
+// Box devuelve la caja nominal del tramo: su esquina mínima y su largo, alto
+// y ancho útiles, sin el margen de rebase (overhang). Es el espacio que se
+// pasa a CargoItem.Candidates cuando la pieza no puede rebasar.
+//
+// Ojo con el orden: Section guarda largo, ancho y alto (LengthMM, WidthMM,
+// HeightMM), y Box va en x, y, z, así que el alto (y) queda en medio.
+func (s Section) Box() Box {
+	return Box{
+		XMM: s.XMM, YMM: s.YMM, ZMM: s.ZMM,
+		DXMM: s.LengthMM, DYMM: s.HeightMM, DZMM: s.WidthMM,
+	}
+}
+
 // Margin devuelve el margen de sobredimensión del tramo ya resuelto: si
 // Overhang no vino, un margen en cero (no se permite rebasar); si vino, sus
 // valores, con 0 en los lados que no vinieron.

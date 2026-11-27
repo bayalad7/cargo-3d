@@ -14,6 +14,9 @@
 //   - Placement (placement.go): dónde quedó una unidad.
 //   - Box, con Intersects, ContainedIn y Contact (box.go): la geometría de
 //     cajas alineadas a los ejes, ver docs/src/conceptos/geometria.md.
+//   - Point, Candidate y CargoItem.Candidates (candidates.go): en qué
+//     orientaciones cabe una pieza en un punto, sin repetidas. El espacio
+//     nominal de un tramo lo da Section.Box (container.go).
 //   - LoadPlan, UnplacedItem y Metrics (load_plan.go): la salida.
 //   - DecodeInput (decode.go) y EngineInput.Validate (validate.go): la lectura.
 //   - Las categorías de error y FieldError (errors.go), ver ADR-0023.

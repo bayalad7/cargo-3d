@@ -212,6 +212,47 @@ colocaciones que armó el motor; antes de usarla con planes de fuera hay que cer
 El fuzzing de la sesión 1.2.3 prueba la geometría también con valores fuera del contrato, para ver qué pasa cerca
 del tope.
 
+## Candidatas: en qué orientaciones cabe una pieza
+
+`CargoItem.Candidates(at, space)` (en `candidates.go`) junta la geometría con las
+[orientaciones](sistema-coordenadas.md): para una pieza y un punto `at`, regresa una caja por cada orientación
+permitida que queda dentro de `space` (`ContainedIn`), con la esquina mínima en `at`. Es la pregunta que el algoritmo
+del sprint 1.3 hará en cada punto extremo.
+
+```
+ Vista de lado: tarima de 1 200 × 800 × 600 (L × W × H) con 700 mm libres al techo.
+ Todas empiezan en at y crecen hacia arriba.
+
+                                              ┌───┐
+                                              │   │
+                                ┌───┐         │   │
+ techo ─────────────────────────┼───┼─────────┼───┼──── y = 2393
+                                │   │         │   │
+   700    ┌──────────┐ ┌──────┐ │LHW│         │WHL│
+   libres │   LWH    │ │ WLH  │ │800│         │1200
+          │   600    │ │ 600  │ │   │         │   │
+ at ──────┴──────────┴─┴──────┴─┴───┴─────────┴───┴──── y = 1693
+
+           caben (sobran 100)    no caben: atraviesan el techo
+           LWH, WLH: 600 de alto   LHW, HLW: 800 · WHL, HWL: 1 200
+
+ Quedan LWH y WLH: las dos con H = 600 hacia arriba.
+```
+
+Las reglas que salen de los casos reales:
+
+- **«Este lado arriba»** es `allowedOrientations = ["LWH", "WLH"]`: solo se gira sobre el eje vertical y el alto de
+  la pieza siempre queda sobre `y`. No hace falta una regla aparte.
+- **Piezas con medidas iguales.** Si dos orientaciones dan la misma caja (una pieza cúbica da seis iguales; una con
+  `L = W` da tres pares), solo queda **la primera** según el orden de la lista. El algoritmo no prueba dos veces lo
+  mismo.
+- **Piezas largas.** Un tubo de 12 000 × 300 × 300 no cabe en ninguna orientación de un 20' (5 898 de largo); en un 40'
+  (12 032) solo cabe acostado a lo largo, y como `W = H`, LWH y LHW son la misma caja: queda una candidata.
+- **Orden determinista.** Las candidatas salen en el orden de `allowedOrientations` (o del contrato si no vino). El
+  orden nunca depende de un mapa, que en Go cambia en cada ejecución (capítulo 05 de la guía de Go).
+- **El espacio lo decide quien llama.** `Section.Box()` da la caja nominal del tramo, sin margen de rebase. El
+  espacio con el margen de `overhang` lo arma el algoritmo en el sprint 1.3.
+
 ## Casos límite que prueba el código
 
 | Función | Casos |
@@ -219,3 +260,4 @@ del tope.
 | `Intersects` | idénticas; una dentro de otra; encimadas 1 mm; se tocan por una cara (en x, y y z), por una arista y por un vértice; separadas 1 mm en cada eje; cruzadas en «+»; traslapan en dos ejes y no en el tercero; z negativa; sin volumen. Todos en los dos órdenes |
 | `ContainedIn` | dentro sin tocar; en la esquina del origen; en la esquina máxima; idéntica; se pasa 1 mm por cada una de las seis caras; más grande; z negativa en un espacio con margen; sin volumen; caja real en un espacio de ancho 0 |
 | `Contact` | apoyo completo; parcial; la de arriba más grande; más chica; 1 mm de aire; encimadas 1 mm; al lado; arista; vértice; orden al revés; lado a lado; caja plana arriba o abajo; máximo del contrato (9 × 10⁸ mm²) |
+| `Candidates` | sin lista (las seis); «este lado arriba»; cúbica; cúbica con otra lista; dos lados iguales; pieza larga en un 20' y en un 40'; pegada a la puerta; poco alto libre; punto fuera; orientación desconocida; lista vacía |

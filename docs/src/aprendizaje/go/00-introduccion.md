@@ -24,7 +24,7 @@ Un resumen de lo que más se usa en el backend. Cada idea se explica a fondo en 
 | Visibilidad | Mayúscula = exportado, minúscula = no exportado | Está en el nombre y es por **paquete** |
 | Paquetes | `package engine` + ruta de import | Un paquete = una carpeta ([capítulo 01b](01b-modulos-e-imports.md)) |
 | Dependencias | `go.mod` (versiones) + `go.sum` (huellas) | `go.mod` fija las versiones; `go.sum` comprueba que lo descargado no cambió |
-| Colecciones | `[]CargoItem` (slice) y `map[string]int` (mapa) | Tipos separados para listas y diccionarios |
+| Colecciones | `[]CargoItem` (slice) y `map[string]int` (mapa) | Un slice comparte su arreglo de fondo al copiarse; escribir en un mapa `nil` detiene el programa ([capítulo 05](05-slices-maps-y-ciclos.md)) |
 | Limpieza al salir | `defer` | Corre al salir de la **función**, en orden inverso si hay varios; sus argumentos se calculan al escribir el `defer` |
 | Concurrencia | `go funcion()` (goroutines) y canales | Incluida en el lenguaje y en la librería estándar |
 | Tipos | `var x int64` o `x := 5` (tipo inferido) | Tipado estático: el compilador revisa todo antes de correr |
@@ -40,7 +40,7 @@ Un resumen de lo que más se usa en el backend. Cada idea se explica a fondo en 
 - [x] 02 — [`struct` y tipos numéricos](02-structs-y-tipos.md) (con `Container` y `CargoItem`)
 - [x] 03 — [Métodos y receptores](03-metodos-y-receptores.md) (volumen, orientaciones, plan de carga)
 - [x] 04 — [Errores como valores](04-errores-como-valores.md) (validación de la entrada)
-- [ ] 05 — Slices, maps y ciclos (recorrer puntos extremos)
+- [x] 05 — [Slices, mapas y ciclos](05-slices-maps-y-ciclos.md) (candidatas por orientación)
 - [ ] 06 — Punteros: cuándo `*Container` y cuándo `Container`
 - [ ] 07 — Interfaces (restricciones intercambiables)
 - [ ] 08 — Pruebas de tabla, benchmarks y fuzzing

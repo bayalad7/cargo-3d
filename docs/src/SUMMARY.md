@@ -107,11 +107,13 @@
   - [Structs y tipos numéricos](aprendizaje/go/02-structs-y-tipos.md)
   - [Métodos y receptores](aprendizaje/go/03-metodos-y-receptores.md)
   - [Errores como valores](aprendizaje/go/04-errores-como-valores.md)
+  - [Slices, mapas y ciclos](aprendizaje/go/05-slices-maps-y-ciclos.md)
 
 # Bitácora
 
 - [Índice](bitacora/README.md)
   - [Noviembre 2026]()
+    - [26 nov · Candidatas por orientación (1.2.2)](bitacora/2026-11-26-orientaciones-y-candidatas.md)
     - [26 nov · Cajas en el espacio (1.2.1)](bitacora/2026-11-26-cajas-en-el-espacio.md)
     - [26 nov · Cierre del sprint 1.1](bitacora/2026-11-26-cierre-sprint-1-1.md)
     - [26 nov · Fixtures de los casos simulados (1.1.5)](bitacora/2026-11-26-fixtures-de-casos.md)

@@ -152,3 +152,14 @@ func TestSectionMarginDefaultsToZero(t *testing.T) {
 		})
 	}
 }
+
+// TestSectionBoxPutsHeightOnY revisa que la caja de un tramo lleve el largo
+// sobre x, el alto sobre y y el ancho sobre z, desde su esquina mínima.
+func TestSectionBoxPutsHeightOnY(t *testing.T) {
+	s := Section{ID: "main", XMM: 100, YMM: 1200, ZMM: 50, LengthMM: 5898, WidthMM: 2352, HeightMM: 2393}
+	want := Box{XMM: 100, YMM: 1200, ZMM: 50, DXMM: 5898, DYMM: 2393, DZMM: 2352}
+
+	if got := s.Box(); got != want {
+		t.Errorf("Box() = %+v, se esperaba %+v", got, want)
+	}
+}
