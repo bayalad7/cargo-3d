@@ -9,6 +9,7 @@ con su título, la sesión de `prompts.md` (o «Fuera del plan») y el área, y 
 
 | Fecha | Tema | Sesión | Área | Pendientes |
 |---|---|---|---|---|
+| 2026-11-26 | [Cierre del sprint 1.1](2026-11-26-cierre-sprint-1-1.md) | 1.1.6 | motor, docs | — |
 | 2026-11-26 | [Fixtures de los casos simulados](2026-11-26-fixtures-de-casos.md) | 1.1.5 | motor, docs | P-020, P-028 |
 | 2026-11-26 | [PostgreSQL sin contraseña en desarrollo](2026-11-26-postgresql-sin-contrasena.md) | Fuera del plan | infra, docs | P-024 |
 | 2026-11-26 | [Lectura y validación de la entrada](2026-11-26-validacion-de-la-entrada.md) | 1.1.4 | motor, docs | P-008, P-025, P-027 |

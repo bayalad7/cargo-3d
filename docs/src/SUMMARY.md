@@ -111,6 +111,7 @@
 
 - [Índice](bitacora/README.md)
   - [Noviembre 2026]()
+    - [26 nov · Cierre del sprint 1.1](bitacora/2026-11-26-cierre-sprint-1-1.md)
     - [26 nov · Fixtures de los casos simulados (1.1.5)](bitacora/2026-11-26-fixtures-de-casos.md)
     - [26 nov · PostgreSQL sin contraseña en desarrollo](bitacora/2026-11-26-postgresql-sin-contrasena.md)
     - [26 nov · Lectura y validación de la entrada (1.1.4)](bitacora/2026-11-26-validacion-de-la-entrada.md)

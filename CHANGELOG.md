@@ -7,6 +7,7 @@ Cada versión liberada en `main` lleva su etiqueta de git (ADR-0012).
 ## [Sin publicar]
 
 ### Agregado
+- Sprint 1.1 cerrado: contrato, tipos, lectura y validación de la entrada del motor, fixtures de los casos y capítulos 02 a 04 de la guía.
 - 36 fixtures de 26 casos simulados en `engine/fixtures/casos/`, cada uno con su `.expect.json`, y una prueba que los valida con `DecodeInput` y revisa que sus cuentas y sus motivos de dimensión, puerta y peso cuadren con la entrada (sesión 1.1.5).
 - Lectura y validación de la entrada del motor: `DecodeInput` y `EngineInput.Validate`, con errores por categoría y la ruta de cada campo, que juntan todos los problemas; rechazan `null`, llaves repetidas y campos obligatorios que faltan (sesión 1.1.4, ADR-0023).
 - Capítulo de aprendizaje `04-errores-como-valores.md` y una prueba que compara los tipos y los rangos del motor con `contracts/engine.schema.json`.
