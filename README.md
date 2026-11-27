@@ -68,7 +68,7 @@ y el [ADR-0013](docs/src/adr/0013-ci-y-release.md).
 ## Documentación
 
 Toda la documentación vive en [`docs/`](docs/src/SUMMARY.md): decisiones (ADR), conceptos, catálogo de equipos,
-casos de uso, guía de Go para quien viene de PHP, plan de trabajo, [pendientes](docs/src/pendientes.md) y
+casos de uso, guía de Go con el código real del proyecto, plan de trabajo, [pendientes](docs/src/pendientes.md) y
 [bitácora](docs/src/bitacora/README.md) (un archivo por tema, con índice por fecha y área).
 Para verla como sitio web: `mdbook serve docs --open` (requiere mdBook: `winget install Rustlang.mdBook` en Windows, `brew install mdbook` en macOS).
 

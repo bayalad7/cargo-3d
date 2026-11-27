@@ -10,7 +10,7 @@ backend completo en Go y las pantallas en TypeScript.
 | **Plan de trabajo** | Fases, sprints, criterios de terminado y modelo sugerido por paso | Al empezar cada sprint |
 | **Conceptos** | Cómo funciona cada parte del sistema | Para entender el panorama |
 | **Decisiones (ADR)** | Por qué se eligió cada tecnología y qué alternativas había | Cuando te preguntes "¿por qué está hecho así?" |
-| **Aprendizaje** | Go explicado con el código real del proyecto, comparado con PHP | Mientras aprendes |
+| **Aprendizaje** | Go explicado con el código real del proyecto | Mientras aprendes |
 | **Bitácora** | Qué se hizo en cada sesión y qué quedó pendiente | Para retomar trabajo |
 
 La documentación del **código** se consulta con `go doc`, por ejemplo:

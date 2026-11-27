@@ -90,6 +90,7 @@
 - [0019 — Equipos personalizados](adr/0019-equipos-personalizados.md)
 - [0020 — Casos simulados](adr/0020-casos-simulados.md)
 - [0021 — Organización de la documentación](adr/0021-organizacion-de-la-documentacion.md)
+- [0022 — Go explicado solo con Go](adr/0022-go-sin-comparaciones.md)
 
 # Experiencia de usuario
 
@@ -100,11 +101,13 @@
 - [Go para este proyecto](aprendizaje/go/00-introduccion.md)
   - [Primeros pasos](aprendizaje/go/01-primeros-pasos.md)
   - [Módulos e imports](aprendizaje/go/01b-modulos-e-imports.md)
+  - [Structs y tipos numéricos](aprendizaje/go/02-structs-y-tipos.md)
 
 # Bitácora
 
 - [Índice](bitacora/README.md)
   - [Noviembre 2026]()
+    - [26 nov · Tipos del motor y Go explicado solo con Go (1.1.2)](bitacora/2026-11-26-tipos-del-motor-y-go-puro.md)
     - [26 nov · Documentación de desarrollo y pgAdmin](bitacora/2026-11-26-documentacion-de-desarrollo.md)
     - [25 nov · Casos simulados y ajustes al flujo](bitacora/2026-11-25-casos-simulados-y-ajustes.md)
     - [23 nov · Catálogo de equipos y correcciones de P-004](bitacora/2026-11-23-catalogo-de-equipos.md)

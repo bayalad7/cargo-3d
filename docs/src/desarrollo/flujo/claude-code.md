@@ -29,7 +29,7 @@ dispara por su cuenta.
 | `/revisar [enfoque]` | Antes de cerrar una sesión con cambios importantes | Revisión como ingeniero senior de todo lo que cambió contra `main`; hallazgos ordenados por gravedad | No |
 | `/cerrar-sesion [nota]` | Al terminar cada sesión | Corre `gofmt`, `go vet` y pruebas; actualiza bitácora, registro de pendientes (`docs/src/pendientes.md`), CHANGELOG, Estado de `CLAUDE.md` y checklist del plan; propone el mensaje de commit | Sí (solo documentación) |
 | `/cerrar-sprint 1.1` | Al terminar todas las sesiones de un sprint | Verifica con evidencia cada tarea del sprint; si todo está, lo marca y actualiza el Estado; en el último sprint de una fase revisa el criterio de la fase | Sí (plan, Estado, bitácora) |
-| `/explicar <algo>` | Cuando no entiendes algo | Explica un archivo, una función, un error pegado o un concepto, comparando con PHP y con el código real | No |
+| `/explicar <algo>` | Cuando no entiendes algo | Explica un archivo, una función, un error pegado o un concepto, con el código real del proyecto | No |
 | `/nuevo-adr <título>` | Cuando se toma una decisión de arquitectura | Crea el ADR con el número siguiente desde la plantilla, lo enlaza y espera tu aceptación | Sí |
 | `/cambiar-contrato <cambio>` | Antes de cambiar la API o el motor | Propone el cambio en `contracts/`, la versión nueva y lo que habrá que tocar; lo escribe al aprobarlo y **se detiene antes del código** | Sí (solo `contracts/`) |
 

@@ -49,7 +49,8 @@ func main() {
 
 	// Esperamos Ctrl+C (SIGINT) o la orden de apagado de Docker (SIGTERM).
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
-	// defer ejecuta stop() al salir de main, pase lo que pase.
+	// defer ejecuta stop() cuando main termina, ya sea con return o por un
+	// panic. Ojo: os.Exit (arriba) termina el programa SIN correr los defer.
 	defer stop()
 	// <-ctx.Done() se queda esperando hasta que llegue una de esas señales.
 	<-ctx.Done()

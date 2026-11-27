@@ -9,6 +9,7 @@ con su título, la sesión de `prompts.md` (o «Fuera del plan») y el área, y 
 
 | Fecha | Tema | Sesión | Área | Pendientes |
 |---|---|---|---|---|
+| 2026-11-26 | [Tipos del motor y Go explicado solo con Go](2026-11-26-tipos-del-motor-y-go-puro.md) | 1.1.2 | motor, docs | P-025 |
 | 2026-11-26 | [Documentación de desarrollo y pgAdmin](2026-11-26-documentacion-de-desarrollo.md) | Fuera del plan | docs, infra | P-024 |
 | 2026-11-25 | [Casos simulados y ajustes al flujo](2026-11-25-casos-simulados-y-ajustes.md) | Fuera del plan | docs, contratos | P-001, P-003, P-004, P-007, P-013, P-019, P-022, P-023 |
 | 2026-11-23 | [Catálogo de equipos y correcciones de P-004](2026-11-23-catalogo-de-equipos.md) | 1.1.5 (datos) | contratos, docs | P-002, P-004, P-013, P-020, P-021 |

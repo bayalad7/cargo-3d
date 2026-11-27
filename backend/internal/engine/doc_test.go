@@ -2,8 +2,8 @@
 // Viven junto al código que prueban y pertenecen al mismo paquete.
 package engine
 
-// "testing" es el paquete estándar de pruebas: Go no necesita PHPUnit ni
-// librerías externas para probar.
+// "testing" es el paquete estándar de pruebas: con él y `go test` basta, sin
+// librerías externas.
 import "testing"
 
 // TestVersionIsDefined es una prueba de humo: confirma que el paquete compila y
@@ -12,8 +12,9 @@ import "testing"
 // Toda prueba en Go es una función que empieza con "Test" y recibe *testing.T,
 // el objeto con el que se reportan fallas.
 func TestVersionIsDefined(t *testing.T) {
-	// En Go no hay "assert": se compara con un if y se reporta la falla con
-	// t.Errorf (marca la prueba como fallida y sigue) o t.Fatalf (y se detiene).
+	// Se compara con un if y la falla se reporta con t.Errorf (marca la prueba
+	// como fallida y sigue) o t.Fatalf (y se detiene). Es la forma de Go: la
+	// librería estándar no trae funciones de aserción.
 	if Version == "" {
 		t.Fatalf("la versión del contrato del motor no debe estar vacía")
 	}

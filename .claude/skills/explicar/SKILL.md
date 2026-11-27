@@ -1,14 +1,14 @@
 ---
 name: explicar
-description: Explica a Benjamín un archivo, una función, un error del compilador o un concepto de Go o TypeScript, comparándolo con PHP y usando el código real del proyecto.
+description: Explica a Benjamín un archivo, una función, un error del compilador o un concepto de Go o TypeScript, con el código real del proyecto.
 argument-hint: "[archivo, función, error pegado o concepto]"
 disable-model-invocation: true
 ---
 
 # Explicar: $ARGUMENTS
 
-Responde siempre en español. Benjamín es desarrollador, viene de PHP y está aprendiendo Go
-(y TypeScript) con este proyecto. **No modifiques archivos en esta skill.**
+Responde siempre en español. Benjamín es desarrollador y está aprendiendo Go (y TypeScript) con este
+proyecto. **No modifiques archivos en esta skill.**
 
 ## Qué hacer
 
@@ -21,8 +21,9 @@ Responde siempre en español. Benjamín es desarrollador, viene de PHP y está a
      arregla en una línea, muestra la línea, pero no la cambies.
    - **Un concepto:** explícalo con un ejemplo tomado del código real del proyecto (no uno genérico) y
      dile en qué archivo puede verlo.
-3. Siempre que ayude, compara con PHP (por ejemplo: struct contra clase, error como valor contra
-   try/catch, interfaces implícitas contra implements).
+3. Explica solo en términos de Go (o de TypeScript), sin comparar con otros lenguajes (ADR-0022). Describe lo que
+   el compilador y el programa hacen de verdad; si hay duda, compruébalo con un programa en el directorio temporal
+   antes de afirmarlo. Señala las trampas reales que apliquen (copias superficiales, `nil`, valores cero).
 4. Si el concepto ya tiene capítulo en `docs/src/aprendizaje/go/`, enlázalo. Si no lo tiene y es
    importante, propón agregarlo o ampliarlo (no lo escribas sin permiso).
 5. Termina con una pregunta corta para comprobar que se entendió (sin dar la respuesta).

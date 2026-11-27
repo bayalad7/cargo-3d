@@ -25,12 +25,12 @@ JSON Schema 2020-12. Las dos raíces están en `$defs`: `EngineInput` (lo que re
   (ADR-0016).
   Regla corta: **redondea en tu contra**. El plan nunca debe prometer algo que no cabe.
 
-  | Valor real | Qué es | Se guarda | En Go (y en PHP) |
+  | Valor real | Qué es | Se guarda | En Go |
   |---|---|---|---|
-  | puerta de 98,3" = 2 496,82 mm | equipo | 2 496 | `math.Floor` (`floor`) |
-  | caja de 47,2" = 1 198,88 mm | pieza | 1 199 | `math.Ceil` (`ceil`) |
-  | carga útil de 26 580,7 kg | equipo | 26 580 | `math.Floor` (`floor`) |
-  | pieza de 12,3 kg | pieza | 13 | `math.Ceil` (`ceil`) |
+  | puerta de 98,3" = 2 496,82 mm | equipo | 2 496 | `math.Floor` |
+  | caja de 47,2" = 1 198,88 mm | pieza | 1 199 | `math.Ceil` |
+  | carga útil de 26 580,7 kg | equipo | 26 580 | `math.Floor` |
+  | pieza de 12,3 kg | pieza | 13 | `math.Ceil` |
 
 - **Quién sabe qué** (ADR-0016):
 

@@ -99,7 +99,7 @@ backend/internal/engine, siguiendo exactamente contracts/engine.schema.json.
   que no me quedaron claros: quién calcula ese límite y por qué el motor
   no conoce la NOM-012, y hacia dónde se redondea cada valor.
 - Comenta casi cada línea, como pide CLAUDE.md, explicando cada concepto
-  de Go nuevo (struct, tipos numéricos, etiquetas, métodos) comparado con PHP.
+  de Go nuevo (struct, tipos numéricos, etiquetas, métodos).
 - Pruebas de tabla para Volume() y para convertir de JSON a Go y de regreso
   usando contracts/examples/ (todos los input.json y output.json). Ojo con
   los valores por omisión (allowedOrientations = las 6, stackable = true,
@@ -129,13 +129,19 @@ contracts/engine.schema.json.
 - Orientation representa las 6 formas de girar una caja alineada a los
   ejes. Necesito una función que, dada una pieza y una orientación,
   devuelva sus medidas rotadas (largo, ancho, alto).
-- CargoItem debe poder decir qué orientaciones tiene permitidas.
+- CargoItem debe poder decir qué orientaciones tiene permitidas. El valor
+  por omisión (las 6) solo aplica cuando AllowedOrientations es nil (no
+  vino): pregunta == nil, no len() == 0, porque una lista vacía es un
+  error de la entrada, no «todas» (P-025).
 - Placement une una pieza, su posición (x, y, z en mm desde la esquina del
   fondo, abajo, a la izquierda mirando del fondo hacia la puerta; ver
   ADR-0015) y su orientación.
 - LoadPlan junta las colocaciones, las métricas y las piezas que no
   cupieron.
 - Pruebas de tabla para las 6 orientaciones.
+- Prueba de ida y vuelta de JSON a Go con todos los output.json de
+  contracts/examples/, igual que la de los input.json de la sesión 1.1.2
+  (contract_examples_test.go): outOfGauge que no viene debe regresar sin venir.
 - Escribe el capítulo 03 de la guía (métodos y receptores) y explícame
   cuándo usar receptor por valor y cuándo por puntero, con estos tipos.
 
@@ -166,7 +172,15 @@ errores claros en español, nunca un panic:
   rango (una puerta más grande que el interior NO es error: ver ADR-0016);
 - un equipo con puerta (door) que además trae margen de sobredimensión
   (overhang mayor que cero): el margen es solo para tramos abiertos (ADR-0017);
-- una pieza sin ninguna orientación permitida.
+- una pieza sin ninguna orientación permitida: "allowedOrientations": []
+  llega a Go como una lista vacía que NO es nil, y con omitempty
+  desaparece al volver a JSON, así que la pieza pasaría a tener las 6
+  orientaciones (con «este lado arriba» sería grave). Recházala aquí
+  (len == 0 y != nil), igual que una orientación que no sea una de las
+  seis (P-025).
+
+La validación corre antes de cualquier cálculo: Volume() se desborda sin
+aviso con medidas fuera de los límites del contrato.
 
 Una pieza que no cabe en ninguna orientación NO es error de validación:
 sale en unplaced con EXCEEDS_DIMENSIONS o EXCEEDS_DOOR (ADR-0016).
@@ -177,8 +191,8 @@ problemas, repórtalos todos juntos, no solo el primero.
 
 Pruebas de tabla con un caso por cada error y uno válido; usa también
 contracts/examples/invalid/ (schema y semantic): todos deben dar error.
-Escribe el capítulo 04 de la guía (errores como valores) comparándolo con try/catch
-de PHP.
+Escribe el capítulo 04 de la guía (errores como valores): error como valor,
+%w, errors.Is y errors.As, y por qué se reportan todos juntos.
 
 Primero propón el plan y la lista de errores que vas a definir.
 ```
@@ -512,8 +526,8 @@ Primero propón el plan.
 ```
 Escribe los capítulos 07 (interfaces) y 08 (pruebas de tabla, benchmarks y
 fuzzing) de la guía de Go con ejemplos del código actual. En el 07, muestra
-cómo las estrategias de ordenamiento podrían ser una interfaz y compáralo
-con interface/implements de PHP.
+cómo las estrategias de ordenamiento podrían ser una interfaz y cómo un tipo
+la cumple solo con tener sus métodos.
 ```
 
 Después: `/cerrar-sprint 1.4`.
@@ -605,7 +619,7 @@ que llame a GET /health y muestre la versión del motor. La URL de la API
 viene de una variable de entorno de Vite. Conecta el sistema de diseño
 @cargo-3d/ui (estilos, Logo y Button) desde esta primera pantalla, como pide
 el ADR-0014 (P-015). Explícame la estructura de una
-app de React como si viniera de PHP con plantillas. Primero propón el plan.
+app de React paso a paso. Primero propón el plan.
 ```
 
 - **Terminada cuando:** la web muestra la versión del motor que responde la API.

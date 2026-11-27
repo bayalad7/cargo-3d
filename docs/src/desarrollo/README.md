@@ -14,7 +14,7 @@ otras secciones; la organización completa está en el [ADR-0021](../adr/0021-or
 | Saber cómo trabajar con Claude Code y los comandos `/sesion`, `/cerrar-sesion`… | [Flujo con Claude Code](flujo/claude-code.md) |
 | Hacer commits, push o liberar una versión | [Ramas, commits y versiones](flujo/ramas-y-commits.md) |
 | Nombrar algo, elegir unidades o escribir un error | [Convenciones](convenciones.md) |
-| Entender Go viniendo de PHP | [Aprendizaje → Go](../aprendizaje/go/00-introduccion.md) |
+| Entender el Go del proyecto | [Aprendizaje → Go](../aprendizaje/go/00-introduccion.md) |
 
 ## Qué va en esta carpeta
 

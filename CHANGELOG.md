@@ -7,8 +7,10 @@ Cada versión liberada en `main` lleva su etiqueta de git (ADR-0012).
 ## [Sin publicar]
 
 ### Agregado
+- Tipos del motor `EngineInput`, `Container`, `Section`, `Overhang`, `Door`, `CargoItem` y `Orientation` en `backend/internal/engine`, con `Volume()`, `Margin()` e `IsStackable()`, y una prueba que pasa los 27 ejemplos de entrada de JSON a Go y de regreso (sesión 1.1.2).
+- Capítulo de aprendizaje `02-structs-y-tipos.md` y ADR-0022: la guía y los comentarios explican Go solo con Go.
 - Sección `docs/src/desarrollo/` (ADR-0021): instalación del entorno, servicios, conexión a PostgreSQL con pgAdmin y psql (`entorno/base-de-datos.md`) y guía de ramas, commits y versiones (`flujo/ramas-y-commits.md`).
-- Capítulo de aprendizaje `docs/src/aprendizaje/go/01b-modulos-e-imports.md`: por qué los imports `github.com/...` se leen del disco (comparado con PSR-4 de Composer).
+- Capítulo de aprendizaje `docs/src/aprendizaje/go/01b-modulos-e-imports.md`: por qué los imports `github.com/...` se leen del disco.
 - Casos de uso simulados en `docs/src/casos/` (29 casos por categoría, incluida carga sobredimensionada con permiso de la NOM-040) y procedimiento de pruebas con cargas reales
   para la v0.2.0 (ADR-0020).
 - Equipos personalizados por empresa: plantilla por clase y versiones de cada equipo (ADR-0019, se construye en la fase 2).
@@ -43,7 +45,7 @@ Cada versión liberada en `main` lleva su etiqueta de git (ADR-0012).
 - Contratos en `contracts/` (OpenAPI) y `engine/fixtures/`.
 - `CLAUDE.md` con el contexto y las reglas del proyecto, incluidas las reglas para limpiar Docker después de probar.
 - Documentación (mdBook): introducción, convenciones, conceptos, ADR 0001–0013,
-  guía de Go comparada con PHP, plan de trabajo y bitácora.
+  guía de Go, plan de trabajo y bitácora.
 - ADR-0007: dónde vive el código de PostgreSQL (`backend/internal/store`).
 - ADR-0011: versiones de todas las tecnologías (Node.js 26 LTS, pnpm 12, Turborepo 2.11, …).
 - ADR-0012: todo se trabaja directo en `develop` (sin ramas de trabajo ni pull requests); `main` solo recibe versiones.
@@ -65,6 +67,7 @@ Cada versión liberada en `main` lleva su etiqueta de git (ADR-0012).
 - Guía del flujo de trabajo con Claude Code (`docs/src/flujo-claude-code.md`).
 
 ### Cambiado
+- Regla 6 de `CLAUDE.md`, skill `/explicar` y guía de Go (capítulos 00, 01 y 01b): se explica Go solo con Go, sin comparaciones con otros lenguajes (ADR-0022).
 - La bitácora es un archivo por tema (`AAAA-MM-DD-tema.md`), agrupada por mes en el sitio.
 - Las cargas reales del plan se sustituyen por casos simulados hasta la v0.2.0; el sprint 2.6 pasa a ser de pruebas
   con cargas reales.

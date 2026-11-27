@@ -56,37 +56,22 @@ No hay red de por medio. Puedes comprobarlo: apaga el wifi y corre `go build ./b
 Y si cambias algo en `backend/internal/engine/doc.go`, el cambio se ve de inmediato en `httpapi`, sin
 `push` ni descargas.
 
-## Comparación con PHP (Composer y PSR-4)
+## Cómo resuelve Go los imports
 
-Es exactamente el autoload PSR-4 de Composer:
-
-```json
-// composer.json
-"autoload": {
-    "psr-4": { "Bayalad7\\Cargo3d\\": "src/" }
-}
-```
-
-```php
-use Bayalad7\Cargo3d\Engine\Version; // PHP NO va a Packagist:
-                                     // cambia el prefijo por src/ y abre src/Engine/Version.php
-```
-
-| PHP (Composer) | Go |
-|---|---|
-| `composer.json` → `"name": "bayalad7/cargo-3d"` | `go.mod` → `module github.com/bayalad7/cargo-3d/backend` |
-| Prefijo PSR-4 `Bayalad7\Cargo3d\` → `src/` | Prefijo del módulo → carpeta del `go.mod` (`backend/`) |
-| `use Bayalad7\Cargo3d\Engine\...` | `import "github.com/bayalad7/cargo-3d/backend/internal/engine"` |
-| Paquete de terceros: `composer require` → `vendor/` | Paquete de terceros: `go get` → `~/go/pkg/mod` |
-| `composer.lock` | `go.sum` (huellas de cada dependencia descargada) |
-
-La diferencia principal: en PHP el namespace y el nombre del paquete de Packagist son cosas separadas; en
-Go **son lo mismo**. El nombre del módulo sirve como prefijo de imports y, si alguien de fuera lo pide, como
-dirección para descargarlo.
+- **Al compilar.** Todos los imports se resuelven al compilar: el binario ya trae todo y no carga nada mientras
+  corre. Un import que no existe es un error de compilación, no un error a la mitad de una petición.
+- **Por carpeta.** Se importa un **paquete**, que es una carpeta completa: todos sus archivos `.go` forman un solo
+  paquete y se ven entre sí sin importarse.
+- **El nombre del módulo es el prefijo.** El mismo nombre sirve como prefijo de los imports y, si alguien de fuera
+  lo pide, como dirección para descargarlo.
+- **Versiones.** `go.mod` fija la versión de cada dependencia; `go.sum` guarda sus huellas para comprobar que lo
+  descargado no cambió.
+- **Imports sin usar.** Un import que no se usa es un error de compilación: el código no puede arrastrar paquetes
+  de más.
 
 ## Entonces, ¿por qué tiene forma de URL?
 
-Es una **convención** para que los nombres sean únicos en el mundo, como `com.empresa.proyecto` en Java.
+Es una **convención** para que los nombres sean únicos en el mundo.
 Nadie más puede publicar un módulo `github.com/bayalad7/...` porque esa cuenta es tuya.
 
 La URL solo se usa cuando **otro proyecto** quiere tu código: si alguien escribe
@@ -100,14 +85,14 @@ práctica estándar y no cuesta nada.
 `go.work` en la raíz dice `use ./backend`: le avisa a Go que ese módulo vive en esa
 carpeta, para poder correr `go test ./backend/...` desde la raíz. Si algún día hay otro módulo de Go en el
 monorepo y uno importa al otro, `go.work` hace que se usen las copias locales en vez de descargar versiones
-publicadas (como un `"repositories": [{"type": "path"}]` de Composer).
+publicadas.
 
 ## Bonus: la carpeta `internal/`
 
 `internal` tiene un significado especial para el compilador: un paquete dentro de `internal/` **solo** lo
 pueden importar paquetes que estén bajo la carpeta padre de `internal/` (aquí, `backend/`). Aunque alguien
 de fuera conozca la ruta `github.com/bayalad7/cargo-3d/backend/internal/engine`, el compilador le negará el
-import. Es como si en PHP pudieras marcar un namespace completo como `private`.
+import. Es una regla del compilador, no una convención: no se puede saltar.
 
 Por eso el motor, la API y el acceso a la base de datos viven en `backend/internal/`: son piezas del
 servidor, no una librería pública.

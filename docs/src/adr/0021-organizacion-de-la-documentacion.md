@@ -32,7 +32,7 @@ Cada carpeta de `docs/src/` responde **una** pregunta. Todo lo de desarrollo va 
 | `casos/` | ¿Qué debe resolver el motor? | Casos simulados, pruebas reales |
 | `adr/` | ¿Por qué se decidió así? | Una decisión por archivo |
 | `ux/` | ¿Cómo se ve y se comporta la interfaz? | Sistema de diseño Voxa |
-| `aprendizaje/` | ¿Qué necesito aprender para entender el código? | Go comparado con PHP |
+| `aprendizaje/` | ¿Qué necesito aprender para entender el código? | Go explicado con el código real (ADR-0022) |
 | `bitacora/` | ¿Qué pasó y cuándo? | Un archivo por tema |
 
 Una página nueva se ubica por la pregunta que responde, se registra en `SUMMARY.md` y, si es de desarrollo, en

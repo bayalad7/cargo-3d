@@ -43,7 +43,7 @@ Reglas:
       │
       └──────► engine   (sin base de datos)
    ```
-3. **`sqlcgen/` es código generado**, igual que `vendor/` en Composer: si hay que cambiarlo, se cambia
+3. **`sqlcgen/` es código generado**, no se edita a mano: si hay que cambiarlo, se cambia
    el `.sql` de `queries/` (o una migración) y se vuelve a correr `sqlc generate`. Sí se sube al repo,
    para que el proyecto compile sin tener sqlc instalado.
 4. **Una migración ya aplicada no se edita**: los cambios al esquema van en una migración nueva.

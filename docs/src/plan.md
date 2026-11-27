@@ -36,7 +36,7 @@ se trabaja directo en `develop` y termina con la bitácora actualizada.
 3. **Contrato primero.** Si cambia la API o el motor, se edita `contracts/` antes que el código.
 4. **Implementación en pasos chicos**, cada uno con pruebas de tabla y documentación.
 5. **Verificación:** `gofmt -l backend` vacío, `go vet ./backend/...` y `go test ./backend/...` sin errores.
-6. **Revisión tuya:** lee el diff completo; pregunta lo que no entiendas: *"Explícame esta línea como si viniera de PHP."*
+6. **Revisión tuya:** lee el diff completo; pregunta lo que no entiendas: *"Explícame esta línea paso a paso."*
 7. **Cierre:** *"Actualiza la bitácora, el CHANGELOG y la sección Estado de CLAUDE.md."* Commit y push a `develop`.
 
 ### Reglas que no se negocian
@@ -116,7 +116,7 @@ en segundos y la web la muestra en 3D.
 - [ ] Tipos `Container`, `CargoItem`, `Orientation`, `Placement` y `LoadPlan` en `internal/engine`, en milímetros y kilogramos (`int64`).
 - [ ] Validación de entrada que devuelve errores claros (`error`), nunca `panic`.
 - [ ] Casos de uso simulados (`docs/src/casos/`) convertidos en fixtures en `engine/fixtures/casos/`.
-- [ ] Guía de Go: capítulos 02 a 04.
+- [ ] Guía de Go: capítulos 02 a 04 (el 02 está escrito).
 
 ### Sprint 1.2 — Geometría
 

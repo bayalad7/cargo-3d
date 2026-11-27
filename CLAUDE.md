@@ -59,7 +59,12 @@ Principio rector: **Go para todo el backend, TypeScript para todas las pantallas
    enlazarlo en `docs/src/SUMMARY.md`.
 5. **Cada concepto grande → documento en `docs/src/conceptos/`** con diagrama si ayuda.
 6. **Conceptos nuevos de Go → `docs/src/aprendizaje/go/`**, explicados con las
-   estructuras reales del proyecto y comparados con PHP, no con ejemplos genéricos.
+   estructuras reales del proyecto, no con ejemplos genéricos.
+   **Solo Go (ADR-0022):** el código, los comentarios, la guía, las skills y los prompts explican Go en términos
+   de Go, sin comparar con otros lenguajes ni traer sus ideas. El código es Go idiomático y actual.
+   Lo que se dice de Go tiene que ser cierto: si hay duda, se comprueba con un programa o una prueba antes de
+   escribirlo. Se explican las trampas reales del lenguaje: copias superficiales, `nil`, valores cero,
+   desbordamiento.
 7. **Pruebas como documentación:** nombres de prueba que describan el comportamiento
    (ej. `TestDoesNotStackFragileUnderHeavy`), con comentario en español. Preferir pruebas de tabla.
 8. **Bitácora y pendientes:** al cerrar cada sesión, agregar `docs/src/bitacora/AAAA-MM-DD-tema.md` (un archivo por
@@ -232,14 +237,14 @@ pnpm --filter @cargo-3d/ui build:preview   # compila la vista previa (abrir pack
 
 ## Estado
 
-- **Fase actual:** 1 — prueba de concepto, sprint 1.1 (sesión 1.1.1 terminada el 2026-11-21). Servidor con `/health`; motor vacío.
+- **Fase actual:** 1 — prueba de concepto, sprint 1.1 (sesión 1.1.2 terminada el 2026-11-26). Servidor con `/health`; el motor ya tiene `EngineInput`, `Container`, `Section`, `Overhang`, `Door`, `CargoItem` y `Orientation` (sin `Placement` ni `LoadPlan`).
 - **Nivel de comentarios Go:** máximo (casi cada línea).
 - **Contrato del motor:** `contracts/engine.schema.json` v0.1.0, 27 ejemplos válidos y 17 inválidos en `contracts/examples/` (ADR-0015, 0016 y 0017).
   Escrito con datos sintéticos; catálogo canónico en `contracts/equipment.json` (26 equipos, cada uno con su ejemplo o la razón de no tenerlo) y `equipo.svg` en cada ejemplo.
 - **Datos:** no hay cargas reales; se usan los 29 casos simulados de `docs/src/casos/` (ADR-0020). La sesión 1.1.5 los
   convierte en fixtures. Las pruebas con cargas reales empiezan con la v0.2.0 (P-022).
-- **Siguiente paso:** sesión 1.1.2 (`Container` y `CargoItem` en Go, siguiendo el contrato).
+- **Siguiente paso:** sesión 1.1.3 (`Orientation`, `Placement` y `LoadPlan`, con la ida y vuelta de los `output.json`; ver P-025).
 - **Sistema de diseño:** base lista en `packages/ui` (2026-11-21, fuera del plan); se conecta a `apps/web` en el sprint 1.6.
-- **Pendientes:** registro completo en `docs/src/pendientes.md` (P-001 a P-024). Los de Benjamín más urgentes:
+- **Pendientes:** registro completo en `docs/src/pendientes.md` (P-001 a P-025). Los de Benjamín más urgentes:
   P-019 (copiar `docs/datos/` y `.env` antes de cambiar de computadora) y P-022 (empresa para las pruebas reales, v0.2.0).
-- **Última sesión:** 2026-11-26, fuera del plan: sección `docs/src/desarrollo/` (ADR-0021), conexión a PostgreSQL con pgAdmin y guía de ramas y commits.
+- **Última sesión:** 2026-11-26, sesión 1.1.2: tipos del motor, capítulo 02 de la guía y Go explicado solo con Go (ADR-0022). Antes, el mismo día y fuera del plan: sección `docs/src/desarrollo/` (ADR-0021).

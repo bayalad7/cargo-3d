@@ -13,7 +13,8 @@ el proceso. Claude no recuerda perfectamente entre sesiones: el repositorio tien
 1. **Código en inglés, comentarios y documentación en español** (detalle en `desarrollo/convenciones.md`).
 2. **Comentarios de Go muy detallados al inicio** (casi cada línea), reduciéndose por etapas.
 3. **Cinco capas de documentación:** código (comentarios de `go doc` y TSDoc), ADRs, conceptos,
-   guía de aprendizaje de Go comparada con PHP, y bitácora/changelog, publicadas con **mdBook**.
+   guía de aprendizaje de Go (explicada solo con Go desde el [ADR-0022](0022-go-sin-comparaciones.md); antes se
+   comparaba con otro lenguaje), y bitácora/changelog, publicadas con **mdBook**.
 4. **`CLAUDE.md`** en la raíz como resumen vivo del proyecto para cada sesión.
 5. **Nada se da por terminado sin documentación, `gofmt`, `go vet` y pruebas.**
 6. ~~**Puntos de control:** al terminar un módulo, Benjamín lo explica con sus palabras.~~ Sustituido por el

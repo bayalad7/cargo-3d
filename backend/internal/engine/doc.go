@@ -5,16 +5,26 @@
 // HTTP, base de datos ni interfaz: recibe datos y devuelve un plan. Así se puede
 // probar solo y, si algún día hace falta, compilar a WebAssembly con TinyGo.
 //
-// Este paquete todavía está vacío a propósito: la estructura y las decisiones se
-// documentaron primero. La implementación empieza en la fase 1, sprint 1.1
-// (ver docs/src/plan.md).
+// Los tipos siguen contracts/engine.schema.json campo por campo:
+//
+//   - EngineInput (input.go): la entrada completa.
+//   - Container, Section, Overhang y Door (container.go): el equipo.
+//   - CargoItem y Orientation (cargo_item.go): las piezas.
+//
+// Faltan Placement y LoadPlan (sesión 1.1.3), la validación de la entrada
+// (1.1.4) y el algoritmo (sprint 1.3). Ver docs/src/plan.md.
+//
+// Medidas en milímetros y pesos en kilogramos, siempre int64 y ya redondeados
+// por quien llama (ADR-0016). Explicación en
+// docs/src/aprendizaje/go/02-structs-y-tipos.md.
 //
 // # Nota de aprendizaje
 //
 //   - Un comentario justo encima de "package" documenta el paquete completo.
 //   - Un comentario justo encima de una función o tipo exportado lo documenta.
 //   - "Exportado" en Go = empieza con mayúscula (Container). Con minúscula
-//     (container) es privado del paquete. No hay palabras public/private como en PHP.
+//     (container) solo se ve dentro del paquete. No hay palabras clave de
+//     visibilidad: la decide la primera letra.
 //   - "internal/" en la ruta significa que solo el código de este módulo puede
 //     importar este paquete: nadie de fuera puede depender de él por accidente.
 //

@@ -10,27 +10,30 @@ backend (`Container`, `CargoItem`, `LoadPlan`, los handlers de la API) en el mom
 2. Lee el capítulo, luego vuelve al código y léelo línea por línea.
 3. Si algo no queda claro, pide `/explicar <archivo o concepto>`.
 
-## Comparación rápida con PHP
+## Ideas clave de Go en este proyecto
 
-| En PHP | En Go | Diferencia clave |
+Un resumen de lo que más se usa en el backend. Cada idea se explica a fondo en su capítulo, con el código real.
+
+| Idea | Cómo se escribe | Qué hay que saber |
 |---|---|---|
-| `class Container { ... }` | `type Container struct { ... }` + métodos `func (c Container) Volume() int64` | No hay clases ni herencia: structs con métodos |
-| `interface Constraint` + `implements` | `type Constraint interface { ... }` | Las interfaces se cumplen solas: no se escribe `implements` |
-| `$x = null;` | Valor cero (`0`, `""`, `nil`) o devolver `(valor, ok bool)` | Toda variable nace con un valor útil |
-| `throw new Exception()` / `try/catch` | `return nil, err` + `if err != nil` | Los errores son valores que se devuelven y se revisan |
-| `public` / `private` | Mayúscula = exportado, minúscula = privado | La visibilidad está en el nombre |
-| `namespace App\Engine;` | `package engine` + ruta de import | Un paquete = una carpeta |
-| `composer.json` / `composer install` | `go.mod` / `go mod tidy` | Dependencias del módulo |
-| Arreglos asociativos | `map[string]int` y slices `[]CargoItem` | Tipos separados para listas y diccionarios |
-| `finally` | `defer` | Ejecuta algo al salir de la función |
-| Procesos o colas para paralelismo | `go funcion()` (goroutines) y canales | Concurrencia incluida en el lenguaje |
-| Variables sin tipo | `var x int64` o `x := 5` (tipo inferido) | Tipado estático; el compilador revisa todo |
+| Tipos con campos | `type Container struct { ... }` + métodos `func (c Container) Volume() int64` | Los datos se arman con structs y composición (un struct dentro de otro) |
+| Copias | `b := a` con un struct | Copia los campos; los campos puntero y slice siguen compartiendo sus datos ([capítulo 02](02-structs-y-tipos.md)) |
+| Interfaces | `type Constraint interface { ... }` | Un tipo cumple una interfaz con solo tener sus métodos; no se declara en ningún lado |
+| Valor cero | `0`, `""`, `false`, `nil`, o devolver `(valor, ok bool)` | Toda variable nace con un valor definido, pero no siempre usable: escribir en un mapa `nil` o leer un puntero `nil` detiene el programa |
+| Errores | `return nil, err` + `if err != nil` | Los errores son valores que se devuelven y se revisan donde ocurren |
+| Visibilidad | Mayúscula = exportado, minúscula = no exportado | Está en el nombre y es por **paquete** |
+| Paquetes | `package engine` + ruta de import | Un paquete = una carpeta ([capítulo 01b](01b-modulos-e-imports.md)) |
+| Dependencias | `go.mod` (versiones) + `go.sum` (huellas) | `go.mod` fija las versiones; `go.sum` comprueba que lo descargado no cambió |
+| Colecciones | `[]CargoItem` (slice) y `map[string]int` (mapa) | Tipos separados para listas y diccionarios |
+| Limpieza al salir | `defer` | Corre al salir de la **función**, en orden inverso si hay varios; sus argumentos se calculan al escribir el `defer` |
+| Concurrencia | `go funcion()` (goroutines) y canales | Incluida en el lenguaje y en la librería estándar |
+| Tipos | `var x int64` o `x := 5` (tipo inferido) | Tipado estático: el compilador revisa todo antes de correr |
 
 ## Ruta de capítulos (se escriben conforme avanza el backend)
 
 - [x] 01 — Primeros pasos: herramientas, módulos y el servidor `/health`
 - [x] 01b — [Módulos e imports](01b-modulos-e-imports.md): por qué `github.com/...` se lee del disco
-- [ ] 02 — `struct` y tipos numéricos (con `Container` y `CargoItem`)
+- [x] 02 — [`struct` y tipos numéricos](02-structs-y-tipos.md) (con `Container` y `CargoItem`)
 - [ ] 03 — Métodos y receptores (volumen, orientaciones)
 - [ ] 04 — Errores como valores (cuando una pieza no cabe)
 - [ ] 05 — Slices, maps y ciclos (recorrer puntos extremos)
