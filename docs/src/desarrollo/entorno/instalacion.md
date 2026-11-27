@@ -89,7 +89,7 @@ Docker Desktop (Windows o macOS), OrbStack (macOS) o Docker Engine (Linux), con 
 ### 9. pgAdmin (opcional)
 
 Para ver la base de datos con una interfaz gráfica. Instalación y conexión en [Base de datos](base-de-datos.md).
-1. En la raíz del repo, copia `.env.example` a `.env` y cambia la contraseña
+1. En la raíz del repo, copia `.env.example` a `.env` (en desarrollo PostgreSQL no lleva contraseña, ver ADR-0024)
    (PowerShell: `Copy-Item .env.example .env`; macOS/Linux: `cp .env.example .env`).
 2. Cómo usarlo sin llenar el disco: [Levantar y detener servicios](servicios.md).
 

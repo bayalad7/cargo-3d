@@ -59,7 +59,7 @@ if (-not (Test-Docker)) {
 # --- 2. Archivo .env ---
 if (-not (Test-Path '.env')) {
     Copy-Item '.env.example' '.env' -ErrorAction Stop
-    Write-Host 'Se creó .env desde .env.example. Cambia POSTGRES_PASSWORD cuando puedas.' -ForegroundColor Yellow
+    Write-Host 'Se creó .env desde .env.example (desarrollo: PostgreSQL sin contraseña, ver ADR-0024).' -ForegroundColor Yellow
 }
 
 # Lee .env (líneas CLAVE=valor, sin comentarios) para armar la conexión de go run.

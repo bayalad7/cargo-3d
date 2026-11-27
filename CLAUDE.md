@@ -217,7 +217,7 @@ scripts/servicios/        levantar y detener el entorno de desarrollo (.ps1/.cmd
 ## Comandos
 
 ```bash
-cp .env.example .env                  # una vez; cambia la contraseña
+cp .env.example .env                  # una vez; en desarrollo sin contraseña (ADR-0024)
 docker compose --profile api up -d --build   # grupo cargo-3d: PostgreSQL (127.0.0.1:5433) + API
 docker compose --profile api down     # apagar el grupo (el volumen se conserva)
 docker compose up -d db               # solo PostgreSQL, para trabajar con go run

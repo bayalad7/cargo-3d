@@ -92,6 +92,7 @@
 - [0021 — Organización de la documentación](adr/0021-organizacion-de-la-documentacion.md)
 - [0022 — Go explicado solo con Go](adr/0022-go-sin-comparaciones.md)
 - [0023 — Lectura y validación de la entrada](adr/0023-lectura-y-validacion-de-la-entrada.md)
+- [0024 — PostgreSQL sin contraseña en desarrollo](adr/0024-desarrollo-sin-contrasena.md)
 
 # Experiencia de usuario
 

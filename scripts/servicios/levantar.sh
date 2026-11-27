@@ -50,7 +50,7 @@ fi
 # --- 2. Archivo .env ---
 if [[ ! -f .env ]]; then
   cp .env.example .env
-  printf '\033[33mSe creó .env desde .env.example. Cambia POSTGRES_PASSWORD cuando puedas.\033[0m\n'
+  printf '\033[33mSe creó .env desde .env.example (desarrollo: PostgreSQL sin contraseña, ver ADR-0024).\033[0m\n'
 fi
 
 # Lee una variable de .env (CLAVE=valor), o devuelve el valor por defecto.

@@ -16,6 +16,7 @@
 #   docker compose -p cargo3d-test --profile api down -v --rmi all --remove-orphans
 #
 # Las credenciales vienen de .env (copia .env.example a .env). Nunca subas .env al repo.
+# En desarrollo no hay contraseña (ADR-0024); en producción siempre.
 
 # Nombre fijo del proyecto: los contenedores y el volumen se llaman igual aunque la carpeta
 # del repo tenga otro nombre (por ejemplo en otra computadora). Así siempre es un solo grupo, sin duplicados.
@@ -30,7 +31,12 @@ services:
     environment:
       POSTGRES_DB: ${POSTGRES_DB:-cargo3d}
       POSTGRES_USER: ${POSTGRES_USER:-cargo3d}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Define POSTGRES_PASSWORD en .env}
+      # En desarrollo .env la deja vacía y pone POSTGRES_HOST_AUTH_METHOD=trust (no pide contraseña;
+      # ver docs/src/adr/0024-desarrollo-sin-contrasena.md). Sin esa variable se exige contraseña
+      # (scram-sha-256) y la imagen no arranca si POSTGRES_PASSWORD está vacía.
+      # Las dos solo aplican al CREAR el volumen; si cambian, hay que recrearlo (down -v).
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-}
+      POSTGRES_HOST_AUTH_METHOD: ${POSTGRES_HOST_AUTH_METHOD:-scram-sha-256}
       # Orden y comparación de texto en español de México con ICU (ñ, acentos), igual en cualquier
       # sistema y sin depender de los locales del sistema operativo. Solo aplica al crear el volumen.
       POSTGRES_INITDB_ARGS: "--locale-provider=icu --icu-locale=es-MX"

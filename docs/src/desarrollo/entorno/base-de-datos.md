@@ -44,12 +44,14 @@ En pgAdmin: clic derecho en **Servers → Register → Server…**
 | Connection | Port | `5433` (o el `POSTGRES_PORT` de tu `.env`) |
 | Connection | Maintenance database | `cargo3d` (`POSTGRES_DB`) |
 | Connection | Username | `cargo3d` (`POSTGRES_USER`) |
-| Connection | Password | la de `POSTGRES_PASSWORD` en tu `.env` |
-| Connection | Save password? | Opcional; pgAdmin la guarda cifrada en tu computadora |
+| Connection | Password | vacía (en desarrollo no hay contraseña; ver ADR-0024) |
+| Connection | Save password? | No hace falta |
 | Parameters | SSL mode | `disable` (la conexión no sale de tu computadora) |
 
 Los valores salen de `.env` y `docker-compose.yml`. Si cambiaste alguno en `.env`, usa el tuyo.
-La contraseña **nunca** se escribe en la documentación ni en el código.
+En desarrollo PostgreSQL usa `trust`: acepta conexiones sin contraseña, y solo desde tu computadora porque el
+puerto escucha en `127.0.0.1` ([ADR-0024](../../adr/0024-desarrollo-sin-contrasena.md)). En producción sí hay contraseña,
+y **nunca** se escribe en la documentación ni en el código.
 
 Una vez conectado, las tablas estarán en **cargo-3d (desarrollo) → Databases → cargo3d → Schemas → public → Tables**.
 
@@ -58,7 +60,7 @@ Una vez conectado, las tablas estarán en **cargo-3d (desarrollo) → Databases 
 Útil para `psql`, DBeaver, TablePlus o la extensión de PostgreSQL de VS Code:
 
 ```text
-postgres://cargo3d:<contraseña>@127.0.0.1:5433/cargo3d?sslmode=disable
+postgres://cargo3d:@127.0.0.1:5433/cargo3d?sslmode=disable
 ```
 
 La API usa esta misma cadena en `DATABASE_URL`; dentro de Docker el host es `db` y el puerto `5432`
@@ -102,7 +104,7 @@ Al terminar la prueba se borra (`down -v`); el servidor registrado en pgAdmin pu
 | Síntoma | Causa | Solución |
 |---|---|---|
 | `Connection refused` | El contenedor está apagado | `docker compose up -d db` |
-| `password authentication failed` | Contraseña distinta a la del `.env`, o el volumen se creó con otra contraseña | Revisa `.env`. La contraseña se fija al **crear** el volumen; cambiarla en `.env` después no la cambia en PostgreSQL |
+| `password authentication failed` | Contraseña distinta a la del `.env`, o el volumen se creó con otra contraseña | Revisa `.env`. La contraseña y `POSTGRES_HOST_AUTH_METHOD` se fijan al **crear** el volumen; cambiarlas en `.env` después no las cambia en PostgreSQL. Recrea el volumen: `docker compose --profile api down -v` |
 | Conecta a otra base o pide otro usuario | Usaste el puerto 5432 (PostgreSQL instalado en el sistema) | Usa el 5433 |
 | `port is already allocated` al levantar | Otro programa ocupa el 5433 | Cambia `POSTGRES_PORT` en `.env` y en pgAdmin |
 | Aviso de versión no soportada | pgAdmin viejo | Actualiza pgAdmin |
