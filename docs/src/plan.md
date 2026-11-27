@@ -120,7 +120,7 @@ en segundos y la web la muestra en 3D.
 
 ### Sprint 1.2 — Geometría
 
-- [ ] Cajas alineadas a los ejes: intersección, contención y contacto entre caras.
+- [x] Cajas alineadas a los ejes: intersección, contención y contacto entre caras.
 - [ ] Las 6 orientaciones y el filtro de orientaciones permitidas.
 - [ ] Pruebas de tabla con casos límite y **fuzzing nativo de Go** (`go test -fuzz`).
 - [ ] Guía de Go: capítulos 05 y 06.

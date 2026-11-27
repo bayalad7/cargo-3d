@@ -51,7 +51,8 @@ eje (`dxMm`, `dyMm`, `dzMm`). La pieza ocupa:
 de xMm a xMm + dxMm      de yMm a yMm + dyMm      de zMm a zMm + dzMm
 ```
 
-Dos piezas cuyas caras **se tocan** no se traslapan: la comparación es estricta (`<`), no `<=`.
+Dos piezas cuyas caras **se tocan** no se traslapan: la comparación es estricta (`<`), no `<=`. Cómo lo revisa
+el motor (encimarse, quedar dentro y área de contacto) está en [Geometría de cajas](geometria.md).
 
 **Ejemplo** (`contracts/examples/maritime/dry/20dv-heavy`): el segundo cajón está en `(0, 0, 1100)` y mide
 `1400 × 1000 × 1100` sobre x, y, z. Termina en `z = 2200`, dentro de los 2 352 de ancho, y toca al primero (que

@@ -28,6 +28,10 @@ Un resumen de lo que más se usa en el backend. Cada idea se explica a fondo en 
 | Limpieza al salir | `defer` | Corre al salir de la **función**, en orden inverso si hay varios; sus argumentos se calculan al escribir el `defer` |
 | Concurrencia | `go funcion()` (goroutines) y canales | Incluida en el lenguaje y en la librería estándar |
 | Tipos | `var x int64` o `x := 5` (tipo inferido) | Tipado estático: el compilador revisa todo antes de correr |
+| Mínimo y máximo | `min(a, b)` y `max(a, b)` | Funciones integradas desde Go 1.21, sin importar nada; las usa `overlap` en `box.go` |
+| Condiciones | `a && b`, `a \|\| b` | Se evalúan de izquierda a derecha y se detienen en cuanto se sabe el resultado (cortocircuito), como en `Box.Intersects` |
+| Comparar structs | `got != want` | Dos structs se comparan con `==` si todos sus campos son comparables; un struct con un slice o un mapa no compila con `==` |
+| Desbordamiento | `int64` cerca de 9,2 × 10¹⁸ | Una suma o un producto que se pasa del máximo da la vuelta sin aviso: ni error ni `panic` ([capítulo 02](02-structs-y-tipos.md); límites de `Box` en [Geometría de cajas](../../conceptos/geometria.md)) |
 
 ## Ruta de capítulos (se escriben conforme avanza el backend)
 

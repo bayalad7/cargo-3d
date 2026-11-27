@@ -20,6 +20,7 @@
 - [Visión general del sistema](conceptos/vision-general.md)
 - [El problema del acomodo 3D](conceptos/problema-bin-packing.md)
 - [Sistema de coordenadas](conceptos/sistema-coordenadas.md)
+- [Geometría de cajas](conceptos/geometria.md)
 - [Equipos y normas](conceptos/equipos-y-normas.md)
 - [Equipos personalizados](conceptos/equipos-personalizados.md)
 
@@ -111,6 +112,7 @@
 
 - [Índice](bitacora/README.md)
   - [Noviembre 2026]()
+    - [26 nov · Cajas en el espacio (1.2.1)](bitacora/2026-11-26-cajas-en-el-espacio.md)
     - [26 nov · Cierre del sprint 1.1](bitacora/2026-11-26-cierre-sprint-1-1.md)
     - [26 nov · Fixtures de los casos simulados (1.1.5)](bitacora/2026-11-26-fixtures-de-casos.md)
     - [26 nov · PostgreSQL sin contraseña en desarrollo](bitacora/2026-11-26-postgresql-sin-contrasena.md)

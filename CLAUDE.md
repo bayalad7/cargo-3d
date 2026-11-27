@@ -237,14 +237,14 @@ pnpm --filter @cargo-3d/ui build:preview   # compila la vista previa (abrir pack
 
 ## Estado
 
-- **Fase actual:** 1 — prueba de concepto. Sprint 1.1 cerrado el 2026-11-26; sigue el sprint 1.2 (geometría). Servidor con `/health`; el motor tiene los tipos, la lectura y la validación de la entrada; sin algoritmo.
+- **Fase actual:** 1 — prueba de concepto. Sprint 1.2 (geometría), sesión 1.2.1 terminada el 2026-11-26 (sprint 1.1 cerrado ese día). Servidor con `/health`; el motor tiene los tipos, la lectura y la validación de la entrada y la geometría de cajas (`Box`); sin algoritmo.
 - **Nivel de comentarios Go:** máximo (casi cada línea). Al cerrar el sprint 1.1 Benjamín se siente cómodo con Go; se puede bajar un poco más adelante.
 - **Contrato del motor:** `contracts/engine.schema.json` v0.1.0, 27 ejemplos válidos y 17 inválidos en `contracts/examples/` (ADR-0015, 0016 y 0017).
   Escrito con datos sintéticos; catálogo canónico en `contracts/equipment.json` (26 equipos, cada uno con su ejemplo o la razón de no tenerlo) y `equipo.svg` en cada ejemplo.
 - **Datos:** no hay cargas reales; se usan los 29 casos simulados de `docs/src/casos/` (ADR-0020), convertidos en 36 fixtures
   en `engine/fixtures/casos/` (sesión 1.1.5). Las pruebas con cargas reales empiezan con la v0.2.0 (P-022).
-- **Siguiente paso:** sesión 1.2.1 (cajas en el espacio), modelo `opus` / `high`.
+- **Siguiente paso:** sesión 1.2.2 (orientaciones permitidas en la práctica y capítulo 05 de la guía), modelo `opus` / `medium`.
 - **Sistema de diseño:** base lista en `packages/ui` (2026-11-21, fuera del plan); se conecta a `apps/web` en el sprint 1.6.
-- **Pendientes:** registro completo en `docs/src/pendientes.md` (P-001 a P-028). Los de Benjamín más urgentes:
+- **Pendientes:** registro completo en `docs/src/pendientes.md` (P-001 a P-029). Los de Benjamín más urgentes:
   P-019 (copiar `docs/datos/` y `.env` antes de cambiar de computadora) y P-022 (empresa para las pruebas reales, v0.2.0).
-- **Última sesión:** 2026-11-26, cierre del sprint 1.1 (sesión 1.1.6). El mismo día: sesiones 1.1.2 a 1.1.5, ADR-0022, 0023 y 0024.
+- **Última sesión:** 2026-11-26, sesión 1.2.1: cajas en el espacio (`Box`, concepto `geometria.md`). El mismo día: sesiones 1.1.2 a 1.1.6, ADR-0022, 0023 y 0024.
