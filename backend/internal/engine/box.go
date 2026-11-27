@@ -52,16 +52,64 @@ type Box struct {
 // las ve. Son detalle interno de Box.
 //
 // Go: la suma de int64 no avisa si se pasa del máximo (≈ 9,2 × 10¹⁸): da la
-// vuelta y sale un número negativo, sin error ni panic. En un plan que arma el
-// motor, lo más lejos que termina una pieza es x = 60 000 (un tramo que empieza
-// en 30 000 y mide 30 000), muy lejos de ese tope. Pero el contrato no pone
-// máximo a las coordenadas de una colocación: un plan que llegue de fuera con
-// xMm cerca del tope haría que maxX dé la vuelta e Intersects responda "no se
-// enciman" aunque sí se enciman. Por eso Box solo se usa con colocaciones que
-// armó el motor o que ya se validaron (P-029, sesión 1.2.3).
+// vuelta y sale un número negativo, sin error ni panic. Con una caja que pasa
+// InRange (todos sus números de a lo más MaxGeometryMM en valor absoluto) la
+// suma queda muy lejos de ese tope. El contrato todavía no pone máximo a las
+// coordenadas de una colocación: un plan que llegue de fuera con xMm cerca del
+// tope haría que maxX dé la vuelta e Intersects responda "no se enciman" aunque
+// sí se enciman. Por eso, con datos de fuera, hay que revisar InRange ANTES de
+// usar la caja (P-029; el máximo del contrato entra con el validador, sesión
+// 1.4.2).
 func (b Box) maxX() int64 { return b.XMM + b.DXMM }
 func (b Box) maxY() int64 { return b.YMM + b.DYMM }
 func (b Box) maxZ() int64 { return b.ZMM + b.DZMM }
+
+// MaxGeometryMM es el valor absoluto más grande que puede tener cualquiera de
+// los seis números de una Box para que la geometría sea confiable: 100 000 mm
+// (100 m).
+//
+// # Por qué este número
+//
+// Cubre con holgura todo lo que permite el contrato: una pieza mide a lo más
+// 30 000 mm por lado, una coordenada de un plan que arma el motor llega a lo
+// más a x = 60 000 (un tramo que empieza en 30 000 y mide 30 000) y a lo menos a
+// z = −1 000 (margen de rebase por la izquierda). Con 100 000, ninguna suma
+// (a lo más 2 × 10⁵) ni área (a lo más 4 × 10¹⁰ mm²) se acerca al tope de int64
+// (≈ 9,2 × 10¹⁸), así que no hay desbordamiento.
+const MaxGeometryMM int64 = 100_000
+
+// InRange dice si los seis números de la caja tienen un valor absoluto de a lo
+// más MaxGeometryMM. Con una caja que no cumple, Intersects, ContainedIn y
+// Contact pueden dar un resultado equivocado por desbordamiento de int64.
+//
+// # Cómo funciona
+//
+// Revisa los seis números, sean medidas positivas, cero o negativas: una caja
+// sin volumen pero de números chicos sí está en rango (las tres funciones ya
+// saben qué hacer con ella; ver Box).
+//
+// # Por qué así
+//
+// El motor arma sus propias cajas dentro de estos límites. Un plan que llega de
+// fuera (por ejemplo, tras mover una pieza a mano en el visor) puede traer
+// cualquier número: quien lo recibe llama a InRange antes de usar la caja.
+//
+// # Nota de aprendizaje: valor absoluto sin math.Abs
+//
+// math.Abs trabaja con float64. Con enteros se compara contra los dos lados del
+// rango (-MaxGeometryMM <= v && v <= MaxGeometryMM). No se escribe -v para sacar
+// el valor absoluto: el negativo de math.MinInt64 no cabe en int64 y vuelve a
+// salir math.MinInt64, así que "-v <= max" sería verdadero para el número más
+// negativo que existe.
+func (b Box) InRange() bool {
+	// Go: una función anónima asignada a una variable (un "closure"). inRange
+	// se usa seis veces abajo y dice una sola vez cuál es el rango.
+	inRange := func(v int64) bool {
+		return -MaxGeometryMM <= v && v <= MaxGeometryMM
+	}
+	return inRange(b.XMM) && inRange(b.YMM) && inRange(b.ZMM) &&
+		inRange(b.DXMM) && inRange(b.DYMM) && inRange(b.DZMM)
+}
 
 // hasVolume dice si las tres medidas son positivas. Una caja plana (una medida
 // en 0) o con una medida negativa no ocupa espacio.

@@ -1,6 +1,9 @@
 package engine
 
-import "testing"
+import (
+	"math"
+	"testing"
+)
 
 // unitCubeBox es una caja de 1000 mm por lado en el origen. Casi todos los casos de
 // abajo se escriben contra ella para que solo cambie lo que se prueba.
@@ -381,5 +384,54 @@ func TestPlacementBoxCopiesCornerAndDimensions(t *testing.T) {
 	// comparables (aquí, todos son int64).
 	if got := p.Box(); got != want {
 		t.Errorf("Box() = %+v, se esperaba %+v", got, want)
+	}
+}
+
+// TestInRangeAcceptsOnlySmallNumbers revisa que InRange acepte una caja solo
+// si sus seis números tienen valor absoluto de a lo más MaxGeometryMM, y que
+// rechace el desbordamiento por cualquiera de los dos lados, incluido el
+// número más negativo que cabe en int64.
+func TestInRangeAcceptsOnlySmallNumbers(t *testing.T) {
+	tests := []struct {
+		name string
+		box  Box
+		want bool
+	}{
+		{name: "caja del contrato", box: Box{XMM: 60000, YMM: 0, ZMM: -1000, DXMM: 30000, DYMM: 30000, DZMM: 30000}, want: true},
+		{name: "caja vacía (todo en 0)", box: Box{}, want: true},
+		{name: "caja sin volumen de números chicos", box: Box{DXMM: -5, DYMM: 0, DZMM: 10}, want: true},
+		{name: "justo en el límite positivo", box: Box{XMM: MaxGeometryMM}, want: true},
+		{name: "justo en el límite negativo", box: Box{ZMM: -MaxGeometryMM}, want: true},
+		{name: "1 mm arriba del límite en x", box: Box{XMM: MaxGeometryMM + 1}, want: false},
+		{name: "1 mm abajo del límite en z", box: Box{ZMM: -MaxGeometryMM - 1}, want: false},
+		{name: "medida de más de 100 000", box: Box{DYMM: MaxGeometryMM + 1}, want: false},
+		{name: "medida negativa fuera de rango", box: Box{DXMM: -MaxGeometryMM - 1}, want: false},
+		{name: "coordenada cerca del tope de int64", box: Box{XMM: math.MaxInt64 - 500, DXMM: 1000}, want: false},
+		{name: "el número más negativo de int64", box: Box{YMM: math.MinInt64}, want: false},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := tt.box.InRange(); got != tt.want {
+				t.Errorf("InRange() = %t, se esperaba %t\nbox = %+v", got, tt.want, tt.box)
+			}
+		})
+	}
+}
+
+// TestIntersectsIsWrongOutOfRange documenta POR QUÉ existe InRange: con una
+// coordenada cerca del tope de int64, xMm + dxMm da la vuelta a un número
+// negativo e Intersects dice "no se enciman" aunque las dos cajas son
+// idénticas. Si algún día Intersects se vuelve segura con cualquier número,
+// esta prueba falla y hay que revisar la regla de InRange.
+func TestIntersectsIsWrongOutOfRange(t *testing.T) {
+	huge := Box{XMM: math.MaxInt64 - 500, DXMM: 1000, DYMM: 1000, DZMM: 1000}
+
+	if huge.InRange() {
+		t.Fatal("la caja de prueba debería estar fuera de rango")
+	}
+	// Idénticas: tendrían que encimarse. Salen "separadas" por la vuelta de int64.
+	if huge.Intersects(huge) {
+		t.Error("se esperaba el resultado equivocado (false) que causa el desbordamiento; ¿ya es segura con números enormes?")
 	}
 }

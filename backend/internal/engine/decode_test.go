@@ -186,7 +186,8 @@ func TestDecodeInputErrorKeepsTheCause(t *testing.T) {
 //
 //	go test ./backend/internal/engine -run '^$' -fuzz FuzzDecodeInput -fuzztime 30s
 //
-// El tema completo de fuzzing es del sprint 1.2 (capítulo 08).
+// Cómo se corre y qué hacer cuando falla: capítulo 08 de la guía de Go
+// (docs/src/aprendizaje/go/08-pruebas-de-tabla-y-fuzzing.md).
 func FuzzDecodeInput(f *testing.F) {
 	// Semillas: todos los ejemplos, válidos e inválidos, y algunos extremos.
 	// findExamples y readFile reciben testing.TB, así que aceptan f.

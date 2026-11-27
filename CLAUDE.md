@@ -225,6 +225,13 @@ scripts/servicios/levantar.ps1 | .sh  # PostgreSQL + go run en un paso (Ctrl+Shi
 go run ./backend/cmd/api              # API en http://localhost:8080/health
 go test ./backend/...                 # pruebas
 go vet ./backend/...                  # revisión estática
+# Fuzzing de la geometría (capítulo 08 de la guía): UN objetivo por corrida; cambia -fuzztime según el tiempo que tengas.
+# Un caso que falla se guarda en backend/internal/engine/testdata/fuzz/ y se sube a git (regresión).
+go test ./backend/internal/engine -run '^$' -fuzz '^FuzzIntersectsIsSymmetric$' -fuzztime 1m
+go test ./backend/internal/engine -run '^$' -fuzz '^FuzzBoxIntersectsItselfOnlyWithVolume$' -fuzztime 1m
+go test ./backend/internal/engine -run '^$' -fuzz '^FuzzContainedInIsTransitive$' -fuzztime 1m
+go test ./backend/internal/engine -run '^$' -fuzz '^FuzzRotationKeepsVolume$' -fuzztime 1m
+go test ./backend/internal/engine -run '^$' -fuzz '^FuzzContactIsBoundedAndExcludesOverlap$' -fuzztime 1m
 gofmt -l backend                      # archivos sin formato (debe salir vacío)
 go doc ./backend/internal/engine      # documentación de un paquete
 docker compose --profile api up --build   # API dentro de Docker
@@ -237,14 +244,14 @@ pnpm --filter @cargo-3d/ui build:preview   # compila la vista previa (abrir pack
 
 ## Estado
 
-- **Fase actual:** 1 — prueba de concepto. Sprint 1.2 (geometría), sesión 1.2.2 terminada el 2026-11-26 (sprint 1.1 cerrado ese día). Servidor con `/health`; el motor tiene los tipos, la lectura y la validación de la entrada, la geometría de cajas (`Box`) y las candidatas por orientación; sin algoritmo.
+- **Fase actual:** 1 — prueba de concepto. Sprint 1.2 (geometría), sesión 1.2.3 terminada el 2026-11-27 (sprint 1.1 cerrado el 2026-11-26). Servidor con `/health`; el motor tiene los tipos, la lectura y la validación de la entrada, la geometría de cajas (`Box`, con pruebas de fuzzing) y las candidatas por orientación; sin algoritmo.
 - **Nivel de comentarios Go:** máximo (casi cada línea). Al cerrar el sprint 1.1 Benjamín se siente cómodo con Go; se puede bajar un poco más adelante.
 - **Contrato del motor:** `contracts/engine.schema.json` v0.1.0, 27 ejemplos válidos y 17 inválidos en `contracts/examples/` (ADR-0015, 0016 y 0017).
   Escrito con datos sintéticos; catálogo canónico en `contracts/equipment.json` (26 equipos, cada uno con su ejemplo o la razón de no tenerlo) y `equipo.svg` en cada ejemplo.
 - **Datos:** no hay cargas reales; se usan los 29 casos simulados de `docs/src/casos/` (ADR-0020), convertidos en 36 fixtures
   en `engine/fixtures/casos/` (sesión 1.1.5). Las pruebas con cargas reales empiezan con la v0.2.0 (P-022).
-- **Siguiente paso:** sesión 1.2.3 (fuzzing de la geometría; incluye P-029), modelo `opus` / `high`.
+- **Siguiente paso:** sesión 1.2.4 (capítulo 06 de la guía: punteros) y después `/cerrar-sprint 1.2`, modelo `opus` / `medium`.
 - **Sistema de diseño:** base lista en `packages/ui` (2026-11-21, fuera del plan); se conecta a `apps/web` en el sprint 1.6.
-- **Pendientes:** registro completo en `docs/src/pendientes.md` (P-001 a P-030). Los de Benjamín más urgentes:
+- **Pendientes:** registro completo en `docs/src/pendientes.md` (P-001 a P-031). Los de Benjamín más urgentes:
   P-019 (copiar `docs/datos/` y `.env` antes de cambiar de computadora) y P-022 (empresa para las pruebas reales, v0.2.0).
-- **Última sesión:** 2026-11-26, sesión 1.2.2: candidatas por orientación y capítulo 05 de la guía de Go. El mismo día: sesión 1.2.1 (`Box`), sesiones 1.1.2 a 1.1.6, ADR-0022, 0023 y 0024.
+- **Última sesión:** 2026-11-27, sesión 1.2.3: fuzzing de la geometría y capítulo 08 (parte 1). Antes, el 2026-11-26: sesiones 1.1.2 a 1.2.2, ADR-0022, 0023 y 0024.

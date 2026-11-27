@@ -484,6 +484,13 @@ primero. Pruebas con planes correctos y con planes rotos a propósito.
 El motor en Go quita un "outOfGauge": false al leer un plan (el contrato solo
 admite true), así que el validador debe aplicar el esquema completo y
 rechazarlo (P-010).
+Además, el contrato todavía no pone máximo a xMm, yMm, zMm, dxMm, dyMm y
+dzMm de Placement: con una coordenada cerca del tope de int64, la suma da la
+vuelta y la geometría del motor responde mal (P-029). El validador debe
+rechazar cualquier número fuera de los límites del contrato, y el esquema
+debe llevar esos máximos (cambio de contrato con /cambiar-contrato, versión
+nueva y ejemplos actualizados). Los límites actuales del motor están en
+Box.InRange y MaxGeometryMM (backend/internal/engine/box.go).
 Primero propón el plan.
 ```
 
@@ -535,7 +542,10 @@ Primero propón el plan.
 Escribe los capítulos 07 (interfaces) y 08 (pruebas de tabla, benchmarks y
 fuzzing) de la guía de Go con ejemplos del código actual. En el 07, muestra
 cómo las estrategias de ordenamiento podrían ser una interfaz y cómo un tipo
-la cumple solo con tener sus métodos.
+la cumple solo con tener sus métodos. El 08 ya existe con su parte 1 (pruebas
+de tabla y fuzzing, sesión 1.2.3) en aprendizaje/go/08-pruebas-de-tabla-y-fuzzing.md:
+completa su parte 2 (benchmarks con testing.B y la línea base de la 1.4.4) sin
+reescribir la parte 1, y marca el capítulo como terminado en 00-introduccion.md.
 ```
 
 Después: `/cerrar-sprint 1.4`.

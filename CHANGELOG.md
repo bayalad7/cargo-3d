@@ -7,6 +7,7 @@ Cada versión liberada en `main` lleva su etiqueta de git (ADR-0012).
 ## [Sin publicar]
 
 ### Agregado
+- Fuzzing de la geometría: cinco propiedades con `go test -fuzz` (simetría de `Intersects`, caja consigo misma, transitividad de `ContainedIn`, volumen al girar y límites de `Contact`), `MaxGeometryMM` y `Box.InRange` para los límites de la geometría y la parte 1 del capítulo 08 de la guía de Go (sesión 1.2.3).
 - Candidatas por orientación en el motor: `CargoItem.Candidates` da las orientaciones permitidas que caben en un punto, sin repetidas (piezas cúbicas), y `Section.Box()` la caja del tramo; capítulo 05 de la guía de Go (sesión 1.2.2).
 - Geometría de cajas en el motor: `Box` con `Intersects`, `ContainedIn` y `Contact`, 46 casos límite y el concepto `geometria.md` con dibujos (sesión 1.2.1).
 - Sprint 1.1 cerrado: contrato, tipos, lectura y validación de la entrada del motor, fixtures de los casos y capítulos 02 a 04 de la guía.

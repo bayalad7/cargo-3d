@@ -197,20 +197,35 @@ no se apoya en nada y no cuenta como contenida** en otra, aunque sus coordenadas
 `inicio + medida` y el producto del área se calculan con `int64`. En Go, una suma o un producto de enteros que se pasa
 del máximo (cerca de 9,2 × 10¹⁸) **da la vuelta sin avisar**: sale un número negativo, sin error ni `panic`.
 
-Con los límites del contrato no puede pasar:
+Con los límites del contrato no puede pasar. La constante `MaxGeometryMM` (100 000 mm) fija el valor absoluto más
+grande que puede tener cualquiera de los seis números de una `Box`, y `Box.InRange()` lo comprueba:
 
 - una pieza mide a lo más 30 000 mm por lado, y en un plan que arma el motor lo más lejos que termina es
   `x = 60 000` (un tramo que empieza en 30 000 y mide 30 000);
-- el traslape sobre un eje nunca pasa de la medida de la pieza más chica, así que el área de contacto es a lo más
-  30 000 × 30 000 = 9 × 10⁸ mm², estén o no las cajas dentro de un tramo. Es uno de los casos de `box_test.go`.
+- con números de a lo más 100 000, una suma da a lo más 2 × 10⁵ y un área a lo más 4 × 10¹⁰ mm², lejísimos del tope
+  de `int64`;
+- el traslape sobre un eje nunca pasa de la medida de la pieza más chica, así que el área de contacto de una pieza
+  del contrato es a lo más 30 000 × 30 000 = 9 × 10⁸ mm², estén o no las cajas dentro de un tramo. Es uno de los
+  casos de `box_test.go`.
 
-**Cuidado con los planes que llegan de fuera.** El contrato no pone máximo a las coordenadas de una colocación
-(`xMm`, `yMm`). Si un plan editado a mano trae `xMm` cerca del tope de `int64`, `xMm + dxMm` da la vuelta a un
-número negativo e `Intersects` responde «no se enciman» aunque sí se encimen. Por ahora `Box` solo se usa con
-colocaciones que armó el motor; antes de usarla con planes de fuera hay que cerrar P-029.
+**Cuidado con los planes que llegan de fuera.** El contrato todavía no pone máximo a las coordenadas de una
+colocación (`xMm`, `yMm`). Si un plan editado a mano trae `xMm` cerca del tope de `int64`, `xMm + dxMm` da la vuelta
+a un número negativo e `Intersects` responde «no se enciman» aunque sí se encimen. Quien reciba un plan de fuera
+llama a `InRange` **antes** de usar la caja. El máximo en el contrato entra con el validador (sesión 1.4.2, P-029).
 
-El fuzzing de la sesión 1.2.3 prueba la geometría también con valores fuera del contrato, para ver qué pasa cerca
-del tope.
+## Las propiedades que prueba el fuzzing
+
+Las pruebas de tabla revisan los casos que se nos ocurrieron. El fuzzing (capítulo 08 de la guía de Go) revisa
+**propiedades**: cosas que deben ser ciertas para *cualquier* par de cajas, y deja que Go busque un contraejemplo.
+Viven en `box_fuzz_test.go`:
+
+| Propiedad | Entradas | Por qué importa |
+|---|---|---|
+| `Intersects` es simétrica | todo el rango de `int64` | el algoritmo compara en cualquier orden; la fórmula es simétrica aun con desbordamiento |
+| Una caja se interseca consigo misma si y solo si tiene volumen | dentro de `InRange` | es la regla de las cajas sin volumen |
+| Si A está en B y B en C, A está en C | dentro de `InRange` | la estabilidad del sprint 2.1 encadena contenciones |
+| Girar una pieza no cambia su volumen | piezas del contrato | si una orientación perdiera volumen, el motor «ganaría» espacio |
+| `Contact` no es negativa ni mayor que la base más chica, y con contacto no hay traslape | dentro de `InRange` | el apoyo no puede sumar más de lo que hay ni coexistir con un choque |
 
 ## Candidatas: en qué orientaciones cabe una pieza
 

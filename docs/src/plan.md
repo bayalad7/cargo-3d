@@ -122,7 +122,7 @@ en segundos y la web la muestra en 3D.
 
 - [x] Cajas alineadas a los ejes: intersección, contención y contacto entre caras.
 - [x] Las 6 orientaciones y el filtro de orientaciones permitidas.
-- [ ] Pruebas de tabla con casos límite y **fuzzing nativo de Go** (`go test -fuzz`).
+- [x] Pruebas de tabla con casos límite y **fuzzing nativo de Go** (`go test -fuzz`).
 - [ ] Guía de Go: capítulos 05 y 06.
 
 ### Sprint 1.3 — Primer algoritmo: puntos extremos
