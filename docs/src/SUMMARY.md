@@ -102,11 +102,13 @@
   - [Primeros pasos](aprendizaje/go/01-primeros-pasos.md)
   - [Módulos e imports](aprendizaje/go/01b-modulos-e-imports.md)
   - [Structs y tipos numéricos](aprendizaje/go/02-structs-y-tipos.md)
+  - [Métodos y receptores](aprendizaje/go/03-metodos-y-receptores.md)
 
 # Bitácora
 
 - [Índice](bitacora/README.md)
   - [Noviembre 2026]()
+    - [26 nov · Orientaciones, colocaciones y plan de carga (1.1.3)](bitacora/2026-11-26-orientaciones-y-plan-de-carga.md)
     - [26 nov · Tipos del motor y Go explicado solo con Go (1.1.2)](bitacora/2026-11-26-tipos-del-motor-y-go-puro.md)
     - [26 nov · Documentación de desarrollo y pgAdmin](bitacora/2026-11-26-documentacion-de-desarrollo.md)
     - [25 nov · Casos simulados y ajustes al flujo](bitacora/2026-11-25-casos-simulados-y-ajustes.md)

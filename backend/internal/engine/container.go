@@ -143,7 +143,7 @@ type Container struct {
 // c.Sections sigue apuntando a los MISMOS tramos y c.Door a la MISMA puerta,
 // así que c.Sections[0].LengthMM = 0 o c.Door.WidthMM = 0 sí cambiarían el
 // original. Volume solo lee, así que no importa aquí. Cuándo conviene un
-// receptor por puntero (*Container) se ve en la sesión 1.1.3 y el capítulo 03.
+// receptor por puntero se explica en el capítulo 03 (ver LoadPlan).
 func (c Container) Volume() int64 {
 	// "var total int64" declara una variable con su tipo y valor cero (0).
 	// Equivale a "total := int64(0)".

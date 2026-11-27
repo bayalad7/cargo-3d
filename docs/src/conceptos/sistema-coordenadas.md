@@ -84,6 +84,19 @@ Las seis juntas están en `contracts/examples/road/dry-van/53dv-contract-coverag
 
 > **Trampa:** el orden de las letras es x, **z**, y; el de los campos es `dx`, **`dy`**, `dz`. No son el mismo.
 
+## En el código del motor
+
+| Concepto | Dónde vive en Go |
+|---|---|
+| Las 6 orientaciones | `Orientation` y sus constantes, en `backend/internal/engine/orientation.go` |
+| Medidas de la pieza girada | `CargoItem.RotatedDimensions(o)`, que regresa `Dimensions{DXMM, DYMM, DZMM}` y `ok = false` si la orientación no es una de las seis |
+| Orientaciones permitidas | `CargoItem.Orientations()`: las seis solo si `allowedOrientations` no vino |
+| Una colocación | `Placement` en `placement.go`; `Placement.Dimensions()` regresa sus `dx`, `dy` y `dz` |
+
+La prueba `TestOutputExamplesDimensionsMatchOrientation` revisa que, en todos los ejemplos de `contracts/examples/`,
+las medidas de cada colocación sean las que da `RotatedDimensions`. Si esta tabla y el código dejan de coincidir, esa
+prueba falla.
+
 ## Los tramos
 
 El espacio de carga es una lista de **tramos** (`sections`), cada uno una caja con su esquina mínima y sus medidas.

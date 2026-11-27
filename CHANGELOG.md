@@ -7,6 +7,8 @@ Cada versión liberada en `main` lleva su etiqueta de git (ADR-0012).
 ## [Sin publicar]
 
 ### Agregado
+- Tipos de salida del motor `Placement`, `LoadPlan`, `UnplacedItem` y `Metrics`; orientaciones con `RotatedDimensions` y `Orientations`; y pruebas que pasan los 27 ejemplos de salida de JSON a Go y de regreso y revisan sus medidas contra la orientación (sesión 1.1.3).
+- Capítulo de aprendizaje `03-metodos-y-receptores.md`; `sistema-coordenadas.md` dice ahora dónde vive cada concepto en el código.
 - Tipos del motor `EngineInput`, `Container`, `Section`, `Overhang`, `Door`, `CargoItem` y `Orientation` en `backend/internal/engine`, con `Volume()`, `Margin()` e `IsStackable()`, y una prueba que pasa los 27 ejemplos de entrada de JSON a Go y de regreso (sesión 1.1.2).
 - Capítulo de aprendizaje `02-structs-y-tipos.md` y ADR-0022: la guía y los comentarios explican Go solo con Go.
 - Sección `docs/src/desarrollo/` (ADR-0021): instalación del entorno, servicios, conexión a PostgreSQL con pgAdmin y psql (`entorno/base-de-datos.md`) y guía de ramas, commits y versiones (`flujo/ramas-y-commits.md`).

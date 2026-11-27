@@ -237,14 +237,14 @@ pnpm --filter @cargo-3d/ui build:preview   # compila la vista previa (abrir pack
 
 ## Estado
 
-- **Fase actual:** 1 — prueba de concepto, sprint 1.1 (sesión 1.1.2 terminada el 2026-11-26). Servidor con `/health`; el motor ya tiene `EngineInput`, `Container`, `Section`, `Overhang`, `Door`, `CargoItem` y `Orientation` (sin `Placement` ni `LoadPlan`).
+- **Fase actual:** 1 — prueba de concepto, sprint 1.1 (sesión 1.1.3 terminada el 2026-11-26). Servidor con `/health`; el motor ya tiene los tipos de entrada y de salida (`EngineInput`, `Container`, `CargoItem`, `Orientation`, `Placement`, `LoadPlan`), sin validación ni algoritmo.
 - **Nivel de comentarios Go:** máximo (casi cada línea).
 - **Contrato del motor:** `contracts/engine.schema.json` v0.1.0, 27 ejemplos válidos y 17 inválidos en `contracts/examples/` (ADR-0015, 0016 y 0017).
   Escrito con datos sintéticos; catálogo canónico en `contracts/equipment.json` (26 equipos, cada uno con su ejemplo o la razón de no tenerlo) y `equipo.svg` en cada ejemplo.
 - **Datos:** no hay cargas reales; se usan los 29 casos simulados de `docs/src/casos/` (ADR-0020). La sesión 1.1.5 los
   convierte en fixtures. Las pruebas con cargas reales empiezan con la v0.2.0 (P-022).
-- **Siguiente paso:** sesión 1.1.3 (`Orientation`, `Placement` y `LoadPlan`, con la ida y vuelta de los `output.json`; ver P-025).
+- **Siguiente paso:** sesión 1.1.4 (validación de la entrada; incluye la otra mitad de P-025).
 - **Sistema de diseño:** base lista en `packages/ui` (2026-11-21, fuera del plan); se conecta a `apps/web` en el sprint 1.6.
-- **Pendientes:** registro completo en `docs/src/pendientes.md` (P-001 a P-025). Los de Benjamín más urgentes:
+- **Pendientes:** registro completo en `docs/src/pendientes.md` (P-001 a P-027). Los de Benjamín más urgentes:
   P-019 (copiar `docs/datos/` y `.env` antes de cambiar de computadora) y P-022 (empresa para las pruebas reales, v0.2.0).
-- **Última sesión:** 2026-11-26, sesión 1.1.2: tipos del motor, capítulo 02 de la guía y Go explicado solo con Go (ADR-0022). Antes, el mismo día y fuera del plan: sección `docs/src/desarrollo/` (ADR-0021).
+- **Última sesión:** 2026-11-26, sesión 1.1.3: orientaciones, `Placement`, `LoadPlan` y el capítulo 03 de la guía. Antes, el mismo día: sesión 1.1.2 y Go explicado solo con Go (ADR-0022).

@@ -395,6 +395,9 @@ Optimize(input) (LoadPlan, error).
 - Cada punto extremo y cada orientación permitida se evalúan con el
   criterio elegido en el diseño.
 - Las piezas que no caben van a la lista de no colocadas con su motivo.
+  LoadPlan.AddUnplaced ignora en silencio una cantidad menor a 1: decide aquí
+  si debe avisar (por ejemplo, regresando un bool) para que un error del
+  algoritmo no haga perder unidades sin que nadie lo note (P-026).
 - Pruebas: el ejemplo a mano de 3 piezas debe dar exactamente el
   resultado del documento; además, todos los fixtures de casos deben producir
   planes sin traslapes y dentro del equipo.
@@ -476,6 +479,9 @@ cuando los ejemplos de contracts/examples/ pasen con el validador, borra ese
 script, su línea en package.json y su mención en CLAUDE.md (P-010).
 Debe devolver la lista completa de problemas encontrados, no solo el
 primero. Pruebas con planes correctos y con planes rotos a propósito.
+El motor en Go quita un "outOfGauge": false al leer un plan (el contrato solo
+admite true), así que el validador debe aplicar el esquema completo y
+rechazarlo (P-010).
 Primero propón el plan.
 ```
 

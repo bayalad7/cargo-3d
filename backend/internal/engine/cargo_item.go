@@ -1,37 +1,5 @@
 package engine
 
-// Orientation dice cómo queda girada una pieza: las tres letras son las
-// medidas de la pieza (L largo, W ancho, H alto) que quedan sobre los ejes del
-// equipo, en este orden: 1.ª sobre x, 2.ª sobre z, 3.ª sobre y (vertical).
-//
-// En esta sesión solo existe el tipo y sus seis valores, para que
-// CargoItem.AllowedOrientations tenga tipo. Girar las medidas y resolver las
-// orientaciones por omisión se hace en la sesión 1.1.3.
-//
-// # Nota de aprendizaje: tipos con nombre
-//
-// "type Orientation string" crea un tipo NUEVO cuyo valor por dentro es un
-// string. El tipo NO limita los valores: Orientation("XYZ") compila, y un
-// texto escrito tal cual en el código (una constante sin tipo, como "XYZ") se
-// convierte solo a Orientation: si f pide un Orientation, f("XYZ") también
-// compila. Lo que el compilador rechaza es pasar una VARIABLE de tipo string
-// sin convertirla con Orientation(s). Tampoco encoding/json revisa el valor: lee cualquier texto.
-// Por eso la validación (sesión 1.1.4) revisa que sea uno de los seis.
-type Orientation string
-
-// Las seis orientaciones del contrato.
-//
-// Go: "const ( ... )" agrupa constantes. Cada una tiene tipo Orientation.
-// Las constantes se calculan al compilar y no se pueden cambiar.
-const (
-	OrientationLWH Orientation = "LWH" // como viene
-	OrientationWLH Orientation = "WLH" // girada 90° sobre el eje vertical
-	OrientationLHW Orientation = "LHW" // acostada de lado
-	OrientationHLW Orientation = "HLW" // acostada de lado y girada
-	OrientationWHL Orientation = "WHL" // parada de punta
-	OrientationHWL Orientation = "HWL" // parada de punta y girada
-)
-
 // CargoItem es un tipo de pieza y cuántas unidades hay. Las medidas y el peso
 // son de UNA unidad. «Como viene» (orientación LWH) significa largo sobre x,
 // ancho sobre z y alto sobre y.
@@ -40,8 +8,8 @@ const (
 //
 // Se lee del JSON tal cual. Los campos opcionales que tienen valor por omisión
 // (allowedOrientations = las 6, stackable = true) quedan vacíos si no vinieron;
-// el valor por omisión se resuelve con métodos al calcular (IsStackable y,
-// desde la 1.1.3, las orientaciones permitidas).
+// el valor por omisión se resuelve con métodos al calcular (IsStackable y
+// Orientations).
 //
 // # Por qué así
 //
@@ -75,10 +43,12 @@ type CargoItem struct {
 	Quantity int64 `json:"quantity"`
 
 	// AllowedOrientations son las orientaciones permitidas. Si es nil (no
-	// vino), se permiten las 6. «Este lado arriba» = [LWH, WLH].
+	// vino), se permiten las 6. «Este lado arriba» = [LWH, WLH]. Para calcular,
+	// usa Orientations(), que ya resuelve el valor por omisión.
 	//
 	// Go: un slice nil + omitempty no se escribe al volver a JSON, así que "no
-	// vino" regresa como "no vino".
+	// vino" regresa como "no vino". Ojo: una lista vacía ([]) tampoco se
+	// escribe, así que la validación (sesión 1.1.4) la rechaza (P-025).
 	AllowedOrientations []Orientation `json:"allowedOrientations,omitempty"`
 
 	// Stackable dice si se le puede poner algo encima. Si es nil (no vino),

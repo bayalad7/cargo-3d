@@ -30,96 +30,190 @@ var examplesDir = filepath.Join("..", "..", "..", "contracts", "examples")
 //   - Que lo que no vino regrese sin venir y que un 0 o un false escritos
 //     regresen escritos (por eso Stackable, TareKG y Overhang son punteros).
 //
-// Los output.json (LoadPlan) se prueban en la sesión 1.1.3, cuando exista ese
-// tipo. Los ejemplos de invalid/ los usa la validación (sesión 1.1.4).
+// Los ejemplos de invalid/ los usa la validación (sesión 1.1.4).
 func TestInputExamplesRoundTripUnchanged(t *testing.T) {
-	// Junta las rutas de todos los input.json fuera de invalid/.
+	for _, path := range findExamples(t, "input.json") {
+		t.Run(exampleName(t, path), func(t *testing.T) {
+			// roundTrip[EngineInput] elige el tipo con que se lee el archivo
+			// (ver la nota de genéricos en roundTrip).
+			roundTrip[EngineInput](t, path)
+		})
+	}
+}
+
+// TestOutputExamplesRoundTripUnchanged hace lo mismo con cada output.json como
+// LoadPlan. En especial revisa outOfGauge: si no viene, debe regresar sin
+// venir (false + omitempty), y si viene, regresa true.
+func TestOutputExamplesRoundTripUnchanged(t *testing.T) {
+	for _, path := range findExamples(t, "output.json") {
+		t.Run(exampleName(t, path), func(t *testing.T) {
+			roundTrip[LoadPlan](t, path)
+		})
+	}
+}
+
+// TestOutputExamplesDimensionsMatchOrientation junta cada output.json con el
+// input.json de su carpeta y revisa que las medidas de cada colocación (dxMm,
+// dyMm, dzMm) sean las que da RotatedDimensions para su pieza y su orientación.
+//
+// Así se comprueba, con todos los ejemplos del contrato, que el código y
+// docs/src/conceptos/sistema-coordenadas.md dicen lo mismo.
+func TestOutputExamplesDimensionsMatchOrientation(t *testing.T) {
+	for _, outputPath := range findExamples(t, "output.json") {
+		t.Run(exampleName(t, outputPath), func(t *testing.T) {
+			// filepath.Dir quita el nombre del archivo y deja su carpeta.
+			inputPath := filepath.Join(filepath.Dir(outputPath), "input.json")
+			input := decodeStrict[EngineInput](t, inputPath)
+			plan := decodeStrict[LoadPlan](t, outputPath)
+
+			// Un mapa del id de la pieza a la pieza, para buscarla rápido.
+			// make crea el mapa vacío y listo para escribir (un mapa nil no
+			// acepta escrituras).
+			items := make(map[string]CargoItem, len(input.Items))
+			for _, item := range input.Items {
+				items[item.ID] = item
+			}
+
+			for _, pl := range plan.Placements {
+				// Leer un mapa regresa (valor, ok): ok es false si la llave no
+				// existe.
+				item, ok := items[pl.ItemID]
+				if !ok {
+					t.Errorf("la colocación %s/%d apunta a una pieza que no existe", pl.ItemID, pl.Instance)
+					continue // pasa a la siguiente colocación
+				}
+
+				want, ok := item.RotatedDimensions(pl.Orientation)
+				if !ok {
+					t.Errorf("%s/%d: orientación desconocida %q", pl.ItemID, pl.Instance, pl.Orientation)
+					continue
+				}
+				// Dos Dimensions se comparan con == campo por campo.
+				if got := pl.Dimensions(); got != want {
+					t.Errorf("%s/%d en %s: medidas %+v, la orientación da %+v", pl.ItemID, pl.Instance, pl.Orientation, got, want)
+				}
+			}
+		})
+	}
+}
+
+// roundTrip lee el archivo como T en modo estricto, lo vuelve a escribir como
+// JSON y compara el resultado con el original como valores.
+//
+// # Nota de aprendizaje: genéricos
+//
+// "[T any]" es un parámetro de TIPO: roundTrip funciona con cualquier tipo T,
+// y quien la llama elige cuál con roundTrip[EngineInput] o roundTrip[LoadPlan].
+// El compilador revisa cada uso con su tipo real. Sin genéricos habría que
+// escribir la misma función dos veces. Los genéricos tienen su lugar en el
+// capítulo 08 (pruebas); aquí solo evitan repetir código.
+func roundTrip[T any](t *testing.T, path string) {
+	t.Helper()
+
+	value := decodeStrict[T](t, path)
+
+	// De Go a JSON otra vez.
+	encoded, err := json.Marshal(value)
+	if err != nil {
+		t.Fatalf("no se pudo escribir como JSON: %v", err)
+	}
+
+	original := readFile(t, path)
+
+	// Se comparan como valores genéricos (mapas y listas), así no importan el
+	// orden de las llaves ni la sangría.
+	if !reflect.DeepEqual(decodeGeneric(t, encoded), decodeGeneric(t, original)) {
+		t.Errorf("el JSON cambió al ir y volver\n original: %s\n regreso:  %s", compact(t, original), encoded)
+	}
+}
+
+// decodeStrict lee el archivo como T: falla si trae un campo que T no tiene o
+// si queda contenido después del objeto.
+func decodeStrict[T any](t *testing.T, path string) T {
+	t.Helper()
+
+	// De JSON a Go, en modo estricto: json.Unmarshal ignora en silencio los
+	// campos que no conoce; un Decoder con DisallowUnknownFields los convierte
+	// en error.
+	decoder := json.NewDecoder(bytes.NewReader(readFile(t, path)))
+	decoder.DisallowUnknownFields()
+
+	// "var value T" declara una variable del tipo que eligió quien llamó, en su
+	// valor cero. "&value" pasa su dirección para que Decode la llene.
+	var value T
+	if err := decoder.Decode(&value); err != nil {
+		t.Fatalf("no se pudo leer %s: %v", path, err)
+	}
+
+	// Decode lee solo el PRIMER valor JSON y deja el resto sin leer: un archivo
+	// "{...} basura" pasaría. Un segundo Decode debe encontrar el fin del
+	// archivo (io.EOF); cualquier otra cosa es contenido de más. errors.Is
+	// compara el error con io.EOF aunque venga envuelto (capítulo 04).
+	if err := decoder.Decode(&struct{}{}); !errors.Is(err, io.EOF) {
+		t.Fatalf("hay contenido después del objeto JSON en %s (err = %v)", path, err)
+	}
+
+	return value
+}
+
+// findExamples regresa las rutas de todos los archivos llamados fileName en
+// contracts/examples/, sin entrar a invalid/. Falla si no encuentra ninguno:
+// con una ruta equivocada, la prueba pasaría sin probar nada.
+func findExamples(t *testing.T, fileName string) []string {
+	t.Helper()
+
 	var paths []string
 
-	// filepath.WalkDir recorre la carpeta y llama a la función por cada
-	// archivo o subcarpeta. La función recibe la ruta, la entrada y un error.
+	// filepath.WalkDir recorre la carpeta y llama a la función por cada archivo
+	// o subcarpeta, en orden alfabético.
 	//
 	// Go: una función se puede escribir en línea y pasar como valor (una
 	// "función literal" o closure). Ve y puede modificar las variables de la
 	// función que la contiene: por eso agrega a paths directamente.
 	err := filepath.WalkDir(examplesDir, func(path string, d fs.DirEntry, err error) error {
 		// Errores como valores: si no se pudo leer esta entrada, se regresa el
-		// error y WalkDir se detiene. El error es un valor más que se revisa
-		// con if (capítulo 04).
+		// error y WalkDir se detiene.
 		if err != nil {
 			return err
 		}
-		// Los inválidos no son EngineInput correctos: se saltan completos.
+		// Los inválidos no cumplen el contrato: se saltan completos.
 		if d.IsDir() && d.Name() == "invalid" {
 			return filepath.SkipDir
 		}
-		if !d.IsDir() && d.Name() == "input.json" {
-			paths = append(paths, path) // append regresa el slice con el elemento al final
+		if !d.IsDir() && d.Name() == fileName {
+			paths = append(paths, path)
 		}
 		return nil // nil = "sin error, sigue"
 	})
 	if err != nil {
 		t.Fatalf("no se pudo recorrer %s: %v", examplesDir, err)
 	}
-
-	// Si la ruta estuviera mal, el ciclo no correría y la prueba pasaría sin
-	// probar nada. Se exige al menos un ejemplo.
 	if len(paths) == 0 {
-		t.Fatalf("no se encontró ningún input.json en %s", examplesDir)
+		t.Fatalf("no se encontró ningún %s en %s", fileName, examplesDir)
 	}
+	return paths
+}
 
-	for _, path := range paths {
-		// filepath.Rel da la ruta desde examplesDir, para que el nombre de la
-		// subprueba sea corto: maritime/dry/20dv-heavy/input.json.
-		name, err := filepath.Rel(examplesDir, path)
-		if err != nil {
-			t.Fatalf("ruta inesperada %s: %v", path, err)
-		}
-
-		t.Run(filepath.ToSlash(name), func(t *testing.T) {
-			// os.ReadFile lee el archivo completo y regresa (bytes, error):
-			// Go devuelve varios valores y el error siempre va al final.
-			original, err := os.ReadFile(path)
-			if err != nil {
-				t.Fatalf("no se pudo leer: %v", err)
-			}
-
-			// De JSON a Go, en modo estricto: json.Unmarshal ignora en silencio
-			// los campos que no conoce; un Decoder con DisallowUnknownFields los
-			// convierte en error.
-			decoder := json.NewDecoder(bytes.NewReader(original))
-			decoder.DisallowUnknownFields()
-
-			var input EngineInput
-			// "&input" pasa la dirección de input para que Decode lo llene.
-			if err := decoder.Decode(&input); err != nil {
-				t.Fatalf("no se pudo leer como EngineInput: %v", err)
-			}
-
-			// Decode lee solo el PRIMER valor JSON y deja el resto sin leer: un
-			// archivo "{...} basura" pasaría. Un segundo Decode debe encontrar
-			// el fin del archivo (io.EOF); cualquier otra cosa es contenido de
-			// más. errors.Is compara el error con io.EOF aunque venga envuelto
-			// (se explica en el capítulo 04).
-			if err := decoder.Decode(&struct{}{}); !errors.Is(err, io.EOF) {
-				t.Fatalf("hay contenido después del objeto JSON (err = %v)", err)
-			}
-
-			// De Go a JSON otra vez.
-			encoded, err := json.Marshal(input)
-			if err != nil {
-				t.Fatalf("no se pudo escribir como JSON: %v", err)
-			}
-
-			// Se comparan como valores genéricos (mapas y listas), así no
-			// importan el orden de las llaves ni la sangría.
-			want := decodeGeneric(t, original)
-			got := decodeGeneric(t, encoded)
-			if !reflect.DeepEqual(got, want) {
-				t.Errorf("el JSON cambió al ir y volver\n original: %s\n regreso:  %s", compact(t, original), encoded)
-			}
-		})
+// exampleName da la ruta del ejemplo desde contracts/examples/, con /, para que
+// el nombre de la subprueba sea corto: maritime/dry/20dv-heavy/input.json.
+func exampleName(t *testing.T, path string) string {
+	t.Helper()
+	name, err := filepath.Rel(examplesDir, path)
+	if err != nil {
+		t.Fatalf("ruta inesperada %s: %v", path, err)
 	}
+	return filepath.ToSlash(name)
+}
+
+// readFile lee el archivo completo o detiene la prueba.
+func readFile(t *testing.T, path string) []byte {
+	t.Helper()
+	// os.ReadFile regresa (bytes, error): el error siempre va al final.
+	data, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatalf("no se pudo leer %s: %v", path, err)
+	}
+	return data
 }
 
 // decodeGeneric lee JSON sin struct: los objetos quedan como

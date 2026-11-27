@@ -1,7 +1,8 @@
 # 02 — `struct` y tipos numéricos
 
 Este capítulo explica los primeros tipos reales del motor, en `backend/internal/engine/`. `Container` es el equipo y
-`CargoItem` es la pieza. Los archivos son `container.go`, `cargo_item.go` e `input.go`; cada línea está comentada.
+`CargoItem` es la pieza. Los archivos son `container.go`, `cargo_item.go`, `orientation.go` (el tipo `Orientation`,
+sección 6) e `input.go`; cada línea está comentada.
 Aquí se junta lo importante. Todo lo que se afirma de Go se probó con Go 1.27.
 
 ## 1. Un `struct`: campos con nombre y tipo
@@ -198,7 +199,7 @@ func (c CargoItem) IsStackable() bool {
 ```
 
 Lo mismo hace `Section.Margin()`, que regresa un `OverhangValues` sin punteros, listo para calcular. Las
-orientaciones permitidas por omisión se resuelven en la sesión 1.1.3.
+orientaciones permitidas por omisión las resuelve `CargoItem.Orientations()` ([capítulo 03](03-metodos-y-receptores.md)).
 
 ## 5. Métodos: `Volume()`
 
@@ -213,7 +214,7 @@ func (s Section) Volume() int64 {
 - Este receptor es **por valor**: el método recibe una **copia** de la sección, con las reglas de la sección 1.1. Un
   cambio a un campo simple (`s.LengthMM = 0`) no se ve afuera. Pero si el receptor fuera `(c Container)`, un cambio a
   `c.Sections[0]` o a `*c.Door` **sí** se vería, porque la copia comparte esos datos.
-- La diferencia con el receptor por puntero (`*Section`) es tema de la sesión 1.1.3 y del capítulo 03.
+- La diferencia con el receptor por puntero está en el [capítulo 03](03-metodos-y-receptores.md).
 
 Qué mide cada uno:
 
@@ -295,7 +296,7 @@ esa alternativa está en ADR-0016.
    exactos hasta 2⁵³ (≈ 9 × 10¹⁵); los del contrato son mucho menores.
 
 Si alguien cambia `Stackable` a `bool` normal, fallan todos los ejemplos con alguna pieza `"stackable": false` (hay
-14 piezas así). Los `output.json` se prueban igual en la sesión 1.1.3, cuando exista `LoadPlan`.
+14 piezas así). Los `output.json` se prueban igual, como `LoadPlan` (capítulo 03).
 
 ```bash
 go test ./backend/internal/engine -run RoundTrip -v
