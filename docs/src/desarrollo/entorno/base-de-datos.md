@@ -49,8 +49,8 @@ En pgAdmin: clic derecho en **Servers → Register → Server…**
 | Parameters | SSL mode | `disable` (la conexión no sale de tu computadora) |
 
 Los valores salen de `.env` y `docker-compose.yml`. Si cambiaste alguno en `.env`, usa el tuyo.
-En desarrollo PostgreSQL usa `trust`: acepta conexiones sin contraseña, y solo desde tu computadora porque el
-puerto escucha en `127.0.0.1` ([ADR-0024](../../adr/0024-desarrollo-sin-contrasena.md)). En producción sí hay contraseña,
+En desarrollo PostgreSQL usa `trust`: acepta conexiones sin contraseña de cualquier programa de tu computadora y de
+los contenedores del grupo, y de nadie más porque el puerto escucha en `127.0.0.1` ([ADR-0024](../../adr/0024-desarrollo-sin-contrasena.md)). En producción sí hay contraseña,
 y **nunca** se escribe en la documentación ni en el código.
 
 Una vez conectado, las tablas estarán en **cargo-3d (desarrollo) → Databases → cargo3d → Schemas → public → Tables**.

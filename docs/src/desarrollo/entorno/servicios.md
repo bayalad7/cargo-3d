@@ -7,7 +7,10 @@ Los servicios del proyecto corren en Docker, en un solo grupo llamado `cargo-3d`
 | `cargo-3d-db-1` | `postgres:19` | `127.0.0.1:5433` | Siempre que trabajes con datos |
 | `cargo-3d-api-1` | `cargo-3d-api` (se construye del `backend/Dockerfile`) | `127.0.0.1:8080` | Solo con `--profile api` |
 
-Requisito: haber copiado `.env.example` a `.env` ([Instalación del entorno](instalacion.md#3-docker)).
+Requisito: haber copiado `.env.example` a `.env` ([Instalación del entorno](instalacion.md#3-docker)). Los scripts lo
+hacen solos si falta. Con `docker compose` directo y sin `.env`, el contenedor de PostgreSQL arranca y se detiene, porque
+la contraseña queda vacía sin `POSTGRES_HOST_AUTH_METHOD=trust` (ADR-0024); el motivo se ve con
+`docker compose logs db`.
 Para ver los datos de PostgreSQL con pgAdmin o `psql`: [Base de datos](base-de-datos.md).
 
 ## Día a día: el script

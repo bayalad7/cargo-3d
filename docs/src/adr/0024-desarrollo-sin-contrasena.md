@@ -24,13 +24,17 @@ se exige contraseña. Producción siempre tiene contraseña y nunca usa `trust`.
 |---|---|---|
 | Contraseña de ejemplo publicada | Igual a producción | No protege nada y hay que escribirla en cada herramienta |
 | Contraseña distinta en cada computadora | Algo más de protección | Hay que recordarla y escribirla, aunque solo se entra desde la propia computadora |
-| **`trust` sin contraseña (elegida)** | Cero fricción; pgAdmin y `psql` conectan directo | Cualquier programa de la computadora puede entrar como cualquier usuario |
+| **`trust` sin contraseña (elegida)** | Cero fricción; pgAdmin y `psql` conectan directo | Cualquier programa de la computadora y cualquier contenedor de la red de Compose puede entrar como cualquier usuario |
 
 ## Consecuencias
 
 - **Positivas:** instalar en una computadora nueva no pide pasos con la contraseña; `DATABASE_URL` queda como
   `postgres://cargo3d:@localhost:5433/cargo3d?sslmode=disable`.
-- **Negativas / costos:** el riesgo queda limitado porque el puerto solo escucha en `127.0.0.1`. Un `.env` de
-  desarrollo nunca debe llegar a un servidor.
+- **Negativas / costos:** `trust` acepta a cualquier cliente que llegue a PostgreSQL, como superusuario `cargo3d`:
+  cualquier programa de la computadora y cualquier contenedor de la red de Compose. El riesgo queda limitado porque el
+  puerto solo escucha en `127.0.0.1` y en esa red solo está la API. Un `.env` de desarrollo nunca debe llegar a un
+  servidor.
+- Sin `.env`, `docker compose` ya no se detiene con un mensaje propio: el contenedor arranca y se detiene, y el motivo
+  se ve con `docker compose logs db`. Los scripts de `scripts/servicios/` crean `.env` antes.
 - **Qué tendríamos que hacer para revertirla:** poner una contraseña en `POSTGRES_PASSWORD`, quitar
   `POSTGRES_HOST_AUTH_METHOD` de `.env` y recrear el volumen (`docker compose --profile api down -v`).

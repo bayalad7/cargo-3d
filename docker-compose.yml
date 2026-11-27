@@ -35,6 +35,8 @@ services:
       # ver docs/src/adr/0024-desarrollo-sin-contrasena.md). Sin esa variable se exige contraseña
       # (scram-sha-256) y la imagen no arranca si POSTGRES_PASSWORD está vacía.
       # Las dos solo aplican al CREAR el volumen; si cambian, hay que recrearlo (down -v).
+      # Sin .env, el contenedor arranca y se detiene solo (contraseña vacía con scram-sha-256);
+      # el motivo se ve con: docker compose logs db
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-}
       POSTGRES_HOST_AUTH_METHOD: ${POSTGRES_HOST_AUTH_METHOD:-scram-sha-256}
       # Orden y comparación de texto en español de México con ICU (ñ, acentos), igual en cualquier
