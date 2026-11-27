@@ -244,14 +244,14 @@ pnpm --filter @cargo-3d/ui build:preview   # compila la vista previa (abrir pack
 
 ## Estado
 
-- **Fase actual:** 1 — prueba de concepto. Sprint 1.2 (geometría), sesión 1.2.3 terminada el 2026-11-27 (sprint 1.1 cerrado el 2026-11-26). Servidor con `/health`; el motor tiene los tipos, la lectura y la validación de la entrada, la geometría de cajas (`Box`, con pruebas de fuzzing) y las candidatas por orientación; sin algoritmo.
-- **Nivel de comentarios Go:** máximo (casi cada línea). Al cerrar el sprint 1.1 Benjamín se siente cómodo con Go; se puede bajar un poco más adelante.
+- **Fase actual:** 1 — prueba de concepto. Sprint 1.2 cerrado el 2026-11-27 (el 1.1, el 2026-11-26); sigue el sprint 1.3 (primer algoritmo: puntos extremos). Servidor con `/health`; el motor tiene los tipos, la lectura y la validación de la entrada, la geometría de cajas (`Box`, con pruebas de fuzzing) y las candidatas por orientación; sin algoritmo.
+- **Nivel de comentarios Go:** máximo (casi cada línea). Al cerrar el sprint 1.2 Benjamín se siente cómodo con Go (slices, mapas, punteros, fuzzing) y prefiere mantener el nivel máximo un sprint más.
 - **Contrato del motor:** `contracts/engine.schema.json` v0.1.0, 27 ejemplos válidos y 17 inválidos en `contracts/examples/` (ADR-0015, 0016 y 0017).
   Escrito con datos sintéticos; catálogo canónico en `contracts/equipment.json` (26 equipos, cada uno con su ejemplo o la razón de no tenerlo) y `equipo.svg` en cada ejemplo.
 - **Datos:** no hay cargas reales; se usan los 29 casos simulados de `docs/src/casos/` (ADR-0020), convertidos en 36 fixtures
   en `engine/fixtures/casos/` (sesión 1.1.5). Las pruebas con cargas reales empiezan con la v0.2.0 (P-022).
-- **Siguiente paso:** sesión 1.2.4 (capítulo 06 de la guía: punteros) y después `/cerrar-sprint 1.2`, modelo `opus` / `medium`.
+- **Siguiente paso:** sesión 1.3.1 (diseño del algoritmo), modelo `opusplan` / `high`.
 - **Sistema de diseño:** base lista en `packages/ui` (2026-11-21, fuera del plan); se conecta a `apps/web` en el sprint 1.6.
 - **Pendientes:** registro completo en `docs/src/pendientes.md` (P-001 a P-031). Los de Benjamín más urgentes:
   P-019 (copiar `docs/datos/` y `.env` antes de cambiar de computadora) y P-022 (empresa para las pruebas reales, v0.2.0).
-- **Última sesión:** 2026-11-27, sesión 1.2.3: fuzzing de la geometría y capítulo 08 (parte 1). Antes, el 2026-11-26: sesiones 1.1.2 a 1.2.2, ADR-0022, 0023 y 0024.
+- **Última sesión:** 2026-11-27, cierre del sprint 1.2 (tras la sesión 1.2.4: capítulo 06, punteros). Antes, el mismo día: sesión 1.2.3 (fuzzing); el 2026-11-26: sesiones 1.1.2 a 1.2.2, ADR-0022, 0023 y 0024.

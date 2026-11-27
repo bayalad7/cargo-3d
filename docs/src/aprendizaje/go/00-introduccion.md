@@ -31,6 +31,7 @@ Un resumen de lo que más se usa en el backend. Cada idea se explica a fondo en 
 | Mínimo y máximo | `min(a, b)` y `max(a, b)` | Funciones integradas desde Go 1.21, sin importar nada; las usa `overlap` en `box.go` |
 | Condiciones | `a && b`, `a \|\| b` | Se evalúan de izquierda a derecha y se detienen en cuanto se sabe el resultado (cortocircuito), como en `Box.Intersects` |
 | Comparar structs | `got != want` | Dos structs se comparan con `==` si todos sus campos son comparables; un struct con un slice o un mapa no compila con `==` |
+| Punteros | `*T`, `&x`, `*p` y `new(valor)` | `nil` es el valor cero; desreferenciarlo detiene el programa. Se usan para opcionales («no vino» ≠ 0) y para que un método cambie el original; con receptor de puntero, solo `*T` cumple la interfaz ([capítulo 06](06-punteros.md)) |
 | Fuzzing | `func FuzzX(f *testing.F)` + `go test -run '^$' -fuzz '^FuzzX$' -fuzztime 1m` | Go inventa entradas y busca una que rompa una propiedad; un solo `Fuzz…` por corrida; lo que falla se guarda en `testdata/fuzz/` ([capítulo 08](08-pruebas-de-tabla-y-fuzzing.md)) |
 | Desbordamiento | `int64` cerca de 9,2 × 10¹⁸ | Una suma o un producto que se pasa del máximo da la vuelta sin aviso: ni error ni `panic` ([capítulo 02](02-structs-y-tipos.md); límites de `Box` en [Geometría de cajas](../../conceptos/geometria.md)) |
 
@@ -42,7 +43,7 @@ Un resumen de lo que más se usa en el backend. Cada idea se explica a fondo en 
 - [x] 03 — [Métodos y receptores](03-metodos-y-receptores.md) (volumen, orientaciones, plan de carga)
 - [x] 04 — [Errores como valores](04-errores-como-valores.md) (validación de la entrada)
 - [x] 05 — [Slices, mapas y ciclos](05-slices-maps-y-ciclos.md) (candidatas por orientación)
-- [ ] 06 — Punteros: cuándo `*Container` y cuándo `Container`
+- [x] 06 — [Punteros](06-punteros.md): cuándo `*Container` y cuándo `Container` (opcionales, `LoadPlan`, errores)
 - [ ] 07 — Interfaces (restricciones intercambiables)
 - [ ] 08 — [Pruebas de tabla y fuzzing](08-pruebas-de-tabla-y-fuzzing.md): parte 1 escrita (sesión 1.2.3); la parte 2, benchmarks, se escribe en la sesión 1.4.5
 - [ ] 09 — Goroutines, canales y `context` (metaheurística en paralelo)

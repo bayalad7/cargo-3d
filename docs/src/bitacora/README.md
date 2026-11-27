@@ -9,6 +9,7 @@ con su título, la sesión de `prompts.md` (o «Fuera del plan») y el área, y 
 
 | Fecha | Tema | Sesión | Área | Pendientes |
 |---|---|---|---|---|
+| 2026-11-27 | [Punteros y revisión del motor; cierre del sprint 1.2](2026-11-27-punteros.md) | 1.2.4 y cierre del sprint | docs, motor | P-030 |
 | 2026-11-27 | [Fuzzing de la geometría](2026-11-27-fuzzing-de-la-geometria.md) | 1.2.3 | motor, docs | P-029, P-031 |
 | 2026-11-26 | [Candidatas por orientación](2026-11-26-orientaciones-y-candidatas.md) | 1.2.2 | motor, docs | P-029, P-030 |
 | 2026-11-26 | [Cajas en el espacio](2026-11-26-cajas-en-el-espacio.md) | 1.2.1 | motor, docs | P-029 |

@@ -108,12 +108,14 @@
   - [Métodos y receptores](aprendizaje/go/03-metodos-y-receptores.md)
   - [Errores como valores](aprendizaje/go/04-errores-como-valores.md)
   - [Slices, mapas y ciclos](aprendizaje/go/05-slices-maps-y-ciclos.md)
+  - [Punteros](aprendizaje/go/06-punteros.md)
   - [Pruebas de tabla y fuzzing](aprendizaje/go/08-pruebas-de-tabla-y-fuzzing.md)
 
 # Bitácora
 
 - [Índice](bitacora/README.md)
   - [Noviembre 2026]()
+    - [27 nov · Punteros y cierre del sprint 1.2 (1.2.4)](bitacora/2026-11-27-punteros.md)
     - [27 nov · Fuzzing de la geometría (1.2.3)](bitacora/2026-11-27-fuzzing-de-la-geometria.md)
     - [26 nov · Candidatas por orientación (1.2.2)](bitacora/2026-11-26-orientaciones-y-candidatas.md)
     - [26 nov · Cajas en el espacio (1.2.1)](bitacora/2026-11-26-cajas-en-el-espacio.md)

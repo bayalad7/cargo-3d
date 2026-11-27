@@ -7,6 +7,8 @@ Cada versión liberada en `main` lleva su etiqueta de git (ADR-0012).
 ## [Sin publicar]
 
 ### Agregado
+- Sprint 1.2 cerrado: geometría de cajas, candidatas por orientación, fuzzing de la geometría y capítulos 05, 06 y 08 (parte 1) de la guía de Go.
+- Capítulo 06 de la guía de Go (punteros) con la revisión de los punteros y las copias del motor; no hubo cambios de código (sesión 1.2.4).
 - Fuzzing de la geometría: cinco propiedades con `go test -fuzz` (simetría de `Intersects`, caja consigo misma, transitividad de `ContainedIn`, volumen al girar y límites de `Contact`), `MaxGeometryMM` y `Box.InRange` para los límites de la geometría y la parte 1 del capítulo 08 de la guía de Go (sesión 1.2.3).
 - Candidatas por orientación en el motor: `CargoItem.Candidates` da las orientaciones permitidas que caben en un punto, sin repetidas (piezas cúbicas), y `Section.Box()` la caja del tramo; capítulo 05 de la guía de Go (sesión 1.2.2).
 - Geometría de cajas en el motor: `Box` con `Intersects`, `ContainedIn` y `Contact`, 46 casos límite y el concepto `geometria.md` con dibujos (sesión 1.2.1).
